@@ -422,7 +422,84 @@ header.masthead p {
   background-color: #000 !important;
 }
 
+/* Gallery Section 
+==============================*/
+#idtheloai{ 
+  padding: 0px 0px;
+  background-color: white; /* màu trắng để che video phái trên bị tràn :v */
+  /* margin: 10px; */
+}
 
+#idtheloai h4{
+  margin-top: 5px;
+}
 
+#idtheloai .theloai-item {
+  right: 0;
+  margin: 0 0 15px;
+}
+#idtheloai .theloai-item .theloai-link {
+  position: relative;
+  display: block;
+  max-width: 300px;
+  margin: 0 auto;
+  cursor: pointer;
+}
 
+#idtheloai .theloai-item .theloai-link .theloai-hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+  opacity: 0;
+  background: rgba(254, 209, 54, 0.9);
+}
 
+#idtheloai .theloai-item .theloai-link .theloai-hover:hover {
+  opacity: 1;
+}
+
+#idtheloai .theloai-item .theloai-link .theloai-hover .theloai-hover-content {
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 20px;
+  margin-top: -12px;
+  text-align: center;
+  color: white;
+}
+
+#idtheloai .theloai-item .theloai-link .theloai-hover .theloai-hover-content i {
+  margin-top: -12px;
+}
+
+#idtheloai .theloai-item .theloai-link .theloai-hover .theloai-hover-content h3,
+#idtheloai .theloai-item .theloai-link .theloai-hover .theloai-hover-content h4 {
+  margin: 0;
+}
+
+#idtheloai .theloai-item .theloai-caption {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 25px;
+  text-align: center;
+  background-color: #fff;
+}
+
+#idtheloai .theloai-item .theloai-caption h4 {
+  margin: 0;
+  text-transform: none;
+}
+
+#idtheloai .theloai-item .theloai-caption p {
+  font-size: 16px;
+  font-style: italic;
+  margin: 0;
+  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+#idtheloai * {
+  z-index: 2;
+}
