@@ -859,3 +859,13 @@ table, td, tr, th, thead {
 #mainNav .navbar-collapse .navbar-sidenav > .nav-item.active {
     background-color: #1ED760;
 }
+
+#mainNav #logo img{
+    max-height: 55px;
+    /* min-width: 141px; */
+    padding: 0px 0px 0px 40px;
+}
+#logo.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+}
