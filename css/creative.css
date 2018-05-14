@@ -437,6 +437,17 @@ header.masthead p {
   right: 0;
   margin: -20px 0 15px;
 }
+
+#mainNav #logo img{
+    max-height: 55px;
+    /* min-width: 141px; */
+    padding: 0px 0px 0px 40px;
+}
+
+/* #logo.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+} */
 /* #idtheloai{ 
   padding: 0px 0px;
   background-color: white; màu trắng để che video phái trên bị tràn :v
