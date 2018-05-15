@@ -8,3 +8,165 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+
+#wrapper .list-group-item {
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+/*Chỉnh font-size cho tên playlist*/
+#playlist .canvas-wrapper a{
+  font-size: 1rem;
+}
+
+/*Chỉnh font-size cho tên album*/
+#album .canvas-wrapper a{
+  font-size:1rem;
+}
+
+
+.main-content{
+  margin-top: 65px;
+}
+
+#dropdown_User{
+    padding: 0;
+    margin: 3.5px;
+}
+
+#mainNav{
+  padding: 0.3rem 1rem;
+}
+
+.bg-zikzak{
+  background-color: #1db954;
+}
+
+
+#mainNav .navbar-collapse .navbar-sidenav > .nav-item:hover {
+    background-color: #1ED760;
+}
+
+#mainNav .navbar-collapse .navbar-sidenav > .nav-item.active {
+    background-color: #1ED760;
+}
+
+
+#item-casi  .item-hover,#item-playlist .item-container .item-hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#item-playlist .item-container{
+  position: relative;
+}
+
+#item-casi .item-hover:hover,#item-playlist .item-container .item-hover:hover {
+  opacity: 1;
+}
+
+#item-casi .item-hover .item-hover-content, #item-playlist .item-container .item-hover .item-hover-content{
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 20px;
+  margin-top: -12px;
+  text-align: center;
+  color: white;
+}
+
+
+/*baihat.html*/
+#item-Theloai #Ten-Theloai{
+  font-weight: 600;
+  font-size: 20px;
+}
+
+#item-Theloai .danhmuc_Theloai{
+  border-bottom: 2px solid #DADFE1;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+#item-Theloai #Chitiet-Theloai  .item-chitiet-Theloai{
+  padding: 5px 0px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#item-Theloai #Chitiet-Theloai .item-chitiet-Theloai{
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 2px;
+}
+
+#item-Theloai #Chitiet-Theloai .item-chitiet-Theloai:hover{
+  background-color: #E9D460;
+}
+
+#item-Theloai #Chitiet-Theloai .active{
+  background-color: #E9D460;
+}
+
+
+
+#BaiHat-TBL .item-baihat .item-baihat-tenbaihat{
+  font-size: 14px;
+}
+
+#BaiHat-TBL .item-baihat .item-baihat-tencasi{
+  font-size: 12px;
+  color: #9a9a9a;
+}
+
+#BaiHat-TBL .item-baihat .item-baihat-luotnghe{
+  font-size: 14px;
+}
+
+#BaiHat-TBL .item-baihat .item-baihat-icon{
+  margin: 10px;
+}
+
+.box_pageview {
+  float: left;
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  margin: 20px 0 20px 0;
+  background: #e5e5e5;
+}
+
+.box_pageview a {
+  padding: 7px 15px;
+  font-size: 14px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.box_pageview a.active, .box_pageview a:hover {
+  color: #e74c3c;
+  border-bottom: #e74c3c solid 2px;
+}
+
+
+
+/*baihat.html*/
+
+
+/*playlist.html*/
+#item-playlist .item-container .item-playlist-luotnghe{
+  position: absolute;
+  right: 0;
+  color: #fff;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.5);
+}
+/*playlist.html*/
