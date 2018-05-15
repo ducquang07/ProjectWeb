@@ -424,25 +424,6 @@ header.masthead p {
 
 /* Gallery Section 
 ==============================*/
-#idtheloai{
-  padding: 0px 0px;
-  background-color: white;
-}
-
-#idtheloai h4{
-  margin-top: 10px;
-}
-
-#idtheloai .theloai-item {
-  right: 0;
-  margin: -20px 0 15px;
-}
-
-#mainNav #logo img{
-    max-height: 55px;
-    /* min-width: 141px; */
-    padding: 0px 0px 0px 40px;
-}
 
 /* #logo.navbar-brand {
   padding-top: 0;
