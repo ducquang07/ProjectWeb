@@ -23,7 +23,10 @@
 #album .canvas-wrapper a{
   font-size:1rem;
 }
-
+/*Chỉnh font-size cho tên chủ đề*/
+#chude .canvas-wrapper a{
+  font-size:1rem;
+}
 
 .main-content{
   margin-top: 65px;
@@ -52,7 +55,7 @@
 }
 
 
-#item-casi  .item-hover,#item-playlist .item-container .item-hover {
+#item-casi  .item-hover,#item-playlist .item-container .item-hover,#item-chude .item-container .item-hover {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -63,15 +66,15 @@
   background: rgba(0, 0, 0, 0.2);
 }
 
-#item-playlist .item-container{
+#item-playlist .item-container, #item-chude .item-container{
   position: relative;
 }
 
-#item-casi .item-hover:hover,#item-playlist .item-container .item-hover:hover {
+#item-casi .item-hover:hover,#item-playlist .item-container .item-hover:hover, #item-chude .item-container .item-hover:hover {
   opacity: 1;
 }
 
-#item-casi .item-hover .item-hover-content, #item-playlist .item-container .item-hover .item-hover-content{
+#item-casi .item-hover .item-hover-content, #item-playlist .item-container .item-hover .item-hover-content, #item-chude .item-container .item-hover .item-hover-content{
   font-size: 20px;
   position: absolute;
   top: 50%;
@@ -170,3 +173,24 @@
   background: rgba(0, 0, 0, 0.5);
 }
 /*playlist.html*/
+
+/* chu-de.html */
+#item-chude .card-body .jumbotron {
+  padding: 5px;
+  background-color: #f7f7f7;
+  margin-bottom: 0rem;
+  }
+#item-chude .card-body h4{
+  line-height: 0.5;
+}
+#item-chude .card-body .jumbotron .card-title {
+  padding-bottom: .25rem;
+  margin-bottom: 0;
+  }
+#item-chude .card-body ul{
+  list-style-type: circle;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 20px;
+}
+/* chu-de.html */
