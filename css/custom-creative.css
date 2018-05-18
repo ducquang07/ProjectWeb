@@ -1,19 +1,62 @@
-#idtheloai{
-  padding: 0px 0px;
-  background-color: white;
-}
-
-#idtheloai h4{
-  margin-top: 10px;
-}
-
-#idtheloai .theloai-item {
-  right: 0;
-  margin: -20px 0 15px;
-}
-
 #mainNav #logo img{
     max-height: 55px;
     /* min-width: 141px; */
     padding: 0px 0px 0px 40px;
+}
+
+/* index đăng nhập, đăng ký */
+#about{
+	padding: 40px 0 40px 0;
+	background-color: #d6ffff;
+}
+#signup{
+	padding: 40px 0 40px 0;
+	background-color: #d6ffff;
+}
+
+#login {
+  padding: 7rem 0;
+}
+
+#cap-about{
+  font-family: inherit;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+#login hr {
+  max-width: none;
+  border-width: 3px;
+  border-color: #1db954;
+}
+
+#login h1{
+	/* font-family: inherit; */
+	font-weight: 550;
+}
+
+#signup h1{
+	/* font-family: inherit; */
+	font-weight: 550;
+}
+
+#signup #hrdangky_tren {
+  max-width: none;
+  border-width: 3px;
+  border-color: #1db954;
+  /* padding: 5px 0 5px 0; */
+}
+
+#signup #hrdangky_duoi {
+  max-width: none;
+  border-width: 1px;
+  border-color: #1db954;
+  /* padding: 5px 0 5px 0; */
+}
+
+#gioitinh.form-group .control-inline{
+	padding: 0 0 0 20px;
+}
+#gioitinh.form-group{
+	margin-bottom: 0.5rem;
 }
