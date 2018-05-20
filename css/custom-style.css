@@ -194,3 +194,73 @@
   padding-left: 20px;
 }
 /* chu-de.html */
+
+
+/*trinh-phat-nhac.html*/
+audio {
+  width: 100%;
+  min-width: 0;
+}
+
+.name-title{
+  display: block;
+}
+.name-title #tencasi{
+  display: inline;
+}
+
+.name-title #tenbaihat{
+  display: inline;
+}
+
+#menu-dichvu{
+  float: right;
+}
+
+.service-bar{
+  background-color: #DADFE1;
+}
+
+#menu-dichvu > li{
+  margin: 18px;
+  float: left;
+}
+
+#menu-dichvu > li> i{
+  margin-right: 5px;
+}
+
+#menu-dichvu > ul > li> a{
+  font-weight: 500;
+}
+
+.user-upload{
+  margin-top: 12px;
+  float: left;
+  margin-left: 15px;
+}
+
+.user-upload #name-user-upload{
+  position: absolute;
+  float: right;
+  margin-top: 10px;
+}
+
+.user-upload .profile-photo{
+  margin: 5px;
+}
+
+.frm-comment .wrap-comment .text-input{
+  width: 100%;
+  height: 75%;
+}
+
+.comment{
+  font-size: 14px;
+  color: black;
+}
+
+.time-comment{
+  font-size: 12px;
+  color: #90949c;
+}
