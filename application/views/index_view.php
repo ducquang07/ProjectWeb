@@ -102,17 +102,17 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
-                    <form action="/action_page.php">
+                    <form action="index/singin_controller" method="post" enctype="multidata/form-data">
                         <h1><center>Đăng Nhập</center></h1>
                         <br>
                         <hr>
                         <div class="form-group row">
                             <label for="username"><b>User name</b></label>
-                            <input class="form-control" type="text" placeholder="Enter your user name" name="full-name" required>
+                            <input class="form-control" type="text" placeholder="Nhập tên đăng nhập" name="id" required>
                         </div>
                         <div class="form-group row">
                             <label for="psw"><b>Password</b></label>
-                            <input class="form-control" type="password" placeholder="Enter Password" name="psw" required>
+                            <input class="form-control" type="password" placeholder="Nhập mật khẩu" name="pass" required>
                         </div>
                         <div class="form-group row">
                             <label>
@@ -120,7 +120,7 @@
                             </label>
                         </div>
                         <p>
-                            <center>Don't have an account? <a href="sign-up-form.html" style="color:dodgerblue">Sign up</a></center>
+                            <center>Don't have an account? <a href="#signup" style="color:dodgerblue">Sign up</a></center>
                         </p>
                         <div>
                             <input type="submit" name="dangnhap" class=" btn btn-success btn-block" value="Đăng nhập">
