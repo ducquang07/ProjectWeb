@@ -81,10 +81,10 @@
 							<div class="card mb-4">
 								<h5 class="card-header">Danh mục thể loại</h5>
 								<div class="card-body" id="item-Theloai">
-									<div class="danhmuc_Theloai">	
+									<?php foreach ($khuvuc['danhsachkhuvuc'] as $key => $value) {?>
+										<div class="danhmuc_Theloai">	
 										<div class="row">
-
-											<div class="col-lg-4" id="Ten-Theloai">Việt Nam</div>
+											<div class="col-lg-4" id="Ten-Theloai"><?php echo $value['khuvuc'] ?></div>
 											<div class="col-lg-8" id="Chitiet-Theloai">
 												<ul class="list-unstyled mb-0 row">
 													<li class="item-chitiet-Theloai active"><a href="#">Nhạc trẻ</a></li>
@@ -97,38 +97,8 @@
 											</div>
 										</div>
 									</div>
-									<div class="danhmuc_Theloai">	
-										<div class="row ">
-
-											<div class="col-lg-4" id="Ten-Theloai">Âu Mỹ</div>
-											<div class="col-lg-8" id="Chitiet-Theloai">
-												<ul class="list-unstyled mb-0 row">
-													<li class="item-chitiet-Theloai"><a href="#">Nhạc trẻ</a></li>
-													<li class="item-chitiet-Theloai"><a href="#">Trữ tình</a></li>
-													<li class="item-chitiet-Theloai"><a href="#">Rap việt</a></li>
-													<li class="item-chitiet-Theloai"><a href="#">Nhạc Trịnh</a>
-													</li>
-
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="danhmuc_Theloai">	
-										<div class="row ">
-
-											<div class="col-lg-4" id="Ten-Theloai">Châu Á</div>
-											<div class="col-lg-8" id="Chitiet-Theloai">
-												<ul class="list-unstyled mb-0 row">
-													<li class="item-chitiet-Theloai"><a href="#">Nhạc trẻ</a></li>
-													<li class="item-chitiet-Theloai"><a href="#">Trữ tình</a></li>
-													<li class="item-chitiet-Theloai"><a href="#">Rap việt</a></li>
-													<li class="item-chitiet-Theloai"><a href="#">Nhạc Trịnh</a>
-													</li>
-
-												</ul>
-											</div>
-										</div>
-									</div>
+									<?php } ?>
+									
 								</div>
 							</div>
 							<!--Kết thúc danh mục chủ đề-->
@@ -149,43 +119,21 @@
 											<table class="table table-striped" id="BaiHat-TBL">
 												
 												<tbody>
-													<!--Item bai hat-->
-													<tr class="item-baihat">
+
+													<?php foreach ($baihat['danhsachbaihat'] as $key => $value) {?>
+														<tr class="item-baihat">
 														<td>
 															<div class="content-baihat">
-																<a href="<?php echo base_url() ?>trinhphatnhac" class="item-baihat-tenbaihat">Demons</a>
+																<a href="#" class="item-baihat-tenbaihat"><?php echo $value['tenbaihat'] ?></a>
 																-
-																<a href="#" class="item-baihat-tencasi">Imagine Dragons</a>
+																<a href="#" class="item-baihat-tencasi"><?php echo $value['tencasi'] ?></a>
 															</div>
 														</td>
 														<td>
 															
 														</td>
 														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><a href="<?php echo base_url() ?>trinhphatnhac"><i class="fa fa-play" aria-hidden="true"></i></a></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
-													<!--Ket thuc Item bai hat-->
-													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
+															<div class="item-baihat-luotnghe"><?php echo $value['luotnghe'] ?><span class="item-baihat-icon"><i class="fa fa-headphones " aria-hidden="true"></i></span>
 															</div>
 														</td>
 														<td>
@@ -194,283 +142,13 @@
 															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
 														</td>
 													</tr>
-													<!--Ket thuc Item bai hat-->
+													<?php } ?>
 													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
+													
 													<!--Ket thuc Item bai hat-->
-													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
-													<!--Ket thuc Item bai hat-->
-													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
-													<!--Ket thuc Item bai hat-->
-													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
-													<!--Ket thuc Item bai hat-->
-													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
-													<!--Ket thuc Item bai hat-->
-													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
-													<!--Ket thuc Item bai hat-->
-													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
-													<!--Ket thuc Item bai hat-->
-													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
-													<!--Ket thuc Item bai hat-->
-													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
-													<!--Ket thuc Item bai hat-->
-													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
-													<!--Ket thuc Item bai hat-->
-													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
-													<!--Ket thuc Item bai hat-->
-													<!--Item bai hat-->
-													<tr class="item-baihat">
-														<td>
-															<div class="content-baihat">
-																<a href="#" class="item-baihat-tenbaihat">Chạy ngay đi</a>
-																-
-																<a href="#" class="item-baihat-tencasi">Sơn Tùng M-TP</a>
-															</div>
-														</td>
-														<td>
-															
-														</td>
-														<td>
-															<div class="item-baihat-luotnghe">12.981.304<span class="item-baihat-icon"><i class="fa fa-headphones" aria-hidden="true"></i></span>
-															</div>
-														</td>
-														<td>
-															<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-															<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-														</td>
-													</tr>
-													<!--Ket thuc Item bai hat-->
+
+
+													
 												</tbody>
 											</table>
 										</div>
