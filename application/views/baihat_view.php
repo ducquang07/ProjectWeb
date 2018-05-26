@@ -77,7 +77,7 @@
 									</span>
 								</div>
 							</div>
-							<!--Phần danh muc chủ đề-->
+
 							<div class="card mb-4">
 								<h5 class="card-header">Danh mục thể loại</h5>
 								<div class="card-body" id="item-Theloai">
@@ -95,6 +95,7 @@
 										</div>
 									</div>
 									<!--Ket thuc danh muc the loai -->
+									<!--Danh muc the loai -->
 									<div class="danhmuc_Theloai">	
 										<div class="row ">
 											<div class="col-lg-4" id="Ten-Theloai">Âu Mỹ</div>
@@ -107,6 +108,8 @@
 											</div>
 										</div>
 									</div>
+									<!--Ket thuc danh muc the loai -->
+									<!--Danh muc the loai -->
 									<div class="danhmuc_Theloai">	
 										<div class="row ">
 											<div class="col-lg-4" id="Ten-Theloai">Châu Á</div>
@@ -120,21 +123,14 @@
 										</div>
 									</div>
 								</div>
+								<!--Ket thuc danh muc the loai -->
 							</div>
-							<!--Kết thúc danh mục chủ đề-->
+
 
 							<!--Phần danh sách bài hát-->
 							<div class="card mb-4">
 								<div class="card-block">
 									<h3 class="card-title">Tất cả bài hát</h3>
-										<!--<div class="dropdown card-title-btn-container">
-											<button class="btn btn-sm btn-subtle" type="button"><em class="fa fa-list-ul"></em> View All</button>
-											<button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em></button>
-											<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#"><em class="fa fa-search mr-1"></em> More info</a>
-												<a class="dropdown-item" href="#"><em class="fa fa-thumb-tack mr-1"></em> Pin Window</a>
-												<a class="dropdown-item" href="#"><em class="fa fa-remove mr-1"></em> Close Window</a>
-											</div>
-										</div>-->
 										<div class="table-responsive ">
 											<table class="table table-striped" id="BaiHat-TBL">
 												
@@ -165,10 +161,7 @@
 													<?php } ?>
 													<!--Item bai hat-->
 													
-													<!--Ket thuc Item bai hat-->
-
-
-													
+													<!--Ket thuc Item bai hat-->	
 												</tbody>
 											</table>
 										</div>
@@ -461,6 +454,8 @@
 									</div>
 								</div>
 								<!--Kết thúc phần album-->
+
+
 								<!--Bắt đầu phần ca sĩ-->
 								<div class="card mb-4" id="album">
 									<div class="card-block">
@@ -468,95 +463,33 @@
 										<h6 class="card-subtitle mb-2 text-muted"></h6>
 										<div class="canvas-wrapper" >
 											<div class="row">
-												<div class="col-lg-4 col-sm-6 portfolio-item">
+												<?php foreach ($danhsachcasihot['danhsachcasi'] as $key => $value) {?>
+													<div class="col-lg-4 col-sm-6 portfolio-item">
 													<!--Item-casi-->
 													<div class="card h-100" id="item-casi">
 														<a href="#">
 															<div class="item-hover">
 																<div class="item-hover-content">
-																	<p class="text-white">ERIK</p>
+																	<p class="text-white"><?php echo $value['tencasi'] ?></p>
 																</div>
 															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_casi/casi-1.jpg" alt="">
+															<img class="card-img-top" width="150" height="200" src="<?php echo $value['duongdananh'] ?>" alt="">
 														</a>
 														
 													</div>
 												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<!--Item-casi-->
-													<div class="card h-100" id="item-casi">
-														<a href="#">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<p class="text-white">Mr.Siro</p>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_casi/casi-2.jpg" alt="">
-														</a>
-														
-													</div>
-												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<!--Item-casi-->
-													<div class="card h-100" id="item-casi">
-														<a href="#">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<p class="text-white">Bùi Anh Tuấn</p>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_casi/casi-3.jpg" alt="">
-														</a>
-														
-													</div>
-												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<!--Item-casi-->
-													<div class="card h-100" id="item-casi">
-														<a href="#">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<p class="text-white">Hồ Ngọc Hà</p>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_casi/casi-4.jpg" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<!--Item-casi-->
-													<div class="card h-100" id="item-casi">
-														<a href="#">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<p class="text-white">Trung Quân Idol</p>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_casi/casi-5.jpg" alt="">
-														</a>
-														
-													</div>
-												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<!--Item-casi-->
-													<div class="card h-100" id="item-casi">
-														<a href="#">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<p class="text-white">Sơn Tùng M-TP</p>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_casi/casi-6.jpg" alt="">
-														</a>
-														
-													</div>
-												</div>
+												<?php } ?>
+												
+											
 											</div>
 										</div>
 										<button class="btn btn-sm btn-subtle" type="button"><em class="fa fa-list-ul"></em> Xem tất cả</button>
 									</div>
 								</div>
-								<!--Kết thúc phần ca sĩ-->								
+								<!--Kết thúc phần ca sĩ-->	
+
+
+
 							</div>
 							<div class="col-md-12 col-lg-4">
 

@@ -11,18 +11,19 @@ class baihat extends CI_Controller {
 	{
 		$this->load->model('baihat_model');
 		$ketqua=$this->baihat_model->getAllData_baihat();
-		//$ketqua=array('danhsachbaihat' => $ketqua );
-		
 		$this->load->model('theloai_model');
-		$khuvuc=$this->theloai_model->Get_khuVuc();
 		$theloai_Vietnam=$this->theloai_model->Get_theLoai('Việt Nam');
 		$theloai_AuMy=$this->theloai_model->Get_theLoai('Âu Mỹ');
 		$theloai_ChauA=$this->theloai_model->Get_theLoai('Châu Á');
-		//$khuvuc=array('danhsachkhuvuc'=>$khuvuc);
+		$this->load->model('casi_model');
+		$casihot=$this->casi_model->Get_danhsach_hot();
+
+
 		$data=array('baihat'=>array('danhsachbaihat'=>$ketqua),
 									'theloai_Vietnam'=>array('danhsachtheloai'=>$theloai_Vietnam),
 									'theloai_AuMy'=>array('danhsachtheloai'=>$theloai_AuMy),
-									'theloai_ChauA'=>array('danhsachtheloai'=>$theloai_ChauA)
+									'theloai_ChauA'=>array('danhsachtheloai'=>$theloai_ChauA),
+									'danhsachcasihot'=>array('danhsachcasi'=>$casihot)
 								);
 		$this->load->view('baihat_view',$data);
 	}
