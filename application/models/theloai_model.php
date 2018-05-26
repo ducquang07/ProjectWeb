@@ -20,7 +20,7 @@ class theloai_model extends CI_Model {
 
 	public function Get_theLoai($khuvuc)
 	{
-		$this->db->select('idtheloai','tentheloai');
+		$this->db->select('tentheloai,idtheloai');
 		$this->db->where('khuvuc', $khuvuc);
 		$dulieu=$this->db->get('theloai');
 		$dulieu=$dulieu->result_array();

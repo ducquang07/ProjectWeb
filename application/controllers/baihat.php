@@ -15,8 +15,15 @@ class baihat extends CI_Controller {
 		
 		$this->load->model('theloai_model');
 		$khuvuc=$this->theloai_model->Get_khuVuc();
+		$theloai_Vietnam=$this->theloai_model->Get_theLoai('Việt Nam');
+		$theloai_AuMy=$this->theloai_model->Get_theLoai('Âu Mỹ');
+		$theloai_ChauA=$this->theloai_model->Get_theLoai('Châu Á');
 		//$khuvuc=array('danhsachkhuvuc'=>$khuvuc);
-		$data=array('baihat'=>array('danhsachbaihat'=>$ketqua),'khuvuc'=>array('danhsachkhuvuc'=>$khuvuc));
+		$data=array('baihat'=>array('danhsachbaihat'=>$ketqua),
+									'theloai_Vietnam'=>array('danhsachtheloai'=>$theloai_Vietnam),
+									'theloai_AuMy'=>array('danhsachtheloai'=>$theloai_AuMy),
+									'theloai_ChauA'=>array('danhsachtheloai'=>$theloai_ChauA)
+								);
 		$this->load->view('baihat_view',$data);
 	}
 
