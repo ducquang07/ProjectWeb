@@ -19,6 +19,14 @@ class baihat_model extends CI_Model {
 		return $dulieu;
 	}
 
+	public function Get_Danhsachbaihat()
+	{
+		$start=($currentpage-1)*5;
+		$sql='Select * from baihat,casi where baihat.idcasi=casi.idcasi order by luotnghe desc limit '.$start.','.$start+10;
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
 }
 
 /* End of file baihat_model.php */
