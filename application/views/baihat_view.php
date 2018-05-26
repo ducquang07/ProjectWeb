@@ -28,39 +28,11 @@
 </head>
 <body id="page-top">
 	<div class="container-fluid" id="wrapper">
+		
 		<!--Bắt đầu navbar-->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-zikzak fixed-top" id="mainNav">
-			<!-- <a class="navbar-brand" href="index.html">Start Bootrap</a> -->
-			<a class="navbar-brand" href="#page-top" id="logo">
-				<img src="<?php echo base_url() ?>img/logo/logo.png">
-			</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item dropdown">
-						<a class="btn btn-stripped dropdown-toggle" id="dropdown_User" aria-expanded="false" aria-haspopup="true" href="#" data-toggle="dropdown">
-							<img width="40" height="auto" class="circle float-left profile-photo" alt="profile photo" src="<?php echo base_url() ?>img/User-Pic.jpg">
-							<div class="username mt-1">
-								<div class="mb-1">Thái Nguyễn</div>
-								<h6>Super Admin</h6>
-							</div>
-						</a>
-						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="margin-right: 1.5rem;"><a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> View Profile</a>
-							<a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>
-							<a class="dropdown-item" href="#"><em class="fa fa-power-off mr-1"></em> Logout</a>
-						</div>
-					</li>
-					
-				</ul>
-				<!--Bắt đầu phần sidenav-->
-				<?php require('sidenav.php') ?>
-				<!--Kết thúc phần sidenar-->
-			</div>
-			
-		</nav>
+		<?php require('navbar.php') ?>
 		<!--Kết thúc navbar-->
+		
 		<main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
 
 			<section class="main-content">

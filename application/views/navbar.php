@@ -1,3 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-zikzak fixed-top" id="mainNav">
+<!-- <a class="navbar-brand" href="index.html">Start Bootrap</a> -->
+<a class="navbar-brand" href="#page-top" id="logo">
+<img src="<?php echo base_url() ?>img/logo/logo.png">
+</a>
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarResponsive">
+<ul class="navbar-nav ml-auto">
+	<li class="nav-item dropdown">
+		<a class="btn btn-stripped dropdown-toggle" id="dropdown_User" aria-expanded="false" aria-haspopup="true" href="#" data-toggle="dropdown">
+		<?php 
+			if (isset($_SESSION["ten"]))
+	         {
+				echo '<img width="40" height="auto" class="circle float-left profile-photo" alt="profile photo" src="'.$this->session->userdata('duongdananh').'">';
+				echo "<div class=\"username mt-1\">";
+				echo "<div class=\"mb-1\">".$this->session->userdata('ten')."</div>";
+				echo "<h6>".$this->session->userdata('trangthai')."</h6>";
+				echo "</div>";
+				echo "</a>";
+				echo '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="margin-right: 1.5rem;"><a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> View Profile</a>';
+				echo '<a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>';
+				echo '<a class="dropdown-item" href="trangchu/logout_controller"><em class="fa fa-power-off mr-1"></em> Logout</a>';
+				echo '</div>';
+			}
+			else
+            {
+            	echo '<img width="40" height="auto" class="circle float-left profile-photo" alt="profile photo" src="http://localhost/ProjectWeb/img/default_avatar.jpg">';
+				// echo "<div class=\"username mt-1\">";
+            	// echo "<div class=\"mb-1\"></div>";
+				// echo "<h6></h6>";
+				// echo "</div>";
+				echo "</a>";
+				echo '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="margin-right: 1.5rem;"><a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> View Profile</a>';
+				echo '<a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>';
+				echo '<a class="dropdown-item" href="trangchu/logout_controller"><em class="fa fa-power-off mr-1"></em> Login </a>';
+				echo '</div>';
+            }
+		?>
+	</li>
+</ul>
+<!--Bắt đầu phần sidenav-->
 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 	<li class="nav-item active" data-toggle="tooltip" data-placement="right" title="" data-original-title="index">
 		<a class="nav-link" href="<?php echo base_url() ?>index">
@@ -101,3 +144,6 @@
 		</a>
 	</li> -->
 </ul>
+<!--Kết thúc phần sidenar-->
+</div>
+</nav>

@@ -204,7 +204,7 @@
 <!-- Bootstrap core JavaScript -->
 <script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>vendor/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>vendor/lib/popper.min.js"></script>
 <!-- Plugin JavaScript -->
 <script src="<?php echo base_url() ?>vendor/jquery-easing/jquery.easing.min.js"></script>

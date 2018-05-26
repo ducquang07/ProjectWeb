@@ -11,7 +11,11 @@ class trangchu extends CI_Controller {
 	{
 		$this->load->view('trangchu_view');
 	}
-
+	public function logout_controller($value='')
+	{
+		$this->session->sess_destroy();
+		header('Location: http://localhost/ProjectWeb/trangchu');
+	}
 }
 
 /* End of file trangchu.php */

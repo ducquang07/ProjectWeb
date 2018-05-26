@@ -19,15 +19,26 @@ class index extends CI_Controller {
 		$this->load->model('index_model');
 		$ketqua = $this->index_model->singin($id,$pass);
 		$ketqua = array('mangketqua' => $ketqua);
-		// echo '<pre>';
-		// var_dump($ketqua);
-		// echo '</pre>';
+
 		foreach ($ketqua as $key => $value) {
+			if(count($value)==0)
+				{
+					$this->load->view('dangnhapthatbai_view');
+				}
 			foreach ($value as $key => $value) {
 				if($value['tendangnhap']==$id && $value['matkhau']==$pass)
 				{
+					$this->session->set_userdata('tendangnhap',$value['tendangnhap']);
+					$this->session->set_userdata('ten',$value['ten']);
+					$this->session->set_userdata('trangthai',$value['trangthai']);
+					$this->session->set_userdata('duongdananh',$value['duongdananh']);
+					// $data = array( 'ten' => $_SESSION["ten"],
+					// 			   'tendangnhap' => $_SESSION["tendangnhap"],
+					// 			   'trangthai' => $_SESSION["trangthai"]
+					// 			);
 					$this->load->view('dangnhapthanhcong_view');
 				}
+				
 			}
 		}
 	}
