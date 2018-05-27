@@ -134,44 +134,44 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
-                    <form action="/action_page.php">
+                    <form action="index/signup_controller" method="post" enctype="multipart/form-data">
                         <h1><center>Đăng Ký</center></h1>
                         <h3><center>Vui lòng điền đầy đủ vào các trường bên dưới để đăng ký</center></h3>
                         <hr id="hrdangky_tren">
                         <div class="form-group row">
                             <label for="full-name"><b>Họ tên:</b></label>
-                            <input class="form-control" type="text" placeholder="Enter your full name" name="full-name" required>
+                            <input class="form-control" type="text" placeholder="Enter your full name" name="fullname" required>
                         </div>
                         <div class="form-group row">
                             <label for="register-age"><b>Ngày sinh:</b></label>
                             <!-- <div class="col-10"> -->
-                            <input class="form-control" type="date" value="2011-08-19" id="date-input">
+                            <input class="form-control" type="date" value="2011-08-19" id="dateinput">
                             <!-- </div> -->
                         </div>
                         <div class="form-group row " id="gioitinh">
                             <label><b>Giới tính:</b></label>
                             <label for="register-male" class="radio control-inline">
-                                <input type="radio" id="register-male" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="male"> Nam
+                                <input type="radio" id="register-male" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="nam"> Nam
                             </label>
                             <label for="register-female" class="radio control-inline">
-                                <input type="radio" id="register-female" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="female"> Nữ
+                                <input type="radio" id="register-female" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="nu"> Nữ
                             </label>
                             <label for="register-neutral" class="radio control-inline">
-                                <input type="radio" id="register-neutral" name="gender" required="required" value="neutral"> Khác
+                                <input type="radio" id="register-neutral" name="gender" required="required" value="khac"> Khác
                             </label>
                         </div>
                         <div class="form-group row">
-                            <label for="full-name"><b>Địa chỉ:</b></label>
-                            <input class="form-control" type="text" placeholder="Enter your address" name="full-name" required>
+                            <label for="diachi"><b>Địa chỉ:</b></label>
+                            <input class="form-control" type="text" placeholder="Enter your address" name="diachi" required>
                         </div>
                         <div class="form-group row">
-                            <label for="full-name"><b>Email:</b></label>
-                            <input class="form-control" type="text" placeholder="Enter your email" name="full-name" required>
+                            <label for="email"><b>Email:</b></label>
+                            <input class="form-control" type="text" placeholder="Enter your email" name="email" required>
                         </div>
                         <hr id="hrdangky_duoi">
                         <div class="form-group row">
-                            <label for="user-name"><b>Tên đăng nhập:</b></label>
-                            <input class="form-control" type="text" placeholder="Enter user name" name="user-name" required>
+                            <label for="username"><b>Tên đăng nhập:</b></label>
+                            <input class="form-control" type="text" placeholder="Enter user name" name="username" required>
                         </div>
                         <div class="form-group row">
                             <label for="psw"><b>Mật khẩu:</b></label>
