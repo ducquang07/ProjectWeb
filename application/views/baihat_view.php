@@ -39,9 +39,9 @@
 						<div class="col-md-12 col-lg-8">
 							<div class="mb-4">
 								<div class="input-group timkiem-group">
-									<input class="form-control input-timkiem" type="text" placeholder="Tìm bài hát">
+									<input class="form-control input-timkiem" type="text" placeholder="Tìm bài hát" name="keyword" id="keyword">
 									<span class="input-group-append">
-										<button class="btn btn-primary btn-timkiem" type="button">
+										<button class="btn btn-primary btn-timkiem" type="button" >
 											<i class="fa fa-search"></i>
 										</button>
 									</span>
@@ -101,7 +101,7 @@
 							<div class="card mb-4">
 								<div class="card-block">
 									<h3 class="card-title">Tất cả bài hát</h3>
-									<div class="table-responsive ">
+									<div class="table-responsive" id="contain-bdsaihat">
 										<table class="table table-striped" id="BaiHat-TBL">
 
 											<tbody>
@@ -520,7 +520,8 @@
 
     <script>
     	$('.box_pageview a').click(function(event) {
-    		console.log($(this).attr('id'));
+    		$('.box_pageview').find('a').removeClass('active');
+    		$(this).addClass('active');
     		$.ajax({
     			url: 'baihat/Load_Page',
     			type: 'POST',
@@ -542,6 +543,31 @@
     		});
     		
     	});
+
+    	$(".btn-timkiem").click(function(event) {
+    		$.ajax({
+    			url: 'baihat/Load_with_keyword',
+    			type: 'POST',
+    			dataType: 'html',
+    			data: {keyword: $('#keyword').val()},
+    		})
+    		.done(function() {
+    			console.log("success");
+    		})
+    		.fail(function() {
+    			console.log("error");
+    		})
+    		.always(function(data) {
+    			console.log("complete");
+    			$('#BaiHat-TBL').remove();
+    			$('.box_pageview').remove();
+    			$('#contain-bdsaihat').append(data);
+    		});
+
+    	});
+
+
+    	
     </script>
 
 </body>

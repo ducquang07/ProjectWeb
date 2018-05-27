@@ -10,7 +10,8 @@ class baihat_model extends CI_Model {
 
 	public function getAllData_baihat()
 	{
-		$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi order by luotnghe";
+
+		$sql="Select * from baihat order by luotnghe";
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
@@ -51,6 +52,49 @@ class baihat_model extends CI_Model {
 			echo '</td>';										
 			echo '</tr>';	
 		}
+
+	}
+
+	public function getAllData_baihat_keyword($keyword)
+	{
+		$sql="Select * from baihat where tenbaihat like '%$keyword%' order by luotnghe";
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
+
+	public function show_Danhsachbaihat_keyword($keyword,$phantrang)
+	{
+		$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and baihat.tenbaihat like '%$keyword%' order by luotnghe limit 0,5";
+		$dulieu=$this->db->query($sql);
+		echo '<table class="table table-striped" id="BaiHat-TBL">';
+
+		echo '<tbody>';									
+		foreach($dulieu->result_array() as $row){
+			echo '<tr class="item-baihat">';
+			echo '<td>';										
+			echo '<div class="content-baihat">';											
+			echo '<a href="#" class="item-baihat-tenbaihat">'.$row['tenbaihat'].'</a>-';						
+			echo '<a href="#" class="item-baihat-tencasi">'.$row['tencasi'].'</a>';					
+			echo '</div>';											
+			echo '</td>';												
+			echo '<td>';									
+			echo '</td>';
+			echo '<td>';
+			echo '<div class="item-baihat-luotnghe">'.$row['luotnghe'].'<span class="item-baihat-icon"><i class="fa fa-headphones " aria-hidden="true"></i></span></div>';
+			echo '</td>';
+			echo '<td>';
+			echo '<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>';
+			echo '<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>';
+			echo '<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>';
+			echo '</td>';										
+			echo '</tr>';	
+		}
+		echo '</tbody>';
+		echo '</table>';
+		echo '<div class="box_pageview">';
+		echo $phantrang;
+		echo '</div>';
 
 	}
 }

@@ -57,7 +57,31 @@ class baihat extends CI_Controller {
 		$this->baihat_model->Get_Danhsachbaihat($pagenumer);
 	}
 
+	public function Load_with_keyword()
+	{
 
+		$keyword=$this->input->post('keyword');
+		$this->load->model('baihat_model');
+		//--Lấy tổng số dòng tìm được
+		$total_record=count($this->baihat_model->getAllData_baihat_keyword($keyword));
+		//Lấy mảng dữ liệu bài hát hiển thị lên trang
+		
+
+
+		$config = array(
+			'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1, // Trang hiện tại
+			'total_record'  => $total_record, // Tổng số record
+			'limit'         => 5,// limit
+			'link_full'     => '{page}',// Link full có dạng như sau: domain/com/page/{page}
+			'link_first'    => '1',// Link trang đầu tiên
+		);
+		//--Thực hiện phân trang
+		$paging = new Pagination();
+		$paging->init($config);
+		$phantrang=$paging->html();
+
+		$danhsachbaihat=$this->baihat_model->show_Danhsachbaihat_keyword($keyword,$phantrang);
+	}
 
 }
 
