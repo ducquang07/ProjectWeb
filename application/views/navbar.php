@@ -21,7 +21,7 @@
 				echo "</a>";
 				echo '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="margin-right: 1.5rem;"><a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> View Profile</a>';
 				echo '<a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>';
-				echo '<a class="dropdown-item" href="trangchu/logout_controller"><em class="fa fa-power-off mr-1"></em> Logout</a>';
+				echo '<a class="dropdown-item" href="trangchu/logout_controller"><em class="fa fa-sign-out mr-1"></em> Logout</a>';
 				echo '</div>';
 			}
 			else
@@ -34,7 +34,8 @@
 				echo "</a>";
 				echo '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="margin-right: 1.5rem;"><a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> View Profile</a>';
 				echo '<a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>';
-				echo '<a class="dropdown-item" href="trangchu/logout_controller"><em class="fa fa-power-off mr-1"></em> Login </a>';
+				echo '<a class="dropdown-item" href="" data-toggle="modal" data-target="#login"><em class="fa fa-sign-in mr-1"></em> Đăng nhập </a>';
+				echo '<a class="dropdown-item" href="" data-toggle="modal" data-target="#signup"><em class="fa fa-user-plus mr-1"></em> Đăng ký </a>';
 				echo '</div>';
             }
 		?>
@@ -147,3 +148,66 @@
 <!--Kết thúc phần sidenar-->
 </div>
 </nav>
+<!-- bắt đầu phần modal login -->
+<div class="modal fade" id="login">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<form action="index/singin_controller" method="post" enctype="multidata/form-data">
+				<div class="modal-header">
+					<h4 class="modal-title"><strong>Đăng nhập</strong></h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only">Close</span>
+					</button>
+				</div>
+				<div class="modal-body">
+						<div class="form-group">
+                            <label for="username"><b>User name</b></label>
+                            <input class="form-control" type="text" placeholder="Nhập tên đăng nhập" name="id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="psw"><b>Password</b></label>
+                            <input class="form-control" type="password" placeholder="Nhập mật khẩu" name="pass" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+                            </label>
+                        </div>
+                        <p>
+                            <center>Don't have an account? <a href="#signup" style="color:dodgerblue">Sign up</a></center>
+                        </p>                                            				
+				</div>
+				<div class="modal-footer">
+					<input type="submit" name="dangnhap" class=" btn btn-success" value="Đăng nhập">
+				</div>
+				</form>	
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div>
+<!-- /. kết thúc phần modal login -->
+
+<!-- bắt đầu phần modal sign up-->
+<div class="modal fade" id="login">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<form action="index/singin_controller" method="post" enctype="multidata/form-data">
+				<div class="modal-header">
+					<h4 class="modal-title"><strong>Đăng ký</strong></h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only">Close</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					                                   				
+				</div>
+				<div class="modal-footer">
+					<input type="submit" name="dangnhap" class=" btn btn-success" value="Đăng ký">
+				</div>
+				</form>	
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div>
+<!-- /. kết thúc phần modal sign up-->
+

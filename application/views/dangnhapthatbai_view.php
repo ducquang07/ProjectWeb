@@ -19,7 +19,7 @@
 	<div class="container">
 		<h4 class="text-xs-center">
 			<div class="alert alert-danger">
-				Đăng nhập <strong>thất bại</strong>. Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu. Đang chuyển hướng vui lòng chờ.... <i class="fa fa-chevron-circle-left rotate360"></i>
+				Đăng nhập <strong>thất bại</strong>. Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu. Đang chuyển hướng vui lòng chờ.... <i class="fa fa-chevron-circle-right rotate360"></i>
 			</div>
 		</h4>
 	</div>
