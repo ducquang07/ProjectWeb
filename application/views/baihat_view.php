@@ -28,11 +28,9 @@
 </head>
 <body id="page-top">
 	<div class="container-fluid" id="wrapper">
-		
 		<!--Bắt đầu navbar-->
 		<?php require('navbar.php') ?>
 		<!--Kết thúc navbar-->
-		
 		<main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
 
 			<section class="main-content">
@@ -522,13 +520,13 @@
 
     <script>
     	$('.box_pageview a').click(function(event) {
-    		console.log($(this).attr('href'));
+    		console.log($(this).attr('id'));
     		$.ajax({
     			url: 'baihat/Load_Page',
     			type: 'POST',
     			dataType: 'html',
     			data: {
-    				page:$(this).attr("href")
+    				page:$(this).attr("id")
     			},
     		})
     		.done(function() {
@@ -539,9 +537,10 @@
     		})
     		.always(function(data) {
     			console.log("complete");
-    			console.log(data);
+    			$('#BaiHat-TBL tbody tr').remove();
+    			$('#BaiHat-TBL tbody').append(data);
     		});
-
+    		
     	});
     </script>
 

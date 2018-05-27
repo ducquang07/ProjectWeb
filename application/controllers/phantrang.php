@@ -115,13 +115,9 @@ class Pagination
             // lặp trong khoảng cách giữa min và max để hiển thị các nút
             for ($i = 1; $i <= $this->_config['total_page']; $i++)
             {
-                // Trang hiện tại
-                if ($this->_config['current_page'] == $i){
-                    $p .= '<a id="'.$i.'" href="'.$this->__link('1').'">'.$i.'</a>';
-                }
-                else{
+
                     $p .= '<a id="'.$this->__link($i).'" href="javascript:void(0);">'.$i.'</a>';
-                }
+                
             }
             /*
             // Nút last và next
