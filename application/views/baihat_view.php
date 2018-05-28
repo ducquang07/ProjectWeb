@@ -66,7 +66,7 @@
 											<div class="col-lg-8" id="Chitiet-Theloai">
 												<ul class="list-unstyled mb-0 row">
 													<?php foreach ($theloai_Vietnam['danhsachtheloai'] as $key => $value){?> 
-													<li class="item-chitiet-Theloai"><a href="#"><?php echo $value['tentheloai'] ?></a></li>
+													<li class="item-chitiet-Theloai" id="<?php echo $value['idtheloai'] ?>"><a href="#"><?php echo $value['tentheloai'] ?></a></li>
 													<?php } ?>
 												</ul>
 											</div>
@@ -80,7 +80,7 @@
 											<div class="col-lg-8" id="Chitiet-Theloai">
 												<ul class="list-unstyled mb-0 row">
 													<?php foreach ($theloai_AuMy['danhsachtheloai'] as $key => $value){?> 
-													<li class="item-chitiet-Theloai"><a href="#"><?php echo $value['tentheloai'] ?></a></li>
+													<li class="item-chitiet-Theloai" id="<?php echo $value['idtheloai'] ?>"><a href="#"><?php echo $value['tentheloai'] ?></a></li>
 													<?php } ?>
 												</ul>
 											</div>
@@ -94,7 +94,7 @@
 											<div class="col-lg-8" id="Chitiet-Theloai">
 												<ul class="list-unstyled mb-0 row">
 													<?php foreach ($theloai_ChauA['danhsachtheloai'] as $key => $value){?>
-													<li class="item-chitiet-Theloai"><a href="#"><?php echo $value['tentheloai'] ?></a></li>
+													<li class="item-chitiet-Theloai" id="<?php echo $value['idtheloai'] ?>"><a href="#"><?php echo $value['tentheloai'] ?></a></li>
 													<?php } ?>
 												</ul>
 											</div>
@@ -555,7 +555,8 @@
     			dataType: 'html',
     			data: {
     				page:$(this).attr("id"),
-    				keyword:$keyword
+    				keyword:$keyword,
+    				limit:<?php echo $limit ?>
     			},
     		})
     		.done(function() {

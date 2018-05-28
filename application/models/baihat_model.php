@@ -9,17 +9,16 @@ class baihat_model extends CI_Model {
 	}
 
 
-	public function Get_Danhsachbaihat($currentpage,$keyword)
+	public function Get_Danhsachbaihat($currentpage,$limit,$keyword)
 	{
 		$start=($currentpage-1)*5;
-		$end=$start+5;
 		if($keyword==="")
 		{
-			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and baihat.tenbaihat like '%$keyword%' order by luotnghe desc limit $start,$end";
+			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and baihat.tenbaihat like '%$keyword%' order by luotnghe desc limit $start, $limit";
 		}
 		else
 		{
-			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and baihat.tenbaihat like '%$keyword%' limit $start,$end";
+			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and baihat.tenbaihat like '%$keyword%' limit $start,$limit";
 		}
 		$dulieu=$this->db->query($sql);
 		foreach($dulieu->result_array() as $row)
@@ -53,13 +52,13 @@ class baihat_model extends CI_Model {
 		return $rowcount;
 	}
 
-	public function show_Danhsachbaihat_keyword($keyword,$phantrang)
+	public function show_Danhsachbaihat_keyword($keyword,$limit,$phantrang)
 	{
 		if($keyword===""){
-			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and baihat.tenbaihat like '%$keyword%' order by luotnghe desc limit 0,5";
+			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and baihat.tenbaihat like '%$keyword%' order by luotnghe desc limit 0, $limit";
 		}
 		else{
-			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and baihat.tenbaihat like '%$keyword%'  limit 0,5";
+			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and baihat.tenbaihat like '%$keyword%'  limit 0, $limit";
 		}
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();

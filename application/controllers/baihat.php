@@ -17,8 +17,9 @@ class baihat extends CI_Controller {
 	{
 		$pagenumer=$this->input->post('page');
 		$keyword=$this->input->post('keyword');
+		$limit=$this->input->post('limit');
 		$this->load->model('baihat_model');
-		$this->baihat_model->Get_Danhsachbaihat($pagenumer,$keyword);
+		$this->baihat_model->Get_Danhsachbaihat($pagenumer,$limit,$keyword);
 	}
 
 
@@ -46,7 +47,7 @@ class baihat extends CI_Controller {
 		$config = array(
 			'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1, // Trang hiện tại
 			'total_record'  => $total_record, // Tổng số record
-			'limit'         => 5,// limit
+			'limit'         => 10,// limit
 			'link_full'     => '{page}',// Link full có dạng như sau: domain/com/page/{page}
 			'link_first'    => '1',// Link trang đầu tiên
 		);
@@ -55,13 +56,14 @@ class baihat extends CI_Controller {
 		$paging->init($config);
 		$phantrang=$paging->html();
 
-		$danhsachbaihat=$this->baihat_model->show_Danhsachbaihat_keyword($keyword,$phantrang);
+		$danhsachbaihat=$this->baihat_model->show_Danhsachbaihat_keyword($keyword,$config['limit'],$phantrang);
 		$data=array('baihat'=>array('danhsachbaihat'=>$danhsachbaihat),
 			'theloai_Vietnam'=>array('danhsachtheloai'=>$theloai_Vietnam),
 			'theloai_AuMy'=>array('danhsachtheloai'=>$theloai_AuMy),
 			'theloai_ChauA'=>array('danhsachtheloai'=>$theloai_ChauA),
 			'danhsachcasihot'=>array('danhsachcasi'=>$casihot),
 			'phantrang'=>$phantrang,
+			'limit'=>$config['limit'],
 			'keyword'=>$keyword
 		);
 		$this->load->view('baihat_view',$data);
