@@ -44,7 +44,7 @@
 							<div class="mb-4">
 								<form action="baihat" method="POST" id="timkiem">
 									<div class="input-group timkiem-group">
-										<input class="form-control input-timkiem" type="text" placeholder="Tìm bài hát" name="keyword" id="keyword" value=<?php echo $keyword ?>>
+										<input class="form-control input-timkiem" type="text" placeholder="Tìm bài hát" name="keyword" id="keyword" value="<?php echo $keyword ?>">
 										<span class="input-group-append">
 											<button class="btn btn-primary btn-timkiem" type="submit" >
 												<i class="fa fa-search"></i>

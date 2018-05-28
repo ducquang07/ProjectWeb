@@ -27,55 +27,7 @@
 	<link href="<?php echo base_url() ?>css/custom-sidenav.css" rel="stylesheet">
 
 	<style>
-	.card .avatar img {
-		width: 100px;
-		height: 100px;
-		-webkit-border-radius: 50%;
-		-moz-border-radius: 50%;
-		border-radius: 50%;
-		border: 5px solid rgba(0,0,30,0.8);
-	}
-
-	.src-image {
-		display: none;
-	}
-
-	.card-user {
-		overflow: hidden;
-		position: relative;
-		border: 1px solid #CCC;
-		border-radius: 8px;
-		text-align: center;
-		padding: 0;
-		
-		color: rgb(136, 172, 217);
-	}
-
-	.card .header-bg {
-		/* This stretches the canvas across the entire hero unit */
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 70px;
-		border-bottom: 1px #FFF solid;
-		background-color: #1db954;
-		/* This positions the canvas under the text */
-		z-index: 1;
-	}
-	.card .avatar {
-		position: relative;
-		margin-top: -50px;
-		z-index: 100;
-	}
 	
-	.user-profile-details {
-		margin: 20px 0;
-	}
-
-	.user-profile-details__line {
-		margin-bottom: 14px;
-	}
 
 
 </style>
