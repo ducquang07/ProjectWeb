@@ -31,23 +31,31 @@
 		<!--Bắt đầu navbar-->
 		<?php require('navbar.php') ?>
 		<!--Kết thúc navbar-->
+
 		<main class="col-xs-12 col-sm-8 col-lg-9 col-xl-10 pt-3 pl-4 ml-auto">
 
 			<section class="main-content">
 				<div class="col-sm-12">
 					<section class="row">
+
+						<!--Step 1-->
+
 						<div class="col-md-12 col-lg-8">
 							<div class="mb-4">
-								<div class="input-group timkiem-group">
-									<input class="form-control input-timkiem" type="text" placeholder="Tìm bài hát" name="keyword" id="keyword">
-									<span class="input-group-append">
-										<button class="btn btn-primary btn-timkiem" type="button" >
-											<i class="fa fa-search"></i>
-										</button>
-									</span>
-								</div>
+								<form action="baihat" method="POST" id="timkiem">
+									<div class="input-group timkiem-group">
+										<input class="form-control input-timkiem" type="text" placeholder="Tìm bài hát" name="keyword" id="keyword" value=<?php echo $keyword ?>>
+										<span class="input-group-append">
+											<button class="btn btn-primary btn-timkiem" type="submit" >
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+									</div>
+								</form>
 							</div>
 
+
+							<!--Phần thể loại-->
 							<div class="card mb-4">
 								<h5 class="card-header">Danh mục thể loại</h5>
 								<div class="card-body" id="item-Theloai">
@@ -95,6 +103,7 @@
 								</div>
 								<!--Ket thuc danh muc the loai -->
 							</div>
+							<!--kết thúc phần thể loại-->
 
 
 							<!--Phần danh sách bài hát-->
@@ -103,9 +112,13 @@
 									<h3 class="card-title">Tất cả bài hát</h3>
 									<div class="table-responsive" id="contain-bdsaihat">
 										<table class="table table-striped" id="BaiHat-TBL">
-
+											<?php if(count($baihat['danhsachbaihat'])===0){ ?>
+											<div class="alert alert-danger thongbao" role="alert" style="color: #721c24;">
+												<b>Không tìm thấy bài hát.</b>
+											</div>
+											<?php }?>
 											<tbody>
-
+												<!--Item bai hat-->
 												<?php foreach ($baihat['danhsachbaihat'] as $key => $value) {?>
 												<tr class="item-baihat">
 													<td>
@@ -129,20 +142,14 @@
 													</td>
 												</tr>
 												<?php } ?>
-												<!--Item bai hat-->
-
-												<!--Ket thuc Item bai hat-->	
+												<!--Ket thuc Item bai hat-->
 											</tbody>
 										</table>
 									</div>
 									<div class="box_pageview">
 										<?php echo $phantrang ?>
 									</div>
-
-
-
 								</div>
-
 							</div>
 
 							<!--Kết thúc phần danh sách bài hát-->
@@ -436,11 +443,11 @@
 							<!--Kết thúc phần ca sĩ-->	
 
 
-
 						</div>
+						<!--Step 1-->
 
 
-
+						<!--Step 2-->
 						<!--Bắt đầu phần chủ đề-->
 						<div class="col-md-12 col-lg-4">
 
@@ -477,22 +484,17 @@
 								</div>
 
 							</div>
+							<!--Kết thúc phần chủ đề-->
 						</div>
-						<!--Kết thúc phần chủ đề-->
-
-
-
-					</dropdowniv>
-
-
-				</div>
-			</section>
-			<section class="row">
-				<div class="col-12 mt-1 mb-4">Template by <a href="https://www.medialoot.com">Medialoot</a></div>
-			</section>
-		</div>
-	</section>
-</main>
+						<!--Step 2-->
+					</div>
+				</section>
+				<section class="row">
+					<div class="col-12 mt-1 mb-4">Template by <a href="https://www.medialoot.com">Medialoot</a></div>
+				</section>
+			</div>
+		</section>
+	</main>
 </div>
 </div>
 
@@ -519,30 +521,7 @@
 
 
     <script>
-    	$('.box_pageview a').click(function(event) {
-    		$('.box_pageview').find('a').removeClass('active');
-    		$(this).addClass('active');
-    		$.ajax({
-    			url: 'baihat/Load_Page',
-    			type: 'POST',
-    			dataType: 'html',
-    			data: {
-    				page:$(this).attr("id")
-    			},
-    		})
-    		.done(function() {
-    			console.log("success");
-    		})
-    		.fail(function() {
-    			console.log("error");
-    		})
-    		.always(function(data) {
-    			console.log("complete");
-    			$('#BaiHat-TBL tbody tr').remove();
-    			$('#BaiHat-TBL tbody').append(data);
-    		});
-    		
-    	});
+    	
 
     	$(".btn-timkiem").click(function(event) {
     		$.ajax({
@@ -559,13 +538,43 @@
     		})
     		.always(function(data) {
     			console.log("complete");
-    			$('#BaiHat-TBL').remove();
-    			$('.box_pageview').remove();
-    			$('#contain-bdsaihat').append(data);
     		});
 
     	});
 
+    	$(document).ready(function() {
+    		$keyword=$("#keyword").val();
+    	});
+
+    	$('.box_pageview a').click(function(event) {
+    		$('.box_pageview').find('a').removeClass('active');
+    		$(this).addClass('active');
+    		$.ajax({
+    			url: '<?php echo base_url() ?>/baihat/Load_Page',
+    			type: 'POST',
+    			dataType: 'html',
+    			data: {
+    				page:$(this).attr("id"),
+    				keyword:$keyword
+    			},
+    		})
+    		.done(function() {
+    			console.log("success");
+    		})
+    		.fail(function() {
+    			console.log("error");
+    		})
+    		.always(function(data) {
+    			console.log("complete");
+    			$('#BaiHat-TBL tbody tr').remove();
+    			$('#BaiHat-TBL tbody').append(data);
+    		});
+    	});
+
+    	/*$("#keyword").change(function(event) {
+    		if ($(this).val()==='') $("#timkiem").attr('action', '<?php echo base_url() ?>/baihat');
+    		else $("#timkiem").attr('action', '<?php echo base_url() ?>/baihat/Load_with_keyword');	
+    	});*/
 
     	
     </script>

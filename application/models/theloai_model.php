@@ -9,14 +9,6 @@ class theloai_model extends CI_Model {
 		
 	}
 
-	public function Get_khuVuc()
-	{
-
-		$this->db->select('DISTINCT(khuvuc)');
-		$dulieu=$this->db->get('theloai');
-		$dulieu=$dulieu->result_array();
-		return $dulieu;
-	}
 
 	public function Get_theLoai($khuvuc)
 	{
@@ -26,6 +18,8 @@ class theloai_model extends CI_Model {
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
+
+
 }
 
 /* End of file theloai_model.php */
