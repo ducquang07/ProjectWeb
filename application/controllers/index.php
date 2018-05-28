@@ -42,59 +42,74 @@ class index extends CI_Controller {
 			}
 		}
 	}
+	public function checkusername()
+	{
+		$flag = 1;
+		$username = $this->input->post('username');
+		$this->db->select('tendangnhap');
+		$data = $this->db->get('nguoidung');
+		$data = $data->result_array();
+		if ($username=='')
+			{
+				echo $flag=-1;
+				return $flag;
+			}
+		foreach ($data as $key => $value) {
+			if($value["tendangnhap"]==$username)
+			{
+				$flag = 0;
+			}
+		}
+		echo $flag;
+	}
+
+	public function checkemail()
+	{
+		$flag = 1;
+		$email = $this->input->post('email');
+		$this->db->select('email');
+		$data = $this->db->get('nguoidung');
+		$data = $data->result_array();
+		if ($email=='')
+			{
+				echo $flag=-1;
+				return $flag;
+			}
+		foreach ($data as $key => $value) {
+			if($value["email"]==$email)
+			{
+				$flag = 0;
+			}
+		}
+		echo $flag;
+	}
+
 	public function signup_controller()
 	{
 		$fullname = $this->input->post('fullname');
-		$dateinput = $this->input->post('dateinput');
+		$ngaysinh = $this->input->post('ngaysinh');
 		$gender = $this->input->post('gender');
 		$diachi = $this->input->post('diachi');
 		$email = $this->input->post('email');
 		$username = $this->input->post('username');
 		$psw = $this->input->post('psw');
+		$trangthai = 'Basic';
+		$duongdananh = base_url()."anhavatar/default_avatar.jpg";
+		$this->load->model('index_model');
 
-		$target_dir = "anhavatar/";
-		$target_file = $target_dir . basename($_FILES["anhavatar"]["name"]);
-		$uploadOk = 1;
-		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-		// Check if image file is a actual image or fake image
-		if(isset($_POST["submit"])) {
-		    $check = getimagesize($_FILES["anhavatar"]["tmp_name"]);
-		    if($check !== false) {
-		        echo "File is an image - " . $check["mime"] . ".";
-		        $uploadOk = 1;
-		    } else {
-		        echo "File is not an image.";
-		        $uploadOk = 0;
-		    }
+		if($this->index_model->insert_user($fullname,$ngaysinh,$gender,$diachi,$email,$username,$psw,$trangthai,$duongdananh))
+		{
+			$this->session->set_userdata('tendangnhap',$username);
+			$this->session->set_userdata('ten',$fullname);
+			$this->session->set_userdata('trangthai',$trangthai);
+			$this->session->set_userdata('duongdananh',$duongdananh);
+			$this->load->view('dangkythanhcong_view');
 		}
-		// Check if file already exists
-		if (file_exists($target_file)) {
-		    // echo "Xin lỗi, Đã tồn tại file trùng tên";
-		    $uploadOk = 0;
+		else
+		{
+			$this->load->view('dangkythatbai_view');
 		}
-		// Check file size
-		if ($_FILES["anhavatar"]["size"] > 20000000) {
-		    echo "Xin lỗi, kích thước file quá lơn";
-		    $uploadOk = 0;
-		}
-		// Allow certain file formats
-		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-		&& $imageFileType != "gif" ) {
-		    // echo "Xin lỗi, chỉ chấp nhận file JPG, JPEG, PNG & GIF.";
-		    $uploadOk = 0;
-		}
-		// Check if $uploadOk is set to 0 by an error
-		if ($uploadOk == 0) {
-		    // echo "Xin lỗi, file của bạn chưa được upload.";
-		// if everything is ok, try to upload file
-		} else {
-		    if (move_uploaded_file($_FILES["anhavatar"]["tmp_name"], $target_file)) {
-		        // echo "File ". basename( $_FILES["anhavatar"]["name"]). " đã được upload.";
-		    } else {
-		        echo "Xin lỗi, đã có lỗi trong quá trình upload ảnh.";
-		    }
-		}
-		$anhavatar = base_url()."anhavatar/".basename($_FILES["anhavatar"]["name"]);
+		
 	}
 }
 

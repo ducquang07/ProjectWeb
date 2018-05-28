@@ -7,11 +7,12 @@
 	<meta name="author" content="">
 
 	<title>ZikZak - Website nghe nhạc trực tuyến miễn phí</title>
-
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!-- Bootstrap core CSS -->
 	<link href="<?php echo base_url() ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>SpryAssets_AN/SpryTabbedPanels_VD.css" rel="stylesheet" type="text/css" />
-	<script src="<?php echo base_url() ?>pryAssets_AN/SpryTabbedPanels.js" type="text/javascript"></script>
+	<script src="<?php echo base_url() ?>SpryAssets_AN/SpryTabbedPanels.js" type="text/javascript"></script>
 
 	<!-- Icons -->
 	<link href="<?php echo base_url() ?>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -1098,6 +1099,60 @@
 									</div>
 								</div>
 	
+<script>
+      $('.checkusername').blur(function(event) {
+      $.ajax({
+        url: 'index/checkusername',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+              username: $('#username').val() 
+              },
+        })
+      .done(function(data) {
+        console.log("success");
+        $("i.usernamekhadung").remove();
+        if(data==0)
+          {
+            $('.tendangnhap').append('<i style="color:red;" class="usernamekhadung">Tên đã được sử dụng</i>');
+          }      
+        })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+      });
+
+      $('.checkemail').blur(function(event) {
+        /* Act on the event */
+        $.ajax({
+          url: 'index/checkemail',
+          type: 'POST',
+        dataType: 'json',
+        data: {
+              email: $('#email').val() 
+              },
+        })
+        .done(function(data) {
+          console.log("success");
+          $("i.emailkhadung").remove();
+          if(data==0)
+          {
+            $('.email').append('<i style="color:red;" class="emailkhadung">Email đã được sử dụng</i>');
+          }
+        })
+        .fail(function() {
+          console.log("error");
+        })
+        .always(function() {
+          console.log("complete");
+        });
+        
+      });
+    </script>
+	
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -1105,25 +1160,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
-    <script src="<?php echo base_url() ?>js/chart.min.js"></script>
-    <script src="<?php echo base_url() ?>js/chart-data.js"></script>
-    <script src="<?php echo base_url() ?>js/easypiechart.js"></script>
-    <script src="<?php echo base_url() ?>js/easypiechart-data.js"></script>
-    <script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script>
-    <script src="<?php echo base_url() ?>js/custom.js"></script>
-    <script>
-    var startCharts = function () {
-    	var chart1 = document.getElementById("line-chart").getContext("2d");
-    	window.myLine = new Chart(chart1).Line(lineChartData, {
-    		responsive: true,
-    		scaleLineColor: "rgba(0,0,0,.2)",
-    		scaleGridLineColor: "rgba(0,0,0,.05)",
-    		scaleFontColor: "#c5c7cc "
-    	});
-    }; 
-    window.setTimeout(startCharts(), 1000);
-    </script>
+    <script type="text/javascript" src="<?php echo base_url() ?>vendor/lib/popper.min.js"></script>
+	<!-- Plugin JavaScript -->
+	<script src="<?php echo base_url() ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="<?php echo base_url() ?>vendor/scrollreveal/scrollreveal.min.js"></script>
+	<script src="<?php echo base_url() ?>vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script type="text/javascript">

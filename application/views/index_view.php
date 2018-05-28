@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>ZikZak - Website nghe nhạc trực tuyến miễn phí</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url() ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
@@ -145,7 +146,7 @@
                         <div class="form-group row">
                             <label for="register-age"><b>Ngày sinh:</b></label>
                             <!-- <div class="col-10"> -->
-                            <input class="form-control" type="date" value="2011-08-19" id="dateinput">
+                            <input class="form-control" name="ngaysinh" type="date" value="2011-08-19" id="ngaysinh">
                             <!-- </div> -->
                         </div>
                         <div class="form-group row " id="gioitinh">
@@ -164,14 +165,14 @@
                             <label for="diachi"><b>Địa chỉ:</b></label>
                             <input class="form-control" type="text" placeholder="Enter your address" name="diachi" required>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row email">
                             <label for="email"><b>Email:</b></label>
-                            <input class="form-control" type="text" placeholder="Enter your email" name="email" required>
+                            <input class="form-control checkemail" type="text" placeholder="Enter your email" id="email" name="email" required>
                         </div>
                         <hr id="hrdangky_duoi">
-                        <div class="form-group row">
+                        <div class="form-group row tendangnhap">
                             <label for="username"><b>Tên đăng nhập:</b></label>
-                            <input class="form-control" type="text" placeholder="Enter user name" name="username" required>
+                            <input class="form-control checkusername" type="text" placeholder="Enter user name" id="username" name="username" required>
                         </div>
                         <div class="form-group row">
                             <label for="psw"><b>Mật khẩu:</b></label>
@@ -200,6 +201,59 @@
             <p class="m-0 text-center text-white small">Copyright © Your Website 2018</p>
         </div>
     </footer>
+    <script>
+      $('.checkusername').blur(function(event) {
+      $.ajax({
+        url: 'index/checkusername',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+              username: $('#username').val() 
+              },
+        })
+      .done(function(data) {
+        console.log("success");
+        $("i.usernamekhadung").remove();
+        if(data==0)
+          {
+            $('.tendangnhap').append('<i style="color:red;" class="usernamekhadung">Tên đã được sử dụng</i>');
+          }      
+        })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+      });
+
+      $('.checkemail').blur(function(event) {
+        /* Act on the event */
+        $.ajax({
+          url: 'index/checkemail',
+          type: 'POST',
+        dataType: 'json',
+        data: {
+              email: $('#email').val() 
+              },
+        })
+        .done(function(data) {
+          console.log("success");
+          $("i.emailkhadung").remove();
+          if(data==0)
+          {
+            $('.email').append('<i style="color:red;" class="emailkhadung">Email đã được sử dụng</i>');
+          }
+        })
+        .fail(function() {
+          console.log("error");
+        })
+        .always(function() {
+          console.log("complete");
+        });
+        
+      });
+    </script>
 </body>
 <!-- Bootstrap core JavaScript -->
 <script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>

@@ -27,13 +27,8 @@
 			else
             {
             	echo '<img width="40" height="auto" class="circle float-left profile-photo" alt="profile photo" src="http://localhost/ProjectWeb/img/default_avatar.jpg">';
-				// echo "<div class=\"username mt-1\">";
-            	// echo "<div class=\"mb-1\"></div>";
-				// echo "<h6></h6>";
-				// echo "</div>";
 				echo "</a>";
-				echo '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="margin-right: 1.5rem;"><a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> View Profile</a>';
-				echo '<a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>';
+				echo '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="margin-right: 1.5rem;">';
 				echo '<a class="dropdown-item" href="" data-toggle="modal" data-target="#login"><em class="fa fa-sign-in mr-1"></em> Đăng nhập </a>';
 				echo '<a class="dropdown-item" href="" data-toggle="modal" data-target="#signup"><em class="fa fa-user-plus mr-1"></em> Đăng ký </a>';
 				echo '</div>';
@@ -188,10 +183,10 @@
 <!-- /. kết thúc phần modal login -->
 
 <!-- bắt đầu phần modal sign up-->
-<div class="modal fade" id="login">
+<div class="modal fade" id="signup">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
-				<form action="index/singin_controller" method="post" enctype="multidata/form-data">
+				<form action="index/singup_controller" method="post" enctype="multidata/form-data">
 				<div class="modal-header">
 					<h4 class="modal-title"><strong>Đăng ký</strong></h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -200,10 +195,58 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					                                   				
+                        <div class="form-group">
+                            <label for="full-name"><b>Họ tên:</b></label>
+                            <input class="form-control" type="text" placeholder="Enter your full name" name="fullname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-age"><b>Ngày sinh:</b></label>
+                            <!-- <div class="col-10"> -->
+                            <input class="form-control" name="ngaysinh" type="date" value="2011-08-19" id="ngaysinh">
+                            <!-- </div> -->
+                        </div>
+                        <div class="form-group" id="gioitinh">
+                            <label><b>Giới tính:</b></label>
+                            <label for="register-male" class="radio control-inline">
+                                <input type="radio" id="register-male" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="nam"> Nam
+                            </label>
+                            <label for="register-female" class="radio control-inline">
+                                <input type="radio" id="register-female" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="nu"> Nữ
+                            </label>
+                            <label for="register-neutral" class="radio control-inline">
+                                <input type="radio" id="register-neutral" name="gender" required="required" value="khac"> Khác
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="diachi"><b>Địa chỉ:</b></label>
+                            <input class="form-control" type="text" placeholder="Enter your address" name="diachi" required>
+                        </div>
+                        <div class="form-group email">
+                            <label for="email"><b>Email:</b></label>
+                            <input class="form-control checkemail" type="text" placeholder="Enter your email" id="email" name="email" required>
+                        </div>
+                        <!-- <hr id="hrdangky_duoi"> -->
+                        <div class="form-group tendangnhap">
+                            <label for="username"><b>Tên đăng nhập:</b></label>
+                            <input class="form-control checkusername" type="text" placeholder="Enter user name" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="psw"><b>Mật khẩu:</b></label>
+                            <input class="form-control" type="password" placeholder="Enter Password" name="psw" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="psw-repeat"><b>Nhập lại mật khẩu:</b></label>
+                            <input class="form-control" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+                            </label>
+                        </div>
+                        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 				</div>
 				<div class="modal-footer">
-					<input type="submit" name="dangnhap" class=" btn btn-success" value="Đăng ký">
+					<input type="submit" name="dangky" class=" btn btn-success " value="Đăng ký">
 				</div>
 				</form>	
 			</div><!-- /.modal-content -->
