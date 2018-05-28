@@ -1125,19 +1125,19 @@
       });
       });
 
-      $('.checkemail').blur(function(event) {
+      $('.checkemail').blur(function(event) {//bắt sự kiện thay đổi text
         /* Act on the event */
         $.ajax({
           url: 'index/checkemail',
           type: 'POST',
         dataType: 'json',
         data: {
-              email: $('#email').val() 
+              email: $('#email').val() //lấy giá trị từ id email của input gán vào biến email
               },
         })
-        .done(function(data) {
+        .done(function(data) {//nhận data từ hàm "checkemail"  trên url. data nhận tất cả những gì echo ra
           console.log("success");
-          $("i.emailkhadung").remove();
+          $("i.emailkhadung").remove();//xoá thẻ hmtl bằng jquery- nếu chỉ xoá nội dung dùng hàm empty()
           if(data==0)
           {
             $('.email').append('<i style="color:red;" class="emailkhadung">Email đã được sử dụng</i>');
