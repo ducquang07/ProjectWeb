@@ -52,14 +52,20 @@
 
 							<!--Bắt đầu phần phát nhạc-->
 							<div class="mb-4 name-title">
-								<h3 class="card-title" id="tenbaihat">Demons</h3>
+								<h3 class="card-title" id="tenbaihat"><?php foreach ($baihat['thongtinbaihat'] as $key => $value) {
+									echo $value['tenbaihat'];
+								}?></h3>
 								<span>-</span>
-								<h4 class="card-title" id="tencasi"><a href="#" >Imagine Dragons</a></h4>
+								<h4 class="card-title" id="tencasi"><a href="#" ><?php foreach ($baihat['thongtinbaihat'] as $key => $value) {
+									echo $value['tencasi'];
+								}?></a></h4>
 							</div>
 							<div class="card mb-4">
 								<img class="card-img-top img-fluid" src="<?php echo base_url() ?>img/img_baihat/Demons-Imagine Dragon.jpg" alt="">
 								<audio controls autoplay>
-									<source src="<?php echo base_url() ?>video/Demons - Imagine Dragons.mp3" type="audio/mpeg">
+									<source src="<?php foreach ($baihat['thongtinbaihat'] as $key => $value) {
+									echo $value['duongdannhac'];
+								}?>" type="audio/mpeg">
 								</audio>
 							</div>
 							<!--Kết thúc phần phát nhạc-->
@@ -69,14 +75,18 @@
 									<div class="user-upload">
 										<img width="50" height="auto" class="circle float-left profile-photo" alt="profile photo" src="<?php echo base_url() ?>img/User-Pic.jpg">
 										Upload bởi:<br>
-										<a href="#" id="name-user-upload">Thái Nguyễn</a>
+										<a href="#" id="name-user-upload"><?php foreach ($baihat['thongtinbaihat'] as $key => $value) {
+									echo $value['ten'];
+								}?></a>
 									</div>
 									<ul id="menu-dichvu">
 										
 										<li><i  class="fa fa-plus" ></i><a href="#">Thêm vào</a></li>
 										<li><i  class="fa fa-download" ></i><a href="#">Tải về</a></li>
 										<li><i  class="fa fa-reply" ></i><a href="#">Phản hồi</a></li>
-										<li><i class="fa fa-headphones" aria-hidden="true"></i><p class="item-baihat-luotnghe" style="display:inline;">12.981.304</p></li>
+										<li><i class="fa fa-headphones" aria-hidden="true"></i><p class="item-baihat-luotnghe" style="display:inline;"><?php foreach ($baihat['thongtinbaihat'] as $key => $value) {
+									echo $value['luotnghe'];
+								}?></p></li>
 									</ul>
 								</div>
 							</div>

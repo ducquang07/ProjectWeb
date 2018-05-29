@@ -11,7 +11,7 @@ class baihat_model extends CI_Model {
 
 	public function Get_Danhsachbaihat($currentpage,$limit,$keyword)
 	{
-		$start=($currentpage-1)*5;
+		$start=($currentpage-1)*$limit;
 		if($keyword==="")
 		{
 			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi order by luotnghe desc limit $start, $limit";
@@ -26,7 +26,7 @@ class baihat_model extends CI_Model {
 			echo '<tr class="item-baihat">';
 			echo '<td>';										
 			echo '<div class="content-baihat">';											
-			echo '<a href="#" class="item-baihat-tenbaihat">'.$row['tenbaihat'].'</a>-';						
+			echo '<a href="trinhphatnhac/?id='.$row['idbaihat'].'" class="item-baihat-tenbaihat">'.$row['tenbaihat'].'</a>-';		
 			echo '<a href="#" class="item-baihat-tencasi">'.$row['tencasi'].'</a>';					
 			echo '</div>';											
 			echo '</td>';												
@@ -64,6 +64,7 @@ class baihat_model extends CI_Model {
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
+
 }
 
 /* End of file baihat_model.php */

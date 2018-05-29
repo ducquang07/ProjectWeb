@@ -68,6 +68,11 @@ class baihat extends CI_Controller {
 		);
 		$this->load->view('baihat_view',$data);
 	}
+
+	public function trinhphatnhac($idnhanvao,$tenbaihat)
+	{
+		$this->load->view('trinhphatnhac_view');
+	}
 }
 
 /* End of file baihat.php */

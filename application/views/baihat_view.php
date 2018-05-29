@@ -123,7 +123,7 @@
 												<tr class="item-baihat">
 													<td>
 														<div class="content-baihat">
-															<a href="#" class="item-baihat-tenbaihat"><?php echo $value['tenbaihat'] ?></a>
+															<a href="trinhphatnhac/?id=<?php echo $value['idbaihat'] ?>" class="item-baihat-tenbaihat"><?php echo $value['tenbaihat'] ?></a>
 															-
 															<a href="#" class="item-baihat-tencasi"><?php echo $value['tencasi'] ?></a>
 														</div>
