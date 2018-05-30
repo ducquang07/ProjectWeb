@@ -268,7 +268,7 @@ audio {
 /* trangcanhan_view */
 
 
-.card .avatar img {
+.card .avatar-profile img {
     width: 100px;
     height: 100px;
     -webkit-border-radius: 50%;
@@ -304,7 +304,8 @@ audio {
     /* This positions the canvas under the text */
     z-index: 1;
   }
-  .card .avatar {
+  
+  .card .avatar-profile {
     position: relative;
     margin-top: -50px;
     z-index: 100;

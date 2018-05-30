@@ -52,7 +52,7 @@
 								<div class="image-background">
 									<img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&amp;fm=jpg&amp;h=300&amp;q=75&amp;w=400" alt="..." style=" width: 100%;">
 								</div>
-								<div class="avatar">
+								<div class="avatar-profile">
 									<img src="http://localhost/ProjectWeb/img/User-Pic.jpg" alt="" />
 								</div>
 								<div class="content">

@@ -12,26 +12,25 @@ class trinhphatnhac_model extends CI_Model {
 
 	public function laythongtinbaihat($idbaihat)
 	{
-		$sql="Select * from baihat,casi,theloai,nguoidung,nhacsi where  baihat.idcasi=casi.idcasi and baihat.idtheloai=theloai.idtheloai and baihat.idnguoidung=nguoidung.idnguoidung  and baihat.idnhacsi=nhacsi.idnhacsi and baihat.idbaihat=$idbaihat";
+		$sql="Select * from baihat,casi,theloai,nhacsi where  baihat.idcasi=casi.idcasi and baihat.idtheloai=theloai.idtheloai and baihat.idnhacsi=nhacsi.idnhacsi and baihat.idbaihat=$idbaihat";
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
 
-	public function laythongtincasi($id)
+	public function laythongtinnguoidung($idbaihat)
 	{
-		$sql="Select * from casi where idcasi='$id'";
-		$dulieu=$this->db_query($sql);
+		$sql="Select * from nguoidung where idnguoidung in (Select idnguoidung from baihat where idbaihat=$idbaihat)";
+		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
-		echo "<pre>";
-		var_dump($dulieu);
-		echo "</pre>";
+		return $dulieu;
 	}
 
-	public function laythongtheloai($id)
+	public function laydanhsachbinhluan($idbaihat)
 	{
-		$sql="Select * from theloai where idtheloai='$id'";
-		$dulieu=$this->db_query($sql);
+		$this->db->select('*');
+		$this->db->where('idbaihat', $idbaihat);
+		$dulieu=$this->db->get('binhluan');
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}

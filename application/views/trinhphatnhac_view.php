@@ -64,8 +64,8 @@
 								<img class="card-img-top img-fluid" src="<?php echo base_url() ?>img/img_baihat/Demons-Imagine Dragon.jpg" alt="">
 								<audio controls autoplay>
 									<source src="<?php foreach ($baihat['thongtinbaihat'] as $key => $value) {
-									echo $value['duongdannhac'];
-								}?>" type="audio/mpeg">
+										echo $value['duongdannhac'];
+									}?>" type="audio/mpeg">
 								</audio>
 							</div>
 							<!--Kết thúc phần phát nhạc-->
@@ -73,11 +73,13 @@
 							<div class="mb-4  service-bar container" >
 								<div class="row">
 									<div class="user-upload">
-										<img width="50" height="auto" class="circle float-left profile-photo" alt="profile photo" src="<?php echo base_url() ?>img/User-Pic.jpg">
+										<img width="50" height="auto" class="circle float-left profile-photo" alt="profile photo" src="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {
+											echo $value['duongdananh'];
+										}?>">
 										Upload bởi:<br>
-										<a href="#" id="name-user-upload"><?php foreach ($baihat['thongtinbaihat'] as $key => $value) {
-									echo $value['ten'];
-								}?></a>
+										<a href="#" id="name-user-upload"><?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {
+											echo $value['ten'];
+										}?></a>
 									</div>
 									<ul id="menu-dichvu">
 										
@@ -85,8 +87,8 @@
 										<li><i  class="fa fa-download" ></i><a href="#">Tải về</a></li>
 										<li><i  class="fa fa-reply" ></i><a href="#">Phản hồi</a></li>
 										<li><i class="fa fa-headphones" aria-hidden="true"></i><p class="item-baihat-luotnghe" style="display:inline;"><?php foreach ($baihat['thongtinbaihat'] as $key => $value) {
-									echo $value['luotnghe'];
-								}?></p></li>
+											echo $value['luotnghe'];
+										}?></p></li>
 									</ul>
 								</div>
 							</div>
@@ -95,89 +97,20 @@
 								<div class="card-block">
 									<div class="lyric" id="_divLyricHtml">
 										<div class="pd_name_lyric">
-											<h3 class="card-title name_lyric">Lời bài hát: Demons</h3>        
+											<h3 class="card-title name_lyric">Lời bài hát: <?php foreach ($baihat['thongtinbaihat'] as $key => $value) {
+												echo $value['tenbaihat'];
+											}?></h3>        
 											<p class="name_post">
 											</p>
-											<p class="name_post">Lời đăng bởi: <a rel="nofollow" href="#" title="philiplee">Thái Nguyễn</a></p>
+											<p class="name_post">Lời đăng bởi: <a rel="nofollow" href="#" title="philiplee"><?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {
+												echo $value['ten'];
+											}?></a></p>
 										</div>
 
 										<p id="divLyric" class="pd_lyric trans" style="height:auto;max-height:400px;overflow:scroll;">
-											When the days are cold
-											<br>And the cards all fold
-											<br>And the saints we see
-											<br>Are all made of gold
-											<br>
-											<br>When your dreams all fail
-											<br>And the ones we hail
-											<br>Are the worst of all
-											<br>And the blood’s run stale
-											<br>
-											<br>I want to hide the truth
-											<br>I want to shelter you
-											<br>But with the beast inside
-											<br>There’s nowhere we can hide
-											<br>
-											<br>No matter what we breed
-											<br>We still are made of greed
-											<br>This is my kingdom come
-											<br>This is my kingdom come
-											<br>
-											<br>When you feel my heat
-											<br>Look into my eyes
-											<br>It’s where my demons hide
-											<br>It’s where my demons hide
-											<br>Don’t get too close
-											<br>It’s dark inside
-											<br>It’s where my demons hide
-											<br>It’s where my demons hide
-											<br>
-											<br>When the curtain’s call
-											<br>Is the last of all
-											<br>When the lights fade out
-											<br>All the sinners crawl
-											<br>
-											<br>So they dug your grave
-											<br>And the masquerade
-											<br>Will come calling out
-											<br>At the mess you made
-											<br>
-											<br>Don’t want to let you down
-											<br>But I am hell bound
-											<br>Though this is all for you
-											<br>Don’t want to hide the truth
-											<br>
-											<br>No matter what we breed
-											<br>We still are made of greed
-											<br>This is my kingdom come
-											<br>This is my kingdom come
-											<br>
-											<br>When you feel my heat
-											<br>Look into my eyes
-											<br>It’s where my demons hide
-											<br>It’s where my demons hide
-											<br>Don’t get too close
-											<br>It’s dark inside
-											<br>It’s where my demons hide
-											<br>It’s where my demons hide
-											<br>
-											<br>They say it's what you make
-											<br>I say it's up to fate
-											<br>It's woven in my soul
-											<br>I need to let you go
-											<br>
-											<br>Your eyes, they shine so bright
-											<br>I want to save their light
-											<br>I can't escape this now
-											<br>Unless you show me how
-											<br>
-											<br>When you feel my heat
-											<br>Look into my eyes
-											<br>It’s where my demons hide
-											<br>It’s where my demons hide
-											<br>Don’t get too close
-											<br>It’s dark inside
-											<br>It’s where my demons hide
-											<br>It’s where my demons hide
+											<?php foreach ($baihat['thongtinbaihat'] as $key => $value) {
+												echo nl2br($value['loibaihat']);
+											}?>
 
 										</p>
 									</div>
@@ -192,9 +125,9 @@
 											<span id="commentCounter">5</span> )
 										</h3>    
 									</section>
-									
 									<form action="" method="POST" class="frm-comment fn-comment">
 										<div class="container">
+
 											<div class=" row">
 												<p class="col-md-3 avatar"><img class="fn-useravatar" src="https://s120.avatar.talk.zdn.vn/images/default2/user_avatar.jpg" style="height:85%;">
 												</p>
@@ -205,7 +138,6 @@
 														<input type="hidden" name="id" value="ZW9BB9F7">
 														<input type="hidden" name="type" value="audio">
 													</p>
-
 												</div>
 											</div>
 											<div class="card-block">
@@ -223,34 +155,25 @@
 											</select>
 										</div>
 										<!--bình luân-->
+										<?php foreach ($binhluan['danhsachbinhluan'] as $key => $value) { ?>
+										
 										<div class="form-group row container">
 											<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="<?php echo base_url() ?>img/User-Pic.jpg"></p>
 											<div class="col-md-10">
 												<div class="row user-comment"><a href="#">Nguyễn Vũ Phương Thảo</a></div>
 												<div class="row comment">
-													<span >Hơi buồn nhưng mà cứ như có cái gì trổi dậy é </span>
+													<span ><?php echo $value['noidung'] ?></span>
 												</div>
 												<div class="row time-comment">
-													<span>2:57 PM  20/05/2018</span>
+													<span><?php echo $value['thoigian'] ?></span>
 												</div>
 											</div>
 										</div>
-										<!--kết thúc bình luân-->
-										<!--bình luân-->
-										<div class="form-group row container">
-											<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="<?php echo base_url() ?>img/User-Pic.jpg"></p>
-											<div class="col-md-10">
-												<div class="row user-comment"><a href="#">Nguyễn Vũ Phương Thảo</a></div>
-												<div class="row comment">
-													<span >Hơi buồn nhưng mà cứ như có cái gì trổi dậy é </span>
-												</div>
-												<div class="row time-comment">
-													<span>2:57 PM  20/05/2018</span>
-												</div>
-											</div>
-										</div>
-										<!--kết thúc bình luân-->
 
+
+										<?php } ?>
+										<!--kết thúc bình luân-->
+										
 									</form>
 									
 								</div>
@@ -752,22 +675,22 @@
 															<div class="card-footer todo-list-footer">
 																<div class="input-group">
 																	<input class="form-control input-md" id="btn-input" type="text" placeholder="Add new task"><span class="input-group-btn">
-																	<button class="btn btn-primary btn-md" id="btn-todo">Add</button>
-																</span></div>
+																		<button class="btn btn-primary btn-md" id="btn-todo">Add</button>
+																	</span></div>
+																</div>
 															</div>
 														</div>
 													</div>
-												</div>
 
 
 
 
-											</section>
-										</div>
-									</section>
-								</main>
+												</section>
+											</div>
+										</section>
+									</main>
 
 
 
-							</body>
-							</html>
+								</body>
+								</html>
