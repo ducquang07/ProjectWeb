@@ -27,12 +27,38 @@ class trinhphatnhac_model extends CI_Model {
 	}
 
 	public function laydanhsachbinhluan($idbaihat)
-	{
-		$this->db->select('*');
-		$this->db->where('idbaihat', $idbaihat);
-		$dulieu=$this->db->get('binhluan');
+	{	
+		$sql="Select * from binhluan,nguoidung where binhluan.idnguoidung=nguoidung.idnguoidung and binhluan.idbaihat='$idbaihat'";
+		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
+	}
+
+	public function luubinhluan($idbaihat,$idnguoidung,$thoigian,$noidung)
+	{
+		$data=array('noidung'=>$noidung,
+			'idbaihat'=>$idbaihat,
+			'idnguoidung'=>$idnguoidung,
+			'thoigian'=>$thoigian);
+		$this->db->insert('binhluan',$data);
+		if($this->db->insert_id()){
+			$dulieu=$this->laythongtinnguoidung($idbaihat);
+			foreach ($dulieu as $key => $value) {
+				echo '<div class="form-group row ">';
+				echo '<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="'.$value['duongdananh'].'"></p>';
+				echo '<div class="col-md-10">';
+				echo '<div class="row user-comment"><a href="#">'.$value['ten'].'</a></div>';
+				echo '<div class="row comment">';
+				echo '<span >'.$noidung.'</span>';
+				echo '</div>';
+				echo '<div class="row time-comment">';
+				echo '<span>'.$thoigian.'</span>';
+				echo '</div>';
+				echo '</div>';
+				echo '</div>';
+			}
+			
+		}
 	}
 }
 

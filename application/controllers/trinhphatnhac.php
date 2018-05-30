@@ -9,6 +9,7 @@ class trinhphatnhac extends CI_Controller {
 
 	public function index()
 	{
+
 		$id = $_GET['id'];
 		$this->load->model('trinhphatnhac_model');
 		$thongtinbaihat=$this->trinhphatnhac_model->laythongtinbaihat($id);
@@ -21,6 +22,16 @@ class trinhphatnhac extends CI_Controller {
 		//$this->trinhphatnhac_model->laythongtheloai($id);
 
 		$this->load->view('trinhphatnhac_view',$data);
+	}
+
+	public function binhluan()
+	{
+		$noidung=$this->input->post('noidung');
+		$idnguoidung=$this->input->post('idnguoidung');
+		$idbaihat=$this->input->post('idbaihat');
+		$thoigian=$this->input->post('thoigian');
+		$this->load->model('trinhphatnhac_model');
+		$this->trinhphatnhac_model->luubinhluan($idbaihat,$idnguoidung,$thoigian,$noidung);
 	}
 
 }
