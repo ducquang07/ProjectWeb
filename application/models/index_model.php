@@ -9,11 +9,11 @@ class index_model extends CI_Model {
 		parent::__construct();
 		
 	}
-	public function singin($id,$pass)
+	public function singin($username,$pass)
 	{
-		$tendangnhap = $id;
+		$tendangnhap = $username;
 		$matkhau = $pass;
-		$this->db->select('ten,tendangnhap,matkhau,trangthai,duongdananh');
+		$this->db->select('idnguoidung,ten,tendangnhap,matkhau,trangthai,duongdananh');
 		$this->db->where('tendangnhap', $tendangnhap);
 		$this->db->where('matkhau', $matkhau);
 		$kq = $this->db->get('nguoidung');

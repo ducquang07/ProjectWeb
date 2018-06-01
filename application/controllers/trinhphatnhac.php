@@ -11,9 +11,10 @@ class trinhphatnhac extends CI_Controller {
 	{
 
 		$id = $_GET['id'];
+		$idusercurrent = $this->session->userdata('id');
 		$this->load->model('trinhphatnhac_model');
 		$thongtinbaihat=$this->trinhphatnhac_model->laythongtinbaihat($id);
-		$thongtinnguoidung=$this->trinhphatnhac_model->laythongtinnguoidung($id);
+		$thongtinnguoidung=$this->trinhphatnhac_model->laythongtinnguoidung($idusercurrent);
 		$danhsachbinhluan=$this->trinhphatnhac_model->laydanhsachbinhluan($id);
 		$data=array('baihat'=>array('thongtinbaihat'=>$thongtinbaihat),
 					'nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung),

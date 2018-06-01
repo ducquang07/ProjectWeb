@@ -14,10 +14,10 @@ class index extends CI_Controller {
 
 	public function singin_controller()
 	{
-		$id = $this->input->post('id');
+		$username = $this->input->post('username');
 		$pass = $this->input->post('pass');
 		$this->load->model('index_model');
-		$ketqua = $this->index_model->singin($id,$pass);
+		$ketqua = $this->index_model->singin($username,$pass);
 		$ketqua = array('mangketqua' => $ketqua);
 
 		foreach ($ketqua as $key => $value) {
@@ -26,9 +26,11 @@ class index extends CI_Controller {
 					$this->load->view('dangnhapthatbai_view');
 				}
 			foreach ($value as $key => $value) {
-				if($value['tendangnhap']==$id && $value['matkhau']==$pass)
+				if($value['tendangnhap']==$username && $value['matkhau']==$pass)
 				{
 					$this->session->set_userdata('tendangnhap',$value['tendangnhap']);
+					$this->session->set_userdata('matkhau',$value['matkhau']);
+					$this->session->set_userdata('id',$value['idnguoidung']);
 					$this->session->set_userdata('ten',$value['ten']);
 					$this->session->set_userdata('trangthai',$value['trangthai']);
 					$this->session->set_userdata('duongdananh',$value['duongdananh']);
@@ -99,10 +101,24 @@ class index extends CI_Controller {
 
 		if($this->index_model->insert_user($fullname,$ngaysinh,$gender,$diachi,$email,$username,$psw,$trangthai,$duongdananh))
 		{
-			$this->session->set_userdata('tendangnhap',$username);
-			$this->session->set_userdata('ten',$fullname);
-			$this->session->set_userdata('trangthai',$trangthai);
-			$this->session->set_userdata('duongdananh',$duongdananh);
+
+			$ketqua = $this->index_model->singin($username,$psw);
+			$ketqua = array('mangketqua' => $ketqua);
+
+			foreach ($ketqua as $key => $value) {
+				foreach ($value as $key => $value) {
+					if($value['tendangnhap']==$username && $value['matkhau']==$psw)
+					{
+						$this->session->set_userdata('tendangnhap',$value['tendangnhap']);
+						$this->session->set_userdata('matkhau',$value['matkhau']);
+						$this->session->set_userdata('id',$value['idnguoidung']);
+						$this->session->set_userdata('ten',$value['ten']);
+						$this->session->set_userdata('trangthai',$value['trangthai']);
+						$this->session->set_userdata('duongdananh',$value['duongdananh']);
+					}
+					
+				}
+			}
 			$this->load->view('dangkythanhcong_view');
 		}
 		else

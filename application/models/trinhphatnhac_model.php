@@ -18,9 +18,9 @@ class trinhphatnhac_model extends CI_Model {
 		return $dulieu;
 	}
 
-	public function laythongtinnguoidung($idbaihat)
+	public function laythongtinnguoidung($idusercurrent)
 	{
-		$sql="Select * from nguoidung where idnguoidung in (Select idnguoidung from baihat where idbaihat=$idbaihat)";
+		$sql="Select * from nguoidung where idnguoidung = $idusercurrent";
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
 		return $dulieu;

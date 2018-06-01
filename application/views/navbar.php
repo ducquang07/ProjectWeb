@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-zikzak fixed-top" id="mainNav">
 <!-- <a class="navbar-brand" href="index.html">Start Bootrap</a> -->
-<a class="navbar-brand" href="#page-top" id="logo">
-<img src="<?php echo base_url() ?>img/logo/logo.png">
+<a class="navbar-brand " href="#page-top" id="logo">
+	<div class="tada">
+		<img src="<?php echo base_url() ?>img/logo/logo.png">
+	</div>
 </a>
 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
@@ -158,7 +160,7 @@
 				<div class="modal-body">
 						<div class="form-group">
                             <label for="username"><b>User name</b></label>
-                            <input class="form-control" type="text" placeholder="Nhập tên đăng nhập" name="id" required>
+                            <input class="form-control" type="text" placeholder="Nhập tên đăng nhập" name="username" required>
                         </div>
                         <div class="form-group">
                             <label for="psw"><b>Password</b></label>
@@ -186,7 +188,7 @@
 <div class="modal fade" id="signup">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
-				<form action="index/singup_controller" method="post" enctype="multidata/form-data">
+				<form action="index/signup_controller" method="post" enctype="multidata/form-data">
 				<div class="modal-header">
 					<h4 class="modal-title"><strong>Đăng ký</strong></h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">

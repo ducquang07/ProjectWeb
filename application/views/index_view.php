@@ -109,7 +109,7 @@
                         <hr>
                         <div class="form-group row">
                             <label for="username"><b>User name</b></label>
-                            <input class="form-control" type="text" placeholder="Nhập tên đăng nhập" name="id" required>
+                            <input class="form-control" type="text" placeholder="Nhập tên đăng nhập" name="username" required>
                         </div>
                         <div class="form-group row">
                             <label for="psw"><b>Password</b></label>
