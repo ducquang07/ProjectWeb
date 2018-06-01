@@ -53,24 +53,26 @@
 									<img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&amp;fm=jpg&amp;h=300&amp;q=75&amp;w=400" alt="..." style=" width: 100%;">
 								</div>
 								<div class="avatar-profile">
-									<img src="http://localhost/ProjectWeb/img/User-Pic.jpg" alt="" />
+									<img src="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {
+										echo $value['duongdananh'];
+									}?>" alt="" />
 								</div>
 								<div class="content">
 									<div class="friend-profile__groups">
 										<div class="user-profile-details">
-											<h4 class="title">Nguyễn Thành Thái<br></h4>
+											<h4 class="title"><?php echo $this->session->userdata('ten'); ?><br></h4>
 
 											<div class="user-profile-details__line">
 												<span data-translate-inner="STR_PROFILE_LABEL_GENDER">Giới tính:</span>
-												<span data-translate-inner="STR_GENDER_MALE">Nam</span>
+												<span data-translate-inner="STR_GENDER_MALE"><?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['gioitinh'];}?></span>
 											</div>
 											<div class="user-profile-details__line">
 												<span data-translate-inner="STR_PROFILE_LABEL_BIRTHDAY">Ngày sinh:</span>
-												<span style="position: relative;">09/04/1997</span>
+												<span style="position: relative;"><?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ngaysinh'];}?></span>
 											</div>
 											<div class="user-profile-details__line">
 												<span data-translate-inner="STR_PROFILE_LABEL_BIRTHDAY">Địa chỉ:</span>
-												<span style="position: relative;">anywhhere</span>
+												<span style="position: relative;"><?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['diachi'];}?></span>
 											</div>
 										</div>
 									</div>
@@ -125,21 +127,21 @@
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Tài khoản:</label>
 											<div class="col-md-9">
-												<input name="readonly" class="form-control" type="text" readonly="" value="thainguyen">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['tendangnhap'];}?>">
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Email:</label>
 											<div class="col-md-9">
-												<input name="readonly" class="form-control" type="text" readonly="" value="15520783@gm.uit.edu.vn">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['email'];}?>">
 											</div>
 										</div>
 										
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Điện thoại:</label>
 											<div class="col-md-9">
-												<input name="readonly" class="form-control" type="text" readonly="" value="+841633481630">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['sdt'];}?>">
 											</div>
 										</div>
 

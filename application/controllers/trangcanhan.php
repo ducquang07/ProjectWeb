@@ -9,7 +9,11 @@ class trangcanhan extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('trangcanhan_view');
+		$idusercurrent = $this->session->userdata('id');
+		$this->load->model('trangcanhan_model');
+		$thongtinnguoidung=$this->trangcanhan_model->laythongtinnguoidung($idusercurrent);
+		$data=array('nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung));
+		$this->load->view('trangcanhan_view',$data);
 	}
 
 }
