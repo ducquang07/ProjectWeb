@@ -25,6 +25,7 @@ class trinhphatnhac_model extends CI_Model {
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
+
 	public function laythongnguoidang($idbaihat)
 	{
 		$sql="Select * from nguoidung where idnguoidung in (Select idnguoidung from baihat where idbaihat='$idbaihat')";
@@ -49,7 +50,7 @@ class trinhphatnhac_model extends CI_Model {
 			'thoigian'=>$thoigian);
 		$this->db->insert('binhluan',$data);
 		if($this->db->insert_id()){
-			$dulieu=$this->laythongtinnguoidung($idbaihat);
+			$dulieu=$this->laythongtinnguoidung($idnguoidung);
 			foreach ($dulieu as $key => $value) {
 				echo '<div class="form-group row ">';
 				echo '<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="'.$value['duongdananh'].'"></p>';

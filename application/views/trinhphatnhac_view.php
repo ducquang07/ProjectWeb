@@ -135,18 +135,12 @@
 												</p>
 												<div class="col-md-9 wrap-comment">
 													<textarea name="content" class="text-input txt-comment"></textarea>
-													<p class="frm-checkbox disabled">                
-														<input type="hidden" name="id" value="ZW9BB9F7">
-														<input type="hidden" name="type" value="audio">
-													</p>
 												</div>
 											</div>
 											<div class="card-block">
 												<button class="btn btn-sm btn-success offset-3 btn-binhluan" type="button">Bình luận </button>
-												<?php foreach ($baihat['thongtinbaihat'] as $key => $value) {?>
-												<input type="text" hidden id="idnguoidung" value="<?php echo $value['idnguoidung'] ?>">
-												<input type="text" hidden id="idbaihat" value="<?php echo $value['idbaihat'] ?>">
-												<?php } ?>
+												<input type="text" hidden id="idnguoidung" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['idnguoidung'];}?>">
+												<input type="text" hidden id="idbaihat" value="<?php foreach ($baihat['thongtinbaihat'] as $key => $value) {echo $value['idbaihat'];}?>">
 											</div>
 											<div class="container thongbao-binhluan"></div>
 										</div>
@@ -726,7 +720,7 @@
 				+ currentdate.getSeconds();
 				console.log(datetime);
 				$.ajax({
-					url: '<?php echo base_url() ?>/luu_binhluan/binhluan',
+					url: '<?php echo base_url()?>/luu_binhluan/binhluan',
 					type: 'POST',
 					dataType: 'html',
 					data: {
