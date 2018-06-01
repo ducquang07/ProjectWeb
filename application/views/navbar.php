@@ -23,7 +23,7 @@
 				echo "</a>";
 				echo '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="margin-right: 1.5rem;"><a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> Trang cá nhân</a>';
 				echo '<a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>';
-				echo '<a class="dropdown-item" href="trangchu/logout_controller"><em class="fa fa-sign-out mr-1"></em> Logout</a>';
+				echo '<a class="dropdown-item" href="'.base_url().'trangchu/logout_controller"><em class="fa fa-sign-out mr-1"></em> Logout</a>';
 				echo '</div>';
 			}
 			else

@@ -16,9 +16,12 @@ class trinhphatnhac extends CI_Controller {
 		$thongtinbaihat=$this->trinhphatnhac_model->laythongtinbaihat($id);
 		$thongtinnguoidung=$this->trinhphatnhac_model->laythongtinnguoidung($idusercurrent);
 		$danhsachbinhluan=$this->trinhphatnhac_model->laydanhsachbinhluan($id);
+		$thongtinnguoidang=$this->trinhphatnhac_model->laythongnguoidang($id);
+		$this->trinhphatnhac_model->themluotnghe($id);
 		$data=array('baihat'=>array('thongtinbaihat'=>$thongtinbaihat),
-					'nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung),
-					'binhluan'=>array('danhsachbinhluan'=>$danhsachbinhluan));
+			'nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung),
+			'binhluan'=>array('danhsachbinhluan'=>$danhsachbinhluan),
+			'nguoidang'=>array('thongtinnguoidang'=>$thongtinnguoidang));
 		//$this->trinhphatnhac_model->laythongtincasi($baihat['idcasi']);
 		//$this->trinhphatnhac_model->laythongtheloai($id);
 

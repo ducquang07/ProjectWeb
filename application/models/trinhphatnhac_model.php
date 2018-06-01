@@ -25,6 +25,13 @@ class trinhphatnhac_model extends CI_Model {
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
+	public function laythongnguoidang($idbaihat)
+	{
+		$sql="Select * from nguoidung where idnguoidung in (Select idnguoidung from baihat where idbaihat='$idbaihat')";
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
 
 	public function laydanhsachbinhluan($idbaihat)
 	{	
@@ -59,6 +66,12 @@ class trinhphatnhac_model extends CI_Model {
 			}
 			
 		}
+	}
+
+	public function themluotnghe($idbaihat)
+	{
+		$sql="Update baihat set luotnghe=luotnghe+1 where idbaihat='$idbaihat'";
+		$this->db->query($sql);
 	}
 }
 
