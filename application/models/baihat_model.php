@@ -26,7 +26,7 @@ class baihat_model extends CI_Model {
 			echo '<tr class="item-baihat">';
 			echo '<td>';										
 			echo '<div class="content-baihat">';											
-			echo '<a href="trinhphatnhac/?id='.$row['idbaihat'].'" class="item-baihat-tenbaihat">'.$row['tenbaihat'].'</a>-';		
+			echo '<a href="baihat/trinhphatnhac/'.$row['idbaihat'].'" class="item-baihat-tenbaihat">'.$row['tenbaihat'].'</a>-';		
 			echo '<a href="#" class="item-baihat-tencasi">'.$row['tencasi'].'</a>';					
 			echo '</div>';											
 			echo '</td>';												
@@ -58,7 +58,7 @@ class baihat_model extends CI_Model {
 			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi  order by luotnghe desc limit 0, $limit";
 		}
 		else{
-			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and match(baihat.tenbaihat) against('$keyword')  limit 0, $limit";
+			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and baihat.idcasi=casi.idcasi and match(baihat.tenbaihat) against('$keyword') limit 0, $limit";
 		}
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();

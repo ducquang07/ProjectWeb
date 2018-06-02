@@ -25,6 +25,7 @@
 	<!-- Custom styles -->
 	<link href="<?php echo base_url() ?>css/custom-style.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>css/custom-sidenav.css" rel="stylesheet">
+
 </head>
 <body id="page-top">
 	<div class="container-fluid" id="wrapper">
@@ -42,7 +43,7 @@
 
 						<div class="col-md-12 col-lg-8">
 							<div class="mb-4">
-								<form action="baihat" method="POST" id="timkiem">
+								<form action="#" method="GET" id="timkiem">
 									<div class="input-group timkiem-group">
 										<input class="form-control input-timkiem" type="text" placeholder="Tìm bài hát" name="keyword" id="keyword" value="<?php echo $keyword ?>">
 										<span class="input-group-append">
@@ -123,7 +124,7 @@
 												<tr class="item-baihat">
 													<td>
 														<div class="content-baihat">
-															<a href="trinhphatnhac/?id=<?php echo $value['idbaihat'] ?>" class="item-baihat-tenbaihat"><?php echo $value['tenbaihat'] ?></a>
+															<a href="<?php echo base_url() ?>baihat/trinhphatnhac/<?php echo $value['idbaihat'] ?>" class="item-baihat-tenbaihat"><?php echo $value['tenbaihat'] ?></a>
 															-
 															<a href="#" class="item-baihat-tencasi"><?php echo $value['tencasi'] ?></a>
 														</div>
@@ -523,7 +524,7 @@
     <script>
     	
 
-    	$(".btn-timkiem").click(function(event) {
+    	/*$(".btn-timkiem").click(function(event) {
     		$.ajax({
     			url: 'baihat/Load_with_keyword',
     			type: 'POST',
@@ -540,7 +541,8 @@
     			console.log("complete");
     		});
 
-    	});
+    	});*/
+
 
     	$(document).ready(function() {
     		$keyword=$("#keyword").val();
@@ -567,16 +569,25 @@
     		})
     		.always(function(data) {
     			console.log("complete");
+    			console.log(<?php echo $limit ?>);
     			$('#BaiHat-TBL tbody tr').remove();
     			$('#BaiHat-TBL tbody').append(data);
     		});
     	});
 
     	/*$("#keyword").change(function(event) {
-    		if ($(this).val()==='') $("#timkiem").attr('action', '<?php echo base_url() ?>/baihat');
-    		else $("#timkiem").attr('action', '<?php echo base_url() ?>/baihat/Load_with_keyword');	
+    		$tukhoa=$(this).val();
+    		if ($tukhoa==='') $("#timkiem").attr('action', '<?php echo base_url() ?>/baihat');
+    		else $("#timkiem").attr('action', '<?php echo base_url() ?>baihat/timkiem/'+$tukhoa);	
     	});*/
 
+    	$(".btn-timkiem").click(function(event) {
+    		$tukhoa=$("#keyword").val();
+    		if($tukhoa==='')
+    			$("#timkiem").attr('action', '<?php echo base_url() ?>baihat');
+    		else
+    			$("#timkiem").attr('action', '<?php echo base_url() ?>baihat/timkiem/?keyword='+$tukhoa);
+    	});
     	
     </script>
 
