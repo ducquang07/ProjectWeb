@@ -70,13 +70,9 @@
 												<span data-translate-inner="STR_PROFILE_LABEL_BIRTHDAY">Ngày sinh:</span>
 												<span style="position: relative;"><?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ngaysinh'];}?></span>
 											</div>
-											<div class="user-profile-details__line">
-												<span data-translate-inner="STR_PROFILE_LABEL_BIRTHDAY">Địa chỉ:</span>
-												<span style="position: relative;"><?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['diachi'];}?></span>
-											</div>
 										</div>
 									</div>
-									<p><button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Chỉnh sửa</button></p>
+									<!-- <p><button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Chỉnh sửa</button></p> -->
 								</div>
 							</div>
 
@@ -125,9 +121,23 @@
 									<form class="form" action="#">
 										
 										<div class="form-group row">
-											<label class="col-md-3 col-form-label">Tài khoản:</label>
+											<label class="col-md-3 col-form-label">Họ tên:</label>
 											<div class="col-md-9">
-												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['tendangnhap'];}?>">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ten'];}?>">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Ngày sinh:</label>
+											<div class="col-md-9">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ngaysinh'];}?>">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Giới tính:</label>
+											<div class="col-md-9">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['gioitinh'];}?>">
 											</div>
 										</div>
 
@@ -146,9 +156,74 @@
 										</div>
 
 										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Địa chỉ:</label>
+											<div class="col-md-9">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['diachi'];}?>">
+											</div>
+										</div>
+											
+										<div class="form-group row">
 											<div class="col-md-5"></div>
 											<div class="col-md-4">
-												<button class="btn btn-lg btn-secondary" type="button"><i class="fa fa-pencil"></i> Chỉnh sửa</button>
+												<button class="btn btn-lg btn-secondary suathongtin" type="button"><i class="fa fa-pencil"></i> Chỉnh sửa</button>
+											</div>
+											<div class="col-md-3"></div>
+										</div>
+									</form>
+								</div>
+							</div>
+
+							<div class="card mb-4 " hidden>
+								<div class="card-block">
+									<h3 class="card-title"><i class="fa fa-user"></i>  Thông tin người dùng<ng></ng></h3>
+									<form class="form" action="#">
+										
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Họ tên:</label>
+											<div class="col-md-9">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ten'];}?>">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Ngày sinh:</label>
+											<div class="col-md-9">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ngaysinh'];}?>">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Giới tính:</label>
+											<div class="col-md-9">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['gioitinh'];}?>">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Email:</label>
+											<div class="col-md-9">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['email'];}?>">
+											</div>
+										</div>
+										
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Điện thoại:</label>
+											<div class="col-md-9">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['sdt'];}?>">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Địa chỉ:</label>
+											<div class="col-md-9">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['diachi'];}?>">
+											</div>
+										</div>
+											
+										<div class="form-group row">
+											<div class="col-md-5"></div>
+											<div class="col-md-4">
+												<button class="btn btn-lg btn-secondary suathongtin" type="button"><i class="fa fa-pencil"></i> Chỉnh sửa</button>
 											</div>
 											<div class="col-md-3"></div>
 										</div>
@@ -157,7 +232,41 @@
 							</div>
 
 
-							
+							<div class="card mb-4 " >
+								<div class="card-block">
+									<h3 class="card-title"><i class="fa fa-user"></i>  Thông tin tài khoản<ng></ng></h3>
+									<form class="form" action="#">
+										
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Tài khoản:</label>
+											<div class="col-md-9">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['tendangnhap'];}?>">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Mật khẩu:</label>
+											<div class="col-md-9">
+												<button class="btn btn-lg btn-secondary doimatkhau" type="button">Đổi mật khẩu</button>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Email:</label>
+											<div class="col-md-9">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['email'];}?>">
+											</div>
+										</div>
+										
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Điện thoại:</label>
+											<div class="col-md-9">
+												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['sdt'];}?>">
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
 
 
 							<!--Bài hát yêu thích-->
@@ -589,14 +698,12 @@
 
 
     <script>
-    	
-
-    	$(".btn-timkiem").click(function(event) {
-    		$.ajax({
-    			url: 'baihat/Load_with_keyword',
+    	$('.suathongtin').click(function(event) {
+    		.$.ajax({
+    			url: '',
     			type: 'POST',
-    			dataType: 'html',
-    			data: {keyword: $('#keyword').val()},
+    			dataType: 'json',
+    			data: {},
     		})
     		.done(function() {
     			console.log("success");
@@ -604,10 +711,12 @@
     		.fail(function() {
     			console.log("error");
     		})
-    		.always(function(data) {
+    		.always(function() {
     			console.log("complete");
-    		});
 
+    		});
+    		
+    		/* Act on the event */
     	});
 
     	$(document).ready(function() {
@@ -640,10 +749,6 @@
     		});
     	});
 
-    	/*$("#keyword").change(function(event) {
-    		if ($(this).val()==='') $("#timkiem").attr('action', '<?php echo base_url() ?>/baihat');
-    		else $("#timkiem").attr('action', '<?php echo base_url() ?>/baihat/Load_with_keyword');	
-    	});*/
 
     	
     </script>

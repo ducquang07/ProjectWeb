@@ -15,7 +15,19 @@ class trangcanhan extends CI_Controller {
 		$data=array('nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung));
 		$this->load->view('trangcanhan_view',$data);
 	}
-
+	public function suathongtin($ten, $gioitinh, $ngaysinh, $sdt, $diachi, $email)
+	{
+		$idusercurrent = $this->session->userdata('id');
+		$this->load->model('trangcanhan_model');
+		if($this->trangcanhan_model->suathongtincanhan($idusercurrent, $ten, $gioitinh, $ngaysinh, $sdt, $diachi, $email)>0)
+		{
+			echo 1;
+		}
+		else
+		{
+			echo 0;
+		}
+	}
 }
 
 /* End of file trangcanhan.php */

@@ -16,6 +16,12 @@ class trangcanhan_model extends CI_Model {
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
+	public function suathongtincanhan($id, $ten, $gioitinh, $ngaysinh, $sdt, $diachi, $email)
+	{
+		$sql="update nguoidung set ten=$ten, gioitinh=$gioitinh, ngaysinh=$ngaysinh, sdt=$sdt, diachi=$diachi, email=$email where idnguoidung=$id";
+		$this->db->query($sql);
+		return $this->db->affected_rows();
+	}
 }
 
 /* End of file trangcanhan_model.php */
