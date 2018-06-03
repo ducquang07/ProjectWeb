@@ -73,6 +73,8 @@ class trangcanhan extends CI_Controller {
 
 		if($this->trangcanhan_model->suathongtincanhan($idusercurrent, $ten, $gioitinh, $ngaysinh, $sdt, $diachi, $email, $duongdananhnguoidung)>0)
 		{
+			// $path="'".substr($this->session->userdata('duongdananh'), 28)."'";
+			// unlink("$path");
 			$this->session->set_userdata('duongdananh',$duongdananhnguoidung);
 			echo 1;
 		}

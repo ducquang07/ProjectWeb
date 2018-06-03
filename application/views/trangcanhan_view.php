@@ -63,7 +63,7 @@
 									<img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&amp;fm=jpg&amp;h=300&amp;q=75&amp;w=400" alt="..." style=" width: 100%;">
 								</div>
 								<div class="avatar-profile">
-									<img src="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {
+									<img id="anhdaidien" src="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {
 										echo $value['duongdananhnguoidung'];
 									}?>" alt="" />
 								</div>
@@ -195,8 +195,15 @@
 													<div class="col-sm-6">
 														<img class="img-fluid" src="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['duongdananhnguoidung'];}?>"></img>
 													</div>
+													<div class="col-sm-6">
+														<span class="btn btn-outline-success fileinput-button">
+										                    <i class="glyphicon glyphicon-plus"></i>
+										                    <span>Thêm ảnh...</span>
+										                    <input id="anhavatar" class="form-control" type="file" name="files[]" multiple="">
+								                		</span>
+													</div>
 												</div>
-												<input id="anhavatar" name="files[]" class="form-control" type="file">
+												<!-- <input id="anhavatar" name="files[]" class="form-control" type="file"> -->
 											</div>
 										</div>
 
@@ -817,6 +824,7 @@
     	});
 
     	duongdan = '<?php echo base_url() ?>';
+    	tenfile = null;
 		$('#anhavatar').fileupload({
 			url: duongdan + 'trangcanhan/uploadfile',
 			dataType: 'json',
@@ -836,7 +844,10 @@
     		// console.log($('input:radio[name=genderedit]:checked').val()); 
     		// console.log($('[name="genderedit"]:radio:checked').val());
     		// cả 2 câu đều dùng được
-    		// 
+    		if(!tenfile)
+    		{
+    			tenfile= $("#anhdaidien").attr("src");
+    		}
     		$.ajax({
     			url: 'trangcanhan/suathongtin',
     			type: 'POST',
