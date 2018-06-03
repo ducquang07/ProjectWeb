@@ -54,7 +54,7 @@
 								</div>
 								<div class="avatar-profile">
 									<img src="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {
-										echo $value['duongdananh'];
+										echo $value['duongdananhnguoidung'];
 									}?>" alt="" />
 								</div>
 								<div class="content">

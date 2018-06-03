@@ -33,7 +33,7 @@ class index extends CI_Controller {
 					$this->session->set_userdata('id',$value['idnguoidung']);
 					$this->session->set_userdata('ten',$value['ten']);
 					$this->session->set_userdata('trangthai',$value['trangthai']);
-					$this->session->set_userdata('duongdananh',$value['duongdananh']);
+					$this->session->set_userdata('duongdananh',$value['duongdananhnguoidung']);
 					// $data = array( 'ten' => $_SESSION["ten"],
 					// 			   'tendangnhap' => $_SESSION["tendangnhap"],
 					// 			   'trangthai' => $_SESSION["trangthai"]
@@ -114,7 +114,7 @@ class index extends CI_Controller {
 						$this->session->set_userdata('id',$value['idnguoidung']);
 						$this->session->set_userdata('ten',$value['ten']);
 						$this->session->set_userdata('trangthai',$value['trangthai']);
-						$this->session->set_userdata('duongdananh',$value['duongdananh']);
+						$this->session->set_userdata('duongdananh',$value['duongdananhnguoidung']);
 					}
 					
 				}

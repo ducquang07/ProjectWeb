@@ -13,7 +13,7 @@ class index_model extends CI_Model {
 	{
 		$tendangnhap = $username;
 		$matkhau = $pass;
-		$this->db->select('idnguoidung,ten,tendangnhap,matkhau,trangthai,duongdananh');
+		$this->db->select('idnguoidung,ten,tendangnhap,matkhau,trangthai,duongdananhnguoidung');
 		$this->db->where('tendangnhap', $tendangnhap);
 		$this->db->where('matkhau', $matkhau);
 		$kq = $this->db->get('nguoidung');
