@@ -60,15 +60,17 @@
 					<section class="row">
 						<div class="col-md-12 col-lg-8">
 							<div class="mb-4">
-								<div class="input-group timkiem-group">
-									<input class="form-control input-timkiem" type="text" placeholder="Tìm bài hát">
-									<span class="input-group-append">
-										<button class="btn btn-primary btn-timkiem" type="button">
-											<i class="fa fa-search"></i>
-										</button>
-									</span>
-								</div>
-							</div >
+								<form action="#" method="GET" id="timkiem">
+									<div class="input-group timkiem-group">
+										<input class="form-control input-timkiem" type="text" placeholder="Tìm bài hát" name="keyword" id="keyword" value="">
+										<span class="input-group-append">
+											<button class="btn btn-primary btn-timkiem" type="submit" >
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+									</div>
+								</form>
+							</div>
 
 							<!--Bắt đầu phần phát nhạc-->
 							<div class="mb-4 name-title">
@@ -798,6 +800,14 @@
 					});
 				}
 				
+			});
+
+			$(".btn-timkiem").click(function(event) {
+				$tukhoa=$("#keyword").val();
+				if($tukhoa==='')
+					$("#timkiem").attr('action', '<?php echo base_url() ?>baihat');
+				else
+					$("#timkiem").attr('action', '<?php echo base_url() ?>baihat/timkiem/?keyword='+$tukhoa);
 			});
 		</script>
 	</body>

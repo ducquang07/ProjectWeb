@@ -65,6 +65,24 @@ class baihat_model extends CI_Model {
 		return $dulieu;
 	}
 
+	public function Get_theLoai($khuvuc)
+	{
+		$this->db->select('tentheloai,idtheloai');
+		$this->db->where('khuvuc', $khuvuc);
+		$dulieu=$this->db->get('theloai');
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
+
+	public function Get_danhsach_hot()
+	{
+		$sql="Select distinct(idcasi),tencasi,duongdananh from casi where idcasi in (select idcasi from baihat order by luotnghe desc) limit 6";
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
+
+
 }
 
 /* End of file baihat_model.php */

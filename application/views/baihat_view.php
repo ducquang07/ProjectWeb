@@ -25,7 +25,7 @@
 	<!-- Custom styles -->
 	<link href="<?php echo base_url() ?>css/custom-style.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>css/custom-sidenav.css" rel="stylesheet">
-
+			
 </head>
 <body id="page-top">
 	<div class="container-fluid" id="wrapper">
