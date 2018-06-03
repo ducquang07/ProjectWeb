@@ -25,7 +25,7 @@
 	<!-- Custom styles -->
 	<link href="<?php echo base_url() ?>css/custom-style.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>css/custom-sidenav.css" rel="stylesheet">
-
+			
 </head>
 <body id="page-top">
 	<div class="container-fluid" id="wrapper">
@@ -428,7 +428,7 @@
 																<p class="text-white"><?php echo $value['tencasi'] ?></p>
 															</div>
 														</div>
-														<img class="card-img-top" width="150" height="200" src="<?php echo $value['duongdananh'] ?>" alt="">
+														<img class="card-img-top" width="150" height="200" src="<?php echo $value['duongdananhcasi'] ?>" alt="">
 													</a>
 
 												</div>

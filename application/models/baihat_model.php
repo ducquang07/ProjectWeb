@@ -52,7 +52,7 @@ class baihat_model extends CI_Model {
 		return $rowcount;
 	}
 
-	public function show_Danhsachbaihat_keyword($keyword,$limit,$phantrang)
+	public function show_Danhsachbaihat_keyword($keyword,$limit)
 	{
 		if($keyword===""){
 			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi  order by luotnghe desc limit 0, $limit";
@@ -64,6 +64,24 @@ class baihat_model extends CI_Model {
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
+
+	public function Get_theLoai($khuvuc)
+	{
+		$this->db->select('tentheloai,idtheloai');
+		$this->db->where('khuvuc', $khuvuc);
+		$dulieu=$this->db->get('theloai');
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
+
+	public function Get_danhsach_hot()
+	{
+		$sql="Select distinct(idcasi),tencasi,duongdananhcasi from casi where idcasi in (select idcasi from baihat order by luotnghe desc) limit 6";
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
+
 
 }
 

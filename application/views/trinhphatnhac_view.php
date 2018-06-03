@@ -36,12 +36,12 @@
 			);
 		} ?>
 		<?php foreach ($nguoidang['thongtinnguoidang'] as $key => $value) {
-			$obj_nguoidang=array('duongdananh'=>$value['duongdananh'],
+			$obj_nguoidang=array('duongdananh'=>$value['duongdananhnguoidung'],
 				'ten'=>$value['ten']);
 		} ?>
 		<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {
 
-			$obj_nguoidung=array('duongdananh'=>$value['duongdananh'],
+			$obj_nguoidung=array('duongdananh'=>$value['duongdananhnguoidung'],
 				'idnguoidung'=>$value['idnguoidung']);
 		} ?>
 	</script>
@@ -60,15 +60,17 @@
 					<section class="row">
 						<div class="col-md-12 col-lg-8">
 							<div class="mb-4">
-								<div class="input-group timkiem-group">
-									<input class="form-control input-timkiem" type="text" placeholder="Tìm bài hát">
-									<span class="input-group-append">
-										<button class="btn btn-primary btn-timkiem" type="button">
-											<i class="fa fa-search"></i>
-										</button>
-									</span>
-								</div>
-							</div >
+								<form action="#" method="GET" id="timkiem">
+									<div class="input-group timkiem-group">
+										<input class="form-control input-timkiem" type="text" placeholder="Tìm bài hát" name="keyword" id="keyword" value="">
+										<span class="input-group-append">
+											<button class="btn btn-primary btn-timkiem" type="submit" >
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+									</div>
+								</form>
+							</div>
 
 							<!--Bắt đầu phần phát nhạc-->
 							<div class="mb-4 name-title">
@@ -157,7 +159,7 @@
 												<?php foreach ($binhluan['danhsachbinhluan'] as $key => $value) { ?>
 
 												<div class="form-group row ">
-													<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="<?php echo $value['duongdananh'] ?>"></p>
+													<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="<?php echo $value['duongdananhnguoidung'] ?>"></p>
 													<div class="col-md-10">
 														<div class="row user-comment"><a href="#"><?php echo $value['ten'] ?></a></div>
 														<div class="row comment">
@@ -798,6 +800,14 @@
 					});
 				}
 				
+			});
+
+			$(".btn-timkiem").click(function(event) {
+				$tukhoa=$("#keyword").val();
+				if($tukhoa==='')
+					$("#timkiem").attr('action', '<?php echo base_url() ?>baihat');
+				else
+					$("#timkiem").attr('action', '<?php echo base_url() ?>baihat/timkiem/?keyword='+$tukhoa);
 			});
 		</script>
 	</body>
