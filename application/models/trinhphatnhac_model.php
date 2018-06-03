@@ -53,7 +53,7 @@ class trinhphatnhac_model extends CI_Model {
 			$dulieu=$this->laythongtinnguoidung($idnguoidung);
 			foreach ($dulieu as $key => $value) {
 				echo '<div class="form-group row ">';
-				echo '<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="'.$value['duongdananh'].'"></p>';
+				echo '<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="'.$value['duongdananhnguoidung'].'"></p>';
 				echo '<div class="col-md-10">';
 				echo '<div class="row user-comment"><a href="#">'.$value['ten'].'</a></div>';
 				echo '<div class="row comment">';
@@ -82,7 +82,7 @@ class trinhphatnhac_model extends CI_Model {
 		foreach($dulieu->result_array() as $row)
 		{
 			echo '<div class="form-group row ">';
-			echo '<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="'.$row['duongdananh'].'"></p>';
+			echo '<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="'.$row['duongdananhnguoidung'].'"></p>';
 			echo '<div class="col-md-10">';
 			echo '<div class="row user-comment"><a href="#">'.$row['ten'].'</a></div>';
 			echo '<div class="row comment">';
@@ -103,7 +103,7 @@ class trinhphatnhac_model extends CI_Model {
 		foreach($dulieu->result_array() as $row)
 		{
 			echo '<div class="form-group row ">';
-			echo '<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="'.$row['duongdananh'].'"></p>';
+			echo '<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="'.$row['duongdananhnguoidung'].'"></p>';
 			echo '<div class="col-md-10">';
 			echo '<div class="row user-comment"><a href="#">'.$row['ten'].'</a></div>';
 			echo '<div class="row comment">';

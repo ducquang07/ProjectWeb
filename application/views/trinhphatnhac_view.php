@@ -32,7 +32,8 @@
 				'tencasi'=>$value['tencasi'],
 				'duongdannhac'=>$value['duongdannhac'],
 				'luotnghe'=>$value['luotnghe'],
-				'loibaihat'=>$value['loibaihat']
+				'loibaihat'=>$value['loibaihat'],
+				'duongdananhbaihat'=>$value['duongdananhbaihat']
 			);
 		} ?>
 		<?php foreach ($nguoidang['thongtinnguoidang'] as $key => $value) {
@@ -79,7 +80,7 @@
 								<h4 class="card-title" id="tencasi"><a href="#" ><?php echo $obj_baihat['tencasi']?></a></h4>
 							</div>
 							<div class="card mb-4">
-								<img class="card-img-top img-fluid" src="<?php echo base_url() ?>img/img_baihat/Demons-Imagine Dragon.jpg" alt="">
+								<img class="card-img-top img-fluid" src="<?php echo $obj_baihat['duongdananhbaihat'] ?>" alt="">
 								<audio controls autoplay>
 									<source src="<?php echo $obj_baihat['duongdannhac']?>" type="audio/mpeg">
 									</audio>

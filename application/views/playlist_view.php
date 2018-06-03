@@ -105,6 +105,11 @@
 								<div class="card-block">
 									<h3 class="card-title">Danh sách Playlist</h3>
 									<div class="canvas-wrapper">
+										<?php if(count($playlist['danhsachplaylist'])===0){ ?>
+										<div class="alert alert-danger thongbao" role="alert" style="color: #721c24;">
+											<b>Không tìm thấy playlist.</b>
+										</div>
+										<?php }?>
 										<div class="row playlist-container">
 
 											<?php foreach ($playlist['danhsachplaylist'] as $key => $value) { ?>
@@ -114,7 +119,7 @@
 													<a href="#" class="item-container">
 														<span class="item-playlist-luotnghe">
 															<i class="fa fa-headphones" aria-hidden="true"></i>
-															<span id="">55.017
+															<span id=""><?php echo $value['luotnghe'] ?>
 															</span>
 														</span>
 														<div class="item-hover">

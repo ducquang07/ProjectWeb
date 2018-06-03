@@ -30,10 +30,10 @@
 		public function laydanhsach_playlist($keyword,$limit)
 		{
 			if($keyword===""){
-				$sql="Select idplaylist,tenplaylist,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi limit 0, $limit";
+				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi limit 0, $limit";
 			}
 			else{
-				$sql="Select idplaylist,tenplaylist,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi and match(playlist.tenplaylist) against('$keyword') limit 0, $limit";
+				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi and match(playlist.tenplaylist) against('$keyword') limit 0, $limit";
 			}
 			$dulieu=$this->db->query($sql);
 			$dulieu=$dulieu->result_array();
@@ -42,7 +42,13 @@
 
 		public function get_TotalRecord($keyword)
 		{
-			$sql="Select * from playlist where tenplaylist like '%$keyword%'";
+			
+			if($keyword===""){
+				$sql="Select idplaylist from playlist";
+			}
+			else{
+				$sql="Select idplaylist from playlist where match(tenplaylist) against('$keyword')";
+			}
 			$dulieu=$this->db->query($sql);
 			$rowcount = $dulieu->num_rows();
 			return $rowcount;
@@ -53,11 +59,11 @@
 			$start=($currentpage-1)*$limit;
 			if($keyword===""|| is_null($keyword))
 			{
-				$sql="Select idplaylist,tenplaylist,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi limit $start, $limit";
+				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi limit $start, $limit";
 			}
 			else
 			{
-				$sql="Select idplaylist,tenplaylist,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi and match(playlist.tenplaylist) against('$keyword') limit $start,$limit";
+				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi and match(playlist.tenplaylist) against('$keyword') limit $start,$limit";
 			}
 			$dulieu=$this->db->query($sql);
 			foreach($dulieu->result_array() as $row)
@@ -67,7 +73,7 @@
 				echo '	<a href="#" class="item-container">';
 				echo '		<span class="item-playlist-luotnghe">';
 				echo '			<i class="fa fa-headphones" aria-hidden="true"></i>';
-				echo '			<span id="">55.017';
+				echo '			<span id="">'.$row['luotnghe'];
 				echo '			</span>';
 				echo '		</span>';
 				echo '		<div class="item-hover">';
