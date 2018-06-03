@@ -18,9 +18,22 @@ class trangcanhan_model extends CI_Model {
 	}
 	public function suathongtincanhan($id, $ten, $gioitinh, $ngaysinh, $sdt, $diachi, $email)
 	{
-		$sql="update nguoidung set ten=$ten, gioitinh=$gioitinh, ngaysinh=$ngaysinh, sdt=$sdt, diachi=$diachi, email=$email where idnguoidung=$id";
+		$sql="update nguoidung set ten='".$ten."', gioitinh='".$gioitinh."', ngaysinh='".$ngaysinh."', sdt='".$sdt."', diachi='".$diachi."', email='".$email."' where idnguoidung='".$id."'";
 		$this->db->query($sql);
 		return $this->db->affected_rows();
+	}
+
+	public function doimatkhauuser($idusercurrent,$newpass)
+	{
+		$sql="call proc_ThayDoiMatKhau('".$idusercurrent."','".$newpass."')";
+		if($this->db->query($sql))
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
 }
 

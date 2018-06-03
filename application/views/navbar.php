@@ -210,13 +210,13 @@
                         <div class="form-group" id="gioitinh">
                             <label><b>Giới tính:</b></label>
                             <label for="register-male" class="radio control-inline">
-                                <input type="radio" id="register-male" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="nam"> Nam
+                                <input type="radio" id="register-male" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nam"> Nam
                             </label>
                             <label for="register-female" class="radio control-inline">
-                                <input type="radio" id="register-female" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="nu"> Nữ
+                                <input type="radio" id="register-female" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nữ"> Nữ
                             </label>
                             <label for="register-neutral" class="radio control-inline">
-                                <input type="radio" id="register-neutral" name="gender" required="required" value="khac"> Khác
+                                <input type="radio" id="register-neutral" name="gender" required="required" value="Khác"> Khác
                             </label>
                         </div>
                         <div class="form-group">
