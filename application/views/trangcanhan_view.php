@@ -8,10 +8,20 @@
 
 	<title>ZikZak - Website nghe nhạc trực tuyến miễn phí</title>
 
+
+	<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
 	<!-- Bootstrap core CSS -->
 	<link href="<?php echo base_url() ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>SpryAssets_AN/SpryTabbedPanels_VD.css" rel="stylesheet" type="text/css" />
 	<script src="<?php echo base_url() ?>SpryAssets_AN/SpryTabbedPanels.js" type="text/javascript"></script>
+	<!-- jquery upload và crop image -->
+	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/vendor/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/load-image.all.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/canvas-to-blob.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/jquery.iframe-transport.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/jquery.fileupload.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/jquery.fileupload-process.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/jquery.fileupload-image.js"></script>
 
 	<!-- Icons -->
 	<link href="<?php echo base_url() ?>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -179,6 +189,18 @@
 									<form class="form" action="#">
 										
 										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Ảnh đại diện:</label>
+											<div class="col-md-9">
+												<div class="row">
+													<div class="col-sm-6">
+														<img class="img-fluid" src="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['duongdananhnguoidung'];}?>"></img>
+													</div>
+												</div>
+												<input id="anhavatar" name="files[]" class="form-control" type="file">
+											</div>
+										</div>
+
+										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Họ tên:</label>
 											<div class="col-md-9">
 												<input id="tenedit" class="form-control" type="text" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ten'];}?>">
@@ -260,8 +282,8 @@
 										<div class="form-group row">
 											<div class="col-md-7"></div>
 											<div class="col-md-5 nutluu">
-												<button class="btn btn-lg btn-secondary thoatchinhsua">Thoát</button>
-												<button class="btn btn-lg btn-success luuchinhsua"><i class="fa fa-save"></i> Lưu</button>
+												<input type="button" class="btn btn-lg btn-secondary thoatchinhsua" value="Thoát">
+												<input type="button" class="btn btn-lg btn-success luuchinhsua" value="Lưu">
 												<br>
 											</div>
 										</div>
@@ -759,11 +781,13 @@
 </div>
     <!-- Bootstrap core JavaScript
     	================================================== -->
+		<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.js"></script>
     	<!-- Placed at the end of the document so the pages load faster -->
-    	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    	<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
-    	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    	
+    	
 
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 	    <script type="text/javascript">
@@ -792,6 +816,22 @@
             $( "div.thongtintaikhoan" ).removeClass( "d-none" );
     	});
 
+    	duongdan = '<?php echo base_url() ?>';
+		$('#anhavatar').fileupload({
+			url: duongdan + 'trangcanhan/uploadfile',
+			dataType: 'json',
+			disableImageResize: /Android(?!.*Chrome)|Opera/ 
+		        .test(window.navigator && navigator.userAgent),
+		    imageMaxWidth: 800,//crop ngoại trừ android và opera
+		    imageMaxHeight: 800,
+		    imageCrop: true, // Force cropped images
+			done: function(e, data){
+				$.each(data.result.files, function (index, file) {
+                	tenfile = file.url;
+              	});
+			}
+		});
+
     	$('.luuchinhsua').click(function(event) {
     		// console.log($('input:radio[name=genderedit]:checked').val()); 
     		// console.log($('[name="genderedit"]:radio:checked').val());
@@ -807,7 +847,8 @@
     				ngaysinh : $('#ngaysinhedit').val(),
     				sdt : $('#sdtedit').val(),
     				diachi : $('#diachiedit').val(),
-    				email : $('#emailedit').val()
+    				email : $('#emailedit').val(),
+    				duongdananhnguoidung : tenfile
     				},
     		})
     		.done(function(data) {

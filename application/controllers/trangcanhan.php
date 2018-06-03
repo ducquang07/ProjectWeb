@@ -1,5 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+include 'UploadHandler.php';
+
 class trangcanhan extends CI_Controller {
 
 	public function __construct()
@@ -17,6 +19,7 @@ class trangcanhan extends CI_Controller {
 	}
 	public function suathongtin()
 	{
+		$this->load->model('trangcanhan_model');
 		$idusercurrent = $this->session->userdata('id');
 		$ten = $this->input->post('ten');
 		$gioitinh = $this->input->post('gioitinh');
@@ -24,9 +27,53 @@ class trangcanhan extends CI_Controller {
 		$sdt = $this->input->post('sdt');
 		$diachi = $this->input->post('diachi');
 		$email = $this->input->post('email');
-		$this->load->model('trangcanhan_model');
-		if($this->trangcanhan_model->suathongtincanhan($idusercurrent, $ten, $gioitinh, $ngaysinh, $sdt, $diachi, $email)>0)
+		$duongdananhnguoidung = $this->input->post('duongdananhnguoidung');
+		
+
+		// $target_dir = "anhupload/";
+		// $rename = time();
+		// $target_file = $target_dir . $rename . basename($_FILES["anhavatar"]["name"]);
+		// $uploadOk = 1;
+		// $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+		// // Check if image file is a actual image or fake image
+		// if(isset($_POST["submit"])) {
+		//     $check = getimagesize($_FILES["anhavatar"]["tmp_name"]);
+		//     if($check !== false) {
+		//         // echo "File is an image - " . $check["mime"] . ".";
+		//         $uploadOk = 1;
+		//     } else {
+		//         // echo "File is not an image.";
+		//         $uploadOk = 0;
+		//     }
+		// }
+		// // Check file size
+		// if ($_FILES["anhavatar"]["size"] > 20000000) {
+		//     // echo "Xin lỗi, kích thước file quá lơn";
+		//     $uploadOk = 0;
+		// }
+		// // Allow certain file formats
+		// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+		// && $imageFileType != "gif" ) {
+		//     // echo "Xin lỗi, chỉ chấp nhận file JPG, JPEG, PNG & GIF.";
+		//     $uploadOk = 0;
+		// }
+		// // Check if $uploadOk is set to 0 by an error
+		// if ($uploadOk == 0) {
+		//     // echo "Xin lỗi, file của bạn chưa được upload.";
+		// // if everything is ok, try to upload file
+		// } else {
+		//     if (move_uploaded_file($_FILES["anhavatar"]["tmp_name"], $target_file)) {
+		//         // echo "File ". basename( $_FILES["anhavatar"]["name"]). " đã được upload.";
+		//     } else {
+		//         // echo "Xin lỗi, đã có lỗi trong quá trình upload ảnh.";
+		//     }
+		// }
+		// $duongdananhnguoidung = base_url().$target_file;
+
+
+		if($this->trangcanhan_model->suathongtincanhan($idusercurrent, $ten, $gioitinh, $ngaysinh, $sdt, $diachi, $email, $duongdananhnguoidung)>0)
 		{
+			$this->session->set_userdata('duongdananh',$duongdananhnguoidung);
 			echo 1;
 		}
 		else
@@ -64,6 +111,12 @@ class trangcanhan extends CI_Controller {
 		{
 			echo ' mat khau khong trung';
 		}
+	}
+
+		public function uploadfile()
+	{
+		$uploadfile = new UploadHandler();
+
 	}
 }
 

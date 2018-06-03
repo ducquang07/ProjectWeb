@@ -16,9 +16,9 @@ class trangcanhan_model extends CI_Model {
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
-	public function suathongtincanhan($id, $ten, $gioitinh, $ngaysinh, $sdt, $diachi, $email)
+	public function suathongtincanhan($id, $ten, $gioitinh, $ngaysinh, $sdt, $diachi, $email, $duongdananhnguoidung)
 	{
-		$sql="update nguoidung set ten='".$ten."', gioitinh='".$gioitinh."', ngaysinh='".$ngaysinh."', sdt='".$sdt."', diachi='".$diachi."', email='".$email."' where idnguoidung='".$id."'";
+		$sql="update nguoidung set ten='".$ten."', gioitinh='".$gioitinh."', ngaysinh='".$ngaysinh."', sdt='".$sdt."', diachi='".$diachi."', email='".$email."', duongdananhnguoidung='".$duongdananhnguoidung."'where idnguoidung='".$id."'";
 		$this->db->query($sql);
 		return $this->db->affected_rows();
 	}
