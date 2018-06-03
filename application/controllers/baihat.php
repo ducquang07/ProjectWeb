@@ -33,7 +33,7 @@ class baihat extends CI_Controller {
 		$paging->init($config);
 		$phantrang=$paging->html();
 
-		$danhsachbaihat=$this->baihat_model->show_Danhsachbaihat_keyword($keyword,$config['limit'],$phantrang);
+		$danhsachbaihat=$this->baihat_model->show_Danhsachbaihat_keyword($keyword,$config['limit']);
 		$data=array('baihat'=>array('danhsachbaihat'=>$danhsachbaihat),
 			'theloai_Vietnam'=>array('danhsachtheloai'=>$theloai_Vietnam),
 			'theloai_AuMy'=>array('danhsachtheloai'=>$theloai_AuMy),

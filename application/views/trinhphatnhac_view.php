@@ -36,12 +36,12 @@
 			);
 		} ?>
 		<?php foreach ($nguoidang['thongtinnguoidang'] as $key => $value) {
-			$obj_nguoidang=array('duongdananh'=>$value['duongdananh'],
+			$obj_nguoidang=array('duongdananh'=>$value['duongdananhnguoidung'],
 				'ten'=>$value['ten']);
 		} ?>
 		<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {
 
-			$obj_nguoidung=array('duongdananh'=>$value['duongdananh'],
+			$obj_nguoidung=array('duongdananh'=>$value['duongdananhnguoidung'],
 				'idnguoidung'=>$value['idnguoidung']);
 		} ?>
 	</script>
@@ -159,7 +159,7 @@
 												<?php foreach ($binhluan['danhsachbinhluan'] as $key => $value) { ?>
 
 												<div class="form-group row ">
-													<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="<?php echo $value['duongdananh'] ?>"></p>
+													<p class="col-md-2 avatar"><img width="60" height="auto" class="photo-user-comment" alt="profile photo" src="<?php echo $value['duongdananhnguoidung'] ?>"></p>
 													<div class="col-md-10">
 														<div class="row user-comment"><a href="#"><?php echo $value['ten'] ?></a></div>
 														<div class="row comment">

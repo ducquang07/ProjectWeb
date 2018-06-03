@@ -428,7 +428,7 @@
 																<p class="text-white"><?php echo $value['tencasi'] ?></p>
 															</div>
 														</div>
-														<img class="card-img-top" width="150" height="200" src="<?php echo $value['duongdananh'] ?>" alt="">
+														<img class="card-img-top" width="150" height="200" src="<?php echo $value['duongdananhcasi'] ?>" alt="">
 													</a>
 
 												</div>
