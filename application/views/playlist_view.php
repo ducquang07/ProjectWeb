@@ -40,14 +40,16 @@
 					<section class="row">
 						<div class="col-md-12 col-lg-8">
 							<div class="mb-4">
-								<div class="input-group timkiem-group">
-									<input class="form-control input-timkiem" type="text" placeholder="Tìm playlist">
-									<span class="input-group-append">
-										<button class="btn btn-primary btn-timkiem" type="button">
-											<i class="fa fa-search"></i>
-										</button>
-									</span>
-								</div>
+								<form action="#" method="GET" id="timkiem">
+									<div class="input-group timkiem-group">
+										<input class="form-control input-timkiem" type="text" placeholder="Tìm playlist" name="keyword" id="keyword" value="<?php echo $keyword ?>">
+										<span class="input-group-append">
+											<button class="btn btn-primary btn-timkiem" type="submit" >
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+									</div>
+								</form>
 							</div>
 							<!--Phần thể loại-->
 							<div class="card mb-4">
@@ -103,7 +105,7 @@
 								<div class="card-block">
 									<h3 class="card-title">Danh sách Playlist</h3>
 									<div class="canvas-wrapper">
-										<div class="row">
+										<div class="row playlist-container">
 
 											<?php foreach ($playlist['danhsachplaylist'] as $key => $value) { ?>
 											<!--Item-playlist-->
@@ -120,7 +122,7 @@
 																<i class="fa fa-play fa-2x"></i>
 															</div>
 														</div>
-														<img class="card-img-top" width="150" height="200" src="<?php echo $value['duongdananh'] ?>" alt="">
+														<img class="card-img-top" width="150" height="200" src="<?php echo $value['duongdananhplaylist'] ?>" alt="">
 													</a>
 													<div class="card-body">
 														<h4 class="card-title">
@@ -136,14 +138,7 @@
 										</div>
 									</div>
 									<div class="box_pageview">
-										<a href="javascript:;" class="active">1</a>
-										<a href="#" rel="next" title="">2</a>
-										<a href="#" rel="next" title="">3</a>
-										<a href="#" rel="next" title="">4</a>
-										<a href="#" rel="next" title="">5</a>
-										<a href="#" rel="next" title="">6</a>
-										<a href="#" rel="next" title="">7</a>
-										<a href="#" rel="Trang cuối" title="">Trang cuối</a>
+										<?php echo $phantrang ?>
 									</div>
 								</div>
 							</div>
@@ -669,29 +664,53 @@
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     	<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
     	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    	
-    	<script src="<?php echo base_url() ?>js/chart.min.js"></script>
-    	<script src="<?php echo base_url() ?>js/chart-data.js"></script>
-    	<script src="<?php echo base_url() ?>js/easypiechart.js"></script>
-    	<script src="<?php echo base_url() ?>js/easypiechart-data.js"></script>
-    	<script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script>
-    	<script src="<?php echo base_url() ?>js/custom.js"></script>
-    	<script>
-    		var startCharts = function () {
-    			var chart1 = document.getElementById("line-chart").getContext("2d");
-    			window.myLine = new Chart(chart1).Line(lineChartData, {
-    				responsive: true,
-    				scaleLineColor: "rgba(0,0,0,.2)",
-    				scaleGridLineColor: "rgba(0,0,0,.05)",
-    				scaleFontColor: "#c5c7cc "
-    			});
-    		}; 
-    		window.setTimeout(startCharts(), 1000);
-    	</script>
-
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     	<script type="text/javascript">
     		var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
     	</script>
+
+
+    	<script>
+    		$(document).ready(function() {
+    			$keyword=$("#keyword").val();
+    		});
+
+    		$('.box_pageview a').click(function(event) {
+    			$('.box_pageview').find('a').removeClass('active');
+    			$(this).addClass('active');
+    			$.ajax({
+    				url: '<?php echo base_url() ?>/playlist/Load_Page',
+    				type: 'POST',
+    				dataType: 'html',
+    				data: {
+    					page:$(this).attr("id"),
+    					keyword:$keyword,
+    					limit:<?php echo $limit ?>
+    				},
+    			})
+    			.done(function() {
+    				console.log("success");
+    			})
+    			.fail(function() {
+    				console.log("error");
+    			})
+    			.always(function(data) {
+    				console.log("complete");
+    				console.log(<?php echo $limit ?>);
+    				$('.playlist-container div').remove();
+    				$('.playlist-container').append(data);
+    			});
+    		});
+
+    		$(".btn-timkiem").click(function(event) {
+    			$tukhoa=$("#keyword").val();
+    			if($tukhoa==='')
+    				$("#timkiem").attr('action', '<?php echo base_url() ?>playlist');
+    			else
+    				$("#timkiem").attr('action', '<?php echo base_url() ?>playlist/timkiem/?keyword='+$tukhoa);
+    		});
+
+    	</script>
+
+    	
     </body>
     </html>
