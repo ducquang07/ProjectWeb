@@ -25,6 +25,14 @@ class capnhatplaylist_model extends CI_Model {
 		}
 	}
 
+	public function laythongtinplaylist($idplaylist)
+	{
+		$sql="select * from playlist,casi where playlist.idcasi=casi.idcasi and playlist.idplaylist='$idplaylist'";
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
+
 	public function Get_theLoai($khuvuc)
 	{
 		$this->db->select('tentheloai,idtheloai');
@@ -45,6 +53,7 @@ class capnhatplaylist_model extends CI_Model {
 	{
 		$sql="Select idcasi from casi where tencasi ='$tencasi'";
 		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
 
@@ -54,6 +63,13 @@ class capnhatplaylist_model extends CI_Model {
 		$sql="INSERT INTO playlist( tenplaylist, mota, duongdananhplaylist,luotnghe, idnguoidung, idtheloai, idcasi) VALUES ('$tenplaylist','$mota','$duongdananhplaylist','$luotnghe','$idnguoidung','$idtheloai','$idcasi')";
 		$this->db->query($sql);
 		return $this->db->affected_rows();
+	}
+
+	public function suaplaylist($idplaylist,$tenplaylist)
+	{
+		$sql="call proc_ThayDoiTenPlaylist('".$idplaylist."','".$tenplaylist."')";
+		echo $sql;
+		return $this->db->query($sql);
 	}
 }
 

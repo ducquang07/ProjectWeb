@@ -35,6 +35,14 @@ class trangcanhan_model extends CI_Model {
 			return 0;
 		}
 	}
+
+	public function laydanhsachplaylist($idusercurrent)
+	{
+		$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi and idnguoidung=$idusercurrent";
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
 }
 
 /* End of file trangcanhan_model.php */

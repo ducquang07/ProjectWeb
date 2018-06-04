@@ -13,8 +13,10 @@ class trangcanhan extends CI_Controller {
 	{
 		$idusercurrent = $this->session->userdata('id');
 		$this->load->model('trangcanhan_model');
+		$danhsachplaylist=$this->trangcanhan_model->laydanhsachplaylist($idusercurrent);
 		$thongtinnguoidung=$this->trangcanhan_model->laythongtinnguoidung($idusercurrent);
-		$data=array('nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung));
+		$data=array('nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung),
+					'playlist'=>array('danhsachplaylist'=>$danhsachplaylist));
 		$this->load->view('trangcanhan_view',$data);
 	}
 	public function suathongtin()

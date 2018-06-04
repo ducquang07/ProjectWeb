@@ -128,49 +128,28 @@
 								<div class="card-block">
 									<h3 class="card-title"><i class="fa fa-user"></i>  Cập nhật PLAYLIST<ng></ng></h3>
 									<form class="form" action="#">
+										<?php foreach ($playlist['thongtinplaylist'] as $key => $value) {?>
 
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Tên playlist:</label>
 											<div class="col-md-9">
-												<input name="tenplaylist" class="form-control" type="text"  value="" id="tenplaylist">
+												<input name="tenplaylist" class="form-control" type="text"   id="tenplaylist" value="<?php echo $value['tenplaylist'] ?>">
+												<input type="text" hidden value="<?php echo $value['idplaylist'] ?>" name='idplaylist' id="idplaylist">
 											</div>
 										</div>
-
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Ca sĩ:</label>
 											<div class="col-md-9">
-												<input name="tencasi" class="form-control" type="text"  value="" id="tencasi">
+												<input name="tencasi" class="form-control" type="text"  value="<?php echo $value['tencasi'] ?>" id="tencasi">
 											</div>
 										</div>
-
-										<div class="form-group row">
-											<label class="col-md-3 col-form-label">Thể loại:</label>
-											<div class="col-md-9">
-												<select class="form-control form-control-lg" id="theloai">
-													<optgroup label="Việt Nam"></optgroup>
-													<?php foreach ($theloai_Vietnam['danhsachtheloai'] as $key => $value) {
-														echo '<option value="'.$value['idtheloai'].'">'.$value['tentheloai'].'</option>';
-													} ?>
-													<optgroup label="Âu Mỹ"></optgroup>
-													<?php foreach ($theloai_AuMy['danhsachtheloai'] as $key => $value) {
-														echo '<option value="'.$value['idtheloai'].'">'.$value['tentheloai'].'</option>';
-													} ?>
-													<optgroup label="Châu Á"></optgroup>
-													<?php foreach ($theloai_ChauA['danhsachtheloai'] as $key => $value) {
-														echo '<option value="'.$value['idtheloai'].'">'.$value['tentheloai'].'</option>';
-													} ?>
-												</select>
-
-											</div>
-										</div>
-
-
+										
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Hình ảnh playlist:</label>
 											<div class="col-md-9">
 												<div class="row">
 													<div class="col-sm-6">
-														<img class="img-fluid" src="http://localhost/ProjectWeb/img/img_playlist/img-plist-full.jpg"">
+														<img class="img-fluid" src="<?php echo $value['duongdananhplaylist'] ?>">
 													</div>
 													<div class="col-sm-6">
 
@@ -199,7 +178,31 @@
 												<!-- <input id="anhavatar" name="files[]" class="form-control" type="file"> -->
 											</div>
 										</div>
+										<?php } ?>
 
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Thể loại:</label>
+											<div class="col-md-9">
+												<select class="form-control form-control-lg" id="theloai">
+													<optgroup label="Việt Nam"></optgroup>
+													<?php foreach ($theloai_Vietnam['danhsachtheloai'] as $key => $value) {
+														echo '<option value="'.$value['idtheloai'].'">'.$value['tentheloai'].'</option>';
+													} ?>
+													<optgroup label="Âu Mỹ"></optgroup>
+													<?php foreach ($theloai_AuMy['danhsachtheloai'] as $key => $value) {
+														echo '<option value="'.$value['idtheloai'].'">'.$value['tentheloai'].'</option>';
+													} ?>
+													<optgroup label="Châu Á"></optgroup>
+													<?php foreach ($theloai_ChauA['danhsachtheloai'] as $key => $value) {
+														echo '<option value="'.$value['idtheloai'].'">'.$value['tentheloai'].'</option>';
+													} ?>
+												</select>
+
+											</div>
+										</div>
+
+
+										
 
 
 										<div class="form-group row">
@@ -341,7 +344,7 @@
     	});
 
 
-    	$("#btn-luu").click(function(event) {
+    	/*$("#btn-luu").click(function(event) {
     		$.ajax({
     			url: 'capnhatplaylist/themplaylist',
     			type: 'POST',
@@ -356,7 +359,29 @@
     		})
     		.done(function() {
     			console.log("success");
-    		
+
+    		})
+    		.fail(function() {
+    			console.log("error");
+    		})
+    		.always(function() {
+    			console.log("complete");
+    		});
+    	});*/
+
+    	$("#btn-luu").click(function(event) {
+    		$.ajax({
+    			url: 'capnhatplaylist/suaplaylist',
+    			type: 'POST',
+    			dataType: 'json',
+    			data: {
+    				tenplaylist:$("#tenplaylist").val(),		
+    				idplaylist:$("#idplaylist").val()
+    			},
+    		})
+    		.done(function() {
+    			console.log("success");
+
     		})
     		.fail(function() {
     			console.log("error");
