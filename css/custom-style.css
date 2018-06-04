@@ -340,3 +340,52 @@ audio {
 }
 
   /* trangcanhan_view end*/
+
+
+/* capnhatplaylist_view */
+#myInput {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
+
+  #myUL {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #myUL li {
+    border: 1px solid #ddd;
+    /*margin-top: -1px; /* Prevent double borders */
+    background-color: #fff;
+    padding: 12px; 
+    /*text-decoration: none;*/ 
+    font-size: 12px;
+    color: black;
+    /* display: block */
+  }
+
+  #myUL li a{
+    font-size: 12px;
+  }
+  
+  #myUL li:hover {
+    background-color: #f6f6f6;
+  }
+
+  #myUL li a:hover:not(.header) {
+    background-color: #eee;
+  }
+
+  #myUL li .btn-chon{
+    font-size: .8rem;
+    padding: .1rem 0.5rem;
+    float: right;
+  }
+  /* capnhatplaylist_view */
