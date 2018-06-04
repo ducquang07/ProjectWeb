@@ -115,7 +115,7 @@ class trangcanhan extends CI_Controller {
 		}
 	}
 
-		public function uploadfile()
+	public function uploadfile()
 	{
 		$uploadfile = new UploadHandler();
 

@@ -25,6 +25,27 @@ class dangnhac_model extends CI_Model {
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
+
+	public function timcasi($keyword)
+	{
+		$sql="Select * from casi where tencasi like '%$keyword%'";
+		$dulieu=$this->db->query($sql);
+		return $dulieu;
+	}
+
+	public function timnhacsi($keyword)
+	{
+		$sql="Select * from nhacsi where tennhacsi like '%$keyword%'";
+		$dulieu=$this->db->query($sql);
+		return $dulieu;
+	}
+
+	public function thembaihat($tenbaihat,$duongdannhac,$duongdananhbaihat,$idnhacsi,$idcasi,$idnguoidung,$idtheloai)
+	{
+		$sql="INSERT INTO baihat( tenbaihat, duongdannhac, duongdananhbaihat, idnhacsi, idcasi, idnguoidung, idtheloai) VALUES ('$tenbaihat','$duongdannhac','$duongdananhbaihat','$idnhacsi','$idcasi','$idnguoidung','$idtheloai')";
+		$this->db->query($sql);
+		return $this->db->affected_rows();
+	}
 }
 
 /* End of file dangnhac_model.php */

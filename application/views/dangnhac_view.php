@@ -100,24 +100,42 @@
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Tên bài hát:</label>
 											<div class="col-md-9">
-												<input name="tenbaihat" class="form-control" type="text">
+												<input id="tenbaihat" name="tenbaihat" class="form-control" type="text">
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Ca sĩ:</label>
 											<div class="col-md-9">
-												<input name="casi" class="form-control" type="text">
+												<input id="casi" name="casi" class="form-control" type="text">
 											</div>
 										</div>
 
 										<div class="form-group row">
-											<label class="col-md-3 col-form-label">Chọn file:</label>
+											<label class="col-md-3 col-form-label">Nhạc sĩ:</label>
+											<div class="col-md-9">
+												<input id="nhacsi" name="casi" class="form-control" type="text">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Chọn file ảnh:</label>
 											<div class="col-md-9">
 												<span class="btn btn-outline-success fileinput-button">
 								                    <i class="glyphicon glyphicon-plus"></i>
-								                    <span>Chọn file...</span>
-								                    <input id="anhavatar" class="form-control" type="file" name="files[]" multiple="">
+								                    <span>Chọn file ảnh...</span>
+								                    <input id="fileanh" class="form-control" type="file" name="files[]" multiple="">
+						                		</span>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Chọn file nhạc:</label>
+											<div class="col-md-9">
+												<span class="btn btn-outline-success fileinput-button">
+								                    <i class="glyphicon glyphicon-plus"></i>
+								                    <span>Chọn file nhạc...</span>
+								                    <input id="filenhac" class="form-control" type="file" name="files[]" multiple="">
 						                		</span>
 											</div>
 										</div>
@@ -125,21 +143,22 @@
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Thể loại:</label>
 											<div class="col-md-9">
-												<input type="select" class="form-control" name="theloai" id="theloai">
+												<select type="select" class="form-control" name="theloai" id="theloai">
 													<?php foreach ($theloai['thongtintheloai'] as $key => $value):?> 
-														<option value="<?= $value['tentheloai'] ?>"><?= $value['tentheloai'] ?></option>
+														<option value="<?= $value['idtheloai'] ?>"><?= $value['tentheloai'] ?></option>
 													<?php endforeach ?>										
-												<!-- </select> -->
+												</select>
 												
 											</div>
 										</div>
 										
 										<div class="form-group row">
 											<div class="col-md-5"></div>
-											<div class="col-md-4">
+											<div class="col-md-7 nuttailen">
 												<input type="button" class="btn btn-lg btn-outline-danger tailen" value="Tải lên">
+												
 											</div>
-											<div class="col-md-3"></div>
+											
 										</div>
 									<!-- </form> -->
 								</div>
@@ -157,7 +176,7 @@
     	<!-- Placed at the end of the document so the pages load faster -->
     	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    	
+    	<script type="text/javascript" src="<?php echo base_url() ?>vendor/lib/typeahead.js"></script>
     	
 
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -166,4 +185,104 @@
 	    </script>
 
 </body>
+<script>
+    $(document).ready(function () {
+        $('#casi').typeahead({
+            source: function (query, result) {
+                $.ajax({
+                    url: "dangnhac/searchcasi",
+					data: 'query=' + query,            
+                    dataType: "json",
+                    type: "POST",
+                    success: function (data) {
+						result($.map(data, function (item) {
+							return item;
+                        }));
+                    }
+                });
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $('#nhacsi').typeahead({
+            source: function (query, result) {
+                $.ajax({
+                    url: "dangnhac/searchnhacsi",
+					data: 'query=' + query,            
+                    dataType: "json",
+                    type: "POST",
+                    success: function (data) {
+						result($.map(data, function (item) {
+							return item;
+                        }));
+                    }
+                });
+            }
+        });
+    });
+
+    duongdan = '<?php echo base_url() ?>';
+
+	$('#filenhac').fileupload({
+		url: duongdan + 'dangnhac/uploadfilenhac',
+		dataType: 'json',
+		acceptFileTypes:  /(\.|\/)(mp3)$/i,//danh sách trắng cho phép upload
+		maxFileSize: 150000000,//tính bằng byte
+		done: function(e, data){
+			$.each(data.result.files, function (index, file) {
+            	filemusicurl = file.url;
+            	filename = $('input[type=file]').val().split('\\').pop();
+          	});
+		}
+	});
+
+	$('#fileanh').fileupload({
+		url: duongdan + 'dangnhac/uploadfileanh',
+		dataType: 'json',
+		done: function(e, data){
+			$.each(data.result.files, function (index, file) {
+            	fileanhmusicurl = file.url;
+          	});
+		}
+	});
+
+	$('.tailen').click(function(event) {
+		// if(!tenfile)
+		// {
+		// 	tenfile= $("#anhdaidien").attr("src");
+		// }
+		$.ajax({
+			url: 'dangnhac/thembaihat',
+			type: 'POST',
+			dataType: 'json',
+			data: {
+				tennhacsi : $('#nhacsi').val(),
+				tencasi : $('#casi').val(),
+				tenbaihat : $('#tenbaihat').val(),
+				// tenbaihat : $('#tenbaihat').val(),
+				idtheloai : $('#theloai').val(),
+				duongdannhac : filemusicurl,
+				duongdananhbaihat : fileanhmusicurl
+				},
+		})
+		.done(function(data) {
+			console.log("success");
+			$("i.trangthaitailen").remove();
+			if(data>0)
+			{
+				$('.nuttailen').append('<i style="color:red;" class="trangthaitailen">Tải lên thành công</i>');
+	            // location.reload();
+			}
+			else
+			{
+				$('.nuttailen').append('<i style="color:red;" class="trangthaitailen">Tải lên thất bại</i>');
+	            // location.reload();
+			}
+		})
+		.fail(function() {
+			console.log("error");
+		})
+	});
+</script>
 </html>
