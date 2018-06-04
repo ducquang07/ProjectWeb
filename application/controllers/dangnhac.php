@@ -1,6 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 include 'UploadMusicHandler.php';
+include 'UploadImageHandler.php';
 
 class dangnhac extends CI_Controller {
 
