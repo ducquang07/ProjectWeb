@@ -29,6 +29,7 @@
 		<?php foreach ($baihat['thongtinbaihat'] as $key => $value) {
 			$obj_baihat=array('tenbaihat'=>$value['tenbaihat'],
 				'idbaihat'=>$value['idbaihat'],
+				'idcasi'=>$value['idcasi'],
 				'tencasi'=>$value['tencasi'],
 				'duongdannhac'=>$value['duongdannhac'],
 				'luotnghe'=>$value['luotnghe'],
@@ -77,7 +78,7 @@
 							<div class="mb-4 name-title">
 								<h3 class="card-title" id="tenbaihat"><?php echo $obj_baihat['tenbaihat']?></h3>
 								<span>-</span>
-								<h4 class="card-title" id="tencasi"><a href="#" ><?php echo $obj_baihat['tencasi']?></a></h4>
+								<h4 class="card-title" id="tencasi"><a href="<?php echo base_url() ?>thongtincasi/casi/<?php echo $obj_baihat['idcasi'] ?>" ><?php echo $obj_baihat['tencasi']?></a></h4>
 							</div>
 							<div class="card mb-4">
 								<img class="card-img-top img-fluid" src="<?php echo $obj_baihat['duongdananhbaihat'] ?>" alt="">
