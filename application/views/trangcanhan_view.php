@@ -36,6 +36,10 @@
 	<link href="<?php echo base_url() ?>css/custom-style.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>css/custom-sidenav.css" rel="stylesheet">
 
+	<!-- css upload và crop image -->
+	<link href="<?php echo base_url() ?>jqueryupload/css/jquery.fileupload-ui.css" rel="stylesheet">
+	<link href="<?php echo base_url() ?>jqueryupload/css/jquery.fileupload.css" rel="stylesheet">
+
 	<style>
 	
 
@@ -186,7 +190,7 @@
 							<div class="card mb-4 thongtinnguoidungsua d-none" >
 								<div class="card-block">
 									<h3 class="card-title"><i class="fa fa-user"></i>  Thông tin người dùng<ng></ng></h3>
-									<form class="form" action="#">
+									<!-- <form class="form" action="#"> -->
 										
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Ảnh đại diện:</label>
@@ -294,7 +298,7 @@
 												<br>
 											</div>
 										</div>
-									</form>
+									<!-- </form> -->
 								</div>
 							</div>
 
