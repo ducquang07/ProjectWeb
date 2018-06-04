@@ -214,8 +214,11 @@
 										</div>
 
 										<div class="form-group ">
-											<div class="row"><label class="col-md-5 col-form-label">Danh sách bài hát:</label></div>
 											<div class="row">
+												<label class="col-md-6 col-form-label">Danh sách bài hát:</label>
+												<label class="col-md-5 col-form-label">Danh sách bài hát của playlist:</label>
+											</div>
+											<div class="row mb-4">
 												<div class="col-md-6">
 													<input class="filter form-control" id="trabaihat" type="text" placeholder="Nhập từ khóa để tìm bài hát" value=""> 
 													<div class="contain" style="height:auto;max-height:400px;overflow:scroll;">
@@ -226,12 +229,24 @@
 												</div> 
 												<div class="col-md-6"> 
 
-													<input class="filter form-control" type="text" placeholder="Filter"> 
 													<div class="contain-select" style="height:auto;max-height:400px;overflow:scroll;">
 														<ul id="myUL">	
+															<?php foreach ($danhsachbaihat['danhsachbaihatplaylist'] as $key => $value) {?>
+															<li id="<?php echo $value['idbaihat'] ?>">
+																<a ><?php echo $value['tenbaihat'] ?></a>-
+																<a class="item-baihat-tencasi"><?php echo $value['tencasi'] ?></a>
+																<span class="btn btn-lg btn-danger btn-chon" style="padding: .1rem 0.5rem;float: right">
+																	<i class="fa fa-trash"></i>
+																</span>
+															</li>
+															<?php } ?>
 														</ul>
 													</div>
 												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-7"></div>
+												<div class="col-md-4"><span class="btn btn-lg btn-danger" id="btn-xoalist">Xóa list bài hát</span></div>
 											</div>
 										</div>
 										<div class="form-group row">
@@ -319,6 +334,8 @@
     		$(".contain-select ul").append('<li>'+$(this).html()+'</li>');
     	});*/
 
+
+    	//thêm bài hát vào playlist
     	$(".contain ul").on('click','li',function(e){
     		var idbaihat =$(this).closest('li').attr("id");
     		if ($('.contain-select ul').has('#'+idbaihat).length) {
@@ -327,14 +344,77 @@
     		$(".contain-select ul").append('<li id="'+idbaihat+'">'+$(this).closest('li').html()+'</li>');
     		$(".contain-select ul li span").remove();
     		$(".contain-select ul li ").append('<span class="btn btn-lg btn-danger btn-chon"><i class="fa fa-trash"></i></span>');
-    	});
-    	$(".contain-select ul").on('click','.btn-chon',function(e){
-    		$(this).closest('li').remove();
+    		$.ajax({
+    			url: '<?php echo base_url() ?>/capnhatplaylist/thembaihatvaoplaylist',
+    			type: 'POST',
+    			dataType: 'json',
+    			data: {
+    				idplaylist:$("#idplaylist").val(),
+    				idbaihat:$(this).closest('li').attr("id")
+    			},
+    		})
+    		.done(function() {
+    			console.log("success");
+    		})
+    		.fail(function() {
+    			console.log("error");
+    		})
+    		.always(function() {
+    			console.log("complete");
+    		});
+    		
     	});
 
+    	//xóa bài hát khỏi playlist
+    	$(".contain-select ul").on('click','.btn-chon',function(e){
+    		idbaihat_temp=$(this).closest('li').attr("id");
+    		$(this).closest('li').remove();
+    		$.ajax({
+    			url: '<?php echo base_url() ?>/capnhatplaylist/xoabaihatkhoiplaylist',
+    			type: 'POST',
+    			dataType: 'json',
+    			data: {
+    				idplaylist:$("#idplaylist").val(),
+    				idbaihat:idbaihat_temp
+    			},
+    		})
+    		.done(function() {
+    			console.log("success");
+    		})
+    		.fail(function() {
+    			console.log("error");
+    		})
+    		.always(function() {
+    			console.log("complete");
+    		});
+    		
+    	});
+
+    	//xóa list bài hát
+    	$("#btn-xoalist").click(function(event) {
+    		$(".contain-select ul li").remove();
+    		$.ajax({
+    			url: '<?php echo base_url()?>capnhatplaylist/xoalistbaihat',
+    			type: 'POST',
+    			dataType: 'json',
+    			data: {
+    				idplaylist: $("#idplaylist").val()
+    			},
+    		})
+    		.done(function() {
+    			console.log("success");
+    		})
+    		.fail(function() {
+    			console.log("error");
+    		})
+    		.always(function() {
+    			console.log("complete");
+    		});
+    		
+    	});
 
     	$('#fileanh').fileupload({
-    		url: '<?php echo base_url()?>dangnhac/uploadfileanh',
+    		url: '<?php echo base_url()?>capnhatplaylist/uploadfileanh',
     		dataType: 'json',
     		done: function(e, data){
     			$.each(data.result.files, function (index, file) {
@@ -342,6 +422,8 @@
     			});
     		}
     	});
+
+
 
 
     	/*$("#btn-luu").click(function(event) {
@@ -390,6 +472,8 @@
     			console.log("complete");
     		});
     	});
+
+
 
     </script>
 

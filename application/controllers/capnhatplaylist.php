@@ -17,7 +17,7 @@ class capnhatplaylist extends CI_Controller {
 		$thongtinnguoidung=$this->trangcanhan_model->laythongtinnguoidung($idusercurrent);
 
 		$playlist=$this->capnhatplaylist_model->laythongtinplaylist($idplaylist);
-		
+		$danhsachbaihatplaylist=$this->capnhatplaylist_model->laydanhsachbaihatplaylist($idplaylist);
 
 		$theloai_Vietnam=$this->capnhatplaylist_model->Get_theLoai('Việt Nam');
 		$theloai_AuMy=$this->capnhatplaylist_model->Get_theLoai('Âu Mỹ');
@@ -26,7 +26,9 @@ class capnhatplaylist extends CI_Controller {
 				    'theloai_Vietnam'=>array('danhsachtheloai'=>$theloai_Vietnam),
 					'theloai_AuMy'=>array('danhsachtheloai'=>$theloai_AuMy),
 					'theloai_ChauA'=>array('danhsachtheloai'=>$theloai_ChauA),
-					'playlist'=>array('thongtinplaylist'=>$playlist));
+					'playlist'=>array('thongtinplaylist'=>$playlist),
+					'danhsachbaihat'=>array('danhsachbaihatplaylist'=>$danhsachbaihatplaylist)
+				);
 
 
 		$this->load->view('capnhatplaylist_view',$data);
@@ -107,6 +109,50 @@ class capnhatplaylist extends CI_Controller {
 		}
 	}
 
+	public function thembaihatvaoplaylist()
+	{
+		$idplaylist=$this->input->post('idplaylist');
+		$idbaihat=$this->input->post('idbaihat');
+		$this->load->model('capnhatplaylist_model');
+		if($this->capnhatplaylist_model->thembaihatvaoplaylist($idplaylist,$idbaihat))
+		{
+			$this->load->view('capnhatthanhcong_playlist_view');
+		}
+		else
+		{
+			$this->load->view('capnhatthatbai_playlist_view');
+		}
+	}
+
+
+	public function xoabaihatkhoiplaylist()
+	{
+		$idplaylist=$this->input->post('idplaylist');
+		$idbaihat=$this->input->post('idbaihat');
+		$this->load->model('capnhatplaylist_model');
+		if($this->capnhatplaylist_model->xoabaihatkhoiplaylist($idplaylist,$idbaihat))
+		{
+			$this->load->view('capnhatthanhcong_playlist_view');
+		}
+		else
+		{
+			$this->load->view('capnhatthatbai_playlist_view');
+		}
+	}
+
+	public function xoalistbaihat()
+	{
+		$idplaylist=$this->input->post('idplaylist');
+		$this->load->model('capnhatplaylist_model');
+		if($this->capnhatplaylist_model->xoalistbaihat($idplaylist))
+		{
+			$this->load->view('capnhatthanhcong_playlist_view');
+		}
+		else
+		{
+			$this->load->view('capnhatthatbai_playlist_view');
+		}
+	}
 }
 
 /* End of file capnhatplaylist.php */

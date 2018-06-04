@@ -13,7 +13,7 @@ class capnhatplaylist_model extends CI_Model {
 	public function laydanhsachbaihat($keyword)
 	{
 		if($keyword!==""||$keyword!==null){
-			$sql="Select idbaihat,tenbaihat,tencasi from baihat,casi where casi.idcasi=baihat.idcasi and match(baihat.tenbaihat) against('$keyword')";
+			$sql="Select idbaihat,tenbaihat,tencasi from baihat,casi where casi.idcasi=baihat.idcasi and baihat.tenbaihat like '%$keyword%'";
 			$dulieu=$this->db->query($sql);
 			foreach($dulieu->result_array() as $row){
 				echo '<li id="'.$row['idbaihat'].'">';
@@ -65,12 +65,47 @@ class capnhatplaylist_model extends CI_Model {
 		return $this->db->affected_rows();
 	}
 
+
+
+
+
 	public function suaplaylist($idplaylist,$tenplaylist)
 	{
 		$sql="call proc_ThayDoiTenPlaylist('".$idplaylist."','".$tenplaylist."')";
 		echo $sql;
 		return $this->db->query($sql);
 	}
+
+	public function laydanhsachbaihatplaylist($idplaylist)
+	{
+		$sql="Select baihat.idbaihat,tenbaihat,tencasi from baihat,casi,chitietplaylist where baihat.idcasi=casi.idcasi and chitietplaylist.idbaihat=baihat.idbaihat and chitietplaylist.idplaylist='$idplaylist'";
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
+
+	public function thembaihatvaoplaylist($idplaylist,$idbaihat)
+	{
+		$sql="call proc_ThemBaiHatVaoPlaylist('".$idplaylist."','".$idbaihat."')";
+		echo $sql;
+		return $this->db->query($sql);
+	}
+
+	public function xoabaihatkhoiplaylist($idplaylist,$idbaihat)
+	{
+		$sql="call proc_XoaBaiHatKhoiPlaylist('".$idplaylist."','".$idbaihat."')";
+		echo $sql;
+		return $this->db->query($sql);
+	}
+
+	public function xoalistbaihat($idplaylist)
+	{
+		$sql="call proc_XoaTatCaBaiHatKhoiPlaylist('".$idplaylist."')";
+		echo $sql;
+		return $this->db->query($sql);
+	}
+
+
 }
 
 /* End of file capnhatplaylist_model.php */
