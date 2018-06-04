@@ -156,6 +156,7 @@
 											<div class="col-md-5"></div>
 											<div class="col-md-7 nuttailen">
 												<input type="button" class="btn btn-lg btn-outline-danger tailen" value="Tải lên">
+												<input type="button" class="btn btn-lg btn-outline-danger tailen" value="Tải lên">
 												
 											</div>
 											

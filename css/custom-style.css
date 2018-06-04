@@ -264,7 +264,19 @@ audio {
   color: #90949c;
 }
 
-
+/* start thongtincasi */
+.avatar-casi img {
+    width: 140px;
+    height: 140px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 3px solid rgba(0,0,30,0.8);
+    position: relative;
+    margin-top: 5px;
+    z-index: 100;
+}
+/* end thongtincasi */
 
 /* trangcanhan_view start*/
 
@@ -320,11 +332,11 @@ audio {
 }
 
 .user-profile-details {
-  margin: 20px 0;
+  margin: 5px 0;
 }
 
 .user-profile-details__line {
-  margin-bottom: 14px;
+  margin-bottom: 5px;
 }
 
   /* trangcanhan_view end*/

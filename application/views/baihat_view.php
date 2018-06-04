@@ -126,7 +126,7 @@
 														<div class="content-baihat">
 															<a href="<?php echo base_url() ?>baihat/trinhphatnhac/<?php echo $value['idbaihat'] ?>" class="item-baihat-tenbaihat"><?php echo $value['tenbaihat'] ?></a>
 															-
-															<a href="#" class="item-baihat-tencasi"><?php echo $value['tencasi'] ?></a>
+															<a href="<?php echo base_url() ?>thongtincasi/casi/<?php echo $value['idcasi'] ?>" class="item-baihat-tencasi"><?php echo $value['tencasi'] ?></a>
 														</div>
 													</td>
 													<td>
