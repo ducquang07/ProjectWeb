@@ -17,8 +17,8 @@ class CapNhatPlaylist_model extends CI_Model {
 			$dulieu=$this->db->query($sql);
 			foreach($dulieu->result_array() as $row){
 				echo '<li id="'.$row['idbaihat'].'">';
-				echo '<a >'.$row['tenbaihat'].'</a>-';
-				echo '<a class="item-baihat-tencasi">'.$row['tencasi'].'</a>';
+				echo '<a id="tenbaihat">'.$row['tenbaihat'].'</a>-';
+				echo '<a id="tencasi">'.$row['tencasi'].'</a>';
 				echo '<span class="btn btn-lg btn-success btn-chon" style="padding: .1rem 0.5rem;float: right"><i class="fa fa-arrow-right"></i></span>';
 				echo '</li>';
 			}
@@ -78,16 +78,28 @@ class CapNhatPlaylist_model extends CI_Model {
 
 	public function laydanhsachbaihatplaylist($idplaylist)
 	{
+
+		$this->db->query("SET SESSION TRANSACTION ISOLATION LEVEL Read Uncommitted");
+		$this->db->trans_start();
 		$sql="Select baihat.idbaihat,tenbaihat,tencasi from baihat,casi,chitietplaylist where baihat.idcasi=casi.idcasi and chitietplaylist.idbaihat=baihat.idbaihat and chitietplaylist.idplaylist='$idplaylist'";
 		$dulieu=$this->db->query($sql);
+		$this->db->trans_complete();
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
 
 	public function thembaihatvaoplaylist($idplaylist,$idbaihat)
 	{
-		$sql="call proc_ThemBaiHatVaoPlaylist('".$idplaylist."','".$idbaihat."')";
-		echo $sql;
+
+		 $sql="call proc_ThemBaiHatVaoPlaylist('".$idplaylist."','".$idbaihat."')";
+		// $sql="call proc_ThemBaiHatVaoPlaylist('".$idplaylist."','".$idbaihat."')";
+
+		
+
+		//demo_
+		//$sql="Insert into chitietplaylist values($idplaylist,$idbaihat)";
+
+
 		return $this->db->query($sql);
 	}
 
@@ -101,7 +113,6 @@ class CapNhatPlaylist_model extends CI_Model {
 	public function xoalistbaihat($idplaylist)
 	{
 		$sql="call proc_XoaTatCaBaiHatKhoiPlaylist('".$idplaylist."')";
-		echo $sql;
 		return $this->db->query($sql);
 	}
 

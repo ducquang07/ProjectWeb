@@ -116,11 +116,13 @@ class CapNhatPlaylist extends CI_Controller {
 		$this->load->model('CapNhatPlaylist_model');
 		if($this->CapNhatPlaylist_model->thembaihatvaoplaylist($idplaylist,$idbaihat))
 		{
-			$this->load->view('CapNhatThanhCong_Playlist_view');
+			//$this->load->view('CapNhatThanhCong_Playlist_view');
+			echo 1;
 		}
 		else
 		{
-			$this->load->view('CapNhatThatBai_Playlist_view');
+			//$this->load->view('CapNhatThatBai_Playlist_view');
+			echo 0;
 		}
 	}
 
@@ -146,11 +148,13 @@ class CapNhatPlaylist extends CI_Controller {
 		$this->load->model('CapNhatPlaylist_model');
 		if($this->CapNhatPlaylist_model->xoalistbaihat($idplaylist))
 		{
-			$this->load->view('CapNhatThanhCong_Playlist_view');
+			//$this->load->view('CapNhatThanhCong_Playlist_view');
+			echo 1;
 		}
 		else
 		{
-			$this->load->view('CapNhatThatBai_Playlist_view');
+			//$this->load->view('CapNhatThatBai_Playlist_view');
+			echo 0;
 		}
 	}
 }

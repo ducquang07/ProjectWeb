@@ -249,6 +249,15 @@
 												<div class="col-md-4"><span class="btn btn-lg btn-danger" id="btn-xoalist">Xóa list bài hát</span></div>
 											</div>
 										</div>
+										<div class="form-group ">
+											<div class="row">
+												<div class="col-md-3"></div>
+												<div class="col-md-6" id="trangthai">
+													
+												</div>
+												<div class="col-md-3"></div>
+											</div>
+										</div>
 										<div class="form-group row">
 											<div class="col-md-3"></div>
 											<div class="col-md-3">
@@ -337,13 +346,15 @@
 
     	//thêm bài hát vào playlist
     	$(".contain ul").on('click','li',function(e){
+    		$("div.thongbao").remove();
+    		$("#trangthai").append('<div class="alert alert-success thongbao" role="alert" style="color: #721c24;"><b>Đang xử lí...</b></div>');
     		var idbaihat =$(this).closest('li').attr("id");
     		if ($('.contain-select ul').has('#'+idbaihat).length) {
     			return;
     		}
-    		$(".contain-select ul").append('<li id="'+idbaihat+'">'+$(this).closest('li').html()+'</li>');
-    		$(".contain-select ul li span").remove();
-    		$(".contain-select ul li ").append('<span class="btn btn-lg btn-danger btn-chon"><i class="fa fa-trash"></i></span>');
+    		var content='<li id="'+idbaihat+'">'+$(this).closest('li').html()+'</li>';
+    		//$(".contain-select ul").append('<li id="'+idbaihat+'">'+$(this).closest('li').html()+'</li>');
+    		
     		$.ajax({
     			url: '<?php echo base_url() ?>/CapNhatPlaylist/thembaihatvaoplaylist',
     			type: 'POST',
@@ -353,14 +364,22 @@
     				idbaihat:$(this).closest('li').attr("id")
     			},
     		})
-    		.done(function() {
+    		.done(function(data) {
     			console.log("success");
+    			$("div.thongbao").remove();
+    			if(data>0){
+    				$("#trangthai").append('<div class="alert alert-success thongbao" role="alert" style="color: #721c24;"><b>Cập nhật danh sách bài hát thành công.</b></div>');
+    				$(".contain-select ul").append(content);
+    				$(".contain-select ul li span").remove();
+    				$(".contain-select ul li ").append('<span class="btn btn-lg btn-danger btn-chon"><i class="fa fa-trash"></i></span>');
+    			}
     		})
     		.fail(function() {
     			console.log("error");
     		})
     		.always(function() {
     			console.log("complete");
+
     		});
     		
     	});
@@ -392,7 +411,9 @@
 
     	//xóa list bài hát
     	$("#btn-xoalist").click(function(event) {
-    		$(".contain-select ul li").remove();
+    		$("div.thongbao").remove();
+    		$("#trangthai").append('<div class="alert alert-success thongbao" role="alert" style="color: #721c24;"><b>Đang xử lí...</b></div>');
+    		
     		$.ajax({
     			url: '<?php echo base_url()?>CapNhatPlaylist/xoalistbaihat',
     			type: 'POST',
@@ -401,8 +422,13 @@
     				idplaylist: $("#idplaylist").val()
     			},
     		})
-    		.done(function() {
+    		.done(function(data) {
     			console.log("success");
+    			$("div.thongbao").remove();
+    			if(data>0)
+    			{
+    				$(".contain-select ul li").remove();
+    			}
     		})
     		.fail(function() {
     			console.log("error");
