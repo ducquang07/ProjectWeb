@@ -91,13 +91,13 @@ class CapNhatPlaylist_model extends CI_Model {
 	public function thembaihatvaoplaylist($idplaylist,$idbaihat)
 	{
 
-		 $sql="call proc_ThemBaiHatVaoPlaylist('".$idplaylist."','".$idbaihat."')";
+		 //$sql="call proc_ThemBaiHatVaoPlaylist('".$idplaylist."','".$idbaihat."')";
 		// $sql="call proc_ThemBaiHatVaoPlaylist('".$idplaylist."','".$idbaihat."')";
 
 		
 
 		//demo_
-		//$sql="Insert into chitietplaylist values($idplaylist,$idbaihat)";
+		$sql="Insert into chitietplaylist values($idplaylist,$idbaihat)";
 
 
 		return $this->db->query($sql);

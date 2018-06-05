@@ -10,7 +10,7 @@
  * https://opensource.org/licenses/MIT
  */
 
-class UploadImageHandler
+class Upload_anhplaylist_Handler
 {
 
     protected $options;
