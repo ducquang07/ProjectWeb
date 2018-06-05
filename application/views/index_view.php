@@ -76,7 +76,7 @@
                     <br>
                     <br>
                     <br>
-                    <a class="btn btn-primary btn-xl js-scroll-trigger btn-header" href="<?php echo base_url() ?>trangchu">START NOW</a>
+                    <a class="btn btn-primary btn-xl js-scroll-trigger btn-header" href="<?php echo base_url() ?>TrangChu">START NOW</a>
                 </div>
             </div>
         </div>

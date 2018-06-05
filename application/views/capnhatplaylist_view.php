@@ -428,6 +428,7 @@
     			if(data>0)
     			{
     				$(".contain-select ul li").remove();
+    				location.reload();
     			}
     		})
     		.fail(function() {

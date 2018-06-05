@@ -153,11 +153,11 @@
 										</div>
 										
 										<div class="form-group row">
-											<div class="col-md-5"></div>
-											<div class="col-md-7 nuttailen">
+											<div class="col-md-7"></div>
+											<div class="col-md-5 nuttailen">
+												<a class="btn btn-lg btn-secondary" href="<?php echo base_url() ?>TrangCaNhan">Trở Lại</a>
 												<input type="button" class="btn btn-lg btn-outline-danger tailen" value="Tải lên">
-												<input type="button" class="btn btn-lg btn-outline-danger tailen" value="Tải lên">
-												
+												<br>
 											</div>
 											
 										</div>

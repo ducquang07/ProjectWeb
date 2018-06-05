@@ -471,7 +471,7 @@
 											</tbody>
 										</table>
 
-										<a href="<?php echo base_url() ?>dangnhac" class="btn btn-lg btn-outline-success"><i class="fa fa-upload"></i> Upload bài hát</a>
+										<a href="<?php echo base_url() ?>DangNhac" class="btn btn-lg btn-outline-success"><i class="fa fa-upload"></i> Upload bài hát</a>
 									</div>
 									<div class="box_pageview">
 
