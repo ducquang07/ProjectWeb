@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 include 'phantrang.php';
-class baihat extends CI_Controller {
+class BaiHat extends CI_Controller {
 
 	public function __construct()
 	{
@@ -11,16 +11,16 @@ class baihat extends CI_Controller {
 	{
 
 		$keyword='';
-		$this->load->model('baihat_model');
+		$this->load->model('BaiHat_model');
 		//--Lấy tổng số dòng tìm được
-		$total_record=$this->baihat_model->get_TotalRecord($keyword);
+		$total_record=$this->BaiHat_model->get_TotalRecord($keyword);
 		//Lấy mảng dữ liệu bài hát hiển thị lên trang
 		//--Lấy mảng dữ liệu thể loại của từng khu vực
-		$theloai_Vietnam=$this->baihat_model->Get_theLoai('Việt Nam');
-		$theloai_AuMy=$this->baihat_model->Get_theLoai('Âu Mỹ');
-		$theloai_ChauA=$this->baihat_model->Get_theLoai('Châu Á');
+		$theloai_Vietnam=$this->BaiHat_model->Get_theLoai('Việt Nam');
+		$theloai_AuMy=$this->BaiHat_model->Get_theLoai('Âu Mỹ');
+		$theloai_ChauA=$this->BaiHat_model->Get_theLoai('Châu Á');
 		//Lấy mảng dữ liệu của ca sĩ hot
-		$casihot=$this->baihat_model->Get_danhsach_hot();
+		$casihot=$this->BaiHat_model->Get_danhsach_hot();
 		$config = array(
 			'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1, // Trang hiện tại
 			'total_record'  => $total_record, // Tổng số record
@@ -33,7 +33,7 @@ class baihat extends CI_Controller {
 		$paging->init($config);
 		$phantrang=$paging->html();
 
-		$danhsachbaihat=$this->baihat_model->show_Danhsachbaihat_keyword($keyword,$config['limit']);
+		$danhsachbaihat=$this->BaiHat_model->show_Danhsachbaihat_keyword($keyword,$config['limit']);
 		$data=array('baihat'=>array('danhsachbaihat'=>$danhsachbaihat),
 			'theloai_Vietnam'=>array('danhsachtheloai'=>$theloai_Vietnam),
 			'theloai_AuMy'=>array('danhsachtheloai'=>$theloai_AuMy),
@@ -43,8 +43,8 @@ class baihat extends CI_Controller {
 			'limit'=>$config['limit'],
 			'keyword'=>$keyword
 		);
-		$this->load->view('baihat_view',$data);
-		//--Tiến hành load baihat_view với dữ liệu là $data
+		$this->load->view('BaiHat_view',$data);
+		//--Tiến hành load BaiHat_view với dữ liệu là $data
 	}
 
 	public function Load_Page()
@@ -52,8 +52,8 @@ class baihat extends CI_Controller {
 		$pagenumer=$this->input->post('page');
 		$keyword=$this->input->post('keyword');
 		$limit=$this->input->post('limit');
-		$this->load->model('baihat_model');
-		$this->baihat_model->Get_Danhsachbaihat($pagenumer,$limit,$keyword);
+		$this->load->model('BaiHat_model');
+		$this->BaiHat_model->Get_Danhsachbaihat($pagenumer,$limit,$keyword);
 	}
 
 
@@ -82,15 +82,15 @@ class baihat extends CI_Controller {
 	public function timkiem()
 	{
 		$keyword=$_GET["keyword"];
-		$this->load->model('baihat_model');
+		$this->load->model('BaiHat_model');
 
 
-		$total_record=$this->baihat_model->get_TotalRecord($keyword);
-		$theloai_Vietnam=$this->baihat_model->Get_theLoai('Việt Nam');
-		$theloai_AuMy=$this->baihat_model->Get_theLoai('Âu Mỹ');
-		$theloai_ChauA=$this->baihat_model->Get_theLoai('Châu Á');
+		$total_record=$this->BaiHat_model->get_TotalRecord($keyword);
+		$theloai_Vietnam=$this->BaiHat_model->Get_theLoai('Việt Nam');
+		$theloai_AuMy=$this->BaiHat_model->Get_theLoai('Âu Mỹ');
+		$theloai_ChauA=$this->BaiHat_model->Get_theLoai('Châu Á');
 
-		$casihot=$this->baihat_model->Get_danhsach_hot();
+		$casihot=$this->BaiHat_model->Get_danhsach_hot();
 
 		$config = array(
 			'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1, // Trang hiện tại
@@ -104,7 +104,7 @@ class baihat extends CI_Controller {
 		$paging->init($config);
 		$phantrang=$paging->html();
 
-		$danhsachbaihat=$this->baihat_model->show_Danhsachbaihat_keyword($keyword,$config['limit'],$phantrang);
+		$danhsachbaihat=$this->BaiHat_model->show_Danhsachbaihat_keyword($keyword,$config['limit'],$phantrang);
 
 		$data=array('baihat'=>array('danhsachbaihat'=>$danhsachbaihat),
 			'theloai_Vietnam'=>array('danhsachtheloai'=>$theloai_Vietnam),
@@ -115,7 +115,7 @@ class baihat extends CI_Controller {
 			'limit'=>$config['limit'],
 			'keyword'=>$keyword
 		);
-		$this->load->view('baihat_view',$data,false);
+		$this->load->view('BaiHat_view',$data,false);
 	}
 
 }

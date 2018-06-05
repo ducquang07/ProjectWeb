@@ -711,7 +711,7 @@
     		duongdan = '<?php echo base_url() ?>';
     		tenfile = null;
     		$('#anhavatar').fileupload({
-    			url: duongdan + 'trangcanhan/uploadfile',
+    			url: duongdan + 'TrangCaNhan/uploadfile',
     			dataType: 'json',
     			disableImageResize: /Android(?!.*Chrome)|Opera/ 
     			.test(window.navigator && navigator.userAgent),
@@ -734,7 +734,7 @@
     			tenfile= $("#anhdaidien").attr("src");
     		}
     		$.ajax({
-    			url: 'trangcanhan/suathongtin',
+    			url: 'TrangCaNhan/suathongtin',
     			type: 'POST',
     			dataType: 'json',
     			data: {
@@ -768,7 +768,7 @@
 
     		$('.luumatkhau').click(function(event) {
     			$.ajax({
-    				url: 'trangcanhan/doimatkhau',
+    				url: 'TrangCaNhan/doimatkhau',
     				type: 'POST',
     				dataType: 'json',
     				data: {

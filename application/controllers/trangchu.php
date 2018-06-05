@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class trangchu extends CI_Controller {
+class TrangChu extends CI_Controller {
 
 	public function __construct()
 	{
@@ -9,7 +9,7 @@ class trangchu extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('trangchu_view');
+		$this->load->view('TrangChu_view');
 	}
 	public function logout_controller($value='')
 	{

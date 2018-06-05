@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class baihat_model extends CI_Model {
+class BaiHat_model extends CI_Model {
 
 	public function __construct()
 	{
@@ -85,5 +85,5 @@ class baihat_model extends CI_Model {
 
 }
 
-/* End of file baihat_model.php */
-/* Location: ./application/models/baihat_model.php */
+/* End of file BaiHat_model.php */
+/* Location: ./application/models/BaiHat_model.php */

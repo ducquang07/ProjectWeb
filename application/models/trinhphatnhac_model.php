@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class trinhphatnhac_model extends CI_Model {
+class TrinhPhatNhac_model extends CI_Model {
 
 	public $variable;
 

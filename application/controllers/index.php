@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class index extends CI_Controller {
+class Index extends CI_Controller {
 
 	public function __construct()
 	{
@@ -9,21 +9,21 @@ class index extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('index_view');
+		$this->load->view('Index_view');
 	}
 
 	public function singin_controller()
 	{
 		$username = $this->input->post('username');
 		$pass = $this->input->post('pass');
-		$this->load->model('index_model');
-		$ketqua = $this->index_model->singin($username,$pass);
+		$this->load->model('Index_model');
+		$ketqua = $this->Index_model->singin($username,$pass);
 		$ketqua = array('mangketqua' => $ketqua);
 
 		foreach ($ketqua as $key => $value) {
 			if(count($value)==0)
 				{
-					$this->load->view('dangnhapthatbai_view');
+					$this->load->view('DangNhapThatBai_view');
 				}
 			foreach ($value as $key => $value) {
 				if($value['tendangnhap']==$username && $value['matkhau']==$pass)
@@ -38,7 +38,7 @@ class index extends CI_Controller {
 					// 			   'tendangnhap' => $_SESSION["tendangnhap"],
 					// 			   'trangthai' => $_SESSION["trangthai"]
 					// 			);
-					$this->load->view('dangnhapthanhcong_view');
+					$this->load->view('DangNhapThanhCong_view');
 				}
 				
 			}
@@ -97,12 +97,12 @@ class index extends CI_Controller {
 		$psw = $this->input->post('psw');
 		$trangthai = 'Basic';
 		$duongdananh = base_url()."anhavatar/default_avatar.jpg";
-		$this->load->model('index_model');
+		$this->load->model('Index_model');
 
-		if($this->index_model->insert_user($fullname,$ngaysinh,$gender,$diachi,$email,$username,$psw,$trangthai,$duongdananh))
+		if($this->Index_model->insert_user($fullname,$ngaysinh,$gender,$diachi,$email,$username,$psw,$trangthai,$duongdananh))
 		{
 
-			$ketqua = $this->index_model->singin($username,$psw);
+			$ketqua = $this->Index_model->singin($username,$psw);
 			$ketqua = array('mangketqua' => $ketqua);
 
 			foreach ($ketqua as $key => $value) {
@@ -119,11 +119,11 @@ class index extends CI_Controller {
 					
 				}
 			}
-			$this->load->view('dangkythanhcong_view');
+			$this->load->view('DangKyThanhCong_view');
 		}
 		else
 		{
-			$this->load->view('dangkythatbai_view');
+			$this->load->view('DangKyThatBai_view');
 		}
 		
 	}

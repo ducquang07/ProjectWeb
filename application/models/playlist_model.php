@@ -1,6 +1,6 @@
 	<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
-	class playlist_model extends CI_Model {
+	class Playlist_model extends CI_Model {
 
 		public $variable;
 

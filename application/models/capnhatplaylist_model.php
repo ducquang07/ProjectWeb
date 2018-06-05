@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class capnhatplaylist_model extends CI_Model {
+class CapNhatPlaylist_model extends CI_Model {
 
 	public $variable;
 
@@ -108,5 +108,5 @@ class capnhatplaylist_model extends CI_Model {
 
 }
 
-/* End of file capnhatplaylist_model.php */
-/* Location: ./application/models/capnhatplaylist_model.php */
+/* End of file CapNhatPlaylist_model.php */
+/* Location: ./application/models/CapNhatPlaylist_model.php */

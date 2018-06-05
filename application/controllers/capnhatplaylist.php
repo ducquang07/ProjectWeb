@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 include 'Upload_anhplaylist_Handler.php';
-class capnhatplaylist extends CI_Controller {
+class CapNhatPlaylist extends CI_Controller {
 
 	public function __construct()
 	{
@@ -12,16 +12,16 @@ class capnhatplaylist extends CI_Controller {
 		$idplaylist=$this->input->post('idplaylist');
 
 		$idusercurrent = $this->session->userdata('id');
-		$this->load->model('trangcanhan_model');
-		$this->load->model('capnhatplaylist_model');
-		$thongtinnguoidung=$this->trangcanhan_model->laythongtinnguoidung($idusercurrent);
+		$this->load->model('TrangCaNhan_model');
+		$this->load->model('CapNhatPlaylist_model');
+		$thongtinnguoidung=$this->TrangCaNhan_model->laythongtinnguoidung($idusercurrent);
 
-		$playlist=$this->capnhatplaylist_model->laythongtinplaylist($idplaylist);
-		$danhsachbaihatplaylist=$this->capnhatplaylist_model->laydanhsachbaihatplaylist($idplaylist);
+		$playlist=$this->CapNhatPlaylist_model->laythongtinplaylist($idplaylist);
+		$danhsachbaihatplaylist=$this->CapNhatPlaylist_model->laydanhsachbaihatplaylist($idplaylist);
 
-		$theloai_Vietnam=$this->capnhatplaylist_model->Get_theLoai('Việt Nam');
-		$theloai_AuMy=$this->capnhatplaylist_model->Get_theLoai('Âu Mỹ');
-		$theloai_ChauA=$this->capnhatplaylist_model->Get_theLoai('Châu Á');
+		$theloai_Vietnam=$this->CapNhatPlaylist_model->Get_theLoai('Việt Nam');
+		$theloai_AuMy=$this->CapNhatPlaylist_model->Get_theLoai('Âu Mỹ');
+		$theloai_ChauA=$this->CapNhatPlaylist_model->Get_theLoai('Châu Á');
 		$data=array('nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung),
 				    'theloai_Vietnam'=>array('danhsachtheloai'=>$theloai_Vietnam),
 					'theloai_AuMy'=>array('danhsachtheloai'=>$theloai_AuMy),
@@ -31,22 +31,22 @@ class capnhatplaylist extends CI_Controller {
 				);
 
 
-		$this->load->view('capnhatplaylist_view',$data);
+		$this->load->view('CapNhatPlaylist_view',$data);
 	}
 
 	public function laydanhsachbaihat()
 	{
 		$keyword=$this->input->post('keyword');
-		$this->load->model('capnhatplaylist_model');
+		$this->load->model('CapNhatPlaylist_model');
 		$dulieu=$this->capnhatplaylist_model->laydanhsachbaihat($keyword);
 	}
 
 	public function searchcasi()//mấy cái này thì m tự sửa theo ý m thôi
 	{
-		$this->load->model('capnhatplaylist_model');
+		$this->load->model('CapNhatPlaylist_model');
 		// $keyword = $this->input->post('query');
 		$keyword = strval($this->input->post('query'));//chuyển dữ liệu nhập được sang chuỗi
-		$kq=$this->capnhatplaylist_model->timcasi($keyword);
+		$kq=$this->CapNhatPlaylist_model->timcasi($keyword);
 		if ($kq->num_rows() > 0) //số dòng lớn hơn 0 thì thực hiện
 		{
 			$kq=$kq->result_array(); //chuyển sang kiểu aray
@@ -65,14 +65,14 @@ class capnhatplaylist extends CI_Controller {
 
 	public function themplaylist()
 	{
-		$this->load->model('capnhatplaylist_model');
+		$this->load->model('CapNhatPlaylist_model');
 		$tenplaylist=$this->input->post('tenplaylist');
 		$mota=$this->input->post('mota');
 		$duongdananhplaylist=$this->input->post('duongdananhplaylist');
 		$idnguoidung = $this->session->userdata('id');;
 		$idtheloai=$this->input->post('idtheloai');
 		$tencasi=$this->input->post('tencasi');
-		$casi=$this->capnhatplaylist_model->lay_idcasi($tencasi);
+		$casi=$this->CapNhatPlaylist_model->lay_idcasi($tencasi);
 
 		if ($casi->num_rows() > 0) //số dòng lớn hơn 0 thì thực hiện
 		{
@@ -83,7 +83,7 @@ class capnhatplaylist extends CI_Controller {
 			}
 		}
 
-		if($this->capnhatplaylist_model->capnhatplaylist($tenplaylist,$mota,$duongdananhplaylist,$idnguoidung,$idtheloai,$idcasi))
+		if($this->CapNhatPlaylist_model->capnhatplaylist($tenplaylist,$mota,$duongdananhplaylist,$idnguoidung,$idtheloai,$idcasi))
 		{
 			$this->load->view('capnhatthanhcong_playlist_view');
 		}
@@ -96,10 +96,10 @@ class capnhatplaylist extends CI_Controller {
 
 	public function suaplaylist()
 	{
-		$this->load->model('capnhatplaylist_model');
+		$this->load->model('CapNhatPlaylist_model');
 		$tenplaylist=$this->input->post('tenplaylist');
 		$idplaylist=$this->input->post('idplaylist');
-		if($this->capnhatplaylist_model->suaplaylist($idplaylist,$tenplaylist))
+		if($this->CapNhatPlaylist_model->suaplaylist($idplaylist,$tenplaylist))
 		{
 			$this->load->view('capnhatthanhcong_playlist_view');
 		}
@@ -113,8 +113,8 @@ class capnhatplaylist extends CI_Controller {
 	{
 		$idplaylist=$this->input->post('idplaylist');
 		$idbaihat=$this->input->post('idbaihat');
-		$this->load->model('capnhatplaylist_model');
-		if($this->capnhatplaylist_model->thembaihatvaoplaylist($idplaylist,$idbaihat))
+		$this->load->model('CapNhatPlaylist_model');
+		if($this->CapNhatPlaylist_model->thembaihatvaoplaylist($idplaylist,$idbaihat))
 		{
 			$this->load->view('capnhatthanhcong_playlist_view');
 		}
@@ -129,8 +129,8 @@ class capnhatplaylist extends CI_Controller {
 	{
 		$idplaylist=$this->input->post('idplaylist');
 		$idbaihat=$this->input->post('idbaihat');
-		$this->load->model('capnhatplaylist_model');
-		if($this->capnhatplaylist_model->xoabaihatkhoiplaylist($idplaylist,$idbaihat))
+		$this->load->model('CapNhatPlaylist_model');
+		if($this->CapNhatPlaylist_model->xoabaihatkhoiplaylist($idplaylist,$idbaihat))
 		{
 			$this->load->view('capnhatthanhcong_playlist_view');
 		}
@@ -143,8 +143,8 @@ class capnhatplaylist extends CI_Controller {
 	public function xoalistbaihat()
 	{
 		$idplaylist=$this->input->post('idplaylist');
-		$this->load->model('capnhatplaylist_model');
-		if($this->capnhatplaylist_model->xoalistbaihat($idplaylist))
+		$this->load->model('CapNhatPlaylist_model');
+		if($this->CapNhatPlaylist_model->xoalistbaihat($idplaylist))
 		{
 			$this->load->view('capnhatthanhcong_playlist_view');
 		}

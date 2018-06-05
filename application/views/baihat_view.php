@@ -124,9 +124,9 @@
 												<tr class="item-baihat">
 													<td>
 														<div class="content-baihat">
-															<a href="<?php echo base_url() ?>baihat/trinhphatnhac/<?php echo $value['idbaihat'] ?>" class="item-baihat-tenbaihat"><?php echo $value['tenbaihat'] ?></a>
+															<a href="<?php echo base_url() ?>BaiHat/trinhphatnhac/<?php echo $value['idbaihat'] ?>" class="item-baihat-tenbaihat"><?php echo $value['tenbaihat'] ?></a>
 															-
-															<a href="<?php echo base_url() ?>thongtincasi/casi/<?php echo $value['idcasi'] ?>" class="item-baihat-tencasi"><?php echo $value['tencasi'] ?></a>
+															<a href="<?php echo base_url() ?>ThongTinCaSi/casi/<?php echo $value['idcasi'] ?>" class="item-baihat-tencasi"><?php echo $value['tencasi'] ?></a>
 														</div>
 													</td>
 													<td>
@@ -552,7 +552,7 @@
     		$('.box_pageview').find('a').removeClass('active');
     		$(this).addClass('active');
     		$.ajax({
-    			url: '<?php echo base_url() ?>/baihat/Load_Page',
+    			url: '<?php echo base_url() ?>/BaiHat/Load_Page',
     			type: 'POST',
     			dataType: 'html',
     			data: {
@@ -584,9 +584,9 @@
     	$(".btn-timkiem").click(function(event) {
     		$tukhoa=$("#keyword").val();
     		if($tukhoa==='')
-    			$("#timkiem").attr('action', '<?php echo base_url() ?>baihat');
+    			$("#timkiem").attr('action', '<?php echo base_url() ?>BaiHat');
     		else
-    			$("#timkiem").attr('action', '<?php echo base_url() ?>baihat/timkiem/?keyword='+$tukhoa);
+    			$("#timkiem").attr('action', '<?php echo base_url() ?>BaiHat/timkiem/?keyword='+$tukhoa);
     	});
     	
     </script>

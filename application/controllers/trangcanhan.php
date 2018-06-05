@@ -2,7 +2,7 @@
 
 include 'UploadHandler.php';
 
-class trangcanhan extends CI_Controller {
+class TrangCaNhan extends CI_Controller {
 
 	public function __construct()
 	{
@@ -12,16 +12,16 @@ class trangcanhan extends CI_Controller {
 	public function index()
 	{
 		$idusercurrent = $this->session->userdata('id');
-		$this->load->model('trangcanhan_model');
-		$danhsachplaylist=$this->trangcanhan_model->laydanhsachplaylist($idusercurrent);
-		$thongtinnguoidung=$this->trangcanhan_model->laythongtinnguoidung($idusercurrent);
+		$this->load->model('TrangCaNhan_model');
+		$danhsachplaylist=$this->TrangCaNhan_model->laydanhsachplaylist($idusercurrent);
+		$thongtinnguoidung=$this->TrangCaNhan_model->laythongtinnguoidung($idusercurrent);
 		$data=array('nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung),
 					'playlist'=>array('danhsachplaylist'=>$danhsachplaylist));
-		$this->load->view('trangcanhan_view',$data);
+		$this->load->view('TrangCaNhan_view',$data);
 	}
 	public function suathongtin()
 	{
-		$this->load->model('trangcanhan_model');
+		$this->load->model('TrangCaNhan_model');
 		$idusercurrent = $this->session->userdata('id');
 		$ten = $this->input->post('ten');
 		$gioitinh = $this->input->post('gioitinh');
@@ -31,7 +31,7 @@ class trangcanhan extends CI_Controller {
 		$email = $this->input->post('email');
 		$duongdananhnguoidung = $this->input->post('duongdananhnguoidung');
 
-		if($this->trangcanhan_model->suathongtincanhan($idusercurrent, $ten, $gioitinh, $ngaysinh, $sdt, $diachi, $email, $duongdananhnguoidung)>0)
+		if($this->TrangCaNhan_model->suathongtincanhan($idusercurrent, $ten, $gioitinh, $ngaysinh, $sdt, $diachi, $email, $duongdananhnguoidung)>0)
 		{
 			// $path="'".substr($this->session->userdata('duongdananh'), 28)."'";
 			// unlink("$path");
@@ -46,9 +46,9 @@ class trangcanhan extends CI_Controller {
 
 	public function doimatkhau()
 	{
-		$this->load->model('trangcanhan_model');
+		$this->load->model('TrangCaNhan_model');
 		$idusercurrent = $this->session->userdata('id');
-		$thongtinnguoidung=$this->trangcanhan_model->laythongtinnguoidung($idusercurrent);
+		$thongtinnguoidung=$this->TrangCaNhan_model->laythongtinnguoidung($idusercurrent);
 		$nguoidung = array('thongtinnguoidung'=>$thongtinnguoidung);
 
 		foreach ($nguoidung['thongtinnguoidung'] as $key => $value)
@@ -60,7 +60,7 @@ class trangcanhan extends CI_Controller {
 		$oldpass = $this->input->post('matkhaucu');
 		if($oldpass==$passcurrent)
 		{
-			if($this->trangcanhan_model->doimatkhauuser($idusercurrent,$newpass)>0)
+			if($this->TrangCaNhan_model->doimatkhauuser($idusercurrent,$newpass)>0)
 			{
 				echo 1;
 			}

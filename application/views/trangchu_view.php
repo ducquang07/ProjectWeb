@@ -1104,7 +1104,7 @@
 <script>
       $('.checkusername').blur(function(event) {
       $.ajax({
-        url: 'index/checkusername',
+        url: 'Index/checkusername',
         type: 'POST',
         dataType: 'json',
         data: {
@@ -1130,7 +1130,7 @@
       $('.checkemail').blur(function(event) {//bắt sự kiện thay đổi text
         /* Act on the event */
         $.ajax({
-          url: 'index/checkemail',
+          url: 'Index/checkemail',
           type: 'POST',
         dataType: 'json',
         data: {

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 include 'phantrang.php';
-class playlist extends CI_Controller {
+class Playlist extends CI_Controller {
 
 	public function __construct()
 	{
@@ -9,10 +9,10 @@ class playlist extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('playlist_model');
+		$this->load->model('Playlist_model');
 		$keyword='';
 
-		$total_record=$this->playlist_model->get_TotalRecord($keyword);
+		$total_record=$this->Playlist_model->get_TotalRecord($keyword);
 
 		$config = array(
 			'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1, // Trang hiện tại
@@ -26,10 +26,10 @@ class playlist extends CI_Controller {
 		$paging->init($config);
 		$phantrang=$paging->html();
 
-		$theloai_Vietnam=$this->playlist_model->Get_theLoai('Việt Nam');
-		$theloai_AuMy=$this->playlist_model->Get_theLoai('Âu Mỹ');
-		$theloai_ChauA=$this->playlist_model->Get_theLoai('Châu Á');
-		$danhsachplaylist=$this->playlist_model->laydanhsach_playlist($keyword,$config['limit']);
+		$theloai_Vietnam=$this->Playlist_model->Get_theLoai('Việt Nam');
+		$theloai_AuMy=$this->Playlist_model->Get_theLoai('Âu Mỹ');
+		$theloai_ChauA=$this->Playlist_model->Get_theLoai('Châu Á');
+		$danhsachplaylist=$this->Playlist_model->laydanhsach_playlist($keyword,$config['limit']);
 		$data=array(
 			'theloai_Vietnam'=>array('danhsachtheloai'=>$theloai_Vietnam),
 			'theloai_AuMy'=>array('danhsachtheloai'=>$theloai_AuMy),
@@ -40,7 +40,7 @@ class playlist extends CI_Controller {
 			'keyword'=>$keyword
 		);
 
-		$this->load->view('playlist_view',$data);
+		$this->load->view('Playlist_view',$data);
 	}
 
 
@@ -49,16 +49,16 @@ class playlist extends CI_Controller {
 		$pagenumer=$this->input->post('page');
 		$keyword=$this->input->post('keyword');
 		$limit=$this->input->post('limit');
-		$this->load->model('playlist_model');
-		$this->playlist_model->Get_Danhsachplaylist($pagenumer,$limit,$keyword);
+		$this->load->model('Playlist_model');
+		$this->Playlist_model->Get_Danhsachplaylist($pagenumer,$limit,$keyword);
 	}
 
 	public function timkiem()
 	{
 		$keyword=$_GET["keyword"];
-		$this->load->model('playlist_model');
+		$this->load->model('Playlist_model');
 
-		$total_record=$this->playlist_model->get_TotalRecord($keyword);
+		$total_record=$this->Playlist_model->get_TotalRecord($keyword);
 
 		$config = array(
 			'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1, // Trang hiện tại
@@ -72,10 +72,10 @@ class playlist extends CI_Controller {
 		$paging->init($config);
 		$phantrang=$paging->html();
 
-		$theloai_Vietnam=$this->playlist_model->Get_theLoai('Việt Nam');
-		$theloai_AuMy=$this->playlist_model->Get_theLoai('Âu Mỹ');
-		$theloai_ChauA=$this->playlist_model->Get_theLoai('Châu Á');
-		$danhsachplaylist=$this->playlist_model->laydanhsach_playlist($keyword,$config['limit']);
+		$theloai_Vietnam=$this->Playlist_model->Get_theLoai('Việt Nam');
+		$theloai_AuMy=$this->Playlist_model->Get_theLoai('Âu Mỹ');
+		$theloai_ChauA=$this->Playlist_model->Get_theLoai('Châu Á');
+		$danhsachplaylist=$this->Playlist_model->laydanhsach_playlist($keyword,$config['limit']);
 		$data=array(
 			'theloai_Vietnam'=>array('danhsachtheloai'=>$theloai_Vietnam),
 			'theloai_AuMy'=>array('danhsachtheloai'=>$theloai_AuMy),

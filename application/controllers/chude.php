@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class chude extends CI_Controller {
+class ChuDe extends CI_Controller {
 
 	public function __construct()
 	{
@@ -14,5 +14,5 @@ class chude extends CI_Controller {
 
 }
 
-/* End of file chude.php */
-/* Location: ./application/controllers/chude.php */
+/* End of file ChuDe.php */
+/* Location: ./application/controllers/ChuDe.php */

@@ -290,7 +290,7 @@
     			$('#tencasi').typeahead({
     				source: function (query, result) {
     					$.ajax({
-    						url: "capnhatplaylist/searchcasi",
+    						url: "CapNhatPlaylist/searchcasi",
     						data: 'query=' + query,            
     						dataType: "json",
     						type: "POST",
@@ -308,7 +308,7 @@
     		$("#trabaihat").change(function(event) {
 
     			$.ajax({
-    				url: '<?php echo base_url() ?>/capnhatplaylist/laydanhsachbaihat',
+    				url: '<?php echo base_url() ?>/CapNhatPlaylist/laydanhsachbaihat',
     				type: 'POST',
     				dataType: 'html',
     				data: {keyword: $(this).val()},
@@ -345,7 +345,7 @@
     		$(".contain-select ul li span").remove();
     		$(".contain-select ul li ").append('<span class="btn btn-lg btn-danger btn-chon"><i class="fa fa-trash"></i></span>');
     		$.ajax({
-    			url: '<?php echo base_url() ?>/capnhatplaylist/thembaihatvaoplaylist',
+    			url: '<?php echo base_url() ?>/CapNhatPlaylist/thembaihatvaoplaylist',
     			type: 'POST',
     			dataType: 'json',
     			data: {
@@ -370,7 +370,7 @@
     		idbaihat_temp=$(this).closest('li').attr("id");
     		$(this).closest('li').remove();
     		$.ajax({
-    			url: '<?php echo base_url() ?>/capnhatplaylist/xoabaihatkhoiplaylist',
+    			url: '<?php echo base_url() ?>/CapNhatPlaylist/xoabaihatkhoiplaylist',
     			type: 'POST',
     			dataType: 'json',
     			data: {
@@ -394,7 +394,7 @@
     	$("#btn-xoalist").click(function(event) {
     		$(".contain-select ul li").remove();
     		$.ajax({
-    			url: '<?php echo base_url()?>capnhatplaylist/xoalistbaihat',
+    			url: '<?php echo base_url()?>CapNhatPlaylist/xoalistbaihat',
     			type: 'POST',
     			dataType: 'json',
     			data: {
@@ -414,7 +414,7 @@
     	});
 
     	$('#fileanh').fileupload({
-    		url: '<?php echo base_url()?>capnhatplaylist/uploadfileanh',
+    		url: '<?php echo base_url()?>CapNhatPlaylist/uploadfileanh',
     		dataType: 'json',
     		done: function(e, data){
     			$.each(data.result.files, function (index, file) {
@@ -428,7 +428,7 @@
 
     	/*$("#btn-luu").click(function(event) {
     		$.ajax({
-    			url: 'capnhatplaylist/themplaylist',
+    			url: 'CapNhatPlaylist/themplaylist',
     			type: 'POST',
     			dataType: 'json',
     			data: {
@@ -453,7 +453,7 @@
 
     	$("#btn-luu").click(function(event) {
     		$.ajax({
-    			url: 'capnhatplaylist/suaplaylist',
+    			url: 'CapNhatPlaylist/suaplaylist',
     			type: 'POST',
     			dataType: 'json',
     			data: {

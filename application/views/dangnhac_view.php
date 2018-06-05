@@ -191,7 +191,7 @@
         $('#casi').typeahead({
             source: function (query, result) {
                 $.ajax({
-                    url: "dangnhac/searchcasi",
+                    url: "DangNhac/searchcasi",
 					data: 'query=' + query,            
                     dataType: "json",
                     type: "POST",
@@ -209,7 +209,7 @@
         $('#nhacsi').typeahead({
             source: function (query, result) {
                 $.ajax({
-                    url: "dangnhac/searchnhacsi",
+                    url: "DangNhac/searchnhacsi",
 					data: 'query=' + query,            
                     dataType: "json",
                     type: "POST",
@@ -226,7 +226,7 @@
     duongdan = '<?php echo base_url() ?>';
 
 	$('#filenhac').fileupload({
-		url: duongdan + 'dangnhac/uploadfilenhac',
+		url: duongdan + 'DangNhac/uploadfilenhac',
 		dataType: 'json',
 		acceptFileTypes:  /(\.|\/)(mp3)$/i,//danh sách trắng cho phép upload
 		maxFileSize: 150000000,//tính bằng byte
@@ -239,7 +239,7 @@
 	});
 
 	$('#fileanh').fileupload({
-		url: duongdan + 'dangnhac/uploadfileanh',
+		url: duongdan + 'DangNhac/uploadfileanh',
 		dataType: 'json',
 		done: function(e, data){
 			$.each(data.result.files, function (index, file) {
@@ -254,7 +254,7 @@
 		// 	tenfile= $("#anhdaidien").attr("src");
 		// }
 		$.ajax({
-			url: 'dangnhac/thembaihat',
+			url: 'DangNhac/thembaihat',
 			type: 'POST',
 			dataType: 'json',
 			data: {

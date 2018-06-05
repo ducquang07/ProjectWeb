@@ -21,9 +21,9 @@
 				echo "<h6>".$this->session->userdata('trangthai')."</h6>";
 				echo "</div>";
 				echo "</a>";
-				echo '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="margin-right: 1.5rem;"><a class="dropdown-item" href="'.base_url().'trangcanhan"><em class="fa fa-user-circle mr-1"></em> Trang cá nhân</a>';
+				echo '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="margin-right: 1.5rem;"><a class="dropdown-item" href="'.base_url().'TrangCaNhan"><em class="fa fa-user-circle mr-1"></em> Trang cá nhân</a>';
 				echo '<a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>';
-				echo '<a class="dropdown-item" href="'.base_url().'trangchu/logout_controller"><em class="fa fa-sign-out mr-1"></em> Logout</a>';
+				echo '<a class="dropdown-item" href="'.base_url().'TrangChu/logout_controller"><em class="fa fa-sign-out mr-1"></em> Logout</a>';
 				echo '</div>';
 			}
 			else
@@ -41,19 +41,19 @@
 <!--Bắt đầu phần sidenav-->
 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 	<li class="nav-item active" data-toggle="tooltip" data-placement="right" title="" data-original-title="index">
-		<a class="nav-link" href="<?php echo base_url() ?>index">
+		<a class="nav-link" href="<?php echo base_url() ?>Index">
 			<i class="fa fa-fw fa-home"></i>
 			<span class="nav-link-text">Trang Chủ</span>
 		</a>
 	</li>
 	<li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="baihat">
-		<a class="nav-link" href="<?php echo base_url() ?>baihat">
+		<a class="nav-link" href="<?php echo base_url() ?>BaiHat">
 			<i class="fa fa-fw fa-music"></i>
 			<span class="nav-link-text">Bài Hát</span>
 		</a>
 	</li>
 	<li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="playlist">
-		<a class="nav-link" href="<?php echo base_url() ?>playlist">
+		<a class="nav-link" href="<?php echo base_url() ?>Playlist">
 			<i class="fa fa-fw fa-table"></i>
 			<span class="nav-link-text">Playlist</span>
 		</a>
@@ -80,7 +80,7 @@
 				<a href="#">US-UK Hits</a>
 			</li>
 			<li>
-				<a href="<?php echo base_url() ?>chude" ><i>Xem Thêm . . .</i></a>
+				<a href="<?php echo base_url() ?>ChuDe" ><i>Xem Thêm . . .</i></a>
 			</li>
 		</ul>
 	</li>
@@ -149,7 +149,7 @@
 <div class="modal fade" id="login">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
-				<form action="index/singin_controller" method="post" enctype="multidata/form-data">
+				<form action="Index/singin_controller" method="post" enctype="multidata/form-data">
 				<div class="modal-header">
 					<h4 class="modal-title"><strong>Đăng nhập</strong></h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -188,7 +188,7 @@
 <div class="modal fade" id="signup">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
-				<form action="index/signup_controller" method="post" enctype="multidata/form-data">
+				<form action="Index/signup_controller" method="post" enctype="multidata/form-data">
 				<div class="modal-header">
 					<h4 class="modal-title"><strong>Đăng ký</strong></h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">

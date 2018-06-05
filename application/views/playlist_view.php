@@ -683,7 +683,7 @@
     			$('.box_pageview').find('a').removeClass('active');
     			$(this).addClass('active');
     			$.ajax({
-    				url: '<?php echo base_url() ?>/playlist/Load_Page',
+    				url: '<?php echo base_url() ?>/Playlist/Load_Page',
     				type: 'POST',
     				dataType: 'html',
     				data: {
@@ -709,9 +709,9 @@
     		$(".btn-timkiem").click(function(event) {
     			$tukhoa=$("#keyword").val();
     			if($tukhoa==='')
-    				$("#timkiem").attr('action', '<?php echo base_url() ?>playlist');
+    				$("#timkiem").attr('action', '<?php echo base_url() ?>Playlist');
     			else
-    				$("#timkiem").attr('action', '<?php echo base_url() ?>playlist/timkiem/?keyword='+$tukhoa);
+    				$("#timkiem").attr('action', '<?php echo base_url() ?>Playlist/timkiem/?keyword='+$tukhoa);
     		});
 
     	</script>
