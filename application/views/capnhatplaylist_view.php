@@ -202,9 +202,6 @@
 										</div>
 
 
-										
-
-
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Mô tả:</label>
 											<div class="col-md-9">
@@ -214,13 +211,19 @@
 										</div>
 
 										<div class="form-group ">
+											
+											<div class="row">
+												<div class="col-md-6">
+													<input class="filter form-control" id="trabaihat" type="text" placeholder="Nhập từ khóa để tìm bài hát" value=""> 
+												</div>
+											</div>
 											<div class="row">
 												<label class="col-md-6 col-form-label">Danh sách bài hát:</label>
 												<label class="col-md-5 col-form-label">Danh sách bài hát của playlist:</label>
 											</div>
 											<div class="row mb-4">
 												<div class="col-md-6">
-													<input class="filter form-control" id="trabaihat" type="text" placeholder="Nhập từ khóa để tìm bài hát" value=""> 
+													
 													<div class="contain" style="height:auto;max-height:400px;overflow:scroll;">
 														<ul id="myUL">	
 
@@ -346,12 +349,12 @@
 
     	//thêm bài hát vào playlist
     	$(".contain ul").on('click','li',function(e){
-    		$("div.thongbao").remove();
-    		$("#trangthai").append('<div class="alert alert-success thongbao" role="alert" style="color: #721c24;"><b>Đang xử lí...</b></div>');
     		var idbaihat =$(this).closest('li').attr("id");
     		if ($('.contain-select ul').has('#'+idbaihat).length) {
     			return;
     		}
+    		$("div.thongbao").remove();
+    		$("#trangthai").append('<div class="alert alert-success thongbao" role="alert" style="color: #721c24;"><b>Đang xử lí...</b></div>');
     		var content='<li id="'+idbaihat+'">'+$(this).closest('li').html()+'</li>';
     		//$(".contain-select ul").append('<li id="'+idbaihat+'">'+$(this).closest('li').html()+'</li>');
     		
@@ -387,7 +390,9 @@
     	//xóa bài hát khỏi playlist
     	$(".contain-select ul").on('click','.btn-chon',function(e){
     		idbaihat_temp=$(this).closest('li').attr("id");
-    		$(this).closest('li').remove();
+
+    		$("div.thongbao").remove();
+    		$("#trangthai").append('<div class="alert alert-success thongbao" role="alert" style="color: #721c24;"><b>Đang xử lí...</b></div>');
     		$.ajax({
     			url: '<?php echo base_url() ?>/CapNhatPlaylist/xoabaihatkhoiplaylist',
     			type: 'POST',
@@ -397,8 +402,13 @@
     				idbaihat:idbaihat_temp
     			},
     		})
-    		.done(function() {
+    		.done(function(data) {
     			console.log("success");
+    			$("div.thongbao").remove();
+    			if(data>0){
+    				$(".contain-select ul li").remove("#"+idbaihat_temp);
+    				$("#trangthai").append('<div class="alert alert-success thongbao" role="alert" style="color: #721c24;"><b>Cập nhật danh sách bài hát thành công.</b></div>');
+    			}
     		})
     		.fail(function() {
     			console.log("error");

@@ -71,6 +71,7 @@ class CapNhatPlaylist_model extends CI_Model {
 
 	public function suaplaylist($idplaylist,$tenplaylist)
 	{
+		//trường hợp lost update 
 		$sql="call proc_ThayDoiTenPlaylist('".$idplaylist."','".$tenplaylist."')";
 		echo $sql;
 		return $this->db->query($sql);
@@ -90,13 +91,12 @@ class CapNhatPlaylist_model extends CI_Model {
 
 	public function thembaihatvaoplaylist($idplaylist,$idbaihat)
 	{
-
+		//trường hợp đọc dữ liệu chưa commit
 		 //$sql="call proc_ThemBaiHatVaoPlaylist('".$idplaylist."','".$idbaihat."')";
-		// $sql="call proc_ThemBaiHatVaoPlaylist('".$idplaylist."','".$idbaihat."')";
 
 		
 
-		//demo_
+		//trường hợp phantom
 		$sql="Insert into chitietplaylist values($idplaylist,$idbaihat)";
 
 
@@ -106,7 +106,6 @@ class CapNhatPlaylist_model extends CI_Model {
 	public function xoabaihatkhoiplaylist($idplaylist,$idbaihat)
 	{
 		$sql="call proc_XoaBaiHatKhoiPlaylist('".$idplaylist."','".$idbaihat."')";
-		echo $sql;
 		return $this->db->query($sql);
 	}
 

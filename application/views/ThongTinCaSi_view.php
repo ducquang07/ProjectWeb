@@ -104,25 +104,60 @@
 							<div class="card mb-4" id="playlist">
 								<div class="card-block">
 									<h3 class="card-title">Danh sách Playlist</h3>
-										<div class="canvas-wrapper">
+									<div class="canvas-wrapper">
+										<?php if(count($danhsachplaylist)===0){ ?>
+										<div class="alert alert-danger thongbao" role="alert" style="color: #721c24;">
+											<b>Không tìm thấy playlist.</b>
+										</div>
+										<?php }?>
+										<div class="row playlist-container">
+
+											<?php foreach ($danhsachplaylist as $key => $value) { ?>
+											<!--Item-playlist-->
+											<div class="col-lg-3 col-sm-6 portfolio-item">
+												<div class="card h-100" id="item-playlist">
+													<a href="#" class="item-container">
+														<span class="item-playlist-luotnghe">
+															<i class="fa fa-headphones" aria-hidden="true"></i>
+															<span id=""><?php echo $value['luotnghe'] ?>
+															</span>
+														</span>
+														<div class="item-hover">
+															<div class="item-hover-content">
+																<i class="fa fa-play fa-2x"></i>
+															</div>
+														</div>
+														<img class="card-img-top" width="150" height="200" src="<?php echo $value['duongdananhplaylist'] ?>" alt="">
+													</a>
+													<div class="card-body">
+														<h4 class="card-title">
+															<a href="#"><?php echo $value['tenplaylist'] ?></a>
+														</h4>
+														<p class="card-text"><?php echo $value['tencasi'] ?></p>
+													</div>
+												</div>
+											</div>
+											<!--Item-playlist-->
+											<?php } ?>
 											
 										</div>
 									</div>
-									<div class="box_pageview">
-										
-									</div>
+								</div>
+								<div class="box_pageview">
+									<?php echo $phantrang ?>
 								</div>
 							</div>
-							<!--Kết thuc phần playlist-->
 						</div>
-					</section>
-				</div>
-			</section>
-		</main>
+						<!--Kết thuc phần playlist-->
+					</div>
+				</section>
+			</div>
+		</section>
+	</main>
 </div>
     <!-- Bootstrap core JavaScript
     	================================================== -->
-		<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.js"></script>
     	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.js"></script>
     	<!-- Placed at the end of the document so the pages load faster -->
     	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
@@ -130,10 +165,37 @@
     	<script type="text/javascript" src="<?php echo base_url() ?>vendor/lib/typeahead.js"></script>
     	
 
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-	    <script type="text/javascript">
-	    	var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
-	    </script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    	<script type="text/javascript">
+    		var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+    	</script>
 
-</body>
-</html>
+    	<script>
+    		$('.box_pageview a').click(function(event) {
+    			$('.box_pageview').find('a').removeClass('active');
+    			$(this).addClass('active');
+    			$.ajax({
+    				url: '<?php echo base_url() ?>ThongTinCaSi/Load_Page',
+    				type: 'POST',
+    				dataType: 'html',
+    				data: {
+    					page:$(this).attr("id"),
+    					idcasi: <?php foreach ($thongtincasi as $key => $value) echo $value['idcasi'] ?>,
+    					limit:<?php echo $limit ?>
+    				},
+    			})
+    			.done(function() {
+    				console.log("success");
+    			})
+    			.fail(function() {
+    				console.log("error");
+    			})
+    			.always(function(data) {
+    				console.log("complete");
+    				$('.playlist-container div').remove();
+    				$('.playlist-container').append(data);
+    			});
+    		});
+    	</script>
+    </body>
+    </html>

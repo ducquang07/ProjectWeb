@@ -27,7 +27,7 @@ class BaiHat_model extends CI_Model {
 			echo '<td>';										
 			echo '<div class="content-baihat">';											
 			echo '<a href="baihat/trinhphatnhac/'.$row['idbaihat'].'" class="item-baihat-tenbaihat">'.$row['tenbaihat'].'</a>-';		
-			echo '<a href="#" class="item-baihat-tencasi">'.$row['tencasi'].'</a>';					
+			echo '<a href='.base_url().'ThongTinCaSi/casi/'.$row['idcasi'].' class="item-baihat-tencasi">'.$row['tencasi'].'</a>';					
 			echo '</div>';											
 			echo '</td>';												
 			echo '<td>';									
