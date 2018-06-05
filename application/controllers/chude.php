@@ -9,7 +9,7 @@ class ChuDe extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('chude_view');
+		$this->load->view('ChuDe_view');
 	}
 
 }

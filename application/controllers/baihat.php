@@ -62,20 +62,20 @@ class BaiHat extends CI_Controller {
 	public function trinhphatnhac($id)
 	{
 		$idusercurrent = $this->session->userdata('id');
-		$this->load->model('trinhphatnhac_model');
-		$thongtinbaihat=$this->trinhphatnhac_model->laythongtinbaihat($id);
-		$thongtinnguoidung=$this->trinhphatnhac_model->laythongtinnguoidung($idusercurrent);
-		$danhsachbinhluan=$this->trinhphatnhac_model->laydanhsachbinhluan($id);
-		$thongtinnguoidang=$this->trinhphatnhac_model->laythongnguoidang($id);
-		$this->trinhphatnhac_model->themluotnghe($id);
+		$this->load->model('TrinhPhatNhac_model');
+		$thongtinbaihat=$this->TrinhPhatNhac_model->laythongtinbaihat($id);
+		$thongtinnguoidung=$this->TrinhPhatNhac_model->laythongtinnguoidung($idusercurrent);
+		$danhsachbinhluan=$this->TrinhPhatNhac_model->laydanhsachbinhluan($id);
+		$thongtinnguoidang=$this->TrinhPhatNhac_model->laythongnguoidang($id);
+		$this->TrinhPhatNhac_model->themluotnghe($id);
 		$data=array('baihat'=>array('thongtinbaihat'=>$thongtinbaihat),
 			'nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung),
 			'binhluan'=>array('danhsachbinhluan'=>$danhsachbinhluan),
 			'nguoidang'=>array('thongtinnguoidang'=>$thongtinnguoidang));
-		//$this->trinhphatnhac_model->laythongtincasi($baihat['idcasi']);
-		//$this->trinhphatnhac_model->laythongtheloai($id);
+		//$this->TrinhPhatNhac_model->laythongtincasi($baihat['idcasi']);
+		//$this->TrinhPhatNhac_model->laythongtheloai($id);
 
-		$this->load->view('trinhphatnhac_view',$data);
+		$this->load->view('TrinhPhatNhac_view',$data);
 	}
 
 

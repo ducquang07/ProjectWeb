@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<!-- tự động chuyển hướng  -->
-	<meta http-equiv="refresh" content="2;url=<?php echo base_url() ?>index">
+	<meta http-equiv="refresh" content="2;url=<?php echo base_url() ?>Index">
 	<title>Đăng nhập thất bại</title>
 	<script type="text/javascript" src="<?php echo base_url() ?>vendor/bootstrap.js"></script>
 	<link href="<?php echo base_url() ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

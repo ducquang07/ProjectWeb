@@ -720,7 +720,7 @@
 					+ currentdate.getSeconds();
 					console.log(datetime);
 					$.ajax({
-						url: '<?php echo base_url()?>/trinhphatnhac/binhluan',
+						url: '<?php echo base_url()?>/TrinhPhatNhac/binhluan',
 						type: 'POST',
 						dataType: 'html',
 						data: {
@@ -763,7 +763,7 @@
 				if($('.cbb-binhluan option:selected').val()==="new")
 				{
 					$.ajax({
-						url: '<?php echo base_url()?>/trinhphatnhac/binhluan_moinhat',
+						url: '<?php echo base_url()?>/TrinhPhatNhac/binhluan_moinhat',
 						type: 'POST',
 						dataType: 'html',
 						data: {idbaihat:$("#idbaihat").val()},
@@ -784,7 +784,7 @@
 				else
 				{
 					$.ajax({
-						url: '<?php echo base_url()?>/trinhphatnhac/binhluan_cunhat',
+						url: '<?php echo base_url()?>/TrinhPhatNhac/binhluan_cunhat',
 						type: 'POST',
 						dataType: 'html',
 						data: {idbaihat:$("#idbaihat").val()},
@@ -807,9 +807,9 @@
 			$(".btn-timkiem").click(function(event) {
 				$tukhoa=$("#keyword").val();
 				if($tukhoa==='')
-					$("#timkiem").attr('action', '<?php echo base_url() ?>baihat');
+					$("#timkiem").attr('action', '<?php echo base_url() ?>BaiHat');
 				else
-					$("#timkiem").attr('action', '<?php echo base_url() ?>baihat/timkiem/?keyword='+$tukhoa);
+					$("#timkiem").attr('action', '<?php echo base_url() ?>BaiHat/timkiem/?keyword='+$tukhoa);
 			});
 		</script>
 	</body>

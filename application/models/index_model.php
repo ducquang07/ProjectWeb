@@ -13,12 +13,20 @@ class Index_model extends CI_Model {
 	{
 		$tendangnhap = $username;
 		$matkhau = $pass;
+		// $this->db->query('start transaction;');
+		// $this->db->query('SET SESSION TRANSACTION ISOLATION LEVEL serializable;');
+		// $this->db->query("call proc_KiemTraDangNhap('ducquang','ducquang',@out_value)");
+		// echo $flag = $this->db->query("select @out_value");
+		// if($flag==1)
+		$this->db->trans_start();
 		$this->db->select('idnguoidung,ten,tendangnhap,matkhau,trangthai,duongdananhnguoidung');
 		$this->db->where('tendangnhap', $tendangnhap);
 		$this->db->where('matkhau', $matkhau);
 		$kq = $this->db->get('nguoidung');
+		$this->db->trans_complete();
 		$kq = $kq->result_array();
 		return $kq;
+		
 	}
 
 	public function insert_user($fullname,$ngaysinh,$gender,$diachi,$email,$username,$psw,$trangthai,$duongdananh)
@@ -36,7 +44,6 @@ class Index_model extends CI_Model {
 			);
 
 		$flag = 1;
-		
 		$this->db->select('tendangnhap');
 		$data = $this->db->get('nguoidung');
 		$data = $data->result_array();

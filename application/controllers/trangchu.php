@@ -14,7 +14,7 @@ class TrangChu extends CI_Controller {
 	public function logout_controller($value='')
 	{
 		$this->session->sess_destroy();
-		header('Location: '.base_url().'trangchu');
+		header('Location: '.base_url().'TrangChu');
 	}
 }
 /* End of file trangchu.php */
