@@ -11,7 +11,8 @@ class ThongTinCaSi_model extends CI_Model {
 	}
 	public function LayThongTinCaSi($idcasi)
 	{
-		$sql="select * from casi where idcasi=$idcasi";
+		//giải quyết repeatable read
+		$sql="call proc_LayThongTinCaSi($idcasi)";
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
 		return $dulieu;

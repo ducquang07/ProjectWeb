@@ -511,7 +511,7 @@
 														<div class="row">
 
 															<div class="col-md-4">
-																<form action="<?php echo base_url()?>capnhatplaylist" method="POST" enctype="multi-data">
+																<form action="<?php echo base_url()?>CapNhatPlaylist" method="POST" enctype="multi-data">
 																	<button class="btn btn-lg btn-warning">Sửa</button>
 																	<input type="text" hidden value="<?php echo $value['idplaylist'] ?>" name='idplaylist'>
 																</form>

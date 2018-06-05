@@ -13,11 +13,6 @@ class Index_model extends CI_Model {
 	{
 		$tendangnhap = $username;
 		$matkhau = $pass;
-		// $this->db->query('start transaction;');
-		// $this->db->query('SET SESSION TRANSACTION ISOLATION LEVEL serializable;');
-		// $this->db->query("call proc_KiemTraDangNhap('ducquang','ducquang',@out_value)");
-		// echo $flag = $this->db->query("select @out_value");
-		// if($flag==1)
 		$this->db->trans_start();
 		$this->db->select('idnguoidung,ten,tendangnhap,matkhau,trangthai,duongdananhnguoidung');
 		$this->db->where('tendangnhap', $tendangnhap);
