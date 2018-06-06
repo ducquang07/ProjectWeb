@@ -133,7 +133,9 @@
 														<h4 class="card-title">
 															<a href="#"><?php echo $value['tenplaylist'] ?></a>
 														</h4>
-														<p class="card-text"><?php echo $value['tencasi'] ?></p>
+														<p class="card-text"><?php foreach ($thongtincasi as $key => $value) {
+															echo $value['tencasi'];
+														} ?></p>
 													</div>
 												</div>
 											</div>

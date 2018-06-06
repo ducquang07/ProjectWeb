@@ -13,6 +13,7 @@ class ThongTinCaSi_model extends CI_Model {
 	{
 		//giải quyết repeatable read
 		$sql="call proc_LayThongTinCaSi($idcasi)";
+		//$sql="Select * from casi where idcasi='$idcasi'";
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
@@ -20,7 +21,7 @@ class ThongTinCaSi_model extends CI_Model {
 
 	public function laydanhsach_playlist($idcasi,$limit)
 	{
-		$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi and casi.idcasi='$idcasi' limit 0, $limit";
+		$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist from playlist where playlist.idcasi='$idcasi' limit 0, $limit";
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
 		return $dulieu;

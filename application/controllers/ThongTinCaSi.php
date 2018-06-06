@@ -15,7 +15,7 @@ class ThongTinCaSi extends CI_Controller {
 	public function casi($id)
 	{
 		$this->load->model('ThongTinCaSi_model');
-		$kq=$this->ThongTinCaSi_model->LayThongTinCaSi($id);
+		
 		$total_record=$this->ThongTinCaSi_model->get_TotalRecord($id);
 		$config = array(
 			'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1, // Trang hiện tại
@@ -29,7 +29,7 @@ class ThongTinCaSi extends CI_Controller {
 		$paging->init($config);
 		$phantrang=$paging->html();
 		$danhsachplaylist=$this->ThongTinCaSi_model->laydanhsach_playlist($id,$config['limit']);
-
+		$kq=$this->ThongTinCaSi_model->LayThongTinCaSi($id);
 		$kq=array(	'thongtincasi'=>$kq,
 					'danhsachplaylist'=>$danhsachplaylist,
 					'phantrang'=>$phantrang,
