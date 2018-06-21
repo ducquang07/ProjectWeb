@@ -14,11 +14,11 @@ class BaiHat_model extends CI_Model {
 		$start=($currentpage-1)*$limit;
 		if($keyword==="")
 		{
-			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi order by luotnghe desc limit $start, $limit";
+			$sql="Select * from baihat,casi, baihat_casi ct where baihat.idbaihat=ct.idbaihat and casi.idcasi=ct.idcasi order by luotnghe desc limit $start, $limit";
 		}
 		else
 		{
-			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and match(baihat.tenbaihat) against('$keyword') limit $start,$limit";
+			$sql="Select * from baihat,casi, baihat_casi ct where baihat.idbaihat=ct.idbaihat and casi.idcasi=ct.idcasi and match(baihat.tenbaihat) against('$keyword') limit $start,$limit";
 		}
 		$dulieu=$this->db->query($sql);
 		foreach($dulieu->result_array() as $row)
@@ -55,10 +55,10 @@ class BaiHat_model extends CI_Model {
 	public function show_Danhsachbaihat_keyword($keyword,$limit)
 	{
 		if($keyword===""){
-			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi  order by luotnghe desc limit 0, $limit";
+			$sql="Select * from baihat,casi, baihat_casi ct where baihat.idbaihat=ct.idbaihat and casi.idcasi=ct.idcasi  order by luotnghe desc limit 0, $limit";
 		}
 		else{
-			$sql="Select * from baihat,casi where baihat.idcasi=casi.idcasi and baihat.idcasi=casi.idcasi and match(baihat.tenbaihat) against('$keyword') limit 0, $limit";
+			$sql="Select * from baihat,casi, baihat_casi ct where baihat.idbaihat=ct.idbaihat and casi.idcasi=ct.idcasi and match(baihat.tenbaihat) against('$keyword') limit 0, $limit";
 		}
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
@@ -76,7 +76,7 @@ class BaiHat_model extends CI_Model {
 
 	public function Get_danhsach_hot()
 	{
-		$sql="Select distinct(idcasi),tencasi,duongdananhcasi from casi where idcasi in (select idcasi from baihat order by luotnghe desc) limit 6";
+		$sql="Select distinct(idcasi),tencasi,duongdananhcasi from casi where idcasi in (select idcasi from baihat bh, baihat_casi ct where bh.idbaihat=ct.idbaihat order by luotnghe desc) limit 6";
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
 		return $dulieu;

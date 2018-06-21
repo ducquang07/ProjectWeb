@@ -12,7 +12,7 @@ class TrinhPhatNhac_model extends CI_Model {
 
 	public function laythongtinbaihat($idbaihat)
 	{
-		$sql="Select * from baihat,casi,theloai,nhacsi where  baihat.idcasi=casi.idcasi and baihat.idtheloai=theloai.idtheloai and baihat.idnhacsi=nhacsi.idnhacsi and baihat.idbaihat=$idbaihat";
+		$sql="Select * from baihat,casi,theloai,nhacsi,baihat_casi ct where baihat.idbaihat=ct.idbaihat and casi.idcasi=ct.idcasi and baihat.idtheloai=theloai.idtheloai and baihat.idnhacsi=nhacsi.idnhacsi and baihat.idbaihat=$idbaihat";
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
