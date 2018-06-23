@@ -98,21 +98,27 @@
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Tên bài hát:</label>
 											<div class="col-md-9">
-												<input id="tenbaihat" name="tenbaihat" class="form-control" type="text">
+												<input id="tenbaihat" class="form-control" type="text">
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Ca sĩ:</label>
+											<div class="col-md-9 casi">
+												<input id="casi0" class="form-control casi0" type="text">
+											</div>
+											<div class="col-md-3"></div>
 											<div class="col-md-9">
-												<input id="casi" name="casi" class="form-control" type="text">
+												<br>
+												<input type="button" class="btn btn-secondary themcasi" value="Thêm Ca Sĩ">
+												<input type="button" class="btn btn-secondary xoacasi" value="Xoá Ca Sĩ">
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Nhạc sĩ:</label>
 											<div class="col-md-9">
-												<input id="nhacsi" name="casi" class="form-control" type="text">
+												<input id="nhacsi" class="form-control" type="text">
 											</div>
 										</div>
 
@@ -182,6 +188,25 @@
 
 </body>
 <script>
+	dem = 1;
+
+	$(document).ready(function () {
+		$('.themcasi').click(function(event) {
+			$('.casi').append('<input id="casi'+dem+'" class="form-control casi'+dem+'" type="text">');
+			dem=dem+1;
+		});
+		$('.xoacasi').click(function(event) {
+			if(dem>0)
+			{
+				$('input.casi'+dem).remove();
+				if(dem>1)
+				{
+					dem=dem-1;
+				}
+			}
+		});
+	})
+
     $(document).ready(function () {
         $('#casi').typeahead({
             source: function (query, result) {
@@ -243,6 +268,12 @@
 		}
 	});
 
+	casi =[];
+	for(i=0;i<dem;i++)
+	{
+		casi[i]=$('#casi'+dem).val();
+	}
+
 	$('.tailen').click(function(event) {
 		// if(!tenfile)
 		// {
@@ -254,12 +285,13 @@
 			dataType: 'json',
 			data: {
 				tennhacsi : $('#nhacsi').val(),
-				tencasi : $('#casi').val(),
+				tencasi : casi,
 				tenbaihat : $('#tenbaihat').val(),
 				// tenbaihat : $('#tenbaihat').val(),
 				idtheloai : $('#theloai').val(),
 				duongdannhac : filemusicurl,
-				duongdananhbaihat : fileanhmusicurl
+				duongdananhbaihat : fileanhmusicurl,
+				dem : dem
 				},
 		})
 		.done(function(data) {
