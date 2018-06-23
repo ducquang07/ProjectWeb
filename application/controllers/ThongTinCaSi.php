@@ -15,7 +15,7 @@ class ThongTinCaSi extends CI_Controller {
 	public function casi($id)
 	{
 		$this->load->model('ThongTinCaSi_model');
-		
+		// $kq=$this->ThongTinCaSi_model->LayThongTinCaSi($id);
 		$total_record=$this->ThongTinCaSi_model->get_TotalRecord($id);
 		$config = array(
 			'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1, // Trang hiện tại

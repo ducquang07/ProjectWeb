@@ -34,7 +34,18 @@ class BaiHat extends CI_Controller {
 		$phantrang=$paging->html();
 
 		$danhsachbaihat=$this->BaiHat_model->show_Danhsachbaihat_keyword($keyword,$config['limit']);
-		$data=array('baihat'=>array('danhsachbaihat'=>$danhsachbaihat),
+		$listbaihat=array();
+		foreach ($danhsachbaihat as $key => $value) {
+			$danhsachcasi=$this->BaiHat_model->GetCaSi($value['idbaihat']);
+			$baihat =array(
+				"idbaihat"=>$value['idbaihat'],
+				"tenbaihat"=>$value['tenbaihat'],
+				"luotnghe"=>$value['luotnghe'],
+				"casi"=>$danhsachcasi
+			);
+			array_push($listbaihat,$baihat);
+		}
+		$data=array('baihat'=>array('danhsachbaihat'=>$listbaihat),
 			'theloai_Vietnam'=>array('danhsachtheloai'=>$theloai_Vietnam),
 			'theloai_AuMy'=>array('danhsachtheloai'=>$theloai_AuMy),
 			'theloai_ChauA'=>array('danhsachtheloai'=>$theloai_ChauA),
@@ -43,6 +54,7 @@ class BaiHat extends CI_Controller {
 			'limit'=>$config['limit'],
 			'keyword'=>$keyword
 		);
+
 		$this->load->view('BaiHat_view',$data);
 		//--Tiến hành load BaiHat_view với dữ liệu là $data
 	}
@@ -116,6 +128,14 @@ class BaiHat extends CI_Controller {
 			'keyword'=>$keyword
 		);
 		$this->load->view('BaiHat_view',$data,false);
+	}
+
+	public function GetCaSi($idbaihat)
+	{
+		$this->load->model('BaiHat_model');
+		$dulieu=$this->BaiHat_model->GetCaSi($idbaihat);
+		$dulieu=array('casi'=>$dulieu);
+		return $dulieu;
 	}
 
 }

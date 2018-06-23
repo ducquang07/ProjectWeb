@@ -55,10 +55,10 @@ class BaiHat_model extends CI_Model {
 	public function show_Danhsachbaihat_keyword($keyword,$limit)
 	{
 		if($keyword===""){
-			$sql="Select * from baihat,casi, baihat_casi ct where baihat.idbaihat=ct.idbaihat and casi.idcasi=ct.idcasi  order by luotnghe desc limit 0, $limit";
+			$sql="Select * from baihat order by luotnghe desc limit 0, $limit";
 		}
 		else{
-			$sql="Select * from baihat,casi, baihat_casi ct where baihat.idbaihat=ct.idbaihat and casi.idcasi=ct.idcasi and match(baihat.tenbaihat) against('$keyword') limit 0, $limit";
+			$sql="Select * from baihat where baihat.tenbaihat like '%$keyword%' limit 0, $limit";
 		}
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
@@ -77,6 +77,14 @@ class BaiHat_model extends CI_Model {
 	public function Get_danhsach_hot()
 	{
 		$sql="Select distinct(idcasi),tencasi,duongdananhcasi from casi where idcasi in (select idcasi from baihat bh, baihat_casi ct where bh.idbaihat=ct.idbaihat order by luotnghe desc) limit 6";
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
+
+	public function GetCasi($idbaihat)
+	{
+		$sql="Select casi.idcasi,casi.tencasi from casi,baihat_casi where casi.idcasi=baihat_casi.idcasi and idbaihat=$idbaihat";
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
 		return $dulieu;

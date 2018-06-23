@@ -126,7 +126,14 @@
 														<div class="content-baihat">
 															<a href="<?php echo base_url() ?>BaiHat/trinhphatnhac/<?php echo $value['idbaihat'] ?>" class="item-baihat-tenbaihat"><?php echo $value['tenbaihat'] ?></a>
 															-
-															<a href="<?php echo base_url() ?>ThongTinCaSi/casi/<?php echo $value['idcasi'] ?>" class="item-baihat-tencasi"><?php echo $value['tencasi'] ?></a>
+															<?php foreach ($value['casi'] as $key1 => $value1) {?>
+															<a href="<?php echo base_url() ?>ThongTinCaSi/casi/<?php echo $value1['idcasi'] ?>" class="item-baihat-tencasi"><?php echo $value1['tencasi'] ?>
+															</a> 
+															
+															<?php 
+															if ($value1 !== end($value['casi']))
+																echo ","; }?>
+
 														</div>
 													</td>
 													<td>
