@@ -42,8 +42,12 @@ class DangNhac_model extends CI_Model {
 
 	public function thembaihat($tenbaihat,$duongdannhac,$duongdananhbaihat,$idnhacsi,$idcasi,$idnguoidung,$idtheloai)
 	{
-		$sql="INSERT INTO baihat( tenbaihat, duongdannhac, duongdananhbaihat, idnhacsi, idcasi, idnguoidung, idtheloai) VALUES ('$tenbaihat','$duongdannhac','$duongdananhbaihat','$idnhacsi','$idcasi','$idnguoidung','$idtheloai')";
+		$sql="INSERT INTO baihat( tenbaihat, duongdannhac, duongdananhbaihat, idnhacsi, idnguoidung, idtheloai) VALUES ('$tenbaihat','$duongdannhac','$duongdananhbaihat','$idnhacsi','$idnguoidung','$idtheloai')";
 		$this->db->query($sql);
+		$dem=$this->db->affected_rows();
+		foreach ($casi as $value) {
+			echo $value;	
+		}
 		return $this->db->affected_rows();
 	}
 }
