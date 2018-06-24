@@ -13,7 +13,11 @@ class CapNhatPlaylist_model extends CI_Model {
 	public function laydanhsachbaihat($keyword)
 	{
 		if($keyword!==""||$keyword!==null){
-			$sql="Select idbaihat,tenbaihat,tencasi from baihat,casi where casi.idcasi=baihat.idcasi and baihat.tenbaihat like '%$keyword%'";
+			$sql="Select baihat.idbaihat,baihat.tenbaihat,casi.tencasi 
+			from baihat,casi,baihat_casi
+			where casi.idcasi=baihat_casi.idcasi 
+			and baihat.idbaihat=baihat_casi.idbaihat
+			and baihat.tenbaihat like '%$keyword%'";
 			$dulieu=$this->db->query($sql);
 			foreach($dulieu->result_array() as $row){
 				echo '<li id="'.$row['idbaihat'].'">';
@@ -27,7 +31,9 @@ class CapNhatPlaylist_model extends CI_Model {
 
 	public function laythongtinplaylist($idplaylist)
 	{
-		$sql="select * from playlist,casi where playlist.idcasi=casi.idcasi and playlist.idplaylist='$idplaylist'";
+		$sql="select playlist.tenplaylist,playlist.idplaylist, casi.tencasi,playlist.mota,playlist.duongdananhplaylist,playlist.idtheloai,playlist.idcasi
+		from playlist,casi 
+		where playlist.idcasi=casi.idcasi and playlist.idplaylist='$idplaylist'";
 		$dulieu=$this->db->query($sql);
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
@@ -53,36 +59,32 @@ class CapNhatPlaylist_model extends CI_Model {
 	{
 		$sql="Select idcasi from casi where tencasi ='$tencasi'";
 		$dulieu=$this->db->query($sql);
-		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
 
-	public function capnhatplaylist($tenplaylist,$mota,$duongdananhplaylist,$idnguoidung,$idtheloai,$idcasi)
-	{
-		$luotnghe=0;
-		$sql="INSERT INTO playlist( tenplaylist, mota, duongdananhplaylist,luotnghe, idnguoidung, idtheloai, idcasi) VALUES ('$tenplaylist','$mota','$duongdananhplaylist','$luotnghe','$idnguoidung','$idtheloai','$idcasi')";
-		$this->db->query($sql);
-		return $this->db->affected_rows();
-	}
-
-
-
-
-
-	public function suaplaylist($idplaylist,$tenplaylist)
-	{
-		//trường hợp lost update 
-		$sql="call proc_ThayDoiTenPlaylist('".$idplaylist."','".$tenplaylist."')";
-		echo $sql;
+	public function capnhatplaylist($idplaylist,$tenplaylist,$mota,$duongdananhplaylist,$idtheloai,$idcasi)
+	{	
+		if($duongdananhplaylist!='')
+			$sql="Update playlist set tenplaylist='$tenplaylist', mota='$mota',duongdananhplaylist='$duongdananhplaylist',
+		idtheloai='$idtheloai',idcasi='$idcasi' where idplaylist='$idplaylist'";
+		else
+			$sql="Update playlist set tenplaylist='$tenplaylist', mota='$mota',idtheloai='$idtheloai',idcasi='$idcasi' where idplaylist='$idplaylist'";
 		return $this->db->query($sql);
 	}
+
+
+
 
 	public function laydanhsachbaihatplaylist($idplaylist)
 	{
 
 		$this->db->query("SET SESSION TRANSACTION ISOLATION LEVEL Read Uncommitted");
 		$this->db->trans_start();
-		$sql="Select baihat.idbaihat,tenbaihat,tencasi from baihat,casi,chitietplaylist where baihat.idcasi=casi.idcasi and chitietplaylist.idbaihat=baihat.idbaihat and chitietplaylist.idplaylist='$idplaylist'";
+		$sql="Select baihat.idbaihat,tenbaihat,tencasi from baihat,casi,chitietplaylist ,baihat_casi
+		where baihat.idbaihat=baihat_casi.idbaihat
+		and casi.idcasi=baihat_casi.idcasi
+		and chitietplaylist.idbaihat=baihat.idbaihat 
+		and chitietplaylist.idplaylist='$idplaylist'";
 		$dulieu=$this->db->query($sql);
 		$this->db->trans_complete();
 		$dulieu=$dulieu->result_array();
@@ -91,15 +93,7 @@ class CapNhatPlaylist_model extends CI_Model {
 
 	public function thembaihatvaoplaylist($idplaylist,$idbaihat)
 	{
-		//trường hợp đọc dữ liệu chưa commit
-		 //$sql="call proc_ThemBaiHatVaoPlaylist('".$idplaylist."','".$idbaihat."')";
-
-		
-
-		//trường hợp phantom
 		$sql="Insert into chitietplaylist values($idplaylist,$idbaihat)";
-
-
 		return $this->db->query($sql);
 	}
 

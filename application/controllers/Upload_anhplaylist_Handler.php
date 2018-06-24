@@ -44,7 +44,7 @@ class Upload_anhplaylist_Handler
         $this->response = array();
         $this->options = array(
             'script_url' => $this->get_full_url().'/'.$this->basename($this->get_server_var('SCRIPT_NAME')),
-            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/img/img_playlist',
+            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/img/img_playlist/',
             'upload_url' => $this->get_full_url().'/img/img_playlist/',
             'input_stream' => 'php://input',
             'user_dirs' => false,

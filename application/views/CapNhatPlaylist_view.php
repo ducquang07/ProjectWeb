@@ -174,10 +174,20 @@
 													$("#anhavatar").change(function(){
 														readURL(this);
 													});
+
 												</script>
 												<!-- <input id="anhavatar" name="files[]" class="form-control" type="file"> -->
 											</div>
 										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Mô tả:</label>
+											<div class="col-md-9">
+												<input name="mota" class="form-control" type="text"   id="mota" value="<?php echo $value['mota'] ?>">
+											</div>
+
+										</div>
+
 										<?php } ?>
 
 										<div class="form-group row">
@@ -202,13 +212,7 @@
 										</div>
 
 
-										<div class="form-group row">
-											<label class="col-md-3 col-form-label">Mô tả:</label>
-											<div class="col-md-9">
-												<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="mota"></textarea>
-											</div>
-
-										</div>
+										
 
 										<div class="form-group ">
 											
@@ -450,8 +454,10 @@
     		
     	});
 
-    	$('#fileanh').fileupload({
-    		url: '<?php echo base_url()?>CapNhatPlaylist/uploadfileanh',
+    	duongdan = '<?php echo base_url() ?>';
+    	var fileanhplaylist='';
+    	$('#file-anh').fileupload({
+    		url: duongdan + 'CapNhatPlaylist/uploadfileanh',
     		dataType: 'json',
     		done: function(e, data){
     			$.each(data.result.files, function (index, file) {
@@ -459,7 +465,6 @@
     			});
     		}
     	});
-
 
 
 
@@ -490,12 +495,16 @@
 
     	$("#btn-luu").click(function(event) {
     		$.ajax({
-    			url: 'CapNhatPlaylist/suaplaylist',
+    			url: 'CapNhatPlaylist/CapNhatPlaylist',
     			type: 'POST',
     			dataType: 'json',
     			data: {
     				tenplaylist:$("#tenplaylist").val(),		
-    				idplaylist:$("#idplaylist").val()
+    				idplaylist:$("#idplaylist").val(),
+    				mota:$("#mota").val(),
+    				duongdananhplaylist:fileanhplaylist,
+    				idtheloai:$("#theloai").val(),
+    				tencasi:$("#tencasi").val()
     			},
     		})
     		.done(function() {
@@ -505,8 +514,11 @@
     		.fail(function() {
     			console.log("error");
     		})
-    		.always(function() {
+    		.always(function(data) {
     			console.log("complete");
+    			if(data>0){
+    				location.reload();
+    			}
     		});
     	});
 

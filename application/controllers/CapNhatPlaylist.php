@@ -60,12 +60,13 @@ class CapNhatPlaylist extends CI_Controller {
 
 	public function uploadfileanh()
 	{
-		$uploadfile = new UploadImageHandler();
+		$uploadfile = new Upload_anhplaylist_Handler();
 	}
 
-	public function themplaylist()
+	public function CapNhatPlaylist()
 	{
 		$this->load->model('CapNhatPlaylist_model');
+		$idplaylist=$this->input->post('idplaylist');
 		$tenplaylist=$this->input->post('tenplaylist');
 		$mota=$this->input->post('mota');
 		$duongdananhplaylist=$this->input->post('duongdananhplaylist');
@@ -83,30 +84,15 @@ class CapNhatPlaylist extends CI_Controller {
 			}
 		}
 
-		if($this->CapNhatPlaylist_model->capnhatplaylist($tenplaylist,$mota,$duongdananhplaylist,$idnguoidung,$idtheloai,$idcasi))
+		if($this->CapNhatPlaylist_model->capnhatplaylist($idplaylist,$tenplaylist,$mota,$duongdananhplaylist,$idtheloai,$idcasi))
 		{
-			$this->load->view('CapNhatThanhCong_Playlist_view');
+			echo 1;
 		}
 		else
 		{
-			$this->load->view('CapNhatThatBai_Playlist_view');
+			echo 0;
 		}
 
-	}
-
-	public function suaplaylist()
-	{
-		$this->load->model('CapNhatPlaylist_model');
-		$tenplaylist=$this->input->post('tenplaylist');
-		$idplaylist=$this->input->post('idplaylist');
-		if($this->CapNhatPlaylist_model->suaplaylist($idplaylist,$tenplaylist))
-		{
-			$this->load->view('CapNhatThanhCong_Playlist_view');
-		}
-		else
-		{
-			$this->load->view('CapNhatThatBai_Playlist_view');
-		}
 	}
 
 	public function thembaihatvaoplaylist()
