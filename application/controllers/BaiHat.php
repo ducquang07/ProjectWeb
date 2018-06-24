@@ -24,7 +24,7 @@ class BaiHat extends CI_Controller {
 		$config = array(
 			'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1, // Trang hiện tại
 			'total_record'  => $total_record, // Tổng số record
-			'limit'         => 10,// limit
+			'limit'         => 3,// limit
 			'link_full'     => '{page}',// Link full có dạng như sau: domain/com/page/{page}
 			'link_first'    => '1',// Link trang đầu tiên
 		);
@@ -107,7 +107,7 @@ class BaiHat extends CI_Controller {
 		$config = array(
 			'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1, // Trang hiện tại
 			'total_record'  => $total_record, // Tổng số record
-			'limit'         => 10,// limit
+			'limit'         => 3,// limit
 			'link_full'     => '{page}',// Link full có dạng như sau: domain/com/page/{page}
 			'link_first'    => '1',// Link trang đầu tiên
 		);

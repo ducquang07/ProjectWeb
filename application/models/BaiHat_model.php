@@ -14,11 +14,11 @@ class BaiHat_model extends CI_Model {
 		$start=($currentpage-1)*$limit;
 		if($keyword==="")
 		{
-			$sql="Select * from baihat,casi, baihat_casi ct where baihat.idbaihat=ct.idbaihat and casi.idcasi=ct.idcasi order by luotnghe desc limit $start, $limit";
+			$sql="Select * from baihat order by luotnghe desc limit $start, $limit";
 		}
 		else
 		{
-			$sql="Select * from baihat,casi, baihat_casi ct where baihat.idbaihat=ct.idbaihat and casi.idcasi=ct.idcasi and match(baihat.tenbaihat) against('$keyword') limit $start,$limit";
+			$sql="Select * from baihat where tenbaihat like '%$keyword%' limit $start,$limit";
 		}
 		$danhsachbaihat=$this->db->query($sql);
 		$danhsachbaihat=$danhsachbaihat->result_array();
@@ -34,13 +34,17 @@ class BaiHat_model extends CI_Model {
 			array_push($listbaihat,$baihat);
 		}
 
-		foreach($dulieu->result_array() as $row)
+		foreach($listbaihat as $row)
 		{
 			echo '<tr class="item-baihat">';
 			echo '<td>';										
 			echo '<div class="content-baihat">';											
-			echo '<a href="baihat/trinhphatnhac/'.$row['idbaihat'].'" class="item-baihat-tenbaihat">'.$row['tenbaihat'].'</a>-';		
-			echo '<a href='.base_url().'ThongTinCaSi/casi/'.$row['idcasi'].' class="item-baihat-tencasi">'.$row['tencasi'].'</a>';					
+			echo '<a href="baihat/trinhphatnhac/'.$row['idbaihat'].'" class="item-baihat-tenbaihat">'.$row['tenbaihat'].'</a>-';
+
+			foreach ($row['casi'] as $key => $value) {
+				echo '<a href='.base_url().'ThongTinCaSi/casi/'.$value['idcasi'].' class="item-baihat-tencasi">'.$value['tencasi'].'</a>';	
+			}		
+
 			echo '</div>';											
 			echo '</td>';												
 			echo '<td>';									
