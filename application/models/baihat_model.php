@@ -20,7 +20,20 @@ class BaiHat_model extends CI_Model {
 		{
 			$sql="Select * from baihat,casi, baihat_casi ct where baihat.idbaihat=ct.idbaihat and casi.idcasi=ct.idcasi and match(baihat.tenbaihat) against('$keyword') limit $start,$limit";
 		}
-		$dulieu=$this->db->query($sql);
+		$danhsachbaihat=$this->db->query($sql);
+		$danhsachbaihat=$danhsachbaihat->result_array();
+		$listbaihat=array();
+		foreach ($danhsachbaihat as $key => $value) {
+			$danhsachcasi=$this->GetCaSi($value['idbaihat']);
+			$baihat =array(
+				"idbaihat"=>$value['idbaihat'],
+				"tenbaihat"=>$value['tenbaihat'],
+				"luotnghe"=>$value['luotnghe'],
+				"casi"=>$danhsachcasi
+			);
+			array_push($listbaihat,$baihat);
+		}
+
 		foreach($dulieu->result_array() as $row)
 		{
 			echo '<tr class="item-baihat">';

@@ -116,9 +116,21 @@ class BaiHat extends CI_Controller {
 		$paging->init($config);
 		$phantrang=$paging->html();
 
-		$danhsachbaihat=$this->BaiHat_model->show_Danhsachbaihat_keyword($keyword,$config['limit'],$phantrang);
+		$danhsachbaihat=$this->BaiHat_model->show_Danhsachbaihat_keyword($keyword,$config['limit']);
 
-		$data=array('baihat'=>array('danhsachbaihat'=>$danhsachbaihat),
+		$listbaihat=array();
+		foreach ($danhsachbaihat as $key => $value) {
+			$danhsachcasi=$this->BaiHat_model->GetCaSi($value['idbaihat']);
+			$baihat =array(
+				"idbaihat"=>$value['idbaihat'],
+				"tenbaihat"=>$value['tenbaihat'],
+				"luotnghe"=>$value['luotnghe'],
+				"casi"=>$danhsachcasi
+			);
+			array_push($listbaihat,$baihat);
+		}
+
+		$data=array('baihat'=>array('danhsachbaihat'=>$listbaihat),
 			'theloai_Vietnam'=>array('danhsachtheloai'=>$theloai_Vietnam),
 			'theloai_AuMy'=>array('danhsachtheloai'=>$theloai_AuMy),
 			'theloai_ChauA'=>array('danhsachtheloai'=>$theloai_ChauA),
