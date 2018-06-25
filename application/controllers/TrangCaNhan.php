@@ -15,8 +15,25 @@ class TrangCaNhan extends CI_Controller {
 		$this->load->model('TrangCaNhan_model');
 		$danhsachplaylist=$this->TrangCaNhan_model->laydanhsachplaylist($idusercurrent);
 		$thongtinnguoidung=$this->TrangCaNhan_model->laythongtinnguoidung($idusercurrent);
+		$danhsachbaihat=$this->TrangCaNhan_model->laydanhsachbaihatupload($idusercurrent);
+
+		$listbaihat_upload=array();
+
+		foreach ($danhsachbaihat as $key => $value) {
+			$danhsachcasi=$this->TrangCaNhan_model->laydanhsachcasi($value['idbaihat']);
+			$baihat=array(
+					"idbaihat"=>$value['idbaihat'],
+					"tenbaihat"=>$value['tenbaihat'],
+					"luotnghe"=>$value['luotnghe'],
+					"casi"=>$danhsachcasi
+			);
+			array_push($listbaihat_upload,$baihat);
+		}
+
 		$data=array('nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung),
-					'playlist'=>array('danhsachplaylist'=>$danhsachplaylist));
+					'playlist'=>array('danhsachplaylist'=>$danhsachplaylist),
+					'danhsachbaihat_upload'=>array('listbaihat_upload'=>$listbaihat_upload)
+				);
 		$this->load->view('TrangCaNhan_view',$data);
 	}
 	public function suathongtin()

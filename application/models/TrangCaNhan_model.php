@@ -43,6 +43,22 @@ class TrangCaNhan_model extends CI_Model {
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
+
+	public function laydanhsachbaihatupload($idusercurrent)
+	{
+		$sql="Select * from baihat where idnguoidung='$idusercurrent'";
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
+
+	public function laydanhsachcasi($idbaibat)
+	{
+		$sql="Select casi.idcasi,casi.tencasi from casi,baihat_casi where casi.idcasi=baihat_casi.idcasi and baihat_casi.idbaihat='$idbaibat'";
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
 }
 
 /* End of file trangcanhan_model.php */

@@ -437,20 +437,28 @@
 									<h3 class="card-title"><i class="fa fa-upload"></i>  Bài hát upload</h3>
 									<div class="table-responsive" id="contain-bdsaihat">
 										<table class="table table-striped" id="BaiHat-TBL">
-											
+										<!-- 	
 											<div class="alert alert-danger thongbao" role="alert" style="color: #721c24;">
 												<b>Không tìm thấy bài hát.</b>
-											</div>
+											</div> -->
 											
 											<tbody>
+												<?php 	foreach ($danhsachbaihat_upload['listbaihat_upload'] as $key => $value) { ?>
+												
+												
 												<!--Item bai hat-->
 												
 												<tr class="item-baihat">
 													<td>
 														<div class="content-baihat">
-															<a href="#" class="item-baihat-tenbaihat"></a>
+															<a href="#" class="item-baihat-tenbaihat"><?php echo $value['tenbaihat'] ?></a>
 															-
-															<a href="#" class="item-baihat-tencasi"></a>
+															<?php foreach ($value['casi'] as $key1 => $value1) {?>
+															<a href="#" class="item-baihat-tencasi"><?php echo $value1['tencasi'] ?></a>
+															<?php 
+															if ($value1 !== end($value['casi']))
+																echo ","; }?>
+															
 														</div>
 													</td>
 													<td>
@@ -468,6 +476,7 @@
 												</tr>
 												
 												<!--Ket thuc Item bai hat-->
+												<?php } ?>
 											</tbody>
 										</table>
 
@@ -529,7 +538,7 @@
 
 										</div>
 									</div>
-
+									<a href="<?php echo base_url() ?>DangNhac" class="btn btn-lg btn-outline-success"><i class="fa fa-upload"></i> Tạo playlist</a>
 								</div>
 							</div>
 							<!--Kết thuc phần playlist-->
