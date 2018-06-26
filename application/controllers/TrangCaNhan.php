@@ -97,6 +97,14 @@ class TrangCaNhan extends CI_Controller {
 		$uploadfile = new UploadHandler();
 
 	}
+
+	public function taoplaylist()
+	{
+		$tenplaylist=$this->input->post('tenplaylist');
+		$idusercurrent = $this->session->userdata('id');
+		$this->load->model('TrangCaNhan_model');
+		$this->TrangCaNhan_model->taoplaylist($tenplaylist,$idusercurrent);
+	}
 }
 
 /* End of file trangcanhan.php */

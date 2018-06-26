@@ -437,15 +437,17 @@
 									<h3 class="card-title"><i class="fa fa-upload"></i>  Bài hát upload</h3>
 									<div class="table-responsive" id="contain-bdsaihat">
 										<table class="table table-striped" id="BaiHat-TBL">
-										<!-- 	
+
+											<?php if(count($danhsachbaihat_upload['listbaihat_upload'])===0){ ?>
 											<div class="alert alert-danger thongbao" role="alert" style="color: #721c24;">
 												<b>Không tìm thấy bài hát.</b>
-											</div> -->
+											</div>
+											<?php }?>
 											
 											<tbody>
 												<?php 	foreach ($danhsachbaihat_upload['listbaihat_upload'] as $key => $value) { ?>
 												
-												
+
 												<!--Item bai hat-->
 												
 												<tr class="item-baihat">
@@ -497,7 +499,7 @@
 
 									<h6 class="card-subtitle mb-2 text-muted">Playlist</h6>
 									<div class="canvas-wrapper">
-										<div class="row">
+										<div class="row contain-playlist" >
 											<!--Item-playlist-->
 											<?php foreach ($playlist['danhsachplaylist'] as $key => $value) { ?>
 											<div class="col-lg-4 col-sm-6 portfolio-item">
@@ -531,14 +533,44 @@
 													</div>
 												</div>
 											</div>
-											<!--Item-playlist-->
 											<?php } ?>
+											<!--Item-playlist-->
+											
 
 
 
 										</div>
 									</div>
-									<a href="<?php echo base_url() ?>DangNhac" class="btn btn-lg btn-outline-success"><i class="fa fa-upload"></i> Tạo playlist</a>
+									
+									
+									<a  class="btn btn-lg btn-outline-success" href="" data-toggle="modal" data-target="#tao-playlist"><em class="fa fa-sign-in mr-1"></em> Tạo playlist </a>
+									
+									<div class="modal fade" id="tao-playlist">
+										<div class="modal-dialog modal-lg" role="document">
+											<div class="modal-content">
+												<!-- <form action="" method="post" enctype="multidata/form-data"> -->
+													<div class="modal-header">
+														<h4 class="modal-title"><strong>Tạo playlist</strong></h4>
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+															<span class="sr-only">Close</span>
+														</button>
+													</div>
+													<div class="modal-body">
+														<div class="form-group">
+															<label for="tenplaylist"><b>Tên playlist</b></label>
+															<input class="form-control" type="text" placeholder="Nhập tên playlist" name="tenplaylist" id="tenplaylist" required>
+														</div>                                       				
+													</div>
+													<div class="modal-footer">
+														<input type="submit" name="btn-taoplaylist" class=" btn btn-success" value="Tạo playlist" data-dismiss="modal" id="btn-taoplaylist" >
+													</div>
+											<!-- 	</form> -->	
+											</div><!-- /.modal-content -->
+										</div><!-- /.modal-dialog -->
+									</div>
+
+
 								</div>
 							</div>
 							<!--Kết thuc phần playlist-->
@@ -806,6 +838,24 @@
 
     		});
 
+    		$("#btn-taoplaylist").click(function(event) {
+    			$.ajax({
+    				url: 'TrangCaNhan/taoplaylist',
+    				type: 'POST',
+    				dataType: 'html',
+    				data: {tenplaylist:$("#tenplaylist").val()},
+    			})
+    			.done(function() {
+    				console.log("success");
+    			})
+    			.fail(function() {
+    				console.log("error");
+    			})
+    			.always(function(data) {
+    				console.log("complete");
+    				$(".contain-playlist").append(data);
+    			});
+    		});
     	</script>
 
     </body>
