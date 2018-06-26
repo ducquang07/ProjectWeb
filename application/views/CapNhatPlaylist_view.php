@@ -166,12 +166,12 @@
 															var reader = new FileReader();
 
 															reader.onload = function (e) {
-																$('#profile-img-tag').attr('src', e.target.result);
+																$('.img-fluid').attr('src', e.target.result);
 															}
 															reader.readAsDataURL(input.files[0]);
 														}
 													}
-													$("#anhavatar").change(function(){
+													$("#file-anh").change(function(){
 														readURL(this);
 													});
 
@@ -179,6 +179,7 @@
 												<!-- <input id="anhavatar" name="files[]" class="form-control" type="file"> -->
 											</div>
 										</div>
+										
 
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Mô tả:</label>

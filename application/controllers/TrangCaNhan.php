@@ -105,6 +105,20 @@ class TrangCaNhan extends CI_Controller {
 		$this->load->model('TrangCaNhan_model');
 		$this->TrangCaNhan_model->taoplaylist($tenplaylist,$idusercurrent);
 	}
+
+	public function xoaplaylist()
+	{
+		$idplaylist=$this->input->post('idplaylist');
+		$this->load->model('TrangCaNhan_model');
+		if($this->TrangCaNhan_model->xoaplaylist($idplaylist))
+		{
+			echo 1;
+		}
+		else
+		{
+			echo 0;
+		}
+	}
 }
 
 /* End of file trangcanhan.php */

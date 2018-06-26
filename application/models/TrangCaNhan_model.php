@@ -90,22 +90,24 @@ class TrangCaNhan_model extends CI_Model {
 			</h4>
 			<p class="card-text">'.$tencasi.'</p>
 			</div>
-			<div class="footer">
-			<div class="row">
-
-			<div class="col-md-4">
-			<form action="<?php echo base_url()?>CapNhatPlaylist" method="POST" enctype="multi-data">
-			<button class="btn btn-lg btn-warning">Sửa</button>
+			<div class="footer  text-center card-title">
+			<div class="btn-group">
+			<form action="'.base_url().'CapNhatPlaylist" method="POST" enctype="multi-data">
+			<input type="submit" class="btn btn-warning" value="Sửa">
 			<input type="text" hidden value="'.$this->db->insert_id().'" name="idplaylist">
+			<button type="button" class="btn btn-danger">Xóa</button>
 			</form>
-			</div>
-			<span class="col-md-1"></span>
-			<div class="col-md-4"><button class="btn btn-lg btn-danger">Xóa</button></div>
 			</div>
 			</div>
 			</div>
 			</div>';
 		}
+	}
+
+	public function xoaplaylist($idplaylist)
+	{
+		$sql="Delete from Playlist where idplaylist='$idplaylist'";
+		return $this->db->query($sql);
 	}
 }
 
