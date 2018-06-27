@@ -192,8 +192,17 @@
 
 	$(document).ready(function () {
 		$('.themcasi').click(function(event) {
-			$('.casi').append('<input id="casi'+dem+'" class="form-control casi'+dem+'" type="text">');
-			dem=dem+1;
+			if(dem<5)
+			{
+				$('.casi').append('<input id="casi'+dem+'" class="form-control casi'+dem+'" type="text">');
+				dem=dem+1;
+			}
+			else
+			{
+				$("i.slcasi").remove();
+				$('.casi').append('<i style="color:red;" class="slcasi">Tối đa 5 ca sĩ</i>');
+			}
+			
 		});
 		$('.xoacasi').click(function(event) {
 			if(dem>0)
@@ -208,7 +217,67 @@
 	})
 
     $(document).ready(function () {
-        $('#casi').typeahead({
+        $('#casi0').typeahead({
+            source: function (query, result) {
+                $.ajax({
+                    url: "DangNhac/searchcasi",
+					data: 'query=' + query,            
+                    dataType: "json",
+                    type: "POST",
+                    success: function (data) {
+						result($.map(data, function (item) {
+							return item;
+                        }));
+                    }
+                });
+            }
+        });
+        $('#casi1').typeahead({
+            source: function (query, result) {
+                $.ajax({
+                    url: "DangNhac/searchcasi",
+					data: 'query=' + query,            
+                    dataType: "json",
+                    type: "POST",
+                    success: function (data) {
+						result($.map(data, function (item) {
+							return item;
+                        }));
+                    }
+                });
+            }
+        });
+        $('#casi2').typeahead({
+            source: function (query, result) {
+                $.ajax({
+                    url: "DangNhac/searchcasi",
+					data: 'query=' + query,            
+                    dataType: "json",
+                    type: "POST",
+                    success: function (data) {
+						result($.map(data, function (item) {
+							return item;
+                        }));
+                    }
+                });
+            }
+        });
+        $('#casi3').typeahead({
+            source: function (query, result) {
+                $.ajax({
+                    url: "DangNhac/searchcasi",
+					data: 'query=' + query,            
+                    dataType: "json",
+                    type: "POST",
+                    success: function (data) {
+						result($.map(data, function (item) {
+							return item;
+                        }));
+                    }
+                });
+            }
+        });
+        $('#casi4').typeahead({
             source: function (query, result) {
                 $.ajax({
                     url: "DangNhac/searchcasi",
@@ -268,11 +337,11 @@
 		}
 	});
 
-	casi =[];
-	for(i=0;i<dem;i++)
-	{
-		casi[i]=$('#casi'+dem).val();
-	}
+	// casi =[];
+	// for(i=0;i<dem;i++)
+	// {
+	// 	casi[i]=$('#casi'+dem).val();
+	// }
 
 	$('.tailen').click(function(event) {
 		// if(!tenfile)
