@@ -499,7 +499,7 @@
 
 									<h6 class="card-subtitle mb-2 text-muted">Playlist</h6>
 									<div class="canvas-wrapper">
-										<div class="row contain-playlist" >
+										<div class="row contain-playlist mb-4" >
 											<!--Item-playlist-->
 											<?php foreach ($playlist['danhsachplaylist'] as $key => $value) { ?>
 											<div class="col-lg-4 col-sm-6 playlist-item" >

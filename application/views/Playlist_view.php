@@ -331,7 +331,7 @@
 													</a>
 													<div class="card-body">
 														<h4 class="card-title">
-															<a href="#"><?php echo $value['tenplaylist'] ?></a>
+															<a href="<?php echo base_url()?>TrinhPhatPlaylist"><?php echo $value['tenplaylist'] ?></a>
 														</h4>
 														<p class="card-text"><?php echo $value['tencasi'] ?></p>
 													</div>
