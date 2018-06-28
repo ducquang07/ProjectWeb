@@ -89,6 +89,7 @@ class Playlist extends CI_Controller {
 		$this->load->view('playlist_view',$data);
 	}
 
+	
 }
 
 /* End of file playlist.php */

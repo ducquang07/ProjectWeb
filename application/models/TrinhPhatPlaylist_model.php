@@ -47,6 +47,24 @@ class TrinhPhatPlaylist_model extends CI_Model {
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
+
+	public function layidbaihat_dautien($idplaylist)
+	{
+		$sql="select baihat.idbaihat from playlist,baihat,chitietplaylist
+		where playlist.idplaylist=chitietplaylist.idplaylist
+		and baihat.idbaihat=chitietplaylist.idbaihat and playlist.idplaylist='$idplaylist' Limit 1";
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu[0];
+	}
+
+	public function laythongtinbaihat($idbaihat)
+	{
+		$sql="Select * from baihat where baihat.idbaihat=$idbaihat";
+		$dulieu=$this->db->query($sql);
+		$dulieu=$dulieu->result_array();
+		return $dulieu;
+	}
 }
 
 /* End of file TrinhPhatPlaylist_model.php */

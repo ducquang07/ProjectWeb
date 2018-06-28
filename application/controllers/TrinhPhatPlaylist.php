@@ -9,21 +9,31 @@ class TrinhPhatPlaylist extends CI_Controller {
 
 	public function index()
 	{
-		$idusercurrent = $this->session->userdata('id');
-		$this->load->model('TrinhPhatNhac_model');
-		$thongtinbaihat=$this->TrinhPhatNhac_model->laythongtinbaihat(1);
-		$thongtinnguoidung=$this->TrinhPhatNhac_model->laythongtinnguoidung($idusercurrent);
-		$danhsachbinhluan=$this->TrinhPhatNhac_model->laydanhsachbinhluan(1);
-		
-		$this->TrinhPhatNhac_model->themluotnghe(1);
-
-		$this->load->model('BaiHat_model');
+		$idplaylist=$_GET['idplaylist'];
+		$idbaihat=$_GET['idbaihat'];
 		$this->load->model('TrinhPhatPlaylist_model');
-		$danhsachbaihat=$this->BaiHat_model->show_Danhsachbaihat_keyword('',8);
-		$thongtinplaylist=$this->TrinhPhatPlaylist_model->laythongtinplaylist(1);
-		$thongtinnguoitaoplaylist=$this->TrinhPhatPlaylist_model->laythongnguoitaoplaylist(1);
-		$danhsachbaihat=$this->TrinhPhatPlaylist_model->laydanhsachbaihat(1);
+		$this->load->model('TrinhPhatNhac_model');
+		$this->load->model('BaiHat_model');
+		if($idbaihat==='')
+		{
+			$idbaihat=$this->TrinhPhatPlaylist_model->layidbaihat_dautien($idplaylist);
+			$idbaihat=$idbaihat['idbaihat'];
+		}
 
+		
+		$idusercurrent = $this->session->userdata('id');
+		
+		$thongtinbaihat=$this->TrinhPhatPlaylist_model->laythongtinbaihat($idbaihat);
+
+		$thongtinnguoidung=$this->TrinhPhatNhac_model->laythongtinnguoidung($idusercurrent);
+		$danhsachbinhluan=$this->TrinhPhatNhac_model->laydanhsachbinhluan($idbaihat);
+		
+
+		
+		$danhsachbaihat=$this->BaiHat_model->show_Danhsachbaihat_keyword('',8);
+		$thongtinplaylist=$this->TrinhPhatPlaylist_model->laythongtinplaylist($idplaylist);
+		$thongtinnguoitaoplaylist=$this->TrinhPhatPlaylist_model->laythongnguoitaoplaylist($idplaylist);
+		$danhsachbaihat=$this->TrinhPhatPlaylist_model->laydanhsachbaihat($idplaylist);
 
 		$listbaihat=array();
 		foreach ($danhsachbaihat as $key => $value) {
@@ -37,7 +47,21 @@ class TrinhPhatPlaylist extends CI_Controller {
 			array_push($listbaihat,$baihat);
 		}
 
-		$data=array('baihat'=>array('thongtinbaihat'=>$thongtinbaihat),
+		$thongtinbaihatdangphat=array();
+		foreach ($thongtinbaihat as $key => $value) {
+			$baihatdangphat=array(
+				"idbaihat"=>$value['idbaihat'],
+				"tenbaihat"=>$value['tenbaihat'],
+				"luotnghe"=>$value['luotnghe'],
+				"duongdannhac"=>$value['duongdannhac'],
+				"loibaihat"=>$value['loibaihat'],
+				"duongdananhbaihat"=>$value['duongdananhbaihat'],
+				"casi"=>$this->TrinhPhatPlaylist_model->laythongthongtincasi($value['idbaihat'])
+			);
+			array_push($thongtinbaihatdangphat,$baihatdangphat);
+		}
+
+		$data=array('baihat'=>array('thongtinbaihat'=>$thongtinbaihatdangphat),
 			'nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung),
 			'binhluan'=>array('danhsachbinhluan'=>$danhsachbinhluan),
 			'nguoitaoplaylist'=>array('thongtinnguoitaoplaylist'=>$thongtinnguoitaoplaylist),
@@ -50,6 +74,7 @@ class TrinhPhatPlaylist extends CI_Controller {
 
 		$this->load->view('TrinhPhatPlaylist_view',$data);
 	}
+
 
 }
 
