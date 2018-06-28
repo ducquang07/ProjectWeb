@@ -68,7 +68,7 @@ class DangNhac extends CI_Controller {
 		$this->load->model('DangNhac_model');
 		$tenbaihat = $this->input->post('tenbaihat');
 		$duongdannhac = $this->input->post('duongdannhac');
-		$dem = $this->input->post('dem')
+		//$dem = $this->input->post('dem');
 		// $duongdananhbaihat = 'link';
 		$duongdananhbaihat = $this->input->post('duongdananhbaihat');
 		$tennhacsi = $this->input->post('tennhacsi');
@@ -79,29 +79,78 @@ class DangNhac extends CI_Controller {
 		$tencasi4 = $this->input->post('tencasi4');
 
 		// $casi[];
-		for ($i = 0; $i < dem ; $i++) 
+		for ($i = 0; $i < 5 ; $i++)
 		{
 			$casi[$i]=null;
 		}
-		$casi[0]=$this->DangNhac_model->timcasi($tencasi0);
-		$casi[1]=$this->DangNhac_model->timcasi($tencasi1);
-		$casi[2]=$this->DangNhac_model->timcasi($tencasi2);
-		$casi[3]=$this->DangNhac_model->timcasi($tencasi3);
-		$casi[4]=$this->DangNhac_model->timcasi($tencasi4);
-
-
+		$flag=0;
+		echo $tencasi0;
+		if($tencasi4==null)
+		{
+			if($tencasi3==null)
+			{
+				if($tencasi2==null)
+				{
+					if($tencasi1==null)
+					{
+						$casi[0]=$this->DangNhac_model->timcasi($tencasi0);
+						$flag=1;
+					}
+					else
+					{
+						$casi[0]=$this->DangNhac_model->timcasi_1($tencasi0);
+						$casi[1]=$this->DangNhac_model->timcasi_1($tencasi1);
+						$flag=2;
+					}
+				}
+				else
+				{
+					$casi[0]=$this->DangNhac_model->timcasi_1($tencasi0);
+					$casi[1]=$this->DangNhac_model->timcasi_1($tencasi1);
+					$casi[2]=$this->DangNhac_model->timcasi_1($tencasi2);
+					$flag=3;
+				}
+			}
+			else
+			{
+				$casi[0]=$this->DangNhac_model->timcasi_1($tencasi0);
+				$casi[1]=$this->DangNhac_model->timcasi_1($tencasi1);
+				$casi[2]=$this->DangNhac_model->timcasi_1($tencasi2);
+				$casi[3]=$this->DangNhac_model->timcasi_1($tencasi3);
+				$flag=4;
+			}
+		}
+		else
+		{
+			$casi[0]=$this->DangNhac_model->timcasi_1($tencasi0);
+			$casi[1]=$this->DangNhac_model->timcasi_1($tencasi1);
+			$casi[2]=$this->DangNhac_model->timcasi_1($tencasi2);
+			$casi[3]=$this->DangNhac_model->timcasi_1($tencasi3);
+			$casi[4]=$this->DangNhac_model->timcasi_1($tencasi4);
+			$flag=5;
+		}
+		
 		$nhacsi=$this->DangNhac_model->timnhacsi($tennhacsi);
 
 		// $idcasi[];
-
-		for($i=0;$i<5;$i++)
+		
+		$dem=0;
+		for ($i = 0; $i < 5 ; $i++) 
+		{
+			$idcasi[$i]=null;
+		}
+		for($i=0;$i<$flag;$i++)
 		{
 			if ($casi[$i]->num_rows() > 0) //số dòng lớn hơn 0 thì thực hiện
 			{
 				$casi[$i]=$casi[$i]->result_array(); //chuyển sang kiểu aray
+				echo '<pre>';
+				var_dump($casi[$i]);
+				echo '</pre>';
 				foreach ($casi[$i] as $key => $value)
 				{
-					$idcasi[$i] = $value["idcasi"];
+					echo $idcasi[$dem] = $value["idcasi"];
+					$dem++;
 				}
 			}
 		}
