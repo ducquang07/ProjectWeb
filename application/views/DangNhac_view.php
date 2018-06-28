@@ -337,32 +337,45 @@
 		}
 	});
 
-	// casi =[];
+	casi =[];
+	for (i = 0; i < 5 ; i++) 
+		{
+			casi[i]=null;
+		}
 	// for(i=0;i<dem;i++)
 	// {
 	// 	casi[i]=$('#casi'+dem).val();
 	// }
+	for(i=0;i<dem;i++)
+	{
+		casi[i]=$('#casi'+i).val();
+	};
 
 	$('.tailen').click(function(event) {
 		// if(!tenfile)
 		// {
 		// 	tenfile= $("#anhdaidien").attr("src");
-		// }
+		// }		
 		$.ajax({
-			url: 'DangNhac/thembaihat',
-			type: 'POST',
-			dataType: 'json',
-			data: {
-				tennhacsi : $('#nhacsi').val(),
-				tencasi : casi,
-				tenbaihat : $('#tenbaihat').val(),
-				// tenbaihat : $('#tenbaihat').val(),
-				idtheloai : $('#theloai').val(),
-				duongdannhac : filemusicurl,
-				duongdananhbaihat : fileanhmusicurl,
-				dem : dem
-				},
+		url: 'DangNhac/thembaihat',
+		type: 'POST',
+		dataType: 'json',
+		data: {
+			tennhacsi : $('#nhacsi').val(),
+			tencasi0 : casi[0],
+			tencasi1 : casi[1],
+			tencasi2 : casi[2],
+			tencasi3 : casi[3],
+			tencasi4 : casi[4],
+			tenbaihat : $('#tenbaihat').val(),
+			// tenbaihat : $('#tenbaihat').val(),
+			idtheloai : $('#theloai').val(),
+			duongdannhac : filemusicurl,
+			duongdananhbaihat : fileanhmusicurl,
+			dem : dem
+			},
 		})
+
 		.done(function(data) {
 			console.log("success");
 			$("i.trangthaitailen").remove();

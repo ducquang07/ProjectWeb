@@ -39,16 +39,56 @@ class DangNhac_model extends CI_Model {
 		$dulieu=$this->db->query($sql);
 		return $dulieu;
 	}
-
-	public function thembaihat($tenbaihat,$duongdannhac,$duongdananhbaihat,$idnhacsi,$idcasi,$idnguoidung,$idtheloai)
+	public function timidbaihat($tenbaihat,$idnguoidung)
+	{	
+		$sql="Select * from baihat where tenbaihat = '$tenbaihat' and idnguoidung = '$idnguoidung'";
+		$dulieu=$this->db->query($sql);
+		return $dulieu;
+	}
+	public function thembaihat($tenbaihat,$duongdannhac,$duongdananhbaihat,$idnhacsi,$idnguoidung,$idtheloai)
 	{
 		$sql="INSERT INTO baihat( tenbaihat, duongdannhac, duongdananhbaihat, idnhacsi, idnguoidung, idtheloai) VALUES ('$tenbaihat','$duongdannhac','$duongdananhbaihat','$idnhacsi','$idnguoidung','$idtheloai')";
 		$this->db->query($sql);
 		$dem=$this->db->affected_rows();
-		foreach ($casi as $value) {
-			echo $value;	
-		}
 		return $this->db->affected_rows();
+	}
+	public function thembaihat_casi($idbaihat,$idcasi0,$idcasi1,$idcasi2,$idcasi3,$idcasi4)
+	{
+		if($idcasi4 != null)
+		{
+			$sql="INSERT INTO baihat_casi(idbaihat, idcasi) VALUES ('$idbaihat','$idcasi0'),('$idbaihat','$idcasi1'),('$idbaihat','$idcasi2'),('$idbaihat','$idcasi3'),('$idbaihat','$idcasi4')";
+			$this->db->query($sql);
+			$dem=$this->db->affected_rows();
+			return $this->db->affected_rows();
+		}
+		else if($idcasi3 != null)
+		{
+			$sql="INSERT INTO baihat_casi(idbaihat, idcasi) VALUES ('$idbaihat','$idcasi0'),('$idbaihat','$idcasi1'),('$idbaihat','$idcasi2'),('$idbaihat','$idcasi3')";
+			$this->db->query($sql);
+			$dem=$this->db->affected_rows();
+			return $this->db->affected_rows();
+		}
+		else if($idcasi2 != null)
+		{
+			$sql="INSERT INTO baihat_casi(idbaihat, idcasi) VALUES ('$idbaihat','$idcasi0'),('$idbaihat','$idcasi1'),('$idbaihat','$idcasi2')";
+			$this->db->query($sql);
+			$dem=$this->db->affected_rows();
+			return $this->db->affected_rows();
+		}
+		else if($idcasi1 != null)
+		{
+			$sql="INSERT INTO baihat_casi(idbaihat, idcasi) VALUES ('$idbaihat','$idcasi0'),('$idbaihat','$idcasi1')";
+			$this->db->query($sql);
+			$dem=$this->db->affected_rows();
+			return $this->db->affected_rows();
+		}
+		else
+		{
+			$sql="INSERT INTO baihat_casi(idbaihat, idcasi) VALUES ('$idbaihat','$idcasi0')";
+			$this->db->query($sql);
+			$dem=$this->db->affected_rows();
+			return $this->db->affected_rows();
+		}
 	}
 }
 

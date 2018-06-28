@@ -68,19 +68,41 @@ class DangNhac extends CI_Controller {
 		$this->load->model('DangNhac_model');
 		$tenbaihat = $this->input->post('tenbaihat');
 		$duongdannhac = $this->input->post('duongdannhac');
+		$dem = $this->input->post('dem')
 		// $duongdananhbaihat = 'link';
 		$duongdananhbaihat = $this->input->post('duongdananhbaihat');
 		$tennhacsi = $this->input->post('tennhacsi');
-		$tencasi = $this->input->post('tencasi');
-		$casi=$this->DangNhac_model->timcasi($tencasi);
-		$nhacsi=$this->DangNhac_model->timnhacsi($tennhacsi);
-		
-		if ($casi->num_rows() > 0) //số dòng lớn hơn 0 thì thực hiện
+		$tencasi0 = $this->input->post('tencasi0');
+		$tencasi1 = $this->input->post('tencasi1');
+		$tencasi2 = $this->input->post('tencasi2');
+		$tencasi3 = $this->input->post('tencasi3');
+		$tencasi4 = $this->input->post('tencasi4');
+
+		// $casi[];
+		for ($i = 0; $i < dem ; $i++) 
 		{
-			$casi=$casi->result_array(); //chuyển sang kiểu aray
-			foreach ($casi as $key => $value)
+			$casi[$i]=null;
+		}
+		$casi[0]=$this->DangNhac_model->timcasi($tencasi0);
+		$casi[1]=$this->DangNhac_model->timcasi($tencasi1);
+		$casi[2]=$this->DangNhac_model->timcasi($tencasi2);
+		$casi[3]=$this->DangNhac_model->timcasi($tencasi3);
+		$casi[4]=$this->DangNhac_model->timcasi($tencasi4);
+
+
+		$nhacsi=$this->DangNhac_model->timnhacsi($tennhacsi);
+
+		// $idcasi[];
+
+		for($i=0;$i<5;$i++)
+		{
+			if ($casi[$i]->num_rows() > 0) //số dòng lớn hơn 0 thì thực hiện
 			{
-				$idcasi = $value["idcasi"];
+				$casi[$i]=$casi[$i]->result_array(); //chuyển sang kiểu aray
+				foreach ($casi[$i] as $key => $value)
+				{
+					$idcasi[$i] = $value["idcasi"];
+				}
 			}
 		}
 
@@ -95,9 +117,21 @@ class DangNhac extends CI_Controller {
 
 		$idnguoidung = $this->session->userdata('id');;
 		$idtheloai = $this->input->post('idtheloai');
-		if($this->DangNhac_model->thembaihat($tenbaihat,$duongdannhac,$duongdananhbaihat,$idnhacsi,$idcasi,$idnguoidung,$idtheloai))
+		if($this->DangNhac_model->thembaihat($tenbaihat,$duongdannhac,$duongdananhbaihat,$idnhacsi,$idnguoidung,$idtheloai))
 		{
-			echo 1;
+			$baihat=$this->DangNhac_model->timidbaihat($tenbaihat,$idnguoidung);
+			if ($baihat->num_rows() > 0) //số dòng lớn hơn 0 thì thực hiện
+			{
+				$baihat=$baihat->result_array(); //chuyển sang kiểu aray
+				foreach ($baihat as $key => $value)
+				{
+					$idbaihat = $value["idbaihat"];
+				}
+			}
+			if($this->DangNhac_model->thembaihat_casi($idbaihat,$idcasi[0],$idcasi[1],$idcasi[2],$idcasi[3],$idcasi[4]))
+			{
+				echo 1;
+			}
 		}
 		else
 		{
