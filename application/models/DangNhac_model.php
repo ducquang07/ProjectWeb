@@ -61,28 +61,28 @@ class DangNhac_model extends CI_Model {
 	}
 	public function thembaihat_casi($idbaihat,$idcasi0,$idcasi1,$idcasi2,$idcasi3,$idcasi4)
 	{
-		if($idcasi4 != null)
+		if($idcasi4 != '')
 		{
 			$sql="INSERT INTO baihat_casi(idbaihat, idcasi) VALUES ('$idbaihat','$idcasi0'),('$idbaihat','$idcasi1'),('$idbaihat','$idcasi2'),('$idbaihat','$idcasi3'),('$idbaihat','$idcasi4')";
 			$this->db->query($sql);
 			// $dem=$this->db->affected_rows();
 			return $this->db->affected_rows();
 		}
-		else if($idcasi3 != null)
+		else if($idcasi3 != '')
 		{
 			$sql="INSERT INTO baihat_casi(idbaihat, idcasi) VALUES ('$idbaihat','$idcasi0'),('$idbaihat','$idcasi1'),('$idbaihat','$idcasi2'),('$idbaihat','$idcasi3')";
 			$this->db->query($sql);
 			// $dem=$this->db->affected_rows();
 			return $this->db->affected_rows();
 		}
-		else if($idcasi2 != null)
+		else if($idcasi2 != '')
 		{
 			$sql="INSERT INTO baihat_casi(idbaihat, idcasi) VALUES ('$idbaihat','$idcasi0'),('$idbaihat','$idcasi1'),('$idbaihat','$idcasi2')";
 			$this->db->query($sql);
 			// $dem=$this->db->affected_rows();
 			return $this->db->affected_rows();
 		}
-		else if($idcasi1 != null)
+		else if($idcasi1 != '')
 		{
 			$sql="INSERT INTO baihat_casi(idbaihat, idcasi) VALUES ('$idbaihat','$idcasi0'),('$idbaihat','$idcasi1')";
 			$this->db->query($sql);

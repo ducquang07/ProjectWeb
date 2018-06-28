@@ -340,12 +340,9 @@
 	casi =[];
 	for (i = 0; i < 5 ; i++) 
 		{
-			casi[i]=null;
+			casi[i]='';
 		}
-	// for(i=0;i<dem;i++)
-	// {
-	// 	casi[i]=$('#casi'+dem).val();
-	// }
+
 	for(i=0;i<dem;i++)
 	{
 		casi[i]=$('#casi'+i).val();
@@ -368,7 +365,6 @@
 			tencasi3 : casi[3],
 			tencasi4 : casi[4],
 			tenbaihat : $('#tenbaihat').val(),
-			// tenbaihat : $('#tenbaihat').val(),
 			idtheloai : $('#theloai').val(),
 			duongdannhac : filemusicurl,
 			duongdananhbaihat : fileanhmusicurl,

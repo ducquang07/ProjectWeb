@@ -81,19 +81,19 @@ class DangNhac extends CI_Controller {
 		// $casi[];
 		for ($i = 0; $i < 5 ; $i++)
 		{
-			$casi[$i]=null;
+			$casi[$i]='';
 		}
 		$flag=0;
 		echo $tencasi0;
-		if($tencasi4==null)
+		if($tencasi4=='')
 		{
-			if($tencasi3==null)
+			if($tencasi3=='')
 			{
-				if($tencasi2==null)
+				if($tencasi2=='')
 				{
-					if($tencasi1==null)
+					if($tencasi1=='')
 					{
-						$casi[0]=$this->DangNhac_model->timcasi($tencasi0);
+						$casi[0]=$this->DangNhac_model->timcasi_1($tencasi0);
 						$flag=1;
 					}
 					else
@@ -137,8 +137,9 @@ class DangNhac extends CI_Controller {
 		$dem=0;
 		for ($i = 0; $i < 5 ; $i++) 
 		{
-			$idcasi[$i]=null;
+			$idcasi[$i]='';
 		}
+
 		for($i=0;$i<$flag;$i++)
 		{
 			if ($casi[$i]->num_rows() > 0) //số dòng lớn hơn 0 thì thực hiện
@@ -190,4 +191,4 @@ class DangNhac extends CI_Controller {
 }
 
 /* End of file dangnhac.php */
-/* Location: ./application/controllers/dangnhac.php */
+/* Location: ./application/controllers/DangNhac.php */
