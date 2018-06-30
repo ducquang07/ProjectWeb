@@ -504,7 +504,7 @@
 											<?php foreach ($playlist['danhsachplaylist'] as $key => $value) { ?>
 											<div class="col-lg-4 col-sm-6 playlist-item" >
 												<div class="card h-100" id="item-playlist">
-													<a href="#" class="item-container">
+													<a href="<?php echo base_url()?>TrinhPhatPlaylist/?idplaylist=<?php echo $value['idplaylist'] ?>&idbaihat=" class="item-container">
 														<div class="item-hover">
 															<div class="item-hover-content">
 																<i class="fa fa-play fa-2x"></i>
@@ -514,7 +514,7 @@
 													</a>
 													<div class="card-body">
 														<h4 class="card-title">
-															<a href="#"><?php echo $value['tenplaylist'] ?></a>
+															<a href="<?php echo base_url()?>TrinhPhatPlaylist/?idplaylist=<?php echo $value['idplaylist'] ?>&idbaihat="><?php echo $value['tenplaylist'] ?></a>
 														</h4>
 														<p class="card-text"><?php echo $value['tencasi'] ?></p>
 													</div>
