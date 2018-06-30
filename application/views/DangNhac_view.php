@@ -106,6 +106,10 @@
 											<label class="col-md-3 col-form-label">Ca sĩ:</label>
 											<div class="col-md-9 casi">
 												<input id="casi0" class="form-control casi0" type="text">
+												<input id="casi1" class="form-control casi1 d-none" type="text">
+												<input id="casi2" class="form-control casi2 d-none" type="text">
+												<input id="casi3" class="form-control casi3 d-none" type="text">
+												<input id="casi4" class="form-control casi4 d-none" type="text">
 											</div>
 											<div class="col-md-3"></div>
 											<div class="col-md-9">
@@ -182,8 +186,6 @@
     	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     	<script type="text/javascript" src="<?php echo base_url() ?>vendor/lib/typeahead.js"></script>
-    	
-
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 
 </body>
@@ -194,7 +196,8 @@
 		$('.themcasi').click(function(event) {
 			if(dem<5)
 			{
-				$('.casi').append('<input id="casi'+dem+'" class="form-control casi'+dem+'" type="text">');
+				$('input.casi'+dem).removeClass( "d-none" );
+				// $('.casi').append("<input id='casi"+dem+"' class='form-control casi"+dem+"' type='text'>");
 				dem=dem+1;
 			}
 			else
@@ -207,11 +210,14 @@
 		$('.xoacasi').click(function(event) {
 			if(dem>0)
 			{
-				$('input.casi'+dem).remove();
 				if(dem>1)
 				{
 					dem=dem-1;
 				}
+				$("i.slcasi").remove();
+				$('input.casi'+dem).addClass( "d-none" );
+				// $('input.casi'+dem).remove();
+				// $('#casi'+dem).val('');
 			}
 		});
 	})
@@ -337,22 +343,25 @@
 		}
 	});
 
-	casi =[];
-	for (i = 0; i < 5 ; i++) 
-		{
-			casi[i]='';
-		}
-
-	for(i=0;i<dem;i++)
-	{
-		casi[i]=$('#casi'+i).val();
-	};
+	
 
 	$('.tailen').click(function(event) {
 		// if(!tenfile)
 		// {
 		// 	tenfile= $("#anhdaidien").attr("src");
-		// }		
+		// }
+		var casi =[];
+
+		for (var i = 0; i < 5 ; i++) 
+			{
+				casi[i] = -1;
+			};
+
+		for(var j=0 ; j<dem ; j++)
+		{
+			casi[j]=$('#casi'+j).val();
+		};		
+		
 		$.ajax({
 		url: 'DangNhac/thembaihat',
 		type: 'POST',

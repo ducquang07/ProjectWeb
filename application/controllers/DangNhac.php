@@ -81,17 +81,16 @@ class DangNhac extends CI_Controller {
 		// $casi[];
 		for ($i = 0; $i < 5 ; $i++)
 		{
-			$casi[$i]='';
+			$casi[$i]= -1;
 		}
 		$flag=0;
-		echo $tencasi0;
-		if($tencasi4=='')
+		if($tencasi4== -1)
 		{
-			if($tencasi3=='')
+			if($tencasi3== -1)
 			{
-				if($tencasi2=='')
+				if($tencasi2== -1)
 				{
-					if($tencasi1=='')
+					if($tencasi1== -1)
 					{
 						$casi[0]=$this->DangNhac_model->timcasi_1($tencasi0);
 						$flag=1;
@@ -130,14 +129,13 @@ class DangNhac extends CI_Controller {
 			$flag=5;
 		}
 		
-		$nhacsi=$this->DangNhac_model->timnhacsi($tennhacsi);
+		$nhacsi=$this->DangNhac_model->timnhacsi_1($tennhacsi);
 
 		// $idcasi[];
-		
 		$dem=0;
 		for ($i = 0; $i < 5 ; $i++) 
 		{
-			$idcasi[$i]='';
+			$idcasi[$i]= -1;
 		}
 
 		for($i=0;$i<$flag;$i++)
@@ -145,12 +143,9 @@ class DangNhac extends CI_Controller {
 			if ($casi[$i]->num_rows() > 0) //số dòng lớn hơn 0 thì thực hiện
 			{
 				$casi[$i]=$casi[$i]->result_array(); //chuyển sang kiểu aray
-				echo '<pre>';
-				var_dump($casi[$i]);
-				echo '</pre>';
 				foreach ($casi[$i] as $key => $value)
 				{
-					echo $idcasi[$dem] = $value["idcasi"];
+					$idcasi[$dem] = $value["idcasi"];
 					$dem++;
 				}
 			}
@@ -181,6 +176,10 @@ class DangNhac extends CI_Controller {
 			if($this->DangNhac_model->thembaihat_casi($idbaihat,$idcasi[0],$idcasi[1],$idcasi[2],$idcasi[3],$idcasi[4]))
 			{
 				echo 1;
+			}
+			else
+			{
+				echo 0;
 			}
 		}
 		else
