@@ -11,6 +11,9 @@
 
 	<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.js"></script>    	
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 	<!-- Bootstrap core CSS -->
 	<link href="<?php echo base_url() ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>SpryAssets_AN/SpryTabbedPanels_VD.css" rel="stylesheet" type="text/css" />
@@ -41,7 +44,7 @@
 	<link href="<?php echo base_url() ?>jqueryupload/css/jquery.fileupload-ui.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>jqueryupload/css/jquery.fileupload.css" rel="stylesheet">
 </head>
-<body>
+<body id="page-top">
 	<div class="container-fluid" id="wrapper">
 		<!--Bắt đầu navbar-->
 		<?php require('navbar.php') ?>
@@ -129,7 +132,7 @@
 							if($this->session->userdata('trangthai')=='ADMIN')
 								{
 							?>
-							<div class="card mb-4 quantri" >
+							<!-- <div class="card mb-4 quantri" >
 								<div class="card-block">
 									<h3 class="card-title"><i class="fa fa-flash"></i>  Quản trị trang<ng></ng></h3>
 							
@@ -146,8 +149,81 @@
 									<a class="card-body" href="#"><em class="fa fa-pencil mr-1"></em> Sửa Thông Tin Nhạc Sĩ</a>
 									</div>
 								</div>
-							</div>
-							<?php } ?>
+							</div> -->
+							
+							<div class="card mb-4 themcasi" >
+								<div class="card-block">
+									<h3 class="card-title"><i class="fa fa-plus"></i>  Thêm ca sĩ<ng></ng></h3>
+									<!-- <form class="form" action="#"> -->
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Họ tên ca sĩ:</label>
+											<div class="col-md-9">
+												<input id="tencs" class="form-control" type="text">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Ngày sinh:</label>
+											<div class="col-md-9">
+												<input id="ngaysinhcs" class="form-control" type="date">
+											</div>
+										</div>
+
+										<div class="form-group row " id="gioitinhcs">
+				                            <label><b>Giới tính:</b></label>
+				                            <label for="register-male" class="radio control-inline">
+				                                <input type="radio" id="register-male" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="nam"> Nam
+				                            </label>
+				                            <label for="register-female" class="radio control-inline">
+				                                <input type="radio" id="register-female" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="nu"> Nữ
+				                            </label>
+				                            <label for="register-neutral" class="radio control-inline">
+				                                <input type="radio" id="register-neutral" name="gender" required="required" value="khac"> Khác
+				                            </label>
+				                        </div>
+
+				                        <div class="form-group row">
+											<label class="col-md-3 col-form-label">Chọn ảnh ca sĩ:</label>
+											<div class="col-md-9">
+												<span class="btn btn-outline-success fileinput-button">
+								                    <i class="glyphicon glyphicon-plus"></i>
+								                    <span>Chọn file ảnh...</span>
+								                    <input id="fileanhcs" class="form-control" type="file" name="files[]" multiple="">
+						                		</span>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Chọn ảnh bìa ca sĩ:</label>
+											<div class="col-md-9">
+												<span class="btn btn-outline-success fileinput-button">
+								                    <i class="glyphicon glyphicon-plus"></i>
+								                    <span>Chọn file ảnh...</span>
+								                    <input id="fileanhbiacs" class="form-control" type="file" name="files[]" multiple="">
+						                		</span>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label">Mô tả:</label>
+											<div class="col-md-9">
+												<input id="motacs" class="form-control" type="text">
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<div class="col-md-7"></div>
+											<div class="col-md-5 nutluu">
+												<input type="button" class="btn btn-lg btn-secondary thoatcs" value="Thoát">
+												<input type="button" class="btn btn-lg btn-success luucs" value="Lưu">
+												<br>
+											</div>
+										</div>
+										<!-- </form> -->
+									</div>
+								</div>
+								<?php } ?>
 						</div>
 					</section>
 				</div>
@@ -155,4 +231,62 @@
 		</main>
 	</div>
 </body>
+<script>
+	var duongdan = '<?php echo base_url() ?>';
+
+	$('#fileanhcs').fileupload({
+		url: duongdan + 'DangNhac/uploadfileanh',
+		dataType: 'json',
+		done: function(e, data){
+			$.each(data.result.files, function (index, file) {
+            	fileanhcs_url = file.url;
+          	});
+		}
+	});
+
+	$('#fileanhbiacs').fileupload({
+		url: duongdan + 'DangNhac/uploadfileanh',
+		dataType: 'json',
+		done: function(e, data){
+			$.each(data.result.files, function (index, file) {
+            	fileanhbiacs_url = file.url;
+          	});
+		}
+	});
+
+	$('.luucs').click(function(event) {
+		
+		$.ajax({
+		url: 'ThemCaSi/themcasi',
+		type: 'POST',
+		dataType: 'json',
+		data: {
+			tencasi : $('#tencs').val(),
+			ngaysinh : $('#ngaysinhcs').val(),
+			gioitinh : $('[name="gender"]:radio:checked').val();,
+			duongdananhcs : fileanhcs_url,
+			duongdananhbiacs : fileanhbiacs_url,
+			mota : $('#motacs').val()
+			},
+		})
+
+		.done(function(data) {
+			console.log("success");
+			$("i.trangthaithemcs").remove();
+			if(data>0)
+			{
+				$('.nutluu').append('<i style="color:red;" class="trangthaithemcs">Thêm ca sĩ thành công</i>');
+	            // location.reload();
+			}
+			else
+			{
+				$('.nutluu').append('<i style="color:red;" class="trangthaithemcs">Thêm ca sĩ thất bại</i>');
+	            // location.reload();
+			}
+		})
+		.fail(function() {
+			console.log("error");
+		})
+	});
+</script>
 </html>

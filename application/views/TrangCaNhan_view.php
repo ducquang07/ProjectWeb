@@ -41,11 +41,6 @@
 	<link href="<?php echo base_url() ?>jqueryupload/css/jquery.fileupload-ui.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>jqueryupload/css/jquery.fileupload.css" rel="stylesheet">
 
-	<style>
-	
-
-
-</style>
 </head>
 <body id="page-top">
 	<div class="container-fluid" id="wrapper">
@@ -137,7 +132,7 @@
 							?>
 							<div class="card mb-4 quantri" >
 								<div class="card-block">
-									<h3 class="card-title"><i class="fa fa-flash"></i>  Quản trị trang<ng></ng></h3>
+									<h3 class="card-title"><i class="fa fa-gears"></i>  Quản trị trang<ng></ng></h3>
 							
 									<div class="card bg-light text-dark">
 									<a class="card-body" href="<?php echo base_url() ?>ThemCaSi"><em class="fa fa-pencil mr-1"></em> Thêm Ca Sĩ</a>
@@ -734,13 +729,11 @@
 			</section>
 		</main>
 	</div>
-    <!-- Bootstrap core JavaScript
+</body>
+        <!-- Bootstrap core JavaScript
     	================================================== -->
     	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.js"></script>
-    	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.js"></script>
-    	<!-- Placed at the end of the document so the pages load faster -->
-    	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-    	
+    	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.js"></script>    	
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 
 
@@ -756,11 +749,13 @@
     		});
 
     		$('.thoatchinhsua').click(function(event) {
+    			$("i.trangthailuu").remove();
     			$( "div.thongtinnguoidungsua" ).addClass( "d-none" );
     			$( "div.thongtinnguoidung" ).removeClass( "d-none" );
     		});
 
     		$('.thoatsuamatkhau').click(function(event) {
+    			$("i.trangthailuumatkhau").remove();
     			$( "div.thongtintaikhoansua" ).addClass( "d-none" );
     			$( "div.thongtintaikhoan" ).removeClass( "d-none" );
     		});
@@ -886,6 +881,4 @@
     			$(this).closest('div').closest('.playlist-item').remove();
     		});
     	</script>
-
-    </body>
-    </html>
+</html>

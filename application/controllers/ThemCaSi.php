@@ -17,7 +17,10 @@ class ThemCaSi extends CI_Controller {
 					'theloai'=>array('thongtintheloai' => $thongtintheloai));
 		$this->load->view('ThemCaSi_view', $data);
 	}
-
+	public function themcasi()
+	{
+		
+	}
 }
 
 /* End of file ThemCaSi.php */
