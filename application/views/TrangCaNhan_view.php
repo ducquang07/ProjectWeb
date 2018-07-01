@@ -10,6 +10,7 @@
 
 
 	<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 	<!-- Bootstrap core CSS -->
 	<link href="<?php echo base_url() ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>SpryAssets_AN/SpryTabbedPanels_VD.css" rel="stylesheet" type="text/css" />
@@ -22,7 +23,7 @@
 	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/jquery.fileupload.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/jquery.fileupload-process.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/jquery.fileupload-image.js"></script>
-
+	
 	<!-- Icons -->
 	<link href="<?php echo base_url() ?>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -127,8 +128,33 @@
 						</div>
 						<!--Step 2-->
 						<!--Step 1-->
+							
 
 						<div class="col-md-12 col-lg-8">
+							<?php 
+							if($this->session->userdata('trangthai')=='ADMIN')
+								{
+							?>
+							<div class="card mb-4 quantri" >
+								<div class="card-block">
+									<h3 class="card-title"><i class="fa fa-flash"></i>  Quản trị trang<ng></ng></h3>
+							
+									<div class="card bg-light text-dark">
+									<a class="card-body" href="<?php echo base_url() ?>ThemCaSi"><em class="fa fa-pencil mr-1"></em> Thêm Ca Sĩ</a>
+									</div>
+									<div class="card bg-light text-dark">
+									<a class="card-body" href="#"><em class="fa fa-pencil mr-1"></em> Thêm Nhạc Sĩ</a>
+									</div>
+									<div class="card bg-light text-dark">
+									<a class="card-body" href="#"><em class="fa fa-pencil mr-1"></em> Sửa Thông Tin Ca Sĩ</a>
+									</div>
+									<div class="card bg-light text-dark">
+									<a class="card-body" href="#"><em class="fa fa-pencil mr-1"></em> Sửa Thông Tin Nhạc Sĩ</a>
+									</div>
+								</div>
+							</div>
+							<?php } ?>
+								
 							<div class="card mb-4 thongtinnguoidung" >
 								<div class="card-block">
 									<h3 class="card-title"><i class="fa fa-user"></i>  Thông tin người dùng<ng></ng></h3>
@@ -714,10 +740,7 @@
     	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.js"></script>
     	<!-- Placed at the end of the document so the pages load faster -->
     	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     	
-    	
-
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 
 

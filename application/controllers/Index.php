@@ -95,7 +95,7 @@ class Index extends CI_Controller {
 		$email = $this->input->post('email');
 		$username = $this->input->post('username');
 		$psw = $this->input->post('psw');
-		$trangthai = 'Basic';
+		$trangthai = 'BASIC';
 		$duongdananh = base_url()."anhavatar/default_avatar.jpg";
 		$this->load->model('Index_model');
 

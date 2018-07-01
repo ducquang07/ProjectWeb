@@ -198,7 +198,7 @@
     </section>
     <footer class="py-3 bg-black">
         <div class="container">
-            <p class="m-0 text-center text-white small">Copyright © Your Website 2018</p>
+            <p class="m-0 text-center text-white small">Copyright © ZikZak 2018</p>
         </div>
     </footer>
     <script>
