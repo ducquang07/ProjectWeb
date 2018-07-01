@@ -323,7 +323,10 @@
 										
 									</div>
 									<!--Kết thúc phần phát nhạc-->
+									
 
+
+									<!--Playlist bài hát-->
 									<div class="card mb-4">
 										<div class="">
 											<div class="lyric" id="_divLyricHtml">
@@ -342,12 +345,8 @@
 															<tr class="item-baihat" id='aaaaa'>
 																<td>
 																	<div class="content-baihat">
-																		<!-- <a href="<?php echo base_url() ?>TrinhPhatPlaylist/?idplaylist=<?php echo $obj_playlist['idplaylist'] ?>&idbaihat=<?php echo $value['idbaihat']?>" class="item-baihat-tenbaihat" id="<?php echo $value['idbaihat'] ?>"><?php echo $value['tenbaihat'] ?></a> -->
-
 																		<a href="#" class="item-baihat-tenbaihat" id="<?php echo $value['idbaihat'] ?>"><?php echo $value['tenbaihat'] ?>
 																		</a>
-																		<div hidden class="duongdannhac"><?php echo $value['duongdannhac'] ?>
-																		</div>
 																		-
 																		<div class='casi'>
 																			<?php foreach ($value['casi'] as $key1 => $value1) {?>
@@ -380,7 +379,7 @@
 											</div>
 										</div>
 									</div>
-
+									<!--Playlist bài hát-->
 
 									<!--Bắt đầu thanh service-bar-->
 									<div class="mb-4  service-bar container" >
@@ -996,158 +995,150 @@
 				</main>
 
 			</div>
+
 			<script type="text/javascript">
 				var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
 			</script>
 			<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
 			<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 			<script>
-				$(".btn-binhluan").click(function(event) {
-					if($(".txt-comment").val()!="")
-					{
-						var currentdate = new Date(); 
-						var datetime = currentdate.getFullYear() + "-"
-						+ (currentdate.getMonth()+1)  + "-" 
-						+ currentdate.getDate() + " "  
-						+ currentdate.getHours() + ":"  
-						+ currentdate.getMinutes() + ":" 
-						+ currentdate.getSeconds();
-						console.log(datetime);
-						$.ajax({
-							url: '<?php echo base_url()?>/TrinhPhatNhac/binhluan',
-							type: 'POST',
-							dataType: 'html',
-							data: {
-								noidung:$(".txt-comment").val(),
-								idnguoidung:$("#idnguoidung").val(),
-								idbaihat:$("#idbaihat").val(),
-								thoigian:datetime
-							},
-						})
-						.done(function() {
-							console.log("success");
-						})
-						.fail(function() {
-							console.log("error");
-						})
-						.always(function(data) {
-							console.log("complete");
-							if($('.cbb-binhluan option:selected').val()==="new")
-							{
-								$(".binhluan-container").prepend(data);
-							}
-							else{
-								$(".binhluan-container").append(data);
-							}
-							$(".thongbao").remove();
-							$noidung='<div class="alert alert-success thongbao" role="alert" style="color:green;"><b>Bình luận được đăng thành công.</b></div>';
-							$(".thongbao-binhluan").append($noidung);
-							noidung:$(".txt-comment").val("");	
-						});
-					}
-					else
-					{
-						$noidung='<div class="alert alert-danger thongbao" role="alert" style="color: #721c24;"><b>Nội dung bình luận không được để trống.</b></div>';
-						$(".thongbao-binhluan").append($noidung);
-					}
-
-				});
-
-				$('.cbb-binhluan').change(function(event) {
-					if($('.cbb-binhluan option:selected').val()==="new")
-					{
-						$.ajax({
-							url: '<?php echo base_url()?>/TrinhPhatNhac/binhluan_moinhat',
-							type: 'POST',
-							dataType: 'html',
-							data: {idbaihat:$("#idbaihat").val()},
-						})
-						.done(function() {
-							console.log("success");
-						})
-						.fail(function() {
-							console.log("error");
-						})
-						.always(function(data) {
-							console.log("complete");
-							$(".binhluan-container").empty();
-							$(".binhluan-container").append(data);
-						});
-
-					}
-					else
-					{
-						$.ajax({
-							url: '<?php echo base_url()?>/TrinhPhatNhac/binhluan_cunhat',
-							type: 'POST',
-							dataType: 'html',
-							data: {idbaihat:$("#idbaihat").val()},
-						})
-						.done(function() {
-							console.log("success");
-						})
-						.fail(function() {
-							console.log("error");
-						})
-						.always(function(data) {
-							console.log("complete");
-							$(".binhluan-container").empty();
-							$(".binhluan-container").append(data);
-						});
-					}
-
-				});
-
-				$(".btn-timkiem").click(function(event) {
-					$tukhoa=$("#keyword").val();
-					if($tukhoa==='')
-						$("#timkiem").attr('action', '<?php echo base_url() ?>BaiHat');
-					else
-						$("#timkiem").attr('action', '<?php echo base_url() ?>BaiHat/timkiem/?keyword='+$tukhoa);
-				});
-
-				$(".item-baihat-tenbaihat").click(function(event) {
-					$tenbaihat=$(this).html();
-					$casi=$(this).closest('.item-baihat').find('.casi').html();
-					$duongdannhac=$(this).closest('.item-baihat').find('.duongdannhac').html();
-					$("#tenbaihat").html($tenbaihat);
-					$("#casithehien").html($casi);
-
-					aud = document.getElementById("audio");
-					aud.src = $duongdannhac;
-					aud.load();
-					aud.play();
-				});
-
-				
-				// function setup() {
-				// 	document.getElementById('audio').addEventListener('ended', function(){
-				// 		i++;
-				// 		nextSong = $list_audio[i];
-				// 		audioPlayer = document.getElementById('audio');
-				// 		audioPlayer.src = nextSong;
-				// 		audioPLayer.load();
-				// 		audioPlayer.play();
-    //   			 	    if(i == $list_audio.length) // this is the end of the songs.
-    //   			 	    {
-    //   			 	    	i = 0;
-    //   			 	    }
-    //   			 	}, false);
-				// }
-
 				var i=0;
+
 				var list_audio=[];
-				// <?php foreach ($danhsachbaihat as $key => $value) {?>
-				// 	list_audio.push("<?php echo $value['duongdannhac'] ?>");
-				// <?php }?>
 
 				<?php foreach ($danhsachbaihat as $key => $value) {?>
 					list_audio.push({
+						idbaihat:"<?php echo $value['idbaihat']?>",
 						tenbaihat:"<?php echo $value['tenbaihat'] ?>",
-						duongdannhac:"<?php echo $value['duongdannhac'] ?>"
-					});
-					<?php }?>
+						duongdannhac:"<?php echo $value['duongdannhac'] ?>",
+						loibaihat:"<?php echo nl2br($value['loibaihat']) ?>",
+						casi:'<?php foreach ($value['casi'] as $key1 => $value1) {
+							 echo '<a href="'.base_url().'ThongTinCaSi/casi/'.$value1['idcasi'].'" class="item-baihat-tencasi">'.$value1['tencasi'].'</a>' 	;
 
+							if ($value1 !== end($value['casi']))
+								echo ","; }?>'											
+						});
+				<?php }?>
+
+					$(".btn-binhluan").click(function(event) {
+						if($(".txt-comment").val()!="")
+						{
+							var currentdate = new Date(); 
+							var datetime = currentdate.getFullYear() + "-"
+							+ (currentdate.getMonth()+1)  + "-" 
+							+ currentdate.getDate() + " "  
+							+ currentdate.getHours() + ":"  
+							+ currentdate.getMinutes() + ":" 
+							+ currentdate.getSeconds();
+							console.log(datetime);
+							$.ajax({
+								url: '<?php echo base_url()?>/TrinhPhatNhac/binhluan',
+								type: 'POST',
+								dataType: 'html',
+								data: {
+									noidung:$(".txt-comment").val(),
+									idnguoidung:$("#idnguoidung").val(),
+									idbaihat:$("#idbaihat").val(),
+									thoigian:datetime
+								},
+							})
+							.done(function() {
+								console.log("success");
+							})
+							.fail(function() {
+								console.log("error");
+							})
+							.always(function(data) {
+								console.log("complete");
+								if($('.cbb-binhluan option:selected').val()==="new")
+								{
+									$(".binhluan-container").prepend(data);
+								}
+								else{
+									$(".binhluan-container").append(data);
+								}
+								$(".thongbao").remove();
+								$noidung='<div class="alert alert-success thongbao" role="alert" style="color:green;"><b>Bình luận được đăng thành công.</b></div>';
+								$(".thongbao-binhluan").append($noidung);
+								noidung:$(".txt-comment").val("");	
+							});
+						}
+						else
+						{
+							$noidung='<div class="alert alert-danger thongbao" role="alert" style="color: #721c24;"><b>Nội dung bình luận không được để trống.</b></div>';
+							$(".thongbao-binhluan").append($noidung);
+						}
+
+					});
+
+					$('.cbb-binhluan').change(function(event) {
+						if($('.cbb-binhluan option:selected').val()==="new")
+						{
+							$.ajax({
+								url: '<?php echo base_url()?>/TrinhPhatNhac/binhluan_moinhat',
+								type: 'POST',
+								dataType: 'html',
+								data: {idbaihat:$("#idbaihat").val()},
+							})
+							.done(function() {
+								console.log("success");
+							})
+							.fail(function() {
+								console.log("error");
+							})
+							.always(function(data) {
+								console.log("complete");
+								$(".binhluan-container").empty();
+								$(".binhluan-container").append(data);
+							});
+
+						}
+						else
+						{
+							$.ajax({
+								url: '<?php echo base_url()?>/TrinhPhatNhac/binhluan_cunhat',
+								type: 'POST',
+								dataType: 'html',
+								data: {idbaihat:$("#idbaihat").val()},
+							})
+							.done(function() {
+								console.log("success");
+							})
+							.fail(function() {
+								console.log("error");
+							})
+							.always(function(data) {
+								console.log("complete");
+								$(".binhluan-container").empty();
+								$(".binhluan-container").append(data);
+							});
+						}
+
+					});
+
+					$(".btn-timkiem").click(function(event) {
+						$tukhoa=$("#keyword").val();
+						if($tukhoa==='')
+							$("#timkiem").attr('action', '<?php echo base_url() ?>BaiHat');
+						else
+							$("#timkiem").attr('action', '<?php echo base_url() ?>BaiHat/timkiem/?keyword='+$tukhoa);
+					});
+
+					$(".item-baihat-tenbaihat").click(function(event) {
+						$idbaihat=$(this).attr('id');
+						i=list_audio.findIndex(item => item.idbaihat==$idbaihat);
+						$("#tenbaihat").html(list_audio[i].tenbaihat);
+						$("#casithehien").html(list_audio[i].casi);
+
+						aud = document.getElementById("audio");
+						aud.src = list_audio[i].duongdannhac;
+						aud.load();
+						aud.play();
+						
+					});
+
+
+					//Xử lí chuyển bài hát playlist
 					var nextSong= "";
 					var aud = document.getElementById("audio");
 					aud.onended = function() {
@@ -1157,6 +1148,7 @@
 						aud.load();
 						aud.play();
 						$("#tenbaihat").html(list_audio[i].tenbaihat);
+						$("#casithehien").html(list_audio[i].casi);
 					};
 
 				</script>
