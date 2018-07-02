@@ -2,7 +2,7 @@
 
 include 'UploadImage.php';
 
-class ThemCaSi extends CI_Controller {
+class ThemNhacSi extends CI_Controller {
 
 	public function __construct()
 	{
@@ -17,18 +17,18 @@ class ThemCaSi extends CI_Controller {
 		$thongtintheloai = $this->DangNhac_model->laythongtintheloai();
 		$data=array('nguoidung'=>array('thongtinnguoidung'=>$thongtinnguoidung),
 					'theloai'=>array('thongtintheloai' => $thongtintheloai));
-		$this->load->view('ThemCaSi_view', $data);
+		$this->load->view('ThemNhacSi_view', $data);
 	}
-	public function themcasi()
+	public function themnhacsi()
 	{
-		$this->load->model('ThemCaSi_model');
-		$tencs = $this->input->post('tencasi');
+		$this->load->model('ThemNhacSi_model');
+		$tenns = $this->input->post('tennhacsi');
 		$ngaysinh = $this->input->post('ngaysinh');
 		$gioitinh = $this->input->post('gioitinh');
-		$duongdananhcs = $this->input->post('duongdananhcs');
-		$duongdananhbiacs = $this->input->post('duongdananhbiacs');
+		$duongdananhns = $this->input->post('duongdananhns');
+		$duongdananhbians = $this->input->post('duongdananhbians');
 		$mota = $this->input->post('mota');
-		if($this->ThemCaSi_model->themcasi($tencs,$ngaysinh,$gioitinh,$duongdananhcs,$duongdananhbiacs,$mota))
+		if($this->ThemNhacSi_model->themnhacsi($tenns,$ngaysinh,$gioitinh,$duongdananhns,$duongdananhbians,$mota))
 		{
 			echo 1;
 		}

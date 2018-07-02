@@ -35,7 +35,7 @@ class Index_model extends CI_Model {
 			'diachi' => $diachi,
 			'email' => $email,
 			'trangthai' => $trangthai,
-			'duongdananh' => $duongdananh
+			'duongdananhnguoidung' => $duongdananh
 			);
 
 		$flag = 1;

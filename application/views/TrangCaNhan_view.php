@@ -138,7 +138,7 @@
 									<a class="card-body" href="<?php echo base_url() ?>ThemCaSi"><em class="fa fa-pencil mr-1"></em> Thêm Ca Sĩ</a>
 									</div>
 									<div class="card bg-light text-dark">
-									<a class="card-body" href="#"><em class="fa fa-pencil mr-1"></em> Thêm Nhạc Sĩ</a>
+									<a class="card-body" href="<?php echo base_url() ?>ThemNhacSi"><em class="fa fa-pencil mr-1"></em> Thêm Nhạc Sĩ</a>
 									</div>
 									<div class="card bg-light text-dark">
 									<a class="card-body" href="#"><em class="fa fa-pencil mr-1"></em> Sửa Thông Tin Ca Sĩ</a>

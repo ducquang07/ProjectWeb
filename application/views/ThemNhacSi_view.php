@@ -131,28 +131,27 @@
 							<?php 
 							if($this->session->userdata('trangthai')=='ADMIN')
 								{
-							?>
-
-							<div class="card mb-4 themcasi" >
+							?>	
+							<div class="card mb-4 themnhacsi" >
 								<div class="card-block">
-									<h3 class="card-title"><i class="fa fa-plus"></i>  Thêm ca sĩ<ng></ng></h3>
+									<h3 class="card-title"><i class="fa fa-plus"></i>  Thêm nhạc sĩ<ng></ng></h3>
 									<!-- <form class="form" action="#"> -->
 
 										<div class="form-group row">
-											<label class="col-md-3 col-form-label">Họ tên ca sĩ:</label>
+											<label class="col-md-3 col-form-label">Họ tên nhạc sĩ:</label>
 											<div class="col-md-9">
-												<input id="tencs" class="form-control" type="text">
+												<input id="tenns" class="form-control" type="text">
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Ngày sinh:</label>
 											<div class="col-md-9">
-												<input id="ngaysinhcs" class="form-control" type="date">
+												<input id="ngaysinhns" class="form-control" type="date">
 											</div>
 										</div>
 
-										<div class="form-group row " id="gioitinhcs">
+										<div class="form-group row " id="gioitinhns">
 				                            <label class="col-md-3 col-form-label">Giới tính:</label>
 											<div class="col-md-9">
 					                            <label for="register-male" class="radio control-inline">
@@ -168,23 +167,23 @@
 				                        </div>
 
 				                        <div class="form-group row">
-											<label class="col-md-3 col-form-label">Chọn ảnh ca sĩ:</label>
+											<label class="col-md-3 col-form-label">Chọn ảnh nhạc sĩ:</label>
 											<div class="col-md-9">
 												<span class="btn btn-outline-success fileinput-button">
 								                    <i class="glyphicon glyphicon-plus"></i>
 								                    <span>Chọn file ảnh...</span>
-								                    <input id="fileanhcs" class="form-control" type="file" name="files[]" multiple="">
+								                    <input id="fileanhns" class="form-control" type="file" name="files[]" multiple="">
 						                		</span>
 											</div>
 										</div>
 
 										<div class="form-group row">
-											<label class="col-md-3 col-form-label">Chọn ảnh bìa ca sĩ:</label>
+											<label class="col-md-3 col-form-label">Chọn ảnh bìa nhạc sĩ:</label>
 											<div class="col-md-9">
 												<span class="btn btn-outline-success fileinput-button">
 								                    <i class="glyphicon glyphicon-plus"></i>
 								                    <span>Chọn file ảnh...</span>
-								                    <input id="fileanhbiacs" class="form-control" type="file" name="files[]" multiple="">
+								                    <input id="fileanhbians" class="form-control" type="file" name="files[]" multiple="">
 						                		</span>
 											</div>
 										</div>
@@ -192,15 +191,15 @@
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Mô tả:</label>
 											<div class="col-md-9">
-												<input id="motacs" class="form-control" type="text">
+												<input id="motans" class="form-control" type="text">
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<div class="col-md-7"></div>
 											<div class="col-md-5 nutluu">
-												<input type="button" class="btn btn-lg btn-secondary thoatcs" value="Thoát">
-												<input type="button" class="btn btn-lg btn-success luucs" value="Lưu">
+												<input type="button" class="btn btn-lg btn-secondary thoatns" value="Thoát">
+												<input type="button" class="btn btn-lg btn-success luuns" value="Lưu">
 												<br>
 											</div>
 										</div>
@@ -218,53 +217,53 @@
 <script>
 	var duongdan = '<?php echo base_url() ?>';
 
-	$('#fileanhcs').fileupload({
-		url: duongdan + 'ThemCaSi/uploadfileanh',
+	$('#fileanhns').fileupload({
+		url: duongdan + 'ThemNhacSi/uploadfileanh',
 		dataType: 'json',
 		done: function(e, data){
 			$.each(data.result.files, function (index, file) {
-            	fileanhcs_url = file.url;
+            	fileanhns_url = file.url;
           	});
 		}
 	});
 
-	$('#fileanhbiacs').fileupload({
-		url: duongdan + 'ThemCaSi/uploadfileanh',
+	$('#fileanhbians').fileupload({
+		url: duongdan + 'ThemNhacSi/uploadfileanh',
 		dataType: 'json',
 		done: function(e, data){
 			$.each(data.result.files, function (index, file) {
-            	fileanhbiacs_url = file.url;
+            	fileanhbians_url = file.url;
           	});
 		}
 	});
 
-	$('.luucs').click(function(event) {
+	$('.luuns').click(function(event) {
 		
 		$.ajax({
-		url: 'ThemCaSi/themcasi',
+		url: 'ThemNhacSi/themnhacsi',
 		type: 'POST',
 		dataType: 'json',
 		data: {
-			tencasi : $('#tencs').val(),
-			ngaysinh : $('#ngaysinhcs').val(),
+			tennhacsi : $('#tenns').val(),
+			ngaysinh : $('#ngaysinhns').val(),
 			gioitinh : $('[name="gender"]:radio:checked').val(),
-			duongdananhcs : fileanhcs_url,
-			duongdananhbiacs : fileanhbiacs_url,
-			mota : $('#motacs').val()
+			duongdananhns : fileanhns_url,
+			duongdananhbians : fileanhbians_url,
+			mota : $('#motans').val()
 			},
 		})
 
 		.done(function(data) {
 			console.log("success");
-			$("i.trangthaithemcs").remove();
+			$("i.trangthaithemns").remove();
 			if(data>0)
 			{
-				$('.nutluu').append('<i style="color:red;" class="trangthaithemcs">Thêm ca sĩ thành công</i>');
+				$('.nutluu').append('<i style="color:red;" class="trangthaithemns">Thêm nhạc sĩ thành công</i>');
 	            // location.reload();
 			}
 			else
 			{
-				$('.nutluu').append('<i style="color:red;" class="trangthaithemcs">Thêm ca sĩ thất bại</i>');
+				$('.nutluu').append('<i style="color:red;" class="trangthaithemns">Thêm nhạc sĩ thất bại</i>');
 	            // location.reload();
 			}
 		})
