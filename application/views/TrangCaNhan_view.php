@@ -11,6 +11,7 @@
 
 	<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>vendor/lib/typeahead.js"></script>
 	<!-- Bootstrap core CSS -->
 	<link href="<?php echo base_url() ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>SpryAssets_AN/SpryTabbedPanels_VD.css" rel="stylesheet" type="text/css" />
@@ -141,7 +142,7 @@
 									<a class="card-body" href="<?php echo base_url() ?>ThemNhacSi"><em class="fa fa-pencil mr-1"></em> Thêm Nhạc Sĩ</a>
 									</div>
 									<div class="card bg-light text-dark">
-									<a class="card-body" href="#"><em class="fa fa-pencil mr-1"></em> Sửa Thông Tin Ca Sĩ</a>
+									<a class="card-body" href="" data-toggle="modal" data-target="#suacasi"><em class="fa fa-pencil mr-1"></em> Sửa Thông Tin Ca Sĩ</a>
 									</div>
 									<div class="card bg-light text-dark">
 									<a class="card-body" href="#"><em class="fa fa-pencil mr-1"></em> Sửa Thông Tin Nhạc Sĩ</a>
@@ -729,12 +730,36 @@
 			</section>
 		</main>
 	</div>
+	<div class="modal fade" id="suacasi">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<form action="SuaThongTinCaSi/sua" method="post" enctype="multidata/form-data">
+				<div class="modal-header">
+					<h4 class="modal-title"><strong>Sửa thông tin ca sĩ</strong></h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only">Close</span>
+					</button>
+				</div>
+				<div class="modal-body">
+                        <div class="form-group">
+                            <label for="full-name"><b>Họ tên ca sĩ:</b></label>
+                            <input class="form-control" id="casi" type="text" name="casi">
+                        </div>
+				<div class="modal-footer">
+					<input type="submit" name="tieptuc" class=" btn btn-success " value="Tiếp tục">
+				</div>
+				</form>	
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div>
+<!-- /. kết thúc phần modal sign up-->
 </body>
         <!-- Bootstrap core JavaScript
     	================================================== -->
     	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.js"></script>
     	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.js"></script>    	
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 
 
     	<script>
@@ -775,7 +800,25 @@
 		    		tenfile = file.url;
 		    	});
 		    }
-		});
+			});
+
+			$(document).ready(function () {
+		        $('#casi').typeahead({
+		            source: function (query, result) {
+		                $.ajax({
+		                    url: "DangNhac/searchcasi",
+							data: 'query=' + query,            
+		                    dataType: "json",
+		                    type: "POST",
+		                    success: function (data) {
+								result($.map(data, function (item) {
+									return item;
+		                        }));
+		                    }
+		                });
+		            }
+		        });
+		    });
 
     		$('.luuchinhsua').click(function(event) {
     		// console.log($('input:radio[name=genderedit]:checked').val()); 

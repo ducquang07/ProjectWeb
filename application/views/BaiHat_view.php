@@ -711,47 +711,17 @@
     <!-- Bootstrap core JavaScript
     	================================================== -->
     	<!-- Placed at the end of the document so the pages load faster -->
-    	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     	<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
     	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!--
-    	<script src="<?php echo base_url() ?>js/chart.min.js"></script>
-    	<script src="<?php echo base_url() ?>js/chart-data.js"></script>
-    	<script src="<?php echo base_url() ?>js/easypiechart.js"></script>
-    	<script src="<?php echo base_url() ?>js/easypiechart-data.js"></script>
-    	<script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script>
-    	<script src="<?php echo base_url() ?>js/custom.js"></script>
-    -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script type="text/javascript">
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    	<script type="text/javascript">
     	var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
     </script>
 
 
     <script>
-    	
-
-    	/*$(".btn-timkiem").click(function(event) {
-    		$.ajax({
-    			url: 'baihat/Load_with_keyword',
-    			type: 'POST',
-    			dataType: 'html',
-    			data: {keyword: $('#keyword').val()},
-    		})
-    		.done(function() {
-    			console.log("success");
-    		})
-    		.fail(function() {
-    			console.log("error");
-    		})
-    		.always(function(data) {
-    			console.log("complete");
-    		});
-
-    	});*/
-
 
     	$(document).ready(function() {
     		$keyword=$("#keyword").val();
@@ -783,12 +753,6 @@
     			$('#BaiHat-TBL tbody').append(data);
     		});
     	});
-
-    	/*$("#keyword").change(function(event) {
-    		$tukhoa=$(this).val();
-    		if ($tukhoa==='') $("#timkiem").attr('action', '<?php echo base_url() ?>/baihat');
-    		else $("#timkiem").attr('action', '<?php echo base_url() ?>baihat/timkiem/'+$tukhoa);	
-    	});*/
 
     	$(".btn-timkiem").click(function(event) {
     		$tukhoa=$("#keyword").val();

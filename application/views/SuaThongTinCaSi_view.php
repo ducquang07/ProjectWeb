@@ -14,6 +14,7 @@
 	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.js"></script>    	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+
 	<!-- Bootstrap core CSS -->
 	<link href="<?php echo base_url() ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>SpryAssets_AN/SpryTabbedPanels_VD.css" rel="stylesheet" type="text/css" />
@@ -26,6 +27,7 @@
 	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/jquery.fileupload.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/jquery.fileupload-process.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>jqueryupload/js/jquery.fileupload-image.js"></script>
+
 	
 	<!-- Icons -->
 	<link href="<?php echo base_url() ?>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -135,64 +137,109 @@
 
 							<div class="card mb-4 themcasi" >
 								<div class="card-block">
-									<h3 class="card-title"><i class="fa fa-plus"></i>  Thêm ca sĩ<ng></ng></h3>
+									<h3 class="card-title"><i class="fa fa-plus"></i>  Sửa ca sĩ<ng></ng></h3>
 									<!-- <form class="form" action="#"> -->
 
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Họ tên ca sĩ:</label>
 											<div class="col-md-9">
-												<input id="tencs" class="form-control" type="text">
+												<input id="tencs" class="form-control" type="text" value="<?php foreach ($casi['thongtincasi'] as $key => $value) {echo $value['tencasi'];}?>" disabled>
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Ngày sinh:</label>
 											<div class="col-md-9">
-												<input id="ngaysinhcs" class="form-control" type="date">
+												<input id="ngaysinhcs" class="form-control" type="date" value="<?php foreach ($casi['thongtincasi'] as $key => $value) {echo $value['ngaysinh'];}?>">
 											</div>
 										</div>
 
 										<div class="form-group row " id="gioitinhcs">
 				                            <label class="col-md-3 col-form-label">Giới tính:</label>
 											<div class="col-md-9">
-					                            <label for="register-male" class="radio control-inline">
-					                                <input type="radio" id="register-male" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nam"> Nam
-					                            </label>
-					                            <label for="register-female" class="radio control-inline">
-					                                <input type="radio" id="register-female" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nữ"> Nữ
-					                            </label>
-					                            <label for="register-neutral" class="radio control-inline">
-					                                <input type="radio" id="register-neutral" name="gender" required="required" value="Khác"> Khác
-					                            </label>
+					                            <?php foreach ($casi['thongtincasi'] as $key => $value) 
+													if($value['gioitinh']=='Nam')
+													{
+														echo '<label for="register-male" class="radio control-inline"> 
+														<input type="radio" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nam" checked > Nam 
+														</label>';
+														echo '<label for="register-female" class="radio control-inline"> 
+														<input type="radio" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nữ"> Nữ 
+														</label>';
+														echo '<label for="register-neutral" class="radio control-inline"> 
+														<input type="radio" name="gender" required="required" value="Khác"> Khác 
+														</label>';
+													}
+													else if($value['gioitinh']=='Nữ')
+													{
+														echo '<label for="register-male" class="radio control-inline"> 
+														<input type="radio" name="gendere" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nam" > Nam
+														</label>';
+														echo '<label for="register-female" class="radio control-inline"> 
+														<input type="radio" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nữ" checked> Nữ 
+														</label>';
+														echo '<label for="register-neutral" class="radio control-inline"> 
+														<input type="radio" name="gender" required="required" value="Khác"> Khác
+														</label>';
+													}
+													else
+													{
+														echo '<label for="register-male" class="radio control-inline">  
+														<input type="radio" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nam" > Nam 
+														</label>';
+														echo '<label for="register-female" class="radio control-inline"> 
+														<input type="radio" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nữ" > Nữ 
+														</label>';
+														echo '<label for="register-neutral" class="radio control-inline"> 
+														<input type="radio" name="gender" required="required" value="Khác" checked> Khác 
+														</label>';
+													}
+													?>
 				                        	</div>
 				                        </div>
 
 				                        <div class="form-group row">
 											<label class="col-md-3 col-form-label">Chọn ảnh ca sĩ:</label>
 											<div class="col-md-9">
-												<span class="btn btn-outline-success fileinput-button">
-								                    <i class="glyphicon glyphicon-plus"></i>
-								                    <span>Chọn file ảnh...</span>
-								                    <input id="fileanhcs" class="form-control" type="file" name="files[]" multiple="">
-						                		</span>
+												<div class="row">
+													<div class="col-sm-6">
+														<img id="anhcs" class="img-fluid" src="<?php foreach ($casi['thongtincasi'] as $key => $value) {echo $value['duongdananhcasi'];}?>"></img>
+													</div>
+													<div class="col-sm-6">
+														<span class="btn btn-outline-success fileinput-button">
+															<i class="glyphicon glyphicon-plus"></i>
+															<span>Chọn file ảnh...</span>
+															<input id="fileanhcs" class="form-control" type="file" name="files[]" multiple="">
+														</span>
+													</div>
+												</div>
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Chọn ảnh bìa ca sĩ:</label>
 											<div class="col-md-9">
-												<span class="btn btn-outline-success fileinput-button">
-								                    <i class="glyphicon glyphicon-plus"></i>
-								                    <span>Chọn file ảnh...</span>
-								                    <input id="fileanhbiacs" class="form-control" type="file" name="files[]" multiple="">
-						                		</span>
+												<div class="row">
+													<div class="col-sm-6">
+														<img id="anhbia" class="img-fluid" src="<?php foreach ($casi['thongtincasi'] as $key => $value) {echo $value['duongdananhbia'];}?>"></img>
+													</div>
+													<div class="col-sm-6">
+														<span class="btn btn-outline-success fileinput-button">
+															<i class="glyphicon glyphicon-plus"></i>
+															<span>Chọn file ảnh...</span>
+															<input id="fileanhbiacs" class="form-control" type="file" name="files[]" multiple="">
+														</span>
+													</div>
+												</div>
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Mô tả:</label>
 											<div class="col-md-9">
-												<input id="motacs" class="form-control" type="text">
+												<!-- <input id="motacs" class="form-control" type="text" value="<?php foreach ($casi['thongtincasi'] as $key => $value) {echo $value['mota'];}?>"> -->
+												<textarea id="motacs" name="motacs" class="form-control motacs" ><?php foreach ($casi['thongtincasi'] as $key => $value) {echo $value['mota'];}?>
+												</textarea>
 											</div>
 										</div>
 
@@ -214,10 +261,13 @@
 			</section>
 		</main>
 	</div>
+	
 </body>
 <script>
-	var duongdan = '<?php echo base_url() ?>';
 
+	var duongdan = '<?php echo base_url() ?>';
+	fileanhcs_url = $("#anhcs").attr("src");;
+	fileanhbiacs_url = $("#anhbia").attr("src");;
 	$('#fileanhcs').fileupload({
 		url: duongdan + 'ThemCaSi/uploadfileanh',
 		dataType: 'json',
@@ -238,6 +288,8 @@
 		}
 	});
 
+	
+
 	$('.thoatcs').click(function(event) {
 		$(location).attr('href', '<?php echo base_url() ?>TrangCaNhan')
 	});
@@ -245,7 +297,7 @@
 	$('.luucs').click(function(event) {
 		
 		$.ajax({
-		url: 'ThemCaSi/themcasi',
+		url: 'capnhatcasi',
 		type: 'POST',
 		dataType: 'json',
 		data: {
@@ -254,21 +306,21 @@
 			gioitinh : $('[name="gender"]:radio:checked').val(),
 			duongdananhcs : fileanhcs_url,
 			duongdananhbiacs : fileanhbiacs_url,
-			mota : $('#motacs').val()
+			mota : $('.motacs').val()
 			},
 		})
 
 		.done(function(data) {
 			console.log("success");
-			$("i.trangthaithemcs").remove();
+			$("i.trangthaicapnhatcs").remove();
 			if(data>0)
 			{
-				$('.nutluu').append('<i style="color:red;" class="trangthaithemcs">Thêm ca sĩ thành công</i>');
+				$('.nutluu').append('<i style="color:red;" class="trangthaicapnhatcs">Cập nhật ca sĩ thành công</i>');
 	            // location.reload();
 			}
 			else
 			{
-				$('.nutluu').append('<i style="color:red;" class="trangthaithemcs">Thêm ca sĩ thất bại</i>');
+				$('.nutluu').append('<i style="color:red;" class="trangthaicapnhatcs">Cập nhật ca sĩ thất bại</i>');
 	            // location.reload();
 			}
 		})

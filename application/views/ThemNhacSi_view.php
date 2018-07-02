@@ -237,6 +237,10 @@
 		}
 	});
 
+	$('.thoatns').click(function(event) {
+		$(location).attr('href', '<?php echo base_url() ?>TrangCaNhan')
+	});
+
 	$('.luuns').click(function(event) {
 		
 		$.ajax({
