@@ -25,7 +25,7 @@ class BaiHat extends CI_Controller {
 		
 		
 
-		$limit_record=3;
+		$limit_record=10;
 		$danhsachbaihat=$this->BaiHat_model->show_Danhsachbaihat_keyword($keyword,$limit_record);
 		$total_record=$this->BaiHat_model->get_TotalRecord($keyword);
 
@@ -118,7 +118,7 @@ class BaiHat extends CI_Controller {
 		$config = array(
 			'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1, // Trang hiện tại
 			'total_record'  => $total_record, // Tổng số record
-			'limit'         => 3,// limit
+			'limit'         => 10,// limit
 			'link_full'     => '{page}',// Link full có dạng như sau: domain/com/page/{page}
 			'link_first'    => '1',// Link trang đầu tiên
 		);

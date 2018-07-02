@@ -496,74 +496,7 @@
 									</div>
 									<!--Kết thúc phần chủ đề-->
 
-									<div class="card mb-4">
-										<div class="card-block">
-											<h3 class="card-title">Todo List</h3>
-											<div class="dropdown card-title-btn-container">
-												<button class="btn btn-sm btn-subtle dropdown-toggle" aria-expanded="false" aria-haspopup="true" type="button" data-toggle="dropdown"><em class="fa fa-cog"></em></button>
-												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#"><em class="fa fa-search mr-1"></em> More info</a>
-													<a class="dropdown-item" href="#"><em class="fa fa-thumb-tack mr-1"></em> Pin Window</a>
-													<a class="dropdown-item" href="#"><em class="fa fa-remove mr-1"></em> Close Window</a>
-												</div>
-											</div>
-											<h6 class="card-subtitle mb-2 text-muted">A simple checklist</h6>
-											<ul class="todo-list mt-2 mb-2">
-
-												<li class="todo-list-item">
-													<div class="checkbox mt-1 mb-2">
-														<div class="custom-control custom-checkbox">
-															<input class="custom-control-input" id="customCheck1" type="checkbox">
-															<label class="custom-control-label custom-control-description" for="customCheck1">Make Coffee</label>
-															<div class="float-right action-buttons"><a class="trash" href="#"><em class="fa fa-trash"></em></a></div>
-														</div>
-													</div>
-												</li>
-												<li class="todo-list-item">
-													<div class="checkbox mt-1 mb-2">
-														<div class="custom-control custom-checkbox">
-															<input class="custom-control-input" id="customCheck2" type="checkbox">
-															<label class="custom-control-label custom-control-description" for="customCheck2">Check emails</label>
-															<div class="float-right action-buttons"><a class="trash" href="#"><em class="fa fa-trash"></em></a></div>
-														</div>
-													</div>
-												</li>
-												<li class="todo-list-item">
-													<div class="checkbox mt-1 mb-2">
-														<div class="custom-control custom-checkbox">
-															<input class="custom-control-input" id="customCheck3" type="checkbox">
-															<label class="custom-control-label custom-control-description" for="customCheck3">Reply to Jane</label>
-															<div class="float-right action-buttons"><a class="trash" href="#"><em class="fa fa-trash"></em></a></div>
-														</div>
-													</div>
-												</li>
-												<li class="todo-list-item">
-													<div class="checkbox mt-1 mb-2">
-														<div class="custom-control custom-checkbox">
-															<input class="custom-control-input" id="customCheck4" type="checkbox">
-															<label class="custom-control-label custom-control-description" for="customCheck4">Work on the new design</label>
-															<div class="float-right action-buttons"><a class="trash" href="#"><em class="fa fa-trash"></em></a></div>
-														</div>
-													</div>
-												</li>
-												<li class="todo-list-item">
-													<div class="checkbox mt-1 mb-2">
-														<div class="custom-control custom-checkbox">
-															<input class="custom-control-input" id="customCheck5" type="checkbox">
-															<label class="custom-control-label custom-control-description" for="customCheck5">Get feedback</label>
-															<div class="float-right action-buttons"><a class="trash" href="#"><em class="fa fa-trash"></em></a></div>
-														</div>
-													</div>
-												</li>
-											</ul>
-											<div class="card-footer todo-list-footer">
-												<div class="input-group">
-													<input class="form-control input-md" id="btn-input" type="text" placeholder="Add new task"><span class="input-group-btn">
-														<button class="btn btn-primary btn-md" id="btn-todo">Add</button>
-													</span>
-												</div>
-											</div>
-										</div>
-									</div>
+									
 								</div>
 
 
