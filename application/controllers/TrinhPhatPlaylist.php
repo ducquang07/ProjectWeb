@@ -11,6 +11,7 @@ class TrinhPhatPlaylist extends CI_Controller {
 	{
 		$idplaylist=$_GET['idplaylist'];
 
+		$this->load->model('BangXepHang_model');
 		$this->load->model('TrinhPhatPlaylist_model');
 
 		$this->TrinhPhatPlaylist_model->themluotnghe($idplaylist);

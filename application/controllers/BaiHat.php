@@ -97,7 +97,7 @@ class BaiHat extends CI_Controller {
 			'nguoidang'=>array('thongtinnguoidang'=>$thongtinnguoidang));
 		//$this->TrinhPhatNhac_model->laythongtincasi($baihat['idcasi']);
 		//$this->TrinhPhatNhac_model->laythongtheloai($id);
-
+		$this->load->model('BangXepHang_model');
 		$this->load->view('TrinhPhatNhac_view',$data);
 	}
 
@@ -106,7 +106,7 @@ class BaiHat extends CI_Controller {
 	{
 		$keyword=$_GET["keyword"];
 		$this->load->model('BaiHat_model');
-		$this->load->model('BangXepHang_model');
+
 
 		$total_record=$this->BaiHat_model->get_TotalRecord($keyword);
 		$theloai_Vietnam=$this->BaiHat_model->Get_theLoai('Việt Nam');

@@ -9,6 +9,7 @@ class TrinhPhatNhac extends CI_Controller {
 
 	public function index()
 	{
+		
 		/*
 		$id = $_GET['id'];
 		$idusercurrent = $this->session->userdata('id');
@@ -25,34 +26,34 @@ class TrinhPhatNhac extends CI_Controller {
 		//$this->TrinhPhatNhac_model->laythongtincasi($baihat['idcasi']);
 		//$this->TrinhPhatNhac_model->laythongtheloai($id);
 
-		$this->load->view('trinhphatnhac_view',$data);*/
+			$this->load->view('trinhphatnhac_view',$data);*/
+		}
+
+		public function binhluan()
+		{
+			$noidung=$this->input->post('noidung');
+			$idnguoidung=$this->input->post('idnguoidung');
+			$idbaihat=$this->input->post('idbaihat');
+			$thoigian=$this->input->post('thoigian');
+			$this->load->model('TrinhPhatNhac_model');
+			$this->TrinhPhatNhac_model->luubinhluan($idbaihat,$idnguoidung,$thoigian,$noidung);
+		}
+
+		public function binhluan_moinhat()
+		{
+			$idbaihat=$this->input->post('idbaihat');
+			$this->load->model('TrinhPhatNhac_model');
+			$this->TrinhPhatNhac_model->binhluan_moinhat($idbaihat);
+		}
+
+		public function binhluan_cunhat()
+		{
+			$idbaihat=$this->input->post('idbaihat');
+			$this->load->model('TrinhPhatNhac_model');
+			$this->TrinhPhatNhac_model->binhluan_cunhat($idbaihat);
+		}
+
 	}
 
-	public function binhluan()
-	{
-		$noidung=$this->input->post('noidung');
-		$idnguoidung=$this->input->post('idnguoidung');
-		$idbaihat=$this->input->post('idbaihat');
-		$thoigian=$this->input->post('thoigian');
-		$this->load->model('TrinhPhatNhac_model');
-		$this->TrinhPhatNhac_model->luubinhluan($idbaihat,$idnguoidung,$thoigian,$noidung);
-	}
-
-	public function binhluan_moinhat()
-	{
-		$idbaihat=$this->input->post('idbaihat');
-		$this->load->model('TrinhPhatNhac_model');
-		$this->TrinhPhatNhac_model->binhluan_moinhat($idbaihat);
-	}
-
-	public function binhluan_cunhat()
-	{
-		$idbaihat=$this->input->post('idbaihat');
-		$this->load->model('TrinhPhatNhac_model');
-		$this->TrinhPhatNhac_model->binhluan_cunhat($idbaihat);
-	}
-
-}
-
-/* End of file trinhphatnhac.php */
-/* Location: ./application/controllers/trinhphatnhac.php */
+	/* End of file trinhphatnhac.php */
+	/* Location: ./application/controllers/trinhphatnhac.php */
