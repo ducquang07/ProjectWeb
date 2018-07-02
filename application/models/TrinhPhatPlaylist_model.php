@@ -31,8 +31,9 @@ class TrinhPhatPlaylist_model extends CI_Model {
 
 	public function laydanhsachbaihat($idplaylist)
 	{
-		$sql="Select * from playlist,baihat,chitietplaylist
+		$sql="Select * from playlist,baihat,chitietplaylist,nguoidung
 		where playlist.idplaylist=chitietplaylist.idplaylist
+		and nguoidung.idnguoidung=baihat.idnguoidung
 		and baihat.idbaihat=chitietplaylist.idbaihat
 		and playlist.idplaylist='$idplaylist'";
 		$dulieu=$this->db->query($sql);

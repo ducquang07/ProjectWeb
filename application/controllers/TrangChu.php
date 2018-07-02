@@ -9,8 +9,12 @@ class TrangChu extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('BangXepHang_model');
+
 		$this->load->view('TrangChu_view');
+
 	}
+
 	public function logout_controller($value='')
 	{
 		$this->session->sess_destroy();

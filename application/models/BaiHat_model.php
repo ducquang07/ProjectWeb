@@ -63,7 +63,12 @@ class BaiHat_model extends CI_Model {
 
 	public function get_TotalRecord($keyword)
 	{
-		$sql="Select * from baihat where tenbaihat like '%$keyword%' order by luotnghe desc";
+		if($keyword===""){
+			$sql="Select * from baihat";
+		}
+		else{
+			$sql="Select * from baihat where baihat.tenbaihat like '%$keyword%'";
+		}
 		$dulieu=$this->db->query($sql);
 		$rowcount = $dulieu->num_rows();
 		return $rowcount;
@@ -77,9 +82,8 @@ class BaiHat_model extends CI_Model {
 		else{
 			$sql="Select * from baihat where baihat.tenbaihat like '%$keyword%' limit 0, $limit";
 		}
-		$dulieu=$this->db->query($sql);
-		$dulieu=$dulieu->result_array();
-		return $dulieu;
+		$result=$this->db->query($sql);
+		return $result->result_array();
 	}
 
 	public function Get_theLoai($khuvuc)
@@ -106,6 +110,17 @@ class BaiHat_model extends CI_Model {
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
+
+
+	public function Get_Danhsachbaihat_Theloai($idtheloai)
+	{
+		$sql="Select * from baihat where idtheloai='1' order by luotnghe desc ";
+		$dulieu=$this->db->query($sql);
+		$num_row=$dulieu->num_rows();
+		$dulieu=$dulieu->result_array();
+		return array('dulieu'=>$dulieu,'num_row'=>$num_row);
+	}
+
 
 
 }
