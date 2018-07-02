@@ -12,6 +12,7 @@ class BaiHat extends CI_Controller {
 
 		$keyword='';
 		$this->load->model('BaiHat_model');
+		$this->load->model('BangXepHang_model');
 		//--Lấy tổng số dòng tìm được
 		
 		//Lấy mảng dữ liệu bài hát hiển thị lên trang
@@ -81,8 +82,10 @@ class BaiHat extends CI_Controller {
 
 	public function trinhphatnhac($id)
 	{
+		$currentdate = date("Y-m-d");
 		$idusercurrent = $this->session->userdata('id');
 		$this->load->model('TrinhPhatNhac_model');
+		$this->TrinhPhatNhac_model->capnhatthongkeluotnghe($id,$currentdate);
 		$thongtinbaihat=$this->TrinhPhatNhac_model->laythongtinbaihat($id);
 		$thongtinnguoidung=$this->TrinhPhatNhac_model->laythongtinnguoidung($idusercurrent);
 		$danhsachbinhluan=$this->TrinhPhatNhac_model->laydanhsachbinhluan($id);
@@ -103,7 +106,7 @@ class BaiHat extends CI_Controller {
 	{
 		$keyword=$_GET["keyword"];
 		$this->load->model('BaiHat_model');
-
+		$this->load->model('BangXepHang_model');
 
 		$total_record=$this->BaiHat_model->get_TotalRecord($keyword);
 		$theloai_Vietnam=$this->BaiHat_model->Get_theLoai('Việt Nam');

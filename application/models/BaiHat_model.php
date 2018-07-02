@@ -43,6 +43,8 @@ class BaiHat_model extends CI_Model {
 
 			foreach ($row['casi'] as $key => $value) {
 				echo '<a href='.base_url().'ThongTinCaSi/casi/'.$value['idcasi'].' class="item-baihat-tencasi">'.$value['tencasi'].'</a>';	
+				if($value !== end($row['casi']))
+					echo ",";
 			}		
 
 			echo '</div>';											
@@ -53,7 +55,7 @@ class BaiHat_model extends CI_Model {
 			echo '<div class="item-baihat-luotnghe">'.$row['luotnghe'].'<span class="item-baihat-icon"><i class="fa fa-headphones " aria-hidden="true"></i></span></div>';
 			echo '</td>';
 			echo '<td>';
-			echo '<span class="item-baihat-icon"><i class="fa fa-play" aria-hidden="true"></i></span>';
+			echo '<a class="item-baihat-icon" href="'.base_url().'BaiHat/TrinhPhatNhac/'.$row['idbaihat'].'"><i class="fa fa-play" aria-hidden="true"></i></a>';
 			echo '<span class="item-baihat-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>';
 			echo '<span class="item-baihat-icon"><i class="fa fa-download" aria-hidden="true"></i></span>';
 			echo '</td>';										

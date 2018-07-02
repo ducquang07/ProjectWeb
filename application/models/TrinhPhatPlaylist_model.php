@@ -82,6 +82,15 @@ class TrinhPhatPlaylist_model extends CI_Model {
 		$dulieu=$dulieu->result_array();
 		return $dulieu;
 	}
+
+
+	public function themluotnghe($idplaylist)
+	{
+		$sql="Update playlist set luotnghe=luotnghe+1 where idplaylist='$idplaylist'";
+		$this->db->query($sql);
+	}
+
+
 }
 
 /* End of file TrinhPhatPlaylist_model.php */

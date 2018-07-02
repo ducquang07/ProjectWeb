@@ -13,6 +13,7 @@ class TrinhPhatPlaylist extends CI_Controller {
 
 		$this->load->model('TrinhPhatPlaylist_model');
 
+		$this->TrinhPhatPlaylist_model->themluotnghe($idplaylist);
 
 		$idbaihat=$this->TrinhPhatPlaylist_model->layidbaihat_dautien($idplaylist);
 		$idbaihat=$idbaihat['idbaihat'];

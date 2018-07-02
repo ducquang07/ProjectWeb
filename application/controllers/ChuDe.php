@@ -9,6 +9,7 @@ class ChuDe extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('BangXepHang_model');
 		$this->load->view('ChuDe_view');
 	}
 

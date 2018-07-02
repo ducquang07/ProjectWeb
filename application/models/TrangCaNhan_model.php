@@ -65,6 +65,7 @@ class TrangCaNhan_model extends CI_Model {
 		$duongdananhplaylist='http://localhost/ProjectWeb/img/img_playlist/img-playlist-default.jpg';
 		$idcasi=0;
 		$tencasi='Various Artist';
+		$luotnghe=0;
 		$sql="Insert into Playlist (tenplaylist,idnguoidung,idcasi,duongdananhplaylist) values ('$tenplaylist','$idusercurrent','$idcasi','$duongdananhplaylist')";
 
 		$dulieu=array('tenplaylist'=>$tenplaylist,

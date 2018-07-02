@@ -117,6 +117,11 @@ class TrinhPhatNhac_model extends CI_Model {
 		}
 	}
 
+	public function capnhatthongkeluotnghe($idbaihat,$currentdate)
+	{
+		$sql="call proc_Capnhatthongkeluotnghe('$idbaihat','$currentdate');";
+		$this->db->query($sql);
+	}
 	
 }
 
