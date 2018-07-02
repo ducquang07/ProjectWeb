@@ -19,7 +19,21 @@ class ThemCaSi extends CI_Controller {
 	}
 	public function themcasi()
 	{
-		
+		$this->load->model('ThemCaSi_model');
+		$tencs = $this->input->post('tencasi');
+		$ngaysinh = $this->input->post('ngaysinh');
+		$gioitinh = $this->input->post('gioitinh');
+		$duongdananhcs = $this->input->post('duongdananhcs');
+		$duongdananhbiacs = $this->input->post('duongdananhbiacs');
+		$mota = $this->input->post('mota');
+		if($this->ThemCaSi_model->themcasi($tencs,$ngaysinh,$gioitinh,$duongdananhcs,$duongdananhbiacs,$mota))
+		{
+			echo 1;
+		}
+		else
+		{
+			echo 0;
+		}
 	}
 }
 

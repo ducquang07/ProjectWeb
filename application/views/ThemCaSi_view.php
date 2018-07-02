@@ -171,16 +171,18 @@
 										</div>
 
 										<div class="form-group row " id="gioitinhcs">
-				                            <label><b>Giới tính:</b></label>
-				                            <label for="register-male" class="radio control-inline">
-				                                <input type="radio" id="register-male" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="nam"> Nam
-				                            </label>
-				                            <label for="register-female" class="radio control-inline">
-				                                <input type="radio" id="register-female" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="nu"> Nữ
-				                            </label>
-				                            <label for="register-neutral" class="radio control-inline">
-				                                <input type="radio" id="register-neutral" name="gender" required="required" value="khac"> Khác
-				                            </label>
+				                            <label class="col-md-3 col-form-label">Giới tính:</label>
+											<div class="col-md-9">
+					                            <label for="register-male" class="radio control-inline">
+					                                <input type="radio" id="register-male" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="nam"> Nam
+					                            </label>
+					                            <label for="register-female" class="radio control-inline">
+					                                <input type="radio" id="register-female" name="gender" required="required" class="gender" data-msg-required="Please indicate your gender." value="nu"> Nữ
+					                            </label>
+					                            <label for="register-neutral" class="radio control-inline">
+					                                <input type="radio" id="register-neutral" name="gender" required="required" value="khac"> Khác
+					                            </label>
+				                        	</div>
 				                        </div>
 
 				                        <div class="form-group row">
@@ -263,7 +265,7 @@
 		data: {
 			tencasi : $('#tencs').val(),
 			ngaysinh : $('#ngaysinhcs').val(),
-			gioitinh : $('[name="gender"]:radio:checked').val();,
+			gioitinh : $('[name="gender"]:radio:checked').val(),
 			duongdananhcs : fileanhcs_url,
 			duongdananhbiacs : fileanhbiacs_url,
 			mota : $('#motacs').val()
