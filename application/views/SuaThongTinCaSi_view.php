@@ -137,7 +137,7 @@
 
 							<div class="card mb-4 themcasi" >
 								<div class="card-block">
-									<h3 class="card-title"><i class="fa fa-plus"></i>  Sửa ca sĩ<ng></ng></h3>
+									<h3 class="card-title"><i class="fa fa-pencil"></i>  Sửa ca sĩ<ng></ng></h3>
 									<!-- <form class="form" action="#"> -->
 
 										<div class="form-group row">

@@ -149,7 +149,7 @@
 											<div class="col-md-9">
 												<div class="row">
 													<div class="col-sm-6">
-														<img class="img-fluid" src="<?php echo $value['duongdananhplaylist'] ?>">
+														<img id="anhplaylist" class="img-fluid" src="<?php echo $value['duongdananhplaylist'] ?>">
 													</div>
 													<div class="col-sm-6">
 
@@ -456,7 +456,7 @@
     	});
 
     	duongdan = '<?php echo base_url() ?>';
-    	var fileanhplaylist='';
+    	var fileanhplaylist=$('#anhplaylist').attr('src');
     	$('#file-anh').fileupload({
     		url: duongdan + 'CapNhatPlaylist/uploadfileanh',
     		dataType: 'json',

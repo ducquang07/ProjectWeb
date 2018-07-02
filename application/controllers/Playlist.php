@@ -18,7 +18,7 @@ class Playlist extends CI_Controller {
 		$config = array(
 			'current_page'  => isset($_GET['page']) ? $_GET['page'] : 1, // Trang hiện tại
 			'total_record'  => $total_record, // Tổng số record
-			'limit'         => 9,// limit
+			'limit'         => 6,// limit
 			'link_full'     => '{page}',// Link full có dạng như sau: domain/com/page/{page}
 			'link_first'    => '1',// Link trang đầu tiên
 		);
@@ -58,7 +58,7 @@ class Playlist extends CI_Controller {
 	{
 		$keyword=$_GET["keyword"];
 		$this->load->model('Playlist_model');
-
+		$this->load->model('BangXepHang_model');
 		$total_record=$this->Playlist_model->get_TotalRecord($keyword);
 
 		$config = array(

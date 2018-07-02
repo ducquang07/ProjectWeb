@@ -99,13 +99,13 @@ class CapNhatPlaylist_model extends CI_Model {
 
 	public function xoabaihatkhoiplaylist($idplaylist,$idbaihat)
 	{
-		$sql="call proc_XoaBaiHatKhoiPlaylist('".$idplaylist."','".$idbaihat."')";
+		$sql="Delete from chitietplaylist where idplaylist='$idplaylist' and idbaihat='$idbaihat'";
 		return $this->db->query($sql);
 	}
 
 	public function xoalistbaihat($idplaylist)
 	{
-		$sql="call proc_XoaTatCaBaiHatKhoiPlaylist('".$idplaylist."')";
+		$sql="Delete from chitietplaylist where idplaylist='$idplaylist'";
 		return $this->db->query($sql);
 	}
 

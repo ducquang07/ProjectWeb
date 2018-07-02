@@ -301,123 +301,35 @@
 										<h6 class="card-subtitle mb-2 text-muted">Playlist</h6>
 										<div class="canvas-wrapper">
 											<div class="row">
+												<?php foreach ($playlist as $key => $value) {?>
 												<!--Item-playlist-->
 												<div class="col-lg-4 col-sm-6 portfolio-item">
 													<div class="card h-100" id="item-playlist">
-														<a href="#" class="item-container">
+														<a href="<?php echo base_url()?>TrinhPhatPlaylist/?idplaylist=<?php echo $value['idplaylist'] ?>" class="item-container">
 															<div class="item-hover">
 																<div class="item-hover-content">
 																	<i class="fa fa-play fa-2x"></i>
 																</div>
 															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_playlist/playlist-1.jpg" alt="">
+															<img class="card-img-top" width="150" height="200" src="<?php echo $value['duongdananhplaylist'] ?>" alt="">
 														</a>
 														<div class="card-body">
 															<h4 class="card-title">
-																<a href="#">Đón hè nhẹ nhàng</a>
+																<a href="<?php echo base_url()?>TrinhPhatPlaylist/?idplaylist=<?php echo $value['idplaylist'] ?>"><?php echo $value['tenplaylist'] ?></a>
 															</h4>
-															<p class="card-text">Various Artists</p>
+															<p class="card-text"><?php echo $value['tencasi'] ?></p>
 														</div>
 													</div>
 												</div>
 												<!--Item-playlist-->
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<div class="card h-100" id="item-playlist">
-														<a href="#" class="item-container">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<i class="fa fa-play fa-2x"></i>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_playlist/playlist-2.jpg" alt="">
-														</a>
-														<div class="card-body">
-															<h4 class="card-title">
-																<a href="#">Nhạc Sôi Động Dành Cho Ngày Hè</a>
-															</h4>
-															<p class="card-text">Various Artists</p>
-														</div>
-													</div>
-												</div>
-												<!--Item-playlist-->
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<div class="card h-100" id="item-playlist">
-														<a href="#" class="item-container">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<i class="fa fa-play fa-2x"></i>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_playlist/playlist-3.jpg" alt="">
-														</a>
-														<div class="card-body">
-															<h4 class="card-title">
-																<a href="#">Nhạc Acoustic Cho Những Ngày Hè</a>
-															</h4>
-															<p class="card-text">Various Artists</p>
-														</div>
-													</div>
-												</div>
-												<!--Item-playlist-->
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<div class="card h-100" id="item-playlist">
-														<a href="#" class="item-container">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<i class="fa fa-play fa-2x"></i>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_playlist/playlist-4.jpg" alt="">
-														</a>
-														<div class="card-body">
-															<h4 class="card-title">
-																<a href="#">Pool Party</a>
-															</h4>
-															<p class="card-text">Various Artists</p>
-														</div>
-													</div>
-												</div>
-												<!--Item-playlist-->
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<div class="card h-100" id="item-playlist">
-														<a href="#" class="item-container">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<i class="fa fa-play fa-2x"></i>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_playlist/playlist-5.jpg" alt="">
-														</a>
-														<div class="card-body">
-															<h4 class="card-title">
-																<a href="#">Những chuyến đi dài</a>
-															</h4>
-															<p class="card-text">Various Artists</p>
-														</div>
-													</div>
-												</div>
-												<!--Item-playlist-->
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<div class="card h-100" id="item-playlist">
-														<a href="#" class="item-container">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<i class="fa fa-play fa-2x"></i>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_playlist/playlist-6.jpg" alt="">
-														</a>
-														<div class="card-body">
-															<h4 class="card-title">
-																<a href="#">Những Bài Hát Hay Nhất Được Đặt Làm Nhạc Chuông</a>
-															</h4>
-															<p class="card-text">Various Artists</p>
-														</div>
-													</div>
-												</div>
+												<?php } ?>
+												
 											</div>
 										</div>
-										<button class="btn btn-sm btn-subtle" type="button"><em class="fa fa-list-ul"></em> Xem tất cả</button>
+										<form action="<?php echo base_url()?>Playlist">
+											<button type="submit" class="btn btn-sm btn-subtle" type="button"><em class="fa fa-list-ul"></em> Xem tất cả
+											</button>
+										</form>
 									</div>
 								</div>
 								<!--Kết thuc phần playlist-->
@@ -429,118 +341,32 @@
 										<h6 class="card-subtitle mb-2 text-muted">Playlist</h6>
 										<div class="canvas-wrapper">
 											<div class="row">
+												<?php foreach ($album as $key => $value) {?>
 												<div class="col-lg-4 col-sm-6 portfolio-item">
 													<div class="card h-100" id="item-playlist">
-														<a href="#" class="item-container">
+														<a href="<?php echo base_url()?>TrinhPhatPlaylist/?idplaylist=<?php echo $value['idplaylist'] ?>" class="item-container">
 															<div class="item-hover">
 																<div class="item-hover-content">
 																	<i class="fa fa-play fa-2x"></i>
 																</div>
 															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_album/album-1.jpg" alt="">
+															<img class="card-img-top" width="150" height="200" src="<?php echo $value['duongdananhplaylist'] ?>" alt="">
 														</a>
 														<div class="card-body">
 															<h4 class="card-title">
-																<a href="#">Xin Đừng Rời Xa (Single)
-																</a>
+																<a href="<?php echo base_url()?>TrinhPhatPlaylist/?idplaylist=<?php echo $value['idplaylist'] ?>"><?php echo $value['tenplaylist'] ?></a>
 															</h4>
-															<p class="card-text">Ngô Kiến Huy</p>
+															<p class="card-text"><?php echo $value['tencasi'] ?></p>
 														</div>
 													</div>
 												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<div class="card h-100" id="item-playlist">
-														<a href="#" class="item-container">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<i class="fa fa-play fa-2x"></i>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_album/album-2.jpg" alt="">
-														</a>
-														<div class="card-body">
-															<h4 class="card-title">
-																<a href="#">Rời Bỏ (Single)</a>
-															</h4>
-															<p class="card-text">Hòa Minzy</p>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<div class="card h-100" id="item-playlist">
-														<a href="#" class="item-container">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<i class="fa fa-play fa-2x"></i>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_album/album-3.jpg" alt="">
-														</a>
-														<div class="card-body">
-															<h4 class="card-title">
-																<a href="#">Rồi Người Thương Cũng Hóa Người Dưng </a>
-															</h4>
-															<p class="card-text">Hiền Hồ</p>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<div class="card h-100" id="item-playlist">
-														<a href="#" class="item-container">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<i class="fa fa-play fa-2x"></i>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_album/album-4.jpg" alt="">
-														</a>
-														<div class="card-body">
-															<h4 class="card-title">
-																<a href="#">Đừng Như Thói Quen (Single)</a>
-															</h4>
-															<p class="card-text">JayKii, Sara</p>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<div class="card h-100" id="item-playlist">
-														<a href="#" class="item-container">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<i class="fa fa-play fa-2x"></i>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_album/album-5.jpg" alt="">
-														</a>
-														<div class="card-body">
-															<h4 class="card-title">
-																<a href="#">Hôn Anh (Single)</a>
-															</h4>
-															<p class="card-text">MIN</p>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<div class="card h-100" id="item-playlist">
-														<a href="#" class="item-container">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<i class="fa fa-play fa-2x"></i>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_album/album-6.jpg" alt="">
-														</a>
-														<div class="card-body">
-															<h4 class="card-title">
-																<a href="#">Only You (Single)</a>
-															</h4>
-															<p class="card-text">Hà Nhi</p>
-														</div>
-													</div>
-												</div>
+												<?php } ?>
 											</div>
 										</div>
-										<button class="btn btn-sm btn-subtle" type="button"><em class="fa fa-list-ul"></em> Xem tất cả</button>
+										<form action="<?php echo base_url()?>Playlist">
+											<button type="submit" class="btn btn-sm btn-subtle" type="button"><em class="fa fa-list-ul"></em> Xem tất cả
+											</button>
+										</form>
 									</div>
 								</div>
 								<!--Kết thúc phần album-->
@@ -551,95 +377,29 @@
 										<h6 class="card-subtitle mb-2 text-muted"></h6>
 										<div class="canvas-wrapper" >
 											<div class="row">
+												<?php foreach ($casihot as $key => $value) {?>
 												<div class="col-lg-4 col-sm-6 portfolio-item">
 													<!--Item-casi-->
 													<div class="card h-100" id="item-casi">
-														<a href="#">
+														<a href="<?php echo base_url()?>ThongTinCaSi/casi/<?php echo $value['idcasi']?>">
 															<div class="item-hover">
 																<div class="item-hover-content">
-																	<p class="text-white">ERIK</p>
+																	<p class="text-white"><?php echo $value['tencasi'] ?></p>
 																</div>
 															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_casi/casi-1.jpg" alt="">
+															<img class="card-img-top" width="150" height="200" src="<?php echo $value['duongdananhcasi'] ?>" alt="">
 														</a>
-														
+
 													</div>
 												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<!--Item-casi-->
-													<div class="card h-100" id="item-casi">
-														<a href="#">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<p class="text-white">Mr.Siro</p>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_casi/casi-2.jpg" alt="">
-														</a>
-														
-													</div>
-												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<!--Item-casi-->
-													<div class="card h-100" id="item-casi">
-														<a href="#">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<p class="text-white">Bùi Anh Tuấn</p>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_casi/casi-3.jpg" alt="">
-														</a>
-														
-													</div>
-												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<!--Item-casi-->
-													<div class="card h-100" id="item-casi">
-														<a href="#">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<p class="text-white">Hồ Ngọc Hà</p>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_casi/casi-4.jpg" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<!--Item-casi-->
-													<div class="card h-100" id="item-casi">
-														<a href="#">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<p class="text-white">Trung Quân Idol</p>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_casi/casi-5.jpg" alt="">
-														</a>
-														
-													</div>
-												</div>
-												<div class="col-lg-4 col-sm-6 portfolio-item">
-													<!--Item-casi-->
-													<div class="card h-100" id="item-casi">
-														<a href="#">
-															<div class="item-hover">
-																<div class="item-hover-content">
-																	<p class="text-white">Sơn Tùng M-TP</p>
-																</div>
-															</div>
-															<img class="card-img-top" width="150" height="200" src="<?php echo base_url() ?>img/img_casi/casi-6.jpg" alt="">
-														</a>
-														
-													</div>
-												</div>
+												<?php } ?>
+
+
 											</div>
 										</div>
-										<button class="btn btn-sm btn-subtle" type="button"><em class="fa fa-list-ul"></em> Xem tất cả</button>
 									</div>
 								</div>
-								<!--Kết thúc phần ca sĩ-->
+								<!--Kết thúc phần ca sĩ-->	
 
 							</div>
 							<div class="col-md-12 col-lg-4">
@@ -753,21 +513,21 @@
 </script>
 
     <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js""></script>
-    <script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
-    <script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url() ?>vendor/lib/popper.min.js"></script>
-	<!-- Plugin JavaScript -->
-	<script src="<?php echo base_url() ?>vendor/jquery-easing/jquery.easing.min.js"></script>
-	<script src="<?php echo base_url() ?>vendor/scrollreveal/scrollreveal.min.js"></script>
-	<script src="<?php echo base_url() ?>vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    	================================================== -->
+    	<!-- Placed at the end of the document so the pages load faster -->
+    	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js""></script>
+    	<script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
+    	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    	<script type="text/javascript" src="<?php echo base_url() ?>vendor/lib/popper.min.js"></script>
+    	<!-- Plugin JavaScript -->
+    	<script src="<?php echo base_url() ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+    	<script src="<?php echo base_url() ?>vendor/scrollreveal/scrollreveal.min.js"></script>
+    	<script src="<?php echo base_url() ?>vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-    <script type="text/javascript">
-    var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
-    </script>
-</body>
-</html>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    	<script type="text/javascript">
+    		var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+    	</script>
+    </body>
+    </html>

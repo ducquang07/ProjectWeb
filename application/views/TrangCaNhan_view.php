@@ -124,267 +124,267 @@
 						</div>
 						<!--Step 2-->
 						<!--Step 1-->
-							
+
 
 						<div class="col-md-12 col-lg-8">
 							<?php 
 							if($this->session->userdata('trangthai')=='ADMIN')
-								{
-							?>
-							<div class="card mb-4 quantri" >
-								<div class="card-block">
-									<h3 class="card-title"><i class="fa fa-gears"></i>  Quản trị trang<ng></ng></h3>
-							
-									<div class="card bg-light text-dark">
-									<a class="card-body" href="<?php echo base_url() ?>ThemCaSi"><em class="fa fa-pencil mr-1"></em> Thêm Ca Sĩ</a>
-									</div>
-									<div class="card bg-light text-dark">
-									<a class="card-body" href="<?php echo base_url() ?>ThemNhacSi"><em class="fa fa-pencil mr-1"></em> Thêm Nhạc Sĩ</a>
-									</div>
-									<div class="card bg-light text-dark">
-									<a class="card-body" href="" data-toggle="modal" data-target="#suacasi"><em class="fa fa-pencil mr-1"></em> Sửa Thông Tin Ca Sĩ</a>
-									</div>
-									<div class="card bg-light text-dark">
-									<a class="card-body" href="#"><em class="fa fa-pencil mr-1"></em> Sửa Thông Tin Nhạc Sĩ</a>
+							{
+								?>
+								<div class="card mb-4 quantri" >
+									<div class="card-block">
+										<h3 class="card-title"><i class="fa fa-gears"></i>  Quản trị trang<ng></ng></h3>
+
+										<div class="card bg-light text-dark">
+											<a class="card-body" href="<?php echo base_url() ?>ThemCaSi"><em class="fa fa-pencil mr-1"></em> Thêm Ca Sĩ</a>
+										</div>
+										<div class="card bg-light text-dark">
+											<a class="card-body" href="<?php echo base_url() ?>ThemNhacSi"><em class="fa fa-pencil mr-1"></em> Thêm Nhạc Sĩ</a>
+										</div>
+										<div class="card bg-light text-dark">
+											<a class="card-body" href="" data-toggle="modal" data-target="#suacasi"><em class="fa fa-pencil mr-1"></em> Sửa Thông Tin Ca Sĩ</a>
+										</div>
+										<div class="card bg-light text-dark">
+											<a class="card-body" href="#"><em class="fa fa-pencil mr-1"></em> Sửa Thông Tin Nhạc Sĩ</a>
+										</div>
 									</div>
 								</div>
-							</div>
-							<?php } ?>
+								<?php } ?>
 								
-							<div class="card mb-4 thongtinnguoidung" >
-								<div class="card-block">
-									<h3 class="card-title"><i class="fa fa-user"></i>  Thông tin người dùng<ng></ng></h3>
-									<!-- <form class="form" action="#"> -->
-										
-										<div class="form-group row">
-											<label class="col-md-3 col-form-label">Họ tên:</label>
-											<div class="col-md-9">
-												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ten'];}?>">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-md-3 col-form-label">Ngày sinh:</label>
-											<div class="col-md-9">
-												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ngaysinh'];}?>">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-md-3 col-form-label">Giới tính:</label>
-											<div class="col-md-9">
-												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['gioitinh'];}?>">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-md-3 col-form-label">Email:</label>
-											<div class="col-md-9">
-												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['email'];}?>">
-											</div>
-										</div>
-										
-										<div class="form-group row">
-											<label class="col-md-3 col-form-label">Điện thoại:</label>
-											<div class="col-md-9">
-												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['sdt'];}?>">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-md-3 col-form-label">Địa chỉ:</label>
-											<div class="col-md-9">
-												<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['diachi'];}?>">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<div class="col-md-5"></div>
-											<div class="col-md-4">
-												<button class="btn btn-lg btn-secondary suathongtin"><i class="fa fa-pencil"></i> Chỉnh sửa</button>
-											</div>
-											<div class="col-md-3"></div>
-										</div>
-										<!-- </form> -->
-									</div>
-								</div>
-
-								<div class="card mb-4 thongtinnguoidungsua d-none" >
+								<div class="card mb-4 thongtinnguoidung" >
 									<div class="card-block">
 										<h3 class="card-title"><i class="fa fa-user"></i>  Thông tin người dùng<ng></ng></h3>
 										<!-- <form class="form" action="#"> -->
 
 											<div class="form-group row">
-												<label class="col-md-3 col-form-label">Ảnh đại diện:</label>
-												<div class="col-md-9">
-													<div class="row">
-														<div class="col-sm-6">
-															<img class="img-fluid" src="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['duongdananhnguoidung'];}?>"></img>
-														</div>
-														<div class="col-sm-6">
-															<span class="btn btn-outline-success fileinput-button">
-																<i class="glyphicon glyphicon-plus"></i>
-																<span>Thêm ảnh...</span>
-																<input id="anhavatar" class="form-control" type="file" name="files[]" multiple="">
-															</span>
-														</div>
-													</div>
-													<!-- <input id="anhavatar" name="files[]" class="form-control" type="file"> -->
-												</div>
-											</div>
-
-											<div class="form-group row">
 												<label class="col-md-3 col-form-label">Họ tên:</label>
 												<div class="col-md-9">
-													<input id="tenedit" class="form-control" type="text" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ten'];}?>">
+													<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ten'];}?>">
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label">Ngày sinh:</label>
 												<div class="col-md-9">
-													<input id="ngaysinhedit" class="form-control" type="date" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ngaysinh'];}?>">
+													<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ngaysinh'];}?>">
 												</div>
 											</div>
 
-											<div class="form-group row" id="gioitinhedit">
+											<div class="form-group row">
 												<label class="col-md-3 col-form-label">Giới tính:</label>
 												<div class="col-md-9">
-													<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) 
-													if($value['gioitinh']=='Nam')
-													{
-														echo '<label for="register-male" class="radio control-inline"> 
-														<input type="radio" name="genderedit" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nam" checked > Nam 
-														</label>';
-														echo '<label for="register-female" class="radio control-inline"> 
-														<input type="radio" name="genderedit" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nữ"> Nữ 
-														</label>';
-														echo '<label for="register-neutral" class="radio control-inline"> 
-														<input type="radio" name="genderedit" required="required" value="Khác"> Khác 
-														</label>';
-													}
-													else if($value['gioitinh']=='Nữ')
-													{
-														echo '<label for="register-male" class="radio control-inline"> 
-														<input type="radio" name="genderedit" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nam" > Nam
-														</label>';
-														echo '<label for="register-female" class="radio control-inline"> 
-														<input type="radio" name="genderedit" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nữ" checked> Nữ 
-														</label>';
-														echo '<label for="register-neutral" class="radio control-inline"> 
-														<input type="radio" name="genderedit" required="required" value="Khác"> Khác
-														</label>';
-													}
-													else
-													{
-														echo '<label for="register-male" class="radio control-inline">  
-														<input type="radio" name="genderedit" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nam" > Nam 
-														</label>';
-														echo '<label for="register-female" class="radio control-inline"> 
-														<input type="radio" name="genderedit" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nữ" > Nữ 
-														</label>';
-														echo '<label for="register-neutral" class="radio control-inline"> 
-														<input type="radio" name="genderedit" required="required" value="Khác" checked> Khác 
-														</label>';
-													}
-													?>
+													<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['gioitinh'];}?>">
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label">Email:</label>
 												<div class="col-md-9">
-													<input id="emailedit" class="form-control" type="text" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['email'];}?>">
+													<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['email'];}?>">
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label">Điện thoại:</label>
 												<div class="col-md-9">
-													<input id="sdtedit" class="form-control" type="text"  value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['sdt'];}?>">
+													<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['sdt'];}?>">
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label">Địa chỉ:</label>
 												<div class="col-md-9">
-													<input id="diachiedit" class="form-control" type="text" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['diachi'];}?>">
+													<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['diachi'];}?>">
 												</div>
 											</div>
-											
+
 											<div class="form-group row">
-												<div class="col-md-7"></div>
-												<div class="col-md-5 nutluu">
-													<input type="button" class="btn btn-lg btn-secondary thoatchinhsua" value="Thoát">
-													<input type="button" class="btn btn-lg btn-success luuchinhsua" value="Lưu">
-													<br>
+												<div class="col-md-5"></div>
+												<div class="col-md-4">
+													<button class="btn btn-lg btn-secondary suathongtin"><i class="fa fa-pencil"></i> Chỉnh sửa</button>
 												</div>
+												<div class="col-md-3"></div>
 											</div>
 											<!-- </form> -->
 										</div>
 									</div>
 
-									<div class="card mb-4 thongtintaikhoan" >
+									<div class="card mb-4 thongtinnguoidungsua d-none" >
 										<div class="card-block">
-											<h3 class="card-title"><i class="fa fa-user"></i>  Thông tin tài khoản<ng></ng></h3>
-											<form class="form" action="#">
+											<h3 class="card-title"><i class="fa fa-user"></i>  Thông tin người dùng<ng></ng></h3>
+											<!-- <form class="form" action="#"> -->
 
 												<div class="form-group row">
-													<label class="col-md-3 col-form-label">Tài khoản:</label>
+													<label class="col-md-3 col-form-label">Ảnh đại diện:</label>
 													<div class="col-md-9">
-														<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['tendangnhap'];}?>">
+														<div class="row">
+															<div class="col-sm-6">
+																<img class="img-fluid" src="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['duongdananhnguoidung'];}?>"></img>
+															</div>
+															<div class="col-sm-6">
+																<span class="btn btn-outline-success fileinput-button">
+																	<i class="glyphicon glyphicon-plus"></i>
+																	<span>Thêm ảnh...</span>
+																	<input id="anhavatar" class="form-control" type="file" name="files[]" multiple="">
+																</span>
+															</div>
+														</div>
+														<!-- <input id="anhavatar" name="files[]" class="form-control" type="file"> -->
 													</div>
 												</div>
 
 												<div class="form-group row">
-													<label class="col-md-3 col-form-label">Mật khẩu:</label>
+													<label class="col-md-3 col-form-label">Họ tên:</label>
 													<div class="col-md-9">
-														<button class="btn btn-lg btn-secondary doimatkhau" type="button">Đổi mật khẩu</button>
+														<input id="tenedit" class="form-control" type="text" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ten'];}?>">
+													</div>
+												</div>
+
+												<div class="form-group row">
+													<label class="col-md-3 col-form-label">Ngày sinh:</label>
+													<div class="col-md-9">
+														<input id="ngaysinhedit" class="form-control" type="date" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['ngaysinh'];}?>">
+													</div>
+												</div>
+
+												<div class="form-group row" id="gioitinhedit">
+													<label class="col-md-3 col-form-label">Giới tính:</label>
+													<div class="col-md-9">
+														<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) 
+														if($value['gioitinh']=='Nam')
+														{
+															echo '<label for="register-male" class="radio control-inline"> 
+															<input type="radio" name="genderedit" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nam" checked > Nam 
+															</label>';
+															echo '<label for="register-female" class="radio control-inline"> 
+															<input type="radio" name="genderedit" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nữ"> Nữ 
+															</label>';
+															echo '<label for="register-neutral" class="radio control-inline"> 
+															<input type="radio" name="genderedit" required="required" value="Khác"> Khác 
+															</label>';
+														}
+														else if($value['gioitinh']=='Nữ')
+														{
+															echo '<label for="register-male" class="radio control-inline"> 
+															<input type="radio" name="genderedit" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nam" > Nam
+															</label>';
+															echo '<label for="register-female" class="radio control-inline"> 
+															<input type="radio" name="genderedit" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nữ" checked> Nữ 
+															</label>';
+															echo '<label for="register-neutral" class="radio control-inline"> 
+															<input type="radio" name="genderedit" required="required" value="Khác"> Khác
+															</label>';
+														}
+														else
+														{
+															echo '<label for="register-male" class="radio control-inline">  
+															<input type="radio" name="genderedit" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nam" > Nam 
+															</label>';
+															echo '<label for="register-female" class="radio control-inline"> 
+															<input type="radio" name="genderedit" required="required" class="gender" data-msg-required="Please indicate your gender." value="Nữ" > Nữ 
+															</label>';
+															echo '<label for="register-neutral" class="radio control-inline"> 
+															<input type="radio" name="genderedit" required="required" value="Khác" checked> Khác 
+															</label>';
+														}
+														?>
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label class="col-md-3 col-form-label">Email:</label>
 													<div class="col-md-9">
-														<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['email'];}?>">
+														<input id="emailedit" class="form-control" type="text" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['email'];}?>">
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label class="col-md-3 col-form-label">Điện thoại:</label>
 													<div class="col-md-9">
-														<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['sdt'];}?>">
+														<input id="sdtedit" class="form-control" type="text"  value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['sdt'];}?>">
 													</div>
 												</div>
-											</form>
+
+												<div class="form-group row">
+													<label class="col-md-3 col-form-label">Địa chỉ:</label>
+													<div class="col-md-9">
+														<input id="diachiedit" class="form-control" type="text" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['diachi'];}?>">
+													</div>
+												</div>
+
+												<div class="form-group row">
+													<div class="col-md-7"></div>
+													<div class="col-md-5 nutluu">
+														<input type="button" class="btn btn-lg btn-secondary thoatchinhsua" value="Thoát">
+														<input type="button" class="btn btn-lg btn-success luuchinhsua" value="Lưu">
+														<br>
+													</div>
+												</div>
+												<!-- </form> -->
+											</div>
 										</div>
-									</div>
 
-									<div class="card mb-4 thongtintaikhoansua d-none" >
-										<div class="card-block">
-											<h3 class="card-title"><i class="fa fa-user"></i>  Đổi mật khẩu<ng></ng></h3>
-											<form class="form" action="#">
+										<div class="card mb-4 thongtintaikhoan" >
+											<div class="card-block">
+												<h3 class="card-title"><i class="fa fa-user"></i>  Thông tin tài khoản<ng></ng></h3>
+												<form class="form" action="#">
 
-												<div class="form-group row">
-													<label class="col-md-3 col-form-label">Tài khoản:</label>
-													<div class="col-md-9">
-														<input id="tendangnhap" name="tendangnhap" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['tendangnhap'];}?>">
+													<div class="form-group row">
+														<label class="col-md-3 col-form-label">Tài khoản:</label>
+														<div class="col-md-9">
+															<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['tendangnhap'];}?>">
+														</div>
 													</div>
-												</div>
 
-												<div class="form-group row">
-													<label class="col-md-3 col-form-label">Mật khẩu cũ:</label>
-													<div class="col-md-9">
-														<input id="matkhaucu" name="matkhaucu" class="form-control" type="password">
+													<div class="form-group row">
+														<label class="col-md-3 col-form-label">Mật khẩu:</label>
+														<div class="col-md-9">
+															<button class="btn btn-lg btn-secondary doimatkhau" type="button">Đổi mật khẩu</button>
+														</div>
 													</div>
-												</div>
 
-												<div class="form-group row">
-													<label class="col-md-3 col-form-label">Mật khẩu mới:</label>
-													<div class="col-md-9">
-														<input id="matkhaumoi" name="matkhaumoi" class="form-control" type="password">
+													<div class="form-group row">
+														<label class="col-md-3 col-form-label">Email:</label>
+														<div class="col-md-9">
+															<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['email'];}?>">
+														</div>
 													</div>
-												</div>
+
+													<div class="form-group row">
+														<label class="col-md-3 col-form-label">Điện thoại:</label>
+														<div class="col-md-9">
+															<input name="readonly" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['sdt'];}?>">
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+
+										<div class="card mb-4 thongtintaikhoansua d-none" >
+											<div class="card-block">
+												<h3 class="card-title"><i class="fa fa-user"></i>  Đổi mật khẩu<ng></ng></h3>
+												<form class="form" action="#">
+
+													<div class="form-group row">
+														<label class="col-md-3 col-form-label">Tài khoản:</label>
+														<div class="col-md-9">
+															<input id="tendangnhap" name="tendangnhap" class="form-control" type="text" readonly="" value="<?php foreach ($nguoidung['thongtinnguoidung'] as $key => $value) {echo $value['tendangnhap'];}?>">
+														</div>
+													</div>
+
+													<div class="form-group row">
+														<label class="col-md-3 col-form-label">Mật khẩu cũ:</label>
+														<div class="col-md-9">
+															<input id="matkhaucu" name="matkhaucu" class="form-control" type="password">
+														</div>
+													</div>
+
+													<div class="form-group row">
+														<label class="col-md-3 col-form-label">Mật khẩu mới:</label>
+														<div class="col-md-9">
+															<input id="matkhaumoi" name="matkhaumoi" class="form-control" type="password">
+														</div>
+													</div>
 <!-- 										
 										<div class="form-group row">
 											<label class="col-md-3 col-form-label">Nhập lại mật khẩu mới:</label>
@@ -524,9 +524,15 @@
 										<div class="row contain-playlist mb-4" >
 											<!--Item-playlist-->
 											<?php foreach ($playlist['danhsachplaylist'] as $key => $value) { ?>
-											<div class="col-lg-4 col-sm-6 playlist-item" >
+											
+											<div class="col-lg-4 col-sm-6 portfolio-item">
 												<div class="card h-100" id="item-playlist">
-													<a href="<?php echo base_url()?>TrinhPhatPlaylist/?idplaylist=<?php echo $value['idplaylist'] ?>&idbaihat=" class="item-container">
+													<a href="<?php echo base_url()?>TrinhPhatPlaylist/?idplaylist=<?php echo $value['idplaylist']?>" class="item-container">
+														<span class="item-playlist-luotnghe">
+															<i class="fa fa-headphones" aria-hidden="true"></i>
+															<span id=""><?php echo $value['luotnghe'] ?>
+															</span>
+														</span>
 														<div class="item-hover">
 															<div class="item-hover-content">
 																<i class="fa fa-play fa-2x"></i>
@@ -536,7 +542,7 @@
 													</a>
 													<div class="card-body">
 														<h4 class="card-title">
-															<a href="<?php echo base_url()?>TrinhPhatPlaylist/?idplaylist=<?php echo $value['idplaylist'] ?>&idbaihat="><?php echo $value['tenplaylist'] ?></a>
+															<a href="<?php echo base_url()?>TrinhPhatPlaylist/?idplaylist=<?php echo $value['idplaylist']?>"><?php echo $value['tenplaylist'] ?></a>
 														</h4>
 														<p class="card-text"><?php echo $value['tencasi'] ?></p>
 													</div>
@@ -734,64 +740,64 @@
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<form action="SuaThongTinCaSi/sua" method="post" enctype="multidata/form-data">
-				<div class="modal-header">
-					<h4 class="modal-title"><strong>Sửa thông tin ca sĩ</strong></h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<div class="modal-header">
+						<h4 class="modal-title"><strong>Sửa thông tin ca sĩ</strong></h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 							<span class="sr-only">Close</span>
-					</button>
-				</div>
-				<div class="modal-body">
-                        <div class="form-group">
-                            <label for="full-name"><b>Họ tên ca sĩ:</b></label>
-                            <input class="form-control" id="casi" type="text" name="casi">
-                        </div>
-				<div class="modal-footer">
-					<input type="submit" name="tieptuc" class=" btn btn-success " value="Tiếp tục">
-				</div>
-				</form>	
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div>
-<!-- /. kết thúc phần modal sign up-->
-</body>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="full-name"><b>Họ tên ca sĩ:</b></label>
+							<input class="form-control" id="casi" type="text" name="casi">
+						</div>
+						<div class="modal-footer">
+							<input type="submit" name="tieptuc" class=" btn btn-success " value="Tiếp tục">
+						</div>
+					</form>	
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- /. kết thúc phần modal sign up-->
+	</body>
         <!-- Bootstrap core JavaScript
-    	================================================== -->
-    	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.js"></script>
-    	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.js"></script>    	
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        	================================================== -->
+        	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.bundle.js"></script>
+        	<script src="<?php echo base_url() ?>vendor/bootstrap/js/bootstrap.js"></script>    	
+        	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 
 
-    	<script>
-    		$('.suathongtin').click(function(event) {
-    			$( "div.thongtinnguoidung" ).addClass( "d-none" );
-    			$( "div.thongtinnguoidungsua" ).removeClass( "d-none" );
-    		});
+        	<script>
+        		$('.suathongtin').click(function(event) {
+        			$( "div.thongtinnguoidung" ).addClass( "d-none" );
+        			$( "div.thongtinnguoidungsua" ).removeClass( "d-none" );
+        		});
 
-    		$('.doimatkhau').click(function(event) {
-    			$( "div.thongtintaikhoan" ).addClass( "d-none" );
-    			$( "div.thongtintaikhoansua" ).removeClass( "d-none" );
-    		});
+        		$('.doimatkhau').click(function(event) {
+        			$( "div.thongtintaikhoan" ).addClass( "d-none" );
+        			$( "div.thongtintaikhoansua" ).removeClass( "d-none" );
+        		});
 
-    		$('.thoatchinhsua').click(function(event) {
-    			$("i.trangthailuu").remove();
-    			$( "div.thongtinnguoidungsua" ).addClass( "d-none" );
-    			$( "div.thongtinnguoidung" ).removeClass( "d-none" );
-    		});
+        		$('.thoatchinhsua').click(function(event) {
+        			$("i.trangthailuu").remove();
+        			$( "div.thongtinnguoidungsua" ).addClass( "d-none" );
+        			$( "div.thongtinnguoidung" ).removeClass( "d-none" );
+        		});
 
-    		$('.thoatsuamatkhau').click(function(event) {
-    			$("i.trangthailuumatkhau").remove();
-    			$( "div.thongtintaikhoansua" ).addClass( "d-none" );
-    			$( "div.thongtintaikhoan" ).removeClass( "d-none" );
-    		});
+        		$('.thoatsuamatkhau').click(function(event) {
+        			$("i.trangthailuumatkhau").remove();
+        			$( "div.thongtintaikhoansua" ).addClass( "d-none" );
+        			$( "div.thongtintaikhoan" ).removeClass( "d-none" );
+        		});
 
-    		duongdan = '<?php echo base_url() ?>';
-    		tenfile = null;
-    		$('#anhavatar').fileupload({
-    			url: duongdan + 'TrangCaNhan/uploadfile',
-    			dataType: 'json',
-    			disableImageResize: /Android(?!.*Chrome)|Opera/ 
-    			.test(window.navigator && navigator.userAgent),
+        		duongdan = '<?php echo base_url() ?>';
+        		tenfile = null;
+        		$('#anhavatar').fileupload({
+        			url: duongdan + 'TrangCaNhan/uploadfile',
+        			dataType: 'json',
+        			disableImageResize: /Android(?!.*Chrome)|Opera/ 
+        			.test(window.navigator && navigator.userAgent),
 		    imageMaxWidth: 800,//crop ngoại trừ android và opera
 		    imageMaxHeight: 800,
 		    imageCrop: true, // Force cropped images
@@ -800,27 +806,27 @@
 		    		tenfile = file.url;
 		    	});
 		    }
-			});
+		});
 
-			$(document).ready(function () {
-		        $('#casi').typeahead({
-		            source: function (query, result) {
-		                $.ajax({
-		                    url: "DangNhac/searchcasi",
-							data: 'query=' + query,            
-		                    dataType: "json",
-		                    type: "POST",
-		                    success: function (data) {
-								result($.map(data, function (item) {
-									return item;
-		                        }));
-		                    }
-		                });
-		            }
-		        });
-		    });
+        		$(document).ready(function () {
+        			$('#casi').typeahead({
+        				source: function (query, result) {
+        					$.ajax({
+        						url: "DangNhac/searchcasi",
+        						data: 'query=' + query,            
+        						dataType: "json",
+        						type: "POST",
+        						success: function (data) {
+        							result($.map(data, function (item) {
+        								return item;
+        							}));
+        						}
+        					});
+        				}
+        			});
+        		});
 
-    		$('.luuchinhsua').click(function(event) {
+        		$('.luuchinhsua').click(function(event) {
     		// console.log($('input:radio[name=genderedit]:checked').val()); 
     		// console.log($('[name="genderedit"]:radio:checked').val());
     		// cả 2 câu đều dùng được
@@ -861,23 +867,23 @@
     		})
     	});
 
-    		$('.luumatkhau').click(function(event) {
-    			$.ajax({
-    				url: 'TrangCaNhan/doimatkhau',
-    				type: 'POST',
-    				dataType: 'json',
-    				data: {
-    					tendangnhap : $('#tendangnhap').val(),
-    					matkhaucu : $('#matkhaucu').val(),
-    					matkhaumoi : $('#matkhaumoi').val()
-    				},
-    			})
-    			.done(function(data) {
-    				console.log("success");
-    				$("i.trangthailuumatkhau").remove();
-    				if(data>0)
-    				{
-    					$('.nutluumatkhau').append('<i style="color:red;" class="trangthailuumatkhau">Đã thay đổi thành công</i>');
+        		$('.luumatkhau').click(function(event) {
+        			$.ajax({
+        				url: 'TrangCaNhan/doimatkhau',
+        				type: 'POST',
+        				dataType: 'json',
+        				data: {
+        					tendangnhap : $('#tendangnhap').val(),
+        					matkhaucu : $('#matkhaucu').val(),
+        					matkhaumoi : $('#matkhaumoi').val()
+        				},
+        			})
+        			.done(function(data) {
+        				console.log("success");
+        				$("i.trangthailuumatkhau").remove();
+        				if(data>0)
+        				{
+        					$('.nutluumatkhau').append('<i style="color:red;" class="trangthailuumatkhau">Đã thay đổi thành công</i>');
 		            // location.reload();
 		        }
 		        else
@@ -886,42 +892,42 @@
 		            // location.reload();
 		        }
 		    })
-    			.fail(function() {
-    				console.log("error");
-    			})
+        			.fail(function() {
+        				console.log("error");
+        			})
 
-    		});
+        		});
 
-    		$("#btn-taoplaylist").click(function(event) {
-    			$.ajax({
-    				url: 'TrangCaNhan/taoplaylist',
-    				type: 'POST',
-    				dataType: 'html',
-    				data: {tenplaylist:$("#tenplaylist").val()},
-    			})
-    			.done(function() {
-    				console.log("success");
-    			})
-    			.fail(function() {
-    				console.log("error");
-    			})
-    			.always(function(data) {
-    				console.log("complete");
-    				$(".contain-playlist").append(data);
-    			});
-    		});
+        		$("#btn-taoplaylist").click(function(event) {
+        			$.ajax({
+        				url: 'TrangCaNhan/taoplaylist',
+        				type: 'POST',
+        				dataType: 'html',
+        				data: {tenplaylist:$("#tenplaylist").val()},
+        			})
+        			.done(function() {
+        				console.log("success");
+        			})
+        			.fail(function() {
+        				console.log("error");
+        			})
+        			.always(function(data) {
+        				console.log("complete");
+        				$(".contain-playlist").append(data);
+        			});
+        		});
 
-    		$(".btn-xoaplaylist").click(function(event) {
-    			$.ajax({
-    				url: 'TrangCaNhan/xoaplaylist',
-    				type: 'POST',
-    				dataType: 'json',
-    				data: {idplaylist: $(this).attr('id')},
-    			})
-    			.done(function() {
-    				console.log("success");
-    			});
-    			$(this).closest('div').closest('.playlist-item').remove();
-    		});
-    	</script>
-</html>
+        		$(".btn-xoaplaylist").click(function(event) {
+        			$.ajax({
+        				url: 'TrangCaNhan/xoaplaylist',
+        				type: 'POST',
+        				dataType: 'json',
+        				data: {idplaylist: $(this).attr('id')},
+        			})
+        			.done(function() {
+        				console.log("success");
+        			});
+        			$(this).closest('div').closest('.playlist-item').remove();
+        		});
+        	</script>
+        	</html>

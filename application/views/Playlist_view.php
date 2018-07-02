@@ -315,7 +315,7 @@
 													<!--Item-playlist-->
 													<div class="col-lg-4 col-sm-6 portfolio-item">
 														<div class="card h-100" id="item-playlist">
-															<a href="#" class="item-container">
+															<a href="<?php echo base_url()?>TrinhPhatPlaylist/?idplaylist=<?php echo $value['idplaylist']?>" class="item-container">
 																<span class="item-playlist-luotnghe">
 																	<i class="fa fa-headphones" aria-hidden="true"></i>
 																	<span id=""><?php echo $value['luotnghe'] ?>

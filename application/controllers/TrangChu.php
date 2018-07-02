@@ -10,9 +10,15 @@ class TrangChu extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('BangXepHang_model');
-
-		$this->load->view('TrangChu_view');
-
+		$this->load->model('TrangChu_model');
+		$playlist=$this->TrangChu_model->GoiYPlaylist();
+		$album=$this->TrangChu_model->GoiYAlbum();
+		$casihot=$this->TrangChu_model->Get_danhsach_hot();
+		$data=array('playlist'=>$playlist,
+					'album'=>$album,
+					'casihot'=>$casihot
+					);
+		$this->load->view('TrangChu_view',$data);
 	}
 
 	public function logout_controller($value='')

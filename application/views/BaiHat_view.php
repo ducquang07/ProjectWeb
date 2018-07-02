@@ -639,7 +639,7 @@
 													<div class="col-lg-4 col-sm-6 portfolio-item">
 														<!--Item-casi-->
 														<div class="card h-100" id="item-casi">
-															<a href="#">
+															<a href="<?php echo base_url()?>ThongTinCaSi/casi/<?php echo $value['idcasi']?>">
 																<div class="item-hover">
 																	<div class="item-hover-content">
 																		<p class="text-white"><?php echo $value['tencasi'] ?></p>

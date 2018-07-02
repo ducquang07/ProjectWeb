@@ -248,67 +248,71 @@
 											</span>
 										</div>
 									</div>
-									<!--Phần danh muc chủ đề-->
+									
+
+									<!--Phần thể loại-->
 									<div class="card mb-4">
 										<h5 class="card-header">Danh mục thể loại</h5>
 										<div class="card-body" id="item-Theloai">
+											
+											<!--Danh muc the loai -->
 											<div class="danhmuc_Theloai">	
 												<div class="row">
-
 													<div class="col-lg-4" id="Ten-Theloai">Việt Nam</div>
 													<div class="col-lg-8" id="Chitiet-Theloai">
 														<ul class="list-unstyled mb-0 row">
-															<li class="item-chitiet-Theloai active"><a href="#">Nhạc trẻ</a></li>
-															<li class="item-chitiet-Theloai"><a href="#">Trữ tình</a></li>
-															<li class="item-chitiet-Theloai"><a href="#">Rap việt</a></li>
-															<li class="item-chitiet-Theloai"><a href="#">Nhạc Trịnh</a>
+															<?php foreach ($theloai_Vietnam['danhsachtheloai'] as $key => $value){?>
+															<li class="item-chitiet-Theloai" id="<?php echo $value['idtheloai'] ?>">
+																<a href="#"><?php echo $value['tentheloai'] ?>	
+																</a>
 															</li>
-
+															<?php } ?>
 														</ul>
 													</div>
 												</div>
 											</div>
+											<!--Ket thuc danh muc the loai -->
+											<!--Danh muc the loai -->
 											<div class="danhmuc_Theloai">	
 												<div class="row ">
-
 													<div class="col-lg-4" id="Ten-Theloai">Âu Mỹ</div>
 													<div class="col-lg-8" id="Chitiet-Theloai">
 														<ul class="list-unstyled mb-0 row">
-															<li class="item-chitiet-Theloai"><a href="#">Nhạc trẻ</a></li>
-															<li class="item-chitiet-Theloai"><a href="#">Trữ tình</a></li>
-															<li class="item-chitiet-Theloai"><a href="#">Rap việt</a></li>
-															<li class="item-chitiet-Theloai"><a href="#">Nhạc Trịnh</a>
+															<?php foreach ($theloai_AuMy['danhsachtheloai'] as $key => $value){?>
+															<li class="item-chitiet-Theloai" id="<?php echo $value['idtheloai'] ?>">
+																<a href="#"><?php echo $value['tentheloai'] ?></a>
 															</li>
-
+															<?php } ?>
 														</ul>
 													</div>
 												</div>
 											</div>
+											<!--Ket thuc danh muc the loai -->
+											<!--Danh muc the loai -->
 											<div class="danhmuc_Theloai">	
 												<div class="row ">
-
 													<div class="col-lg-4" id="Ten-Theloai">Châu Á</div>
 													<div class="col-lg-8" id="Chitiet-Theloai">
 														<ul class="list-unstyled mb-0 row">
-															<li class="item-chitiet-Theloai"><a href="#">Nhạc trẻ</a></li>
-															<li class="item-chitiet-Theloai"><a href="#">Trữ tình</a></li>
-															<li class="item-chitiet-Theloai"><a href="#">Rap việt</a></li>
-															<li class="item-chitiet-Theloai"><a href="#">Nhạc Trịnh</a>
+															<?php foreach ($theloai_ChauA['danhsachtheloai'] as $key => $value){?>
+															<li class="item-chitiet-Theloai" id="<?php echo $value['idtheloai'] ?>">
+																<a href="#"><?php echo $value['tentheloai'] ?></a>
 															</li>
-
+															<?php } ?>
 														</ul>
 													</div>
 												</div>
 											</div>
 										</div>
+										<!--Ket thuc danh muc the loai -->
 									</div>
-									<!--Kết thúc danh mục chủ đề-->
+									<!--kết thúc phần thể loại-->
 
 									<!--Phần Playlist-->
 									<div class="card mb-4" id="chude">
 										<div class="card-block">
 											<h4  class="card-title" >
-												<a href="chu-de.html">CHỦ ĐỀ NỔI BẬT ></a>
+												<a href="chu-de.html">CHỦ ĐỀ NỔI BẬT</a>
 											</h4>
 											<div class="canvas-wrapper">
 												<div class="row">

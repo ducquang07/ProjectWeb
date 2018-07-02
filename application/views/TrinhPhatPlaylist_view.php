@@ -305,7 +305,9 @@
 													<h5>Đang phát : <a id="tenbaihat" href="#"><?php echo $obj_baihat['tenbaihat'] ?></a></h5>
 													Thể hiện :
 													<div id="casithehien"> 
-														<?php foreach ($obj_baihat['casi'] as $key => $value) {?>
+														<?php 
+														if($obj_baihat['casi']!='')
+															foreach ($obj_baihat['casi'] as $key => $value) {?>
 														<a href="<?php echo base_url() ?>ThongTinCaSi/casi/<?php echo $value['idcasi'] ?>" class="item-baihat-tencasi"><?php echo $value['tencasi'] ?>
 														</a> 
 
@@ -740,4 +742,4 @@
 				</script>
 
 			</body>
-</html>
+			</html>

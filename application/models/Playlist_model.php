@@ -30,10 +30,17 @@
 		public function laydanhsach_playlist($keyword,$limit)
 		{
 			if($keyword===""){
-				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi limit 0, $limit";
+				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi 
+					  from playlist,casi 
+					  where playlist.idcasi=casi.idcasi 
+					  and playlist.idplaylist in (Select distinct idplaylist from chitietplaylist) limit 0, $limit";
 			}
 			else{
-				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi and playlist.tenplaylist like '%$keyword%' limit 0, $limit";
+				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi 
+					  from playlist,casi 
+					  where playlist.idcasi=casi.idcasi 
+					  and playlist.tenplaylist like '%$keyword%' 
+					  and playlist.idplaylist in (Select distinct idplaylist from chitietplaylist) limit 0, $limit";
 			}
 			$dulieu=$this->db->query($sql);
 			$dulieu=$dulieu->result_array();
@@ -44,10 +51,13 @@
 		{
 			
 			if($keyword===""){
-				$sql="Select idplaylist from playlist";
+				$sql="Select idplaylist from playlist 
+					  where playlist.idplaylist in (Select distinct idplaylist from chitietplaylist)";
 			}
 			else{
-				$sql="Select idplaylist from playlist where tenplaylist like '%$keyword%'";
+				$sql="Select idplaylist from playlist 
+					  where tenplaylist like '%$keyword%' 
+					  and playlist.idplaylist in (Select distinct idplaylist from chitietplaylist)";
 			}
 			$dulieu=$this->db->query($sql);
 			$rowcount = $dulieu->num_rows();
@@ -59,18 +69,23 @@
 			$start=($currentpage-1)*$limit;
 			if($keyword===""|| is_null($keyword))
 			{
-				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi limit $start, $limit";
+				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where 	 playlist.idcasi=casi.idcasi limit $start, $limit";
 			}
 			else
 			{
-				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi and playlist.tenplaylist like '%$keyword%' limit $start,$limit";
+				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi 
+					  from playlist,casi 
+					  where playlist.idcasi=casi.idcasi 
+					  and playlist.tenplaylist like '%$keyword%'
+					  and playlist.idplaylist in (Select distinct idplaylist from chitietplaylist) 
+					  limit $start,$limit";
 			}
 			$dulieu=$this->db->query($sql);
 			foreach($dulieu->result_array() as $row)
 			{
 				echo '<div class="col-lg-4 col-sm-6 portfolio-item">';
 				echo '<div class="card h-100" id="item-playlist">';
-				echo '	<a href="#" class="item-container">';
+				echo '	<a href="'.base_url().'TrinhPhatPlaylist/?idplaylist='.$row['idplaylist'].'" class="item-container">';
 				echo '		<span class="item-playlist-luotnghe">';
 				echo '			<i class="fa fa-headphones" aria-hidden="true"></i>';
 				echo '			<span id="">'.$row['luotnghe'];
@@ -85,7 +100,7 @@
 				echo '	</a>';
 				echo '	<div class="card-body">';
 				echo '		<h4 class="card-title">';
-				echo '			<a href="#">'.$row['tenplaylist'].'</a>';
+				echo '			<a href="'.base_url().'TrinhPhatPlaylist/?idplaylist='.$row['idplaylist'].'">'.$row['tenplaylist'].'</a>';
 				echo '		</h4>';
 				echo '		<p class="card-text">'.$row['tencasi'].'</p>';
 				echo '	</div>';

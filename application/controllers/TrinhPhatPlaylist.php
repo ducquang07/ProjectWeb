@@ -20,41 +20,60 @@ class TrinhPhatPlaylist extends CI_Controller {
 		$idbaihat=$idbaihat['idbaihat'];
 		$idusercurrent = $this->session->userdata('id');
 		
-
-		$thongtinbaihat=$this->TrinhPhatPlaylist_model->laythongtinbaihat($idbaihat);
+		if($idbaihat!=null){
+			$thongtinbaihat=$this->TrinhPhatPlaylist_model->laythongtinbaihat($idbaihat);
+		}
+		else
+			$thongtinbaihat=null;
+		
 		$thongtinnguoidung=$this->TrinhPhatPlaylist_model->laythongtinnguoidung($idusercurrent);
 		$danhsachbinhluan=$this->TrinhPhatPlaylist_model->laydanhsachbinhluan($idbaihat);
 		$thongtinplaylist=$this->TrinhPhatPlaylist_model->laythongtinplaylist($idplaylist);
 		$thongtinnguoitaoplaylist=$this->TrinhPhatPlaylist_model->laythongnguoitaoplaylist($idplaylist);
 		$danhsachbaihat=$this->TrinhPhatPlaylist_model->laydanhsachbaihat($idplaylist);
 
-		$listbaihat=array();
-		foreach ($danhsachbaihat as $key => $value) {
-			$danhsachcasi=$this->TrinhPhatPlaylist_model->laythongthongtincasi($value['idbaihat']);
-			$baihat =array(
-				"idbaihat"=>$value['idbaihat'],
-				"tenbaihat"=>$value['tenbaihat'],
-				"luotnghe"=>$value['luotnghe'],
-				"duongdannhac"=>$value['duongdannhac'],
-				"loibaihat"=>$value['loibaihat'],
-				"duongdananhnguoidung"=>$value['duongdananhnguoidung'],
-				"casi"=>$danhsachcasi
-			);
-			array_push($listbaihat,$baihat);
-		}
 
-		$thongtinbaihatdangphat=array();
-		foreach ($thongtinbaihat as $key => $value) {
-			$baihatdangphat=array(
-				"idbaihat"=>$value['idbaihat'],
-				"tenbaihat"=>$value['tenbaihat'],
-				"luotnghe"=>$value['luotnghe'],
-				"duongdannhac"=>$value['duongdannhac'],
-				"loibaihat"=>$value['loibaihat'],
-				"duongdananhbaihat"=>$value['duongdananhbaihat'],
-				"casi"=>$this->TrinhPhatPlaylist_model->laythongthongtincasi($value['idbaihat'])
-			);
-			array_push($thongtinbaihatdangphat,$baihatdangphat);
+		$listbaihat=array();
+
+		if(count($danhsachbaihat)>0){
+			foreach ($danhsachbaihat as $key => $value) {
+				$danhsachcasi=$this->TrinhPhatPlaylist_model->laythongthongtincasi($value['idbaihat']);
+				$baihat =array(
+					"idbaihat"=>$value['idbaihat'],
+					"tenbaihat"=>$value['tenbaihat'],
+					"luotnghe"=>$value['luotnghe'],
+					"duongdannhac"=>$value['duongdannhac'],
+					"loibaihat"=>$value['loibaihat'],
+					"duongdananhnguoidung"=>$value['duongdananhnguoidung'],
+					"casi"=>$danhsachcasi
+				);
+				array_push($listbaihat,$baihat);
+			}
+		}
+		
+
+		$thongtinbaihatdangphat=array(
+			"idbaihat"=>'',
+			"tenbaihat"=>'',
+			"luotnghe"=>'',
+			"duongdannhac"=>'',
+			"loibaihat"=>'',
+			"duongdananhbaihat"=>'',
+			"casi"=>''
+		);
+		if($thongtinbaihat!=null){
+			foreach ($thongtinbaihat as $key => $value) {
+				$baihatdangphat=array(
+					"idbaihat"=>$value['idbaihat'],
+					"tenbaihat"=>$value['tenbaihat'],
+					"luotnghe"=>$value['luotnghe'],
+					"duongdannhac"=>$value['duongdannhac'],
+					"loibaihat"=>$value['loibaihat'],
+					"duongdananhbaihat"=>$value['duongdananhbaihat'],
+					"casi"=>$this->TrinhPhatPlaylist_model->laythongthongtincasi($value['idbaihat'])
+				);
+				array_push($thongtinbaihatdangphat,$baihatdangphat);
+			}
 		}
 
 		$data=array('baihat'=>array('thongtinbaihat'=>$thongtinbaihatdangphat),

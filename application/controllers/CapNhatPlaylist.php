@@ -74,7 +74,6 @@ class CapNhatPlaylist extends CI_Controller {
 		$idtheloai=$this->input->post('idtheloai');
 		$tencasi=$this->input->post('tencasi');
 		$casi=$this->CapNhatPlaylist_model->lay_idcasi($tencasi);
-
 		if ($casi->num_rows() > 0) //số dòng lớn hơn 0 thì thực hiện
 		{
 			$casi=$casi->result_array(); //chuyển sang kiểu aray
