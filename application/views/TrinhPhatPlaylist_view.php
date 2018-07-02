@@ -115,13 +115,13 @@
 								<span class="nav-link-text">Trang Chủ</span>
 							</a>
 						</li>
-						<li class="nav-item active" data-toggle="tooltip" id="baihat">
+						<li class="nav-item " data-toggle="tooltip" id="baihat">
 							<a class="nav-link" href="<?php echo base_url() ?>BaiHat">
 								<i class="fa fa-fw fa-music"></i>
 								<span class="nav-link-text">Bài Hát</span>
 							</a>
 						</li>
-						<li class="nav-item" data-toggle="tooltip" id="playlist">
+						<li class="nav-item active" data-toggle="tooltip" id="playlist">
 							<a class="nav-link" href="<?php echo base_url() ?>Playlist">
 								<i class="fa fa-fw fa-table"></i>
 								<span class="nav-link-text">Playlist</span>
@@ -278,7 +278,7 @@
 									<div class="mb-4">
 										<form action="#" method="GET" id="timkiem">
 											<div class="input-group timkiem-group">
-												<input class="form-control input-timkiem" type="text" placeholder="Tìm bài hát" name="keyword" id="keyword" value="">
+												<input class="form-control input-timkiem" type="text" placeholder="Tìm playlist" name="keyword" id="keyword" value="">
 												<span class="input-group-append">
 													<button class="btn btn-primary btn-timkiem" type="submit" >
 														<i class="fa fa-search"></i>
@@ -331,7 +331,7 @@
 										<div class="">
 											<div class="lyric" id="_divLyricHtml">
 
-												<div id="divLyric" class="pd_lyric trans" style="height:auto;max-height:300px;overflow:scroll;">
+												<div  class="pd_lyric trans" style="height:auto;max-height:300px;overflow:scroll;">
 
 													<table class="table table-striped" id="BaiHat-TBL">
 														<?php if(count($danhsachbaihat)===0){ ?>
@@ -342,9 +342,9 @@
 														<tbody>
 															<!--Item bai hat-->
 															<?php foreach ($danhsachbaihat as $key => $value) {?>
-															<tr class="item-baihat" id='aaaaa'>
+															<tr class="item-baihat" id="<?php echo $value['idbaihat'] ?>">
 																<td>
-																	<div class="content-baihat">
+																	<div class="content-baihat" >
 																		<a href="#" class="item-baihat-tenbaihat" id="<?php echo $value['idbaihat'] ?>"><?php echo $value['tenbaihat'] ?>
 																		</a>
 																		-
@@ -355,6 +355,9 @@
 																			<?php 
 																			if ($value1 !== end($value['casi']))
 																				echo ","; }?>
+																		</div>
+																		<div class="loibaihat" hidden >
+																			<?php echo nl2br($value['loibaihat']) ?>
 																		</div>
 																	</div>
 																</td>
@@ -385,7 +388,7 @@
 									<div class="mb-4  service-bar container" >
 										<div class="row">
 											<div class="user-upload">
-												<img width="50" height="auto" class="circle float-left profile-photo" alt="profile photo" src="<?php echo $obj_nguoidang['duongdananh']?>">
+												<img width="50" height="auto" class="circle float-left profile-photo" id="anhnguoiupload" alt="profile photo" src="<?php echo $obj_nguoidang['duongdananh']?>">
 												Upload bởi:<br>
 												<a href="#" id="name-user-upload"><?php echo $obj_nguoidang['ten']?></a>
 											</div>
@@ -1011,14 +1014,14 @@
 						idbaihat:"<?php echo $value['idbaihat']?>",
 						tenbaihat:"<?php echo $value['tenbaihat'] ?>",
 						duongdannhac:"<?php echo $value['duongdannhac'] ?>",
-						loibaihat:"<?php echo nl2br($value['loibaihat']) ?>",
+						duongdananhnguoidung:"<?php echo $value['duongdananhnguoidung'] ?>",
 						casi:'<?php foreach ($value['casi'] as $key1 => $value1) {
-							 echo '<a href="'.base_url().'ThongTinCaSi/casi/'.$value1['idcasi'].'" class="item-baihat-tencasi">'.$value1['tencasi'].'</a>' 	;
+							echo '<a href="'.base_url().'ThongTinCaSi/casi/'.$value1['idcasi'].'" class="item-baihat-tencasi">'.$value1['tencasi'].'</a>' 	;
 
 							if ($value1 !== end($value['casi']))
 								echo ","; }?>'											
 						});
-				<?php }?>
+					<?php }?>
 
 					$(".btn-binhluan").click(function(event) {
 						if($(".txt-comment").val()!="")
@@ -1116,25 +1119,30 @@
 
 					});
 
+					
 					$(".btn-timkiem").click(function(event) {
 						$tukhoa=$("#keyword").val();
 						if($tukhoa==='')
-							$("#timkiem").attr('action', '<?php echo base_url() ?>BaiHat');
+							$("#timkiem").attr('action', '<?php echo base_url() ?>Playlist');
 						else
-							$("#timkiem").attr('action', '<?php echo base_url() ?>BaiHat/timkiem/?keyword='+$tukhoa);
+							$("#timkiem").attr('action', '<?php echo base_url() ?>Playlist/timkiem/?keyword='+$tukhoa);
 					});
+
+
 
 					$(".item-baihat-tenbaihat").click(function(event) {
 						$idbaihat=$(this).attr('id');
+						$loibaihat=$(this).closest('.content-baihat').find('.loibaihat').html();
 						i=list_audio.findIndex(item => item.idbaihat==$idbaihat);
 						$("#tenbaihat").html(list_audio[i].tenbaihat);
 						$("#casithehien").html(list_audio[i].casi);
-
+						$("#divLyric").html($loibaihat);
+						$(".name_lyric").html("Lời bài hát: "+list_audio[i].tenbaihat);
+						$("#anhnguoiupload").attr('src',list_audio[i].duongdananhnguoidung);
 						aud = document.getElementById("audio");
 						aud.src = list_audio[i].duongdannhac;
 						aud.load();
 						aud.play();
-						
 					});
 
 
@@ -1147,11 +1155,14 @@
 						aud.src = nextSong;
 						aud.load();
 						aud.play();
+						$(".name_lyric").html("Lời bài hát: "+list_audio[i].tenbaihat);
+						$("#anhnguoiupload").attr('src',list_audio[i].duongdananhnguoidung);
 						$("#tenbaihat").html(list_audio[i].tenbaihat);
 						$("#casithehien").html(list_audio[i].casi);
+						$("#divLyric").html($('#'+list_audio).find('.loibaihat').html());
 					};
 
 				</script>
 
 			</body>
-			</html>
+</html>

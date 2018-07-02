@@ -33,7 +33,7 @@
 				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi limit 0, $limit";
 			}
 			else{
-				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi and match(playlist.tenplaylist) against('$keyword') limit 0, $limit";
+				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi and playlist.tenplaylist like '%$keyword%' limit 0, $limit";
 			}
 			$dulieu=$this->db->query($sql);
 			$dulieu=$dulieu->result_array();
@@ -47,7 +47,7 @@
 				$sql="Select idplaylist from playlist";
 			}
 			else{
-				$sql="Select idplaylist from playlist where match(tenplaylist) against('$keyword')";
+				$sql="Select idplaylist from playlist where tenplaylist like '%$keyword%'";
 			}
 			$dulieu=$this->db->query($sql);
 			$rowcount = $dulieu->num_rows();
@@ -63,7 +63,7 @@
 			}
 			else
 			{
-				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi and match(playlist.tenplaylist) against('$keyword') limit $start,$limit";
+				$sql="Select idplaylist,tenplaylist,luotnghe,playlist.duongdananhplaylist,tencasi from playlist,casi where playlist.idcasi=casi.idcasi and playlist.tenplaylist like '%$keyword%' limit $start,$limit";
 			}
 			$dulieu=$this->db->query($sql);
 			foreach($dulieu->result_array() as $row)

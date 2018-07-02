@@ -12,5 +12,5 @@ class TrangChu_model extends CI_Model {
 
 }
 
-/* End of file trangchu_model.php */
-/* Location: ./application/models/trangchu_model.php */
+/* End of file TrangChu_model.php */
+/* Location: ./application/models/TrangChu_model.php */

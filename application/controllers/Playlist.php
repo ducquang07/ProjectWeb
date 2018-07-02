@@ -10,6 +10,7 @@ class Playlist extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('Playlist_model');
+		$this->load->model('BangXepHang_model');
 		$keyword='';
 
 		$total_record=$this->Playlist_model->get_TotalRecord($keyword);

@@ -35,6 +35,7 @@ class TrinhPhatPlaylist extends CI_Controller {
 				"luotnghe"=>$value['luotnghe'],
 				"duongdannhac"=>$value['duongdannhac'],
 				"loibaihat"=>$value['loibaihat'],
+				"duongdananhnguoidung"=>$value['duongdananhnguoidung'],
 				"casi"=>$danhsachcasi
 			);
 			array_push($listbaihat,$baihat);
